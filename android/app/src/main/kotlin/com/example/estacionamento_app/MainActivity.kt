@@ -1,4 +1,4 @@
-package com.example.estacionamento_app
+package com.example.all_parking
 
 import io.flutter.embedding.android.FlutterActivity
 
