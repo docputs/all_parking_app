@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../core/errors/auth_failure.dart';
 import '../../core/util/validators.dart';
 import '../repositories/i_user_repository.dart';
 
+@lazySingleton
 class SignIn {
   final Validators validators;
   final IUserRepository userRepository;
