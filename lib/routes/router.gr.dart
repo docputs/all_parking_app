@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 import '../features/auth/presentation/sign_in/screens/sign_in_screen.dart';
 import '../features/auth/presentation/sign_up/screens/sign_up_screen.dart';
-import '../features/auth/presentation/splash/splash_page.dart';
+import '../features/auth/presentation/splash/splash_screen.dart';
 import '../features/parking/presentation/home/home_screen.dart';
 
 class Routes {
