@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../../../widgets/default_button.dart';
+import '../../../../../widgets/default_text_form_field.dart';
 import '../bloc/sign_in_bloc.dart';
 import 'components/create_account_text.dart';
 
@@ -37,19 +38,9 @@ class SignInScreen extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'E-mail'),
-            autocorrect: false,
-            enableSuggestions: false,
-            keyboardType: TextInputType.emailAddress,
-          ),
+          DefaultTextFormField(labelText: 'E-mail'),
           const SizedBox(height: 10),
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Senha'),
-            autocorrect: false,
-            enableSuggestions: false,
-            obscureText: true,
-          ),
+          DefaultTextFormField(labelText: 'Senha'),
           const SizedBox(height: 40),
           DefaultButton(
             text: 'ENTRAR',
