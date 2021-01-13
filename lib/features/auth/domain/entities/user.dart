@@ -12,4 +12,16 @@ class User {
     @required this.email,
     this.isAdmin = false,
   });
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    return o is User && o.id == id && o.displayName == displayName && o.email == email && o.isAdmin == isAdmin;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^ displayName.hashCode ^ email.hashCode ^ isAdmin.hashCode;
+  }
 }
