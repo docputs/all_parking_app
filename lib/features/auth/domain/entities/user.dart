@@ -1,27 +1,25 @@
 import 'package:flutter/foundation.dart';
 
-class User {
+abstract class User {
   final String id;
-  final String displayName;
-  final String email;
-  final bool isAdmin;
+  final String firstName;
+  final String lastName;
 
   const User({
     @required this.id,
-    @required this.displayName,
-    @required this.email,
-    this.isAdmin = false,
+    @required this.firstName,
+    @required this.lastName,
   });
+
+  String get fullName => '$firstName $lastName';
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is User && o.id == id && o.displayName == displayName && o.email == email && o.isAdmin == isAdmin;
+    return o is User && o.id == id && o.firstName == firstName && o.lastName == lastName;
   }
 
   @override
-  int get hashCode {
-    return id.hashCode ^ displayName.hashCode ^ email.hashCode ^ isAdmin.hashCode;
-  }
+  int get hashCode => id.hashCode ^ firstName.hashCode ^ lastName.hashCode;
 }
