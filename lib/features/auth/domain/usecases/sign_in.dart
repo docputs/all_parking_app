@@ -4,20 +4,23 @@ import 'package:injectable/injectable.dart';
 
 import '../../core/errors/auth_failure.dart';
 import '../../core/util/validators.dart';
+import '../../data/models/sign_in_model.dart';
 import '../repositories/i_user_repository.dart';
 
 @lazySingleton
 class SignIn {
-  final Validators validators;
-  final IUserRepository userRepository;
+  final Validators _validators;
+  final IUserRepository _userRepository;
 
-  const SignIn(this.validators, this.userRepository);
+  const SignIn(this._validators, this._userRepository)
+      : assert(_userRepository != null),
+        assert(_validators != null);
 
   Future<Either<AuthFailure, Unit>> call({@required String email, @required String password}) {
-    final emailEither = validators.validateEmailAddress(email);
+    final emailEither = _validators.validateEmailAddress(email);
     return emailEither.fold(
       (failure) => Future.value(left(failure)),
-      (_) => userRepository.signInWithEmailAndPassword(email: email, password: password),
+      (_) => _userRepository.signInWithEmailAndPassword(SignInModel(email: email, password: password)),
     );
   }
 }

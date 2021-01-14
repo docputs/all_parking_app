@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../core/errors/auth_failure.dart';
 import '../../core/util/validators.dart';
+import '../../data/models/register_model.dart';
 import '../repositories/i_user_repository.dart';
 
 @lazySingleton
@@ -11,10 +12,17 @@ class SignUp {
   final IUserRepository _userRepository;
   final Validators _validators;
 
-  SignUp(this._userRepository, this._validators);
+  const SignUp(this._userRepository, this._validators)
+      : assert(_userRepository != null),
+        assert(_validators != null);
 
-  Future<Either<AuthFailure, Unit>> call({@required String displayName, @required String email, @required String password}) {
-    final displayNameEither = _validators.validateDisplayName(displayName);
+  Future<Either<AuthFailure, Unit>> call({
+    @required String firstName,
+    @required String lastName,
+    @required String email,
+    @required String password,
+  }) {
+    final displayNameEither = _validators.validateDisplayName('$firstName $lastName');
     if (displayNameEither.isLeft()) return displayNameEither.fold((f) => Future.value(left(f)), null);
 
     final emailEither = _validators.validateEmailAddress(email);
@@ -23,6 +31,6 @@ class SignUp {
     final passwordEither = _validators.validatePassword(password);
     if (passwordEither.isLeft()) return passwordEither.fold((f) => Future.value(left(f)), null);
 
-    return _userRepository.createAccount(displayName: displayName, email: email, password: password);
+    return _userRepository.createAccount(RegisterModel(email: email, firstName: firstName, lastName: lastName, password: password));
   }
 }

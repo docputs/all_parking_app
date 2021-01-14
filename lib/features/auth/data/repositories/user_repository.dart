@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../core/errors/auth_failure.dart';
-import '../core/util/firebase_user_mapper.dart';
-import '../domain/entities/user.dart';
-import '../domain/repositories/i_user_repository.dart';
+import '../../core/errors/auth_failure.dart';
+import '../../core/util/firebase_user_mapper.dart';
+import '../../domain/entities/user.dart';
+import '../../domain/repositories/i_user_repository.dart';
+import '../models/register_model.dart';
+import '../models/sign_in_model.dart';
 
 @LazySingleton(as: IUserRepository)
 class UserRepository implements IUserRepository {
@@ -15,10 +16,10 @@ class UserRepository implements IUserRepository {
   const UserRepository(this._firebaseAuth) : assert(_firebaseAuth != null);
 
   @override
-  Future<Either<AuthFailure, Unit>> createAccount({@required String displayName, @required String email, @required String password}) async {
+  Future<Either<AuthFailure, Unit>> createAccount(RegisterModel registerModel) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
-      await _firebaseAuth.currentUser.updateProfile(displayName: displayName);
+      await _firebaseAuth.createUserWithEmailAndPassword(email: registerModel.email, password: registerModel.password);
+      await _firebaseAuth.currentUser.updateProfile(displayName: registerModel.fullName);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
@@ -47,9 +48,9 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({@required String email, @required String password}) async {
+  Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(SignInModel signInModel) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+      await _firebaseAuth.signInWithEmailAndPassword(email: signInModel.email, password: signInModel.password);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {

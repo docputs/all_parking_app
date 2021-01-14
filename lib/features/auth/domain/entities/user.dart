@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-abstract class User {
+class User {
   final String id;
   final String firstName;
   final String lastName;
