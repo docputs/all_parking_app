@@ -3,7 +3,8 @@ part of 'sign_up_bloc.dart';
 @freezed
 abstract class SignUpState with _$SignUpState {
   const factory SignUpState({
-    @required String displayName,
+    @required String firstName,
+    @required String lastName,
     @required String email,
     @required String password,
     @required bool isSubmitting,
@@ -12,7 +13,8 @@ abstract class SignUpState with _$SignUpState {
   }) = _SignUpState;
 
   factory SignUpState.initial() => SignUpState(
-        displayName: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         isSubmitting: false,

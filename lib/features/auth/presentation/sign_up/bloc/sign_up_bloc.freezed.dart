@@ -14,23 +14,30 @@ class _$SignUpEventTearOff {
   const _$SignUpEventTearOff();
 
 // ignore: unused_element
-  _DisplayNameChanged displayNameChanged(String displayName) {
-    return _DisplayNameChanged(
-      displayName,
+  _FirstNameChanged firstNameChanged(String input) {
+    return _FirstNameChanged(
+      input,
     );
   }
 
 // ignore: unused_element
-  _EmailChanged emailChanged(String email) {
+  _LastNameChanged lastNameChanged(String input) {
+    return _LastNameChanged(
+      input,
+    );
+  }
+
+// ignore: unused_element
+  _EmailChanged emailChanged(String input) {
     return _EmailChanged(
-      email,
+      input,
     );
   }
 
 // ignore: unused_element
-  _PasswordChanged passwordChanged(String password) {
+  _PasswordChanged passwordChanged(String input) {
     return _PasswordChanged(
-      password,
+      input,
     );
   }
 
@@ -48,29 +55,33 @@ const $SignUpEvent = _$SignUpEventTearOff();
 mixin _$SignUpEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult displayNameChanged(String displayName),
-    @required TResult emailChanged(String email),
-    @required TResult passwordChanged(String password),
+    @required TResult firstNameChanged(String input),
+    @required TResult lastNameChanged(String input),
+    @required TResult emailChanged(String input),
+    @required TResult passwordChanged(String input),
     @required TResult signUpPressed(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult displayNameChanged(String displayName),
-    TResult emailChanged(String email),
-    TResult passwordChanged(String password),
+    TResult firstNameChanged(String input),
+    TResult lastNameChanged(String input),
+    TResult emailChanged(String input),
+    TResult passwordChanged(String input),
     TResult signUpPressed(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult firstNameChanged(_FirstNameChanged value),
+    @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult firstNameChanged(_FirstNameChanged value),
+    TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
@@ -95,90 +106,92 @@ class _$SignUpEventCopyWithImpl<$Res> implements $SignUpEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DisplayNameChangedCopyWith<$Res> {
-  factory _$DisplayNameChangedCopyWith(
-          _DisplayNameChanged value, $Res Function(_DisplayNameChanged) then) =
-      __$DisplayNameChangedCopyWithImpl<$Res>;
-  $Res call({String displayName});
+abstract class _$FirstNameChangedCopyWith<$Res> {
+  factory _$FirstNameChangedCopyWith(
+          _FirstNameChanged value, $Res Function(_FirstNameChanged) then) =
+      __$FirstNameChangedCopyWithImpl<$Res>;
+  $Res call({String input});
 }
 
 /// @nodoc
-class __$DisplayNameChangedCopyWithImpl<$Res>
+class __$FirstNameChangedCopyWithImpl<$Res>
     extends _$SignUpEventCopyWithImpl<$Res>
-    implements _$DisplayNameChangedCopyWith<$Res> {
-  __$DisplayNameChangedCopyWithImpl(
-      _DisplayNameChanged _value, $Res Function(_DisplayNameChanged) _then)
-      : super(_value, (v) => _then(v as _DisplayNameChanged));
+    implements _$FirstNameChangedCopyWith<$Res> {
+  __$FirstNameChangedCopyWithImpl(
+      _FirstNameChanged _value, $Res Function(_FirstNameChanged) _then)
+      : super(_value, (v) => _then(v as _FirstNameChanged));
 
   @override
-  _DisplayNameChanged get _value => super._value as _DisplayNameChanged;
+  _FirstNameChanged get _value => super._value as _FirstNameChanged;
 
   @override
   $Res call({
-    Object displayName = freezed,
+    Object input = freezed,
   }) {
-    return _then(_DisplayNameChanged(
-      displayName == freezed ? _value.displayName : displayName as String,
+    return _then(_FirstNameChanged(
+      input == freezed ? _value.input : input as String,
     ));
   }
 }
 
 /// @nodoc
-class _$_DisplayNameChanged implements _DisplayNameChanged {
-  const _$_DisplayNameChanged(this.displayName) : assert(displayName != null);
+class _$_FirstNameChanged implements _FirstNameChanged {
+  const _$_FirstNameChanged(this.input) : assert(input != null);
 
   @override
-  final String displayName;
+  final String input;
 
   @override
   String toString() {
-    return 'SignUpEvent.displayNameChanged(displayName: $displayName)';
+    return 'SignUpEvent.firstNameChanged(input: $input)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DisplayNameChanged &&
-            (identical(other.displayName, displayName) ||
-                const DeepCollectionEquality()
-                    .equals(other.displayName, displayName)));
+        (other is _FirstNameChanged &&
+            (identical(other.input, input) ||
+                const DeepCollectionEquality().equals(other.input, input)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(displayName);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
 
   @override
-  _$DisplayNameChangedCopyWith<_DisplayNameChanged> get copyWith =>
-      __$DisplayNameChangedCopyWithImpl<_DisplayNameChanged>(this, _$identity);
+  _$FirstNameChangedCopyWith<_FirstNameChanged> get copyWith =>
+      __$FirstNameChangedCopyWithImpl<_FirstNameChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult displayNameChanged(String displayName),
-    @required TResult emailChanged(String email),
-    @required TResult passwordChanged(String password),
+    @required TResult firstNameChanged(String input),
+    @required TResult lastNameChanged(String input),
+    @required TResult emailChanged(String input),
+    @required TResult passwordChanged(String input),
     @required TResult signUpPressed(),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
-    return displayNameChanged(displayName);
+    return firstNameChanged(input);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult displayNameChanged(String displayName),
-    TResult emailChanged(String email),
-    TResult passwordChanged(String password),
+    TResult firstNameChanged(String input),
+    TResult lastNameChanged(String input),
+    TResult emailChanged(String input),
+    TResult passwordChanged(String input),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (displayNameChanged != null) {
-      return displayNameChanged(displayName);
+    if (firstNameChanged != null) {
+      return firstNameChanged(input);
     }
     return orElse();
   }
@@ -186,40 +199,176 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult firstNameChanged(_FirstNameChanged value),
+    @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
-    return displayNameChanged(this);
+    return firstNameChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult firstNameChanged(_FirstNameChanged value),
+    TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (displayNameChanged != null) {
-      return displayNameChanged(this);
+    if (firstNameChanged != null) {
+      return firstNameChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _DisplayNameChanged implements SignUpEvent {
-  const factory _DisplayNameChanged(String displayName) = _$_DisplayNameChanged;
+abstract class _FirstNameChanged implements SignUpEvent {
+  const factory _FirstNameChanged(String input) = _$_FirstNameChanged;
 
-  String get displayName;
-  _$DisplayNameChangedCopyWith<_DisplayNameChanged> get copyWith;
+  String get input;
+  _$FirstNameChangedCopyWith<_FirstNameChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class _$LastNameChangedCopyWith<$Res> {
+  factory _$LastNameChangedCopyWith(
+          _LastNameChanged value, $Res Function(_LastNameChanged) then) =
+      __$LastNameChangedCopyWithImpl<$Res>;
+  $Res call({String input});
+}
+
+/// @nodoc
+class __$LastNameChangedCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res>
+    implements _$LastNameChangedCopyWith<$Res> {
+  __$LastNameChangedCopyWithImpl(
+      _LastNameChanged _value, $Res Function(_LastNameChanged) _then)
+      : super(_value, (v) => _then(v as _LastNameChanged));
+
+  @override
+  _LastNameChanged get _value => super._value as _LastNameChanged;
+
+  @override
+  $Res call({
+    Object input = freezed,
+  }) {
+    return _then(_LastNameChanged(
+      input == freezed ? _value.input : input as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_LastNameChanged implements _LastNameChanged {
+  const _$_LastNameChanged(this.input) : assert(input != null);
+
+  @override
+  final String input;
+
+  @override
+  String toString() {
+    return 'SignUpEvent.lastNameChanged(input: $input)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _LastNameChanged &&
+            (identical(other.input, input) ||
+                const DeepCollectionEquality().equals(other.input, input)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
+
+  @override
+  _$LastNameChangedCopyWith<_LastNameChanged> get copyWith =>
+      __$LastNameChangedCopyWithImpl<_LastNameChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult firstNameChanged(String input),
+    @required TResult lastNameChanged(String input),
+    @required TResult emailChanged(String input),
+    @required TResult passwordChanged(String input),
+    @required TResult signUpPressed(),
+  }) {
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(signUpPressed != null);
+    return lastNameChanged(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult firstNameChanged(String input),
+    TResult lastNameChanged(String input),
+    TResult emailChanged(String input),
+    TResult passwordChanged(String input),
+    TResult signUpPressed(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (lastNameChanged != null) {
+      return lastNameChanged(input);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult firstNameChanged(_FirstNameChanged value),
+    @required TResult lastNameChanged(_LastNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult signUpPressed(_SignUpPressed value),
+  }) {
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(signUpPressed != null);
+    return lastNameChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult firstNameChanged(_FirstNameChanged value),
+    TResult lastNameChanged(_LastNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult signUpPressed(_SignUpPressed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (lastNameChanged != null) {
+      return lastNameChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LastNameChanged implements SignUpEvent {
+  const factory _LastNameChanged(String input) = _$_LastNameChanged;
+
+  String get input;
+  _$LastNameChangedCopyWith<_LastNameChanged> get copyWith;
 }
 
 /// @nodoc
@@ -227,7 +376,7 @@ abstract class _$EmailChangedCopyWith<$Res> {
   factory _$EmailChangedCopyWith(
           _EmailChanged value, $Res Function(_EmailChanged) then) =
       __$EmailChangedCopyWithImpl<$Res>;
-  $Res call({String email});
+  $Res call({String input});
 }
 
 /// @nodoc
@@ -242,37 +391,37 @@ class __$EmailChangedCopyWithImpl<$Res> extends _$SignUpEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object email = freezed,
+    Object input = freezed,
   }) {
     return _then(_EmailChanged(
-      email == freezed ? _value.email : email as String,
+      input == freezed ? _value.input : input as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_EmailChanged implements _EmailChanged {
-  const _$_EmailChanged(this.email) : assert(email != null);
+  const _$_EmailChanged(this.input) : assert(input != null);
 
   @override
-  final String email;
+  final String input;
 
   @override
   String toString() {
-    return 'SignUpEvent.emailChanged(email: $email)';
+    return 'SignUpEvent.emailChanged(input: $input)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _EmailChanged &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
+            (identical(other.input, input) ||
+                const DeepCollectionEquality().equals(other.input, input)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(email);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
 
   @override
   _$EmailChangedCopyWith<_EmailChanged> get copyWith =>
@@ -281,30 +430,33 @@ class _$_EmailChanged implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult displayNameChanged(String displayName),
-    @required TResult emailChanged(String email),
-    @required TResult passwordChanged(String password),
+    @required TResult firstNameChanged(String input),
+    @required TResult lastNameChanged(String input),
+    @required TResult emailChanged(String input),
+    @required TResult passwordChanged(String input),
     @required TResult signUpPressed(),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
-    return emailChanged(email);
+    return emailChanged(input);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult displayNameChanged(String displayName),
-    TResult emailChanged(String email),
-    TResult passwordChanged(String password),
+    TResult firstNameChanged(String input),
+    TResult lastNameChanged(String input),
+    TResult emailChanged(String input),
+    TResult passwordChanged(String input),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailChanged != null) {
-      return emailChanged(email);
+      return emailChanged(input);
     }
     return orElse();
   }
@@ -312,12 +464,14 @@ class _$_EmailChanged implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult firstNameChanged(_FirstNameChanged value),
+    @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
@@ -327,7 +481,8 @@ class _$_EmailChanged implements _EmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult firstNameChanged(_FirstNameChanged value),
+    TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
@@ -342,9 +497,9 @@ class _$_EmailChanged implements _EmailChanged {
 }
 
 abstract class _EmailChanged implements SignUpEvent {
-  const factory _EmailChanged(String email) = _$_EmailChanged;
+  const factory _EmailChanged(String input) = _$_EmailChanged;
 
-  String get email;
+  String get input;
   _$EmailChangedCopyWith<_EmailChanged> get copyWith;
 }
 
@@ -353,7 +508,7 @@ abstract class _$PasswordChangedCopyWith<$Res> {
   factory _$PasswordChangedCopyWith(
           _PasswordChanged value, $Res Function(_PasswordChanged) then) =
       __$PasswordChangedCopyWithImpl<$Res>;
-  $Res call({String password});
+  $Res call({String input});
 }
 
 /// @nodoc
@@ -369,38 +524,37 @@ class __$PasswordChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object password = freezed,
+    Object input = freezed,
   }) {
     return _then(_PasswordChanged(
-      password == freezed ? _value.password : password as String,
+      input == freezed ? _value.input : input as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_PasswordChanged implements _PasswordChanged {
-  const _$_PasswordChanged(this.password) : assert(password != null);
+  const _$_PasswordChanged(this.input) : assert(input != null);
 
   @override
-  final String password;
+  final String input;
 
   @override
   String toString() {
-    return 'SignUpEvent.passwordChanged(password: $password)';
+    return 'SignUpEvent.passwordChanged(input: $input)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PasswordChanged &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+            (identical(other.input, input) ||
+                const DeepCollectionEquality().equals(other.input, input)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
 
   @override
   _$PasswordChangedCopyWith<_PasswordChanged> get copyWith =>
@@ -409,30 +563,33 @@ class _$_PasswordChanged implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult displayNameChanged(String displayName),
-    @required TResult emailChanged(String email),
-    @required TResult passwordChanged(String password),
+    @required TResult firstNameChanged(String input),
+    @required TResult lastNameChanged(String input),
+    @required TResult emailChanged(String input),
+    @required TResult passwordChanged(String input),
     @required TResult signUpPressed(),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
-    return passwordChanged(password);
+    return passwordChanged(input);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult displayNameChanged(String displayName),
-    TResult emailChanged(String email),
-    TResult passwordChanged(String password),
+    TResult firstNameChanged(String input),
+    TResult lastNameChanged(String input),
+    TResult emailChanged(String input),
+    TResult passwordChanged(String input),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (passwordChanged != null) {
-      return passwordChanged(password);
+      return passwordChanged(input);
     }
     return orElse();
   }
@@ -440,12 +597,14 @@ class _$_PasswordChanged implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult firstNameChanged(_FirstNameChanged value),
+    @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
@@ -455,7 +614,8 @@ class _$_PasswordChanged implements _PasswordChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult firstNameChanged(_FirstNameChanged value),
+    TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
@@ -470,9 +630,9 @@ class _$_PasswordChanged implements _PasswordChanged {
 }
 
 abstract class _PasswordChanged implements SignUpEvent {
-  const factory _PasswordChanged(String password) = _$_PasswordChanged;
+  const factory _PasswordChanged(String input) = _$_PasswordChanged;
 
-  String get password;
+  String get input;
   _$PasswordChangedCopyWith<_PasswordChanged> get copyWith;
 }
 
@@ -514,12 +674,14 @@ class _$_SignUpPressed implements _SignUpPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult displayNameChanged(String displayName),
-    @required TResult emailChanged(String email),
-    @required TResult passwordChanged(String password),
+    @required TResult firstNameChanged(String input),
+    @required TResult lastNameChanged(String input),
+    @required TResult emailChanged(String input),
+    @required TResult passwordChanged(String input),
     @required TResult signUpPressed(),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
@@ -529,9 +691,10 @@ class _$_SignUpPressed implements _SignUpPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult displayNameChanged(String displayName),
-    TResult emailChanged(String email),
-    TResult passwordChanged(String password),
+    TResult firstNameChanged(String input),
+    TResult lastNameChanged(String input),
+    TResult emailChanged(String input),
+    TResult passwordChanged(String input),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
@@ -545,12 +708,14 @@ class _$_SignUpPressed implements _SignUpPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult firstNameChanged(_FirstNameChanged value),
+    @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
-    assert(displayNameChanged != null);
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(signUpPressed != null);
@@ -560,7 +725,8 @@ class _$_SignUpPressed implements _SignUpPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult firstNameChanged(_FirstNameChanged value),
+    TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
@@ -585,7 +751,9 @@ class _$SignUpStateTearOff {
 // ignore: unused_element
   _SignUpState call(
       {@required
-          String displayName,
+          String firstName,
+      @required
+          String lastName,
       @required
           String email,
       @required
@@ -597,7 +765,8 @@ class _$SignUpStateTearOff {
       @required
           Option<Either<AuthFailure, Unit>> signUpSuccessOrFailureOption}) {
     return _SignUpState(
-      displayName: displayName,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       password: password,
       isSubmitting: isSubmitting,
@@ -613,7 +782,8 @@ const $SignUpState = _$SignUpStateTearOff();
 
 /// @nodoc
 mixin _$SignUpState {
-  String get displayName;
+  String get firstName;
+  String get lastName;
   String get email;
   String get password;
   bool get isSubmitting;
@@ -629,7 +799,8 @@ abstract class $SignUpStateCopyWith<$Res> {
           SignUpState value, $Res Function(SignUpState) then) =
       _$SignUpStateCopyWithImpl<$Res>;
   $Res call(
-      {String displayName,
+      {String firstName,
+      String lastName,
       String email,
       String password,
       bool isSubmitting,
@@ -647,7 +818,8 @@ class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object displayName = freezed,
+    Object firstName = freezed,
+    Object lastName = freezed,
     Object email = freezed,
     Object password = freezed,
     Object isSubmitting = freezed,
@@ -655,8 +827,8 @@ class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
     Object signUpSuccessOrFailureOption = freezed,
   }) {
     return _then(_value.copyWith(
-      displayName:
-          displayName == freezed ? _value.displayName : displayName as String,
+      firstName: firstName == freezed ? _value.firstName : firstName as String,
+      lastName: lastName == freezed ? _value.lastName : lastName as String,
       email: email == freezed ? _value.email : email as String,
       password: password == freezed ? _value.password : password as String,
       isSubmitting:
@@ -679,7 +851,8 @@ abstract class _$SignUpStateCopyWith<$Res>
       __$SignUpStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String displayName,
+      {String firstName,
+      String lastName,
       String email,
       String password,
       bool isSubmitting,
@@ -699,7 +872,8 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object displayName = freezed,
+    Object firstName = freezed,
+    Object lastName = freezed,
     Object email = freezed,
     Object password = freezed,
     Object isSubmitting = freezed,
@@ -707,8 +881,8 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
     Object signUpSuccessOrFailureOption = freezed,
   }) {
     return _then(_SignUpState(
-      displayName:
-          displayName == freezed ? _value.displayName : displayName as String,
+      firstName: firstName == freezed ? _value.firstName : firstName as String,
+      lastName: lastName == freezed ? _value.lastName : lastName as String,
       email: email == freezed ? _value.email : email as String,
       password: password == freezed ? _value.password : password as String,
       isSubmitting:
@@ -726,13 +900,15 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_SignUpState implements _SignUpState {
   const _$_SignUpState(
-      {@required this.displayName,
+      {@required this.firstName,
+      @required this.lastName,
       @required this.email,
       @required this.password,
       @required this.isSubmitting,
       @required this.showErrorMessages,
       @required this.signUpSuccessOrFailureOption})
-      : assert(displayName != null),
+      : assert(firstName != null),
+        assert(lastName != null),
         assert(email != null),
         assert(password != null),
         assert(isSubmitting != null),
@@ -740,7 +916,9 @@ class _$_SignUpState implements _SignUpState {
         assert(signUpSuccessOrFailureOption != null);
 
   @override
-  final String displayName;
+  final String firstName;
+  @override
+  final String lastName;
   @override
   final String email;
   @override
@@ -754,16 +932,19 @@ class _$_SignUpState implements _SignUpState {
 
   @override
   String toString() {
-    return 'SignUpState(displayName: $displayName, email: $email, password: $password, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, signUpSuccessOrFailureOption: $signUpSuccessOrFailureOption)';
+    return 'SignUpState(firstName: $firstName, lastName: $lastName, email: $email, password: $password, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, signUpSuccessOrFailureOption: $signUpSuccessOrFailureOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SignUpState &&
-            (identical(other.displayName, displayName) ||
+            (identical(other.firstName, firstName) ||
                 const DeepCollectionEquality()
-                    .equals(other.displayName, displayName)) &&
+                    .equals(other.firstName, firstName)) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastName, lastName)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
@@ -785,7 +966,8 @@ class _$_SignUpState implements _SignUpState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(displayName) ^
+      const DeepCollectionEquality().hash(firstName) ^
+      const DeepCollectionEquality().hash(lastName) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
@@ -800,7 +982,9 @@ class _$_SignUpState implements _SignUpState {
 abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
           {@required
-              String displayName,
+              String firstName,
+          @required
+              String lastName,
           @required
               String email,
           @required
@@ -814,7 +998,9 @@ abstract class _SignUpState implements SignUpState {
       _$_SignUpState;
 
   @override
-  String get displayName;
+  String get firstName;
+  @override
+  String get lastName;
   @override
   String get email;
   @override

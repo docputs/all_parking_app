@@ -16,7 +16,7 @@ import 'features/auth/domain/usecases/sign_in.dart';
 import 'features/auth/presentation/sign_in/bloc/sign_in_bloc.dart';
 import 'features/auth/domain/usecases/sign_up.dart';
 import 'features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
-import 'features/auth/data/user_repository.dart';
+import 'features/auth/data/repositories/user_repository.dart';
 import 'features/auth/core/util/validators.dart';
 
 /// adds generated dependencies
