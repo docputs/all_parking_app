@@ -25,21 +25,17 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     SignUpEvent event,
   ) async* {
     yield* event.map(
-      displayNameChanged: (e) async* {
-        yield state.copyWith(
-          displayName: e.displayName,
-          signUpSuccessOrFailureOption: none(),
-        );
-      },
+      firstNameChanged: (e) async* {},
+      lastNameChanged: (e) async* {},
       emailChanged: (e) async* {
         yield state.copyWith(
-          email: e.email,
+          email: e.value,
           signUpSuccessOrFailureOption: none(),
         );
       },
       passwordChanged: (e) async* {
         yield state.copyWith(
-          password: e.password,
+          password: e.value,
           signUpSuccessOrFailureOption: none(),
         );
       },
@@ -51,8 +47,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           signUpSuccessOrFailureOption: none(),
         );
 
-        if (_validators.isValidDisplayName(state.displayName) && _validators.isValidEmail(state.email)) {
-          signUpSuccessOrFailure = await _signUp(displayName: state.displayName, email: state.email, password: state.password);
+        final fullName = '${state.firstName} ${state.lastName}';
+        if (_validators.isValidDisplayName(fullName) && _validators.isValidEmail(state.email)) {
+          signUpSuccessOrFailure = await _signUp(
+            firstName: state.firstName,
+            lastName: state.lastName,
+            email: state.email,
+            password: state.password,
+          );
         }
 
         yield state.copyWith(
