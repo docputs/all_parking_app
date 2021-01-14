@@ -21,9 +21,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc(this._signUp, this._validators) : super(SignUpState.initial());
 
   @override
-  Stream<SignUpState> mapEventToState(
-    SignUpEvent event,
-  ) async* {
+  Stream<SignUpState> mapEventToState(SignUpEvent event) async* {
     yield* event.map(
       firstNameChanged: (e) async* {},
       lastNameChanged: (e) async* {},

@@ -28,7 +28,7 @@ class DefaultTextFormField extends StatelessWidget {
       decoration: InputDecoration(labelText: labelText),
       autocorrect: false,
       enableSuggestions: false,
-      obscureText: obscureText,
+      obscureText: obscureText ?? false,
       onChanged: onChanged,
       autovalidateMode: autovalidateMode,
       keyboardType: keyboardType,

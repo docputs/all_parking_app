@@ -551,7 +551,7 @@ class __$SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_SignInState implements _SignInState {
-  const _$_SignInState(
+  _$_SignInState(
       {@required this.email,
       @required this.password,
       @required this.isSubmitting,
@@ -616,7 +616,7 @@ class _$_SignInState implements _SignInState {
 }
 
 abstract class _SignInState implements SignInState {
-  const factory _SignInState(
+  factory _SignInState(
           {@required
               String email,
           @required

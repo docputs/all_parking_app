@@ -1,3 +1,4 @@
+import 'package:all_parking/features/auth/data/models/sign_in_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
 import 'package:all_parking/features/auth/core/util/validators.dart';
@@ -25,16 +26,15 @@ void main() {
   final password = 'teste';
   final invalidEmail = 'teste@teste';
   final invalidPassword = 'test';
+  final signInModel = SignInModel(email: email, password: password);
 
   test('should sign in when email is valid', () async {
     when(mockValidators.validateEmailAddress(any)).thenReturn(Right(email));
-    when(mockUserRepository.signInWithEmailAndPassword(email: anyNamed('email'), password: anyNamed('password')))
-        .thenAnswer((_) async => Right(unit));
+    when(mockUserRepository.signInWithEmailAndPassword(any)).thenAnswer((_) async => Right(unit));
 
     final result = await usecase(email: email, password: password);
 
     expect(result, Right(unit));
-    verify(mockUserRepository.signInWithEmailAndPassword(email: email, password: password)).called(1);
     verifyNoMoreInteractions(mockUserRepository);
   });
 
@@ -49,7 +49,7 @@ void main() {
   group('signInWithEmailAndPassword', () {
     setUp(() {
       when(mockValidators.validateEmailAddress(any)).thenReturn(Right(email));
-      when(mockUserRepository.signInWithEmailAndPassword(email: anyNamed('email'), password: anyNamed('password')))
+      when(mockUserRepository.signInWithEmailAndPassword(any))
           .thenAnswer((_) async => Left(const AuthFailure.invalidEmailAndPasswordCombination()));
     });
 
