@@ -6,14 +6,20 @@ class DefaultTextFormField extends StatelessWidget {
   final bool enableSuggestions;
   final bool obscureText;
   final void Function(String) onChanged;
+  final TextInputType keyboardType;
+  final String Function(String) validator;
+  final AutovalidateMode autovalidateMode;
 
   const DefaultTextFormField({
     Key key,
     @required this.labelText,
     this.autocorrect,
     this.enableSuggestions,
-    this.obscureText,
     this.onChanged,
+    this.obscureText = false,
+    this.keyboardType,
+    this.validator,
+    this.autovalidateMode,
   }) : super(key: key);
 
   @override
@@ -22,8 +28,11 @@ class DefaultTextFormField extends StatelessWidget {
       decoration: InputDecoration(labelText: labelText),
       autocorrect: false,
       enableSuggestions: false,
-      obscureText: true,
+      obscureText: obscureText,
       onChanged: onChanged,
+      autovalidateMode: autovalidateMode,
+      keyboardType: keyboardType,
+      validator: validator,
     );
   }
 }

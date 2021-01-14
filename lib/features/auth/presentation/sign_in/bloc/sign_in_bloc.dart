@@ -21,9 +21,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc({@required this.signIn, @required this.validators}) : super(SignInState.initial());
 
   @override
-  Stream<SignInState> mapEventToState(
-    SignInEvent event,
-  ) async* {
+  Stream<SignInState> mapEventToState(SignInEvent event) async* {
     yield* event.map(
       emailChanged: (e) async* {
         yield state.copyWith(

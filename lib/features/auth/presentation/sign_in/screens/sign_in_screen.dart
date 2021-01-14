@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
-import '../../../../../widgets/default_button.dart';
-import '../../../../../widgets/default_text_form_field.dart';
 import '../bloc/sign_in_bloc.dart';
-import 'components/create_account_text.dart';
+import 'components/sign_in_form.dart';
 
 class SignInScreen extends StatelessWidget {
   @override
@@ -20,7 +18,7 @@ class SignInScreen extends StatelessWidget {
           children: [
             _buildLogo(context),
             const SizedBox(height: 40),
-            _buildInputForm(),
+            const SignInForm(),
           ],
         ),
       ),
@@ -31,25 +29,6 @@ class SignInScreen extends StatelessWidget {
     return Image.asset(
       'assets/images/logos/extended_logo.png',
       width: MediaQuery.of(context).size.width / 1.5,
-    );
-  }
-
-  Widget _buildInputForm() {
-    return Form(
-      child: Column(
-        children: [
-          DefaultTextFormField(labelText: 'E-mail'),
-          const SizedBox(height: 10),
-          DefaultTextFormField(labelText: 'Senha'),
-          const SizedBox(height: 40),
-          DefaultButton(
-            text: 'ENTRAR',
-            onPressed: () {},
-          ),
-          const SizedBox(height: 40),
-          const CreateAccountText(),
-        ],
-      ),
     );
   }
 }
