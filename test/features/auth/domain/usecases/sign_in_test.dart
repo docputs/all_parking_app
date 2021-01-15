@@ -35,6 +35,7 @@ void main() {
     final result = await usecase(email: email, password: password);
 
     expect(result, Right(unit));
+    verify(mockUserRepository.signInWithEmailAndPassword(signInModel));
     verifyNoMoreInteractions(mockUserRepository);
   });
 

@@ -10,19 +10,41 @@ void main() {
     validators = Validators();
   });
 
-  test('should return email adress when input is valid', () {
-    final input = 'teste@teste.com';
+  group('validateEmailAddress', () {
+    test('should return email adress when input is valid', () {
+      final input = 'teste@teste.com';
 
-    final result = validators.validateEmailAddress(input);
+      final result = validators.validateEmailAddress(input);
 
-    expect(result, Right(input));
+      expect(result, Right(input));
+    });
+
+    test('should return AuthFailure when email is invalid', () {
+      final input = 'teste';
+
+      final result = validators.validateEmailAddress(input);
+
+      expect(result, Left(AuthFailure.emailBadlyFormatted()));
+    });
   });
 
-  test('should return AuthFailure when email is invalid', () {
-    final input = 'teste';
+  group('validateConfirmPassword', () {
+    test('should return password when passwords match', () {
+      final input = 'senha';
+      final password = 'senha';
 
-    final result = validators.validateEmailAddress(input);
+      final result = validators.validateConfirmPassword(input, password);
 
-    expect(result, Left(AuthFailure.emailBadlyFormatted()));
+      expect(result, Right(input));
+    });
+
+    test('should return AuthFailure when passwords dont match', () {
+      final input = 'senha2';
+      final password = '2anhes';
+
+      final result = validators.validateConfirmPassword(input, password);
+
+      expect(result, Left(const AuthFailure.passwordsDontMatch()));
+    });
   });
 }
