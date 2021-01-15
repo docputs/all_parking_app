@@ -4,8 +4,15 @@ import '../../domain/entities/user.dart';
 
 extension FirebaseUserMapperX on firebase.User {
   User toDomain() {
-    final firstName = this.displayName.split(' ')[0];
-    final lastName = this.displayName.split(' ')[1];
+    String firstName;
+    String lastName;
+
+    if (this.displayName.length == 2) {
+      firstName = this.displayName.split(' ')[0];
+      lastName = this.displayName.split(' ')[1];
+    } else {
+      firstName = lastName = this.displayName;
+    }
     return User(id: this.uid, firstName: firstName, lastName: lastName);
   }
 }

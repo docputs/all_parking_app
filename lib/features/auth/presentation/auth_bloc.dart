@@ -17,15 +17,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.userRepository) : super(AuthState.initializing());
 
   @override
-  Stream<AuthState> mapEventToState(
-    AuthEvent event,
-  ) async* {
+  Stream<AuthState> mapEventToState(AuthEvent event) async* {
     yield* event.map(
       authCheckRequested: (e) async* {
         final userOption = await userRepository.getCurrentUser();
         yield userOption.fold(
           () => AuthState.unauthenticated(),
-          (userModel) => AuthState.authenticated(),
+          (user) => AuthState.authenticated(),
         );
       },
       signedOut: (e) async* {

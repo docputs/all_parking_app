@@ -23,8 +23,18 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   @override
   Stream<SignUpState> mapEventToState(SignUpEvent event) async* {
     yield* event.map(
-      firstNameChanged: (e) async* {},
-      lastNameChanged: (e) async* {},
+      firstNameChanged: (e) async* {
+        yield state.copyWith(
+          firstName: e.value,
+          signUpSuccessOrFailureOption: none(),
+        );
+      },
+      lastNameChanged: (e) async* {
+        yield state.copyWith(
+          lastName: e.value,
+          signUpSuccessOrFailureOption: none(),
+        );
+      },
       emailChanged: (e) async* {
         yield state.copyWith(
           email: e.value,
