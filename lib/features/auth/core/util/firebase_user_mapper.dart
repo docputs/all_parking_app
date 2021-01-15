@@ -7,11 +7,11 @@ extension FirebaseUserMapperX on firebase.User {
     String firstName;
     String lastName;
 
-    if (this.displayName.length == 2) {
+    if (this.displayName?.length == 2) {
       firstName = this.displayName.split(' ')[0];
       lastName = this.displayName.split(' ')[1];
     } else {
-      firstName = lastName = this.displayName;
+      firstName = lastName = '';
     }
     return User(id: this.uid, firstName: firstName, lastName: lastName);
   }

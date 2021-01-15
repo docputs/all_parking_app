@@ -7,6 +7,7 @@ import '../../../../../res/messages.dart';
 import '../../../../../routes/router.gr.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
+import '../../auth_bloc.dart';
 import '../bloc/sign_in_bloc.dart';
 import 'components/sign_in_form.dart';
 
@@ -31,7 +32,10 @@ class SignInScreen extends StatelessWidget {
                         orElse: () => null,
                       ),
                     ).show(context),
-                    (_) => ExtendedNavigator.of(context).replace(Routes.homeScreen),
+                    (_) {
+                      ExtendedNavigator.of(context).replace(Routes.homeScreen);
+                      context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());
+                    },
                   )),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
