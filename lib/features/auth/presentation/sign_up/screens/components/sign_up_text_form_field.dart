@@ -1,19 +1,19 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-import '../features/auth/core/errors/auth_failure.dart';
-import '../features/auth/presentation/sign_in/bloc/sign_in_bloc.dart';
-import 'default_text_form_field.dart';
+import '../../../../../../widgets/default_text_form_field.dart';
+import '../../../../core/errors/auth_failure.dart';
+import '../../bloc/sign_up_bloc.dart';
 
-class BlocTextFormField extends StatelessWidget {
+class SignUpTextFormField extends StatelessWidget {
   final String labelText;
   final void Function(String) onChanged;
   final Either<AuthFailure, String> Function(String) validationEither;
-  final SignInState state;
+  final SignUpState state;
   final TextInputType keyboardType;
   final bool obscureText;
 
-  const BlocTextFormField({
+  const SignUpTextFormField({
     Key key,
     @required this.labelText,
     @required this.state,
@@ -33,6 +33,7 @@ class BlocTextFormField extends StatelessWidget {
       autovalidateMode: state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
       validator: (value) => validationEither(value).fold(
         (f) => f.maybeMap(
+          passwordsDontMatch: (_) => 'Senhas não conferem',
           displayNameTooLong: (_) => 'Nome muito extenso',
           invalidEmailAddress: (_) => 'E-mail inválido',
           emailBadlyFormatted: (_) => 'E-mail inválido',

@@ -35,6 +35,17 @@ class Validators {
     }
   }
 
+  Either<AuthFailure, String> validateConfirmPassword(String input, String password) {
+    if (input == password)
+      return right(input);
+    else
+      return left(const AuthFailure.passwordsDontMatch());
+  }
+
+  bool isValidPassword(String input) => input.isNotEmpty;
+
+  bool isPasswordMatch(String input, String password) => input == password;
+
   bool isValidEmail(String input) {
     if (RegExp(emailRegexp).hasMatch(input)) {
       return true;

@@ -13,4 +13,13 @@ class Messages {
   //SignIn
   static const signInScreenTitle = 'Acesse sua conta';
   static const signInButton = 'ENTRAR';
+
+  //SignUp
+  static const signUpScreenTitle = 'Crie sua conta';
+  static const signUpFirstNameLabel = 'Nome';
+  static const signUpLastNameLabel = 'Sobrenome';
+  static const signUpEmailLabel = 'E-mail';
+  static const signUpPasswordLabel = 'Senha';
+  static const signUpConfirmPasswordLabel = 'Confirme sua senha';
+  static const signUpCreateAccountButton = 'CRIAR CONTA';
 }

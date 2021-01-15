@@ -47,6 +47,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           signUpSuccessOrFailureOption: none(),
         );
       },
+      confirmPasswordChanged: (e) async* {
+        yield state.copyWith(
+          confirmPassword: e.value,
+          signUpSuccessOrFailureOption: none(),
+        );
+      },
       signUpPressed: (e) async* {
         Either<AuthFailure, Unit> signUpSuccessOrFailure;
 
@@ -55,8 +61,11 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           signUpSuccessOrFailureOption: none(),
         );
 
-        final fullName = '${state.firstName} ${state.lastName}';
-        if (_validators.isValidDisplayName(fullName) && _validators.isValidEmail(state.email)) {
+        if (_validators.isValidDisplayName(state.firstName) &&
+            _validators.isValidDisplayName(state.lastName) &&
+            _validators.isValidEmail(state.email) &&
+            _validators.isValidPassword(state.password) &&
+            _validators.isPasswordMatch(state.password, state.confirmPassword)) {
           signUpSuccessOrFailure = await _signUp(
             firstName: state.firstName,
             lastName: state.lastName,

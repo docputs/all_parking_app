@@ -42,6 +42,13 @@ class _$SignUpEventTearOff {
   }
 
 // ignore: unused_element
+  _ConfirmPasswordChanged confirmPasswordChanged(String value) {
+    return _ConfirmPasswordChanged(
+      value,
+    );
+  }
+
+// ignore: unused_element
   _SignUpPressed signUpPressed() {
     return const _SignUpPressed();
   }
@@ -59,6 +66,7 @@ mixin _$SignUpEvent {
     @required TResult lastNameChanged(String value),
     @required TResult emailChanged(String value),
     @required TResult passwordChanged(String value),
+    @required TResult confirmPasswordChanged(String value),
     @required TResult signUpPressed(),
   });
   @optionalTypeArgs
@@ -67,6 +75,7 @@ mixin _$SignUpEvent {
     TResult lastNameChanged(String value),
     TResult emailChanged(String value),
     TResult passwordChanged(String value),
+    TResult confirmPasswordChanged(String value),
     TResult signUpPressed(),
     @required TResult orElse(),
   });
@@ -76,6 +85,7 @@ mixin _$SignUpEvent {
     @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   });
   @optionalTypeArgs
@@ -84,6 +94,7 @@ mixin _$SignUpEvent {
     TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
+    TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
     @required TResult orElse(),
   });
@@ -169,12 +180,14 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     @required TResult lastNameChanged(String value),
     @required TResult emailChanged(String value),
     @required TResult passwordChanged(String value),
+    @required TResult confirmPasswordChanged(String value),
     @required TResult signUpPressed(),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return firstNameChanged(value);
   }
@@ -186,6 +199,7 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     TResult lastNameChanged(String value),
     TResult emailChanged(String value),
     TResult passwordChanged(String value),
+    TResult confirmPasswordChanged(String value),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
@@ -203,12 +217,14 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return firstNameChanged(this);
   }
@@ -220,6 +236,7 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
+    TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
     @required TResult orElse(),
   }) {
@@ -302,12 +319,14 @@ class _$_LastNameChanged implements _LastNameChanged {
     @required TResult lastNameChanged(String value),
     @required TResult emailChanged(String value),
     @required TResult passwordChanged(String value),
+    @required TResult confirmPasswordChanged(String value),
     @required TResult signUpPressed(),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return lastNameChanged(value);
   }
@@ -319,6 +338,7 @@ class _$_LastNameChanged implements _LastNameChanged {
     TResult lastNameChanged(String value),
     TResult emailChanged(String value),
     TResult passwordChanged(String value),
+    TResult confirmPasswordChanged(String value),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
@@ -336,12 +356,14 @@ class _$_LastNameChanged implements _LastNameChanged {
     @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return lastNameChanged(this);
   }
@@ -353,6 +375,7 @@ class _$_LastNameChanged implements _LastNameChanged {
     TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
+    TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
     @required TResult orElse(),
   }) {
@@ -434,12 +457,14 @@ class _$_EmailChanged implements _EmailChanged {
     @required TResult lastNameChanged(String value),
     @required TResult emailChanged(String value),
     @required TResult passwordChanged(String value),
+    @required TResult confirmPasswordChanged(String value),
     @required TResult signUpPressed(),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return emailChanged(value);
   }
@@ -451,6 +476,7 @@ class _$_EmailChanged implements _EmailChanged {
     TResult lastNameChanged(String value),
     TResult emailChanged(String value),
     TResult passwordChanged(String value),
+    TResult confirmPasswordChanged(String value),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
@@ -468,12 +494,14 @@ class _$_EmailChanged implements _EmailChanged {
     @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return emailChanged(this);
   }
@@ -485,6 +513,7 @@ class _$_EmailChanged implements _EmailChanged {
     TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
+    TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
     @required TResult orElse(),
   }) {
@@ -567,12 +596,14 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required TResult lastNameChanged(String value),
     @required TResult emailChanged(String value),
     @required TResult passwordChanged(String value),
+    @required TResult confirmPasswordChanged(String value),
     @required TResult signUpPressed(),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return passwordChanged(value);
   }
@@ -584,6 +615,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult lastNameChanged(String value),
     TResult emailChanged(String value),
     TResult passwordChanged(String value),
+    TResult confirmPasswordChanged(String value),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
@@ -601,12 +633,14 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return passwordChanged(this);
   }
@@ -618,6 +652,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
+    TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
     @required TResult orElse(),
   }) {
@@ -634,6 +669,147 @@ abstract class _PasswordChanged implements SignUpEvent {
 
   String get value;
   _$PasswordChangedCopyWith<_PasswordChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ConfirmPasswordChangedCopyWith<$Res> {
+  factory _$ConfirmPasswordChangedCopyWith(_ConfirmPasswordChanged value,
+          $Res Function(_ConfirmPasswordChanged) then) =
+      __$ConfirmPasswordChangedCopyWithImpl<$Res>;
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$ConfirmPasswordChangedCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res>
+    implements _$ConfirmPasswordChangedCopyWith<$Res> {
+  __$ConfirmPasswordChangedCopyWithImpl(_ConfirmPasswordChanged _value,
+      $Res Function(_ConfirmPasswordChanged) _then)
+      : super(_value, (v) => _then(v as _ConfirmPasswordChanged));
+
+  @override
+  _ConfirmPasswordChanged get _value => super._value as _ConfirmPasswordChanged;
+
+  @override
+  $Res call({
+    Object value = freezed,
+  }) {
+    return _then(_ConfirmPasswordChanged(
+      value == freezed ? _value.value : value as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ConfirmPasswordChanged implements _ConfirmPasswordChanged {
+  const _$_ConfirmPasswordChanged(this.value) : assert(value != null);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'SignUpEvent.confirmPasswordChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ConfirmPasswordChanged &&
+            (identical(other.value, value) ||
+                const DeepCollectionEquality().equals(other.value, value)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+
+  @override
+  _$ConfirmPasswordChangedCopyWith<_ConfirmPasswordChanged> get copyWith =>
+      __$ConfirmPasswordChangedCopyWithImpl<_ConfirmPasswordChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult firstNameChanged(String value),
+    @required TResult lastNameChanged(String value),
+    @required TResult emailChanged(String value),
+    @required TResult passwordChanged(String value),
+    @required TResult confirmPasswordChanged(String value),
+    @required TResult signUpPressed(),
+  }) {
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
+    assert(signUpPressed != null);
+    return confirmPasswordChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult firstNameChanged(String value),
+    TResult lastNameChanged(String value),
+    TResult emailChanged(String value),
+    TResult passwordChanged(String value),
+    TResult confirmPasswordChanged(String value),
+    TResult signUpPressed(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (confirmPasswordChanged != null) {
+      return confirmPasswordChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult firstNameChanged(_FirstNameChanged value),
+    @required TResult lastNameChanged(_LastNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
+    @required TResult signUpPressed(_SignUpPressed value),
+  }) {
+    assert(firstNameChanged != null);
+    assert(lastNameChanged != null);
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
+    assert(signUpPressed != null);
+    return confirmPasswordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult firstNameChanged(_FirstNameChanged value),
+    TResult lastNameChanged(_LastNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
+    TResult signUpPressed(_SignUpPressed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (confirmPasswordChanged != null) {
+      return confirmPasswordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConfirmPasswordChanged implements SignUpEvent {
+  const factory _ConfirmPasswordChanged(String value) =
+      _$_ConfirmPasswordChanged;
+
+  String get value;
+  _$ConfirmPasswordChangedCopyWith<_ConfirmPasswordChanged> get copyWith;
 }
 
 /// @nodoc
@@ -678,12 +854,14 @@ class _$_SignUpPressed implements _SignUpPressed {
     @required TResult lastNameChanged(String value),
     @required TResult emailChanged(String value),
     @required TResult passwordChanged(String value),
+    @required TResult confirmPasswordChanged(String value),
     @required TResult signUpPressed(),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return signUpPressed();
   }
@@ -695,6 +873,7 @@ class _$_SignUpPressed implements _SignUpPressed {
     TResult lastNameChanged(String value),
     TResult emailChanged(String value),
     TResult passwordChanged(String value),
+    TResult confirmPasswordChanged(String value),
     TResult signUpPressed(),
     @required TResult orElse(),
   }) {
@@ -712,12 +891,14 @@ class _$_SignUpPressed implements _SignUpPressed {
     @required TResult lastNameChanged(_LastNameChanged value),
     @required TResult emailChanged(_EmailChanged value),
     @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     @required TResult signUpPressed(_SignUpPressed value),
   }) {
     assert(firstNameChanged != null);
     assert(lastNameChanged != null);
     assert(emailChanged != null);
     assert(passwordChanged != null);
+    assert(confirmPasswordChanged != null);
     assert(signUpPressed != null);
     return signUpPressed(this);
   }
@@ -729,6 +910,7 @@ class _$_SignUpPressed implements _SignUpPressed {
     TResult lastNameChanged(_LastNameChanged value),
     TResult emailChanged(_EmailChanged value),
     TResult passwordChanged(_PasswordChanged value),
+    TResult confirmPasswordChanged(_ConfirmPasswordChanged value),
     TResult signUpPressed(_SignUpPressed value),
     @required TResult orElse(),
   }) {
@@ -759,6 +941,8 @@ class _$SignUpStateTearOff {
       @required
           String password,
       @required
+          String confirmPassword,
+      @required
           bool isSubmitting,
       @required
           bool showErrorMessages,
@@ -769,6 +953,7 @@ class _$SignUpStateTearOff {
       lastName: lastName,
       email: email,
       password: password,
+      confirmPassword: confirmPassword,
       isSubmitting: isSubmitting,
       showErrorMessages: showErrorMessages,
       signUpSuccessOrFailureOption: signUpSuccessOrFailureOption,
@@ -786,6 +971,7 @@ mixin _$SignUpState {
   String get lastName;
   String get email;
   String get password;
+  String get confirmPassword;
   bool get isSubmitting;
   bool get showErrorMessages;
   Option<Either<AuthFailure, Unit>> get signUpSuccessOrFailureOption;
@@ -803,6 +989,7 @@ abstract class $SignUpStateCopyWith<$Res> {
       String lastName,
       String email,
       String password,
+      String confirmPassword,
       bool isSubmitting,
       bool showErrorMessages,
       Option<Either<AuthFailure, Unit>> signUpSuccessOrFailureOption});
@@ -822,6 +1009,7 @@ class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
     Object lastName = freezed,
     Object email = freezed,
     Object password = freezed,
+    Object confirmPassword = freezed,
     Object isSubmitting = freezed,
     Object showErrorMessages = freezed,
     Object signUpSuccessOrFailureOption = freezed,
@@ -831,6 +1019,9 @@ class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
       lastName: lastName == freezed ? _value.lastName : lastName as String,
       email: email == freezed ? _value.email : email as String,
       password: password == freezed ? _value.password : password as String,
+      confirmPassword: confirmPassword == freezed
+          ? _value.confirmPassword
+          : confirmPassword as String,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       showErrorMessages: showErrorMessages == freezed
@@ -855,6 +1046,7 @@ abstract class _$SignUpStateCopyWith<$Res>
       String lastName,
       String email,
       String password,
+      String confirmPassword,
       bool isSubmitting,
       bool showErrorMessages,
       Option<Either<AuthFailure, Unit>> signUpSuccessOrFailureOption});
@@ -876,6 +1068,7 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
     Object lastName = freezed,
     Object email = freezed,
     Object password = freezed,
+    Object confirmPassword = freezed,
     Object isSubmitting = freezed,
     Object showErrorMessages = freezed,
     Object signUpSuccessOrFailureOption = freezed,
@@ -885,6 +1078,9 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
       lastName: lastName == freezed ? _value.lastName : lastName as String,
       email: email == freezed ? _value.email : email as String,
       password: password == freezed ? _value.password : password as String,
+      confirmPassword: confirmPassword == freezed
+          ? _value.confirmPassword
+          : confirmPassword as String,
       isSubmitting:
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       showErrorMessages: showErrorMessages == freezed
@@ -904,6 +1100,7 @@ class _$_SignUpState implements _SignUpState {
       @required this.lastName,
       @required this.email,
       @required this.password,
+      @required this.confirmPassword,
       @required this.isSubmitting,
       @required this.showErrorMessages,
       @required this.signUpSuccessOrFailureOption})
@@ -911,6 +1108,7 @@ class _$_SignUpState implements _SignUpState {
         assert(lastName != null),
         assert(email != null),
         assert(password != null),
+        assert(confirmPassword != null),
         assert(isSubmitting != null),
         assert(showErrorMessages != null),
         assert(signUpSuccessOrFailureOption != null);
@@ -924,6 +1122,8 @@ class _$_SignUpState implements _SignUpState {
   @override
   final String password;
   @override
+  final String confirmPassword;
+  @override
   final bool isSubmitting;
   @override
   final bool showErrorMessages;
@@ -932,7 +1132,7 @@ class _$_SignUpState implements _SignUpState {
 
   @override
   String toString() {
-    return 'SignUpState(firstName: $firstName, lastName: $lastName, email: $email, password: $password, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, signUpSuccessOrFailureOption: $signUpSuccessOrFailureOption)';
+    return 'SignUpState(firstName: $firstName, lastName: $lastName, email: $email, password: $password, confirmPassword: $confirmPassword, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, signUpSuccessOrFailureOption: $signUpSuccessOrFailureOption)';
   }
 
   @override
@@ -950,6 +1150,9 @@ class _$_SignUpState implements _SignUpState {
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                const DeepCollectionEquality()
+                    .equals(other.confirmPassword, confirmPassword)) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
@@ -970,6 +1173,7 @@ class _$_SignUpState implements _SignUpState {
       const DeepCollectionEquality().hash(lastName) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(confirmPassword) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(signUpSuccessOrFailureOption);
@@ -990,6 +1194,8 @@ abstract class _SignUpState implements SignUpState {
           @required
               String password,
           @required
+              String confirmPassword,
+          @required
               bool isSubmitting,
           @required
               bool showErrorMessages,
@@ -1005,6 +1211,8 @@ abstract class _SignUpState implements SignUpState {
   String get email;
   @override
   String get password;
+  @override
+  String get confirmPassword;
   @override
   bool get isSubmitting;
   @override

@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../res/messages.dart';
 import '../../../../../../service_locator.dart';
-import '../../../../../../widgets/bloc_text_form_field.dart';
 import '../../../../../../widgets/default_button.dart';
 import '../../../../core/util/validators.dart';
 import '../../bloc/sign_in_bloc.dart';
 import 'create_account_text.dart';
+import 'sign_in_text_form_field.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key key}) : super(key: key);
@@ -30,7 +30,7 @@ class SignInForm extends StatelessWidget {
   Widget _buildEmailField() {
     return BlocBuilder<SignInBloc, SignInState>(
       buildWhen: (p, c) => p.email != c.email || p.showErrorMessages != c.showErrorMessages,
-      builder: (context, state) => BlocTextFormField(
+      builder: (context, state) => SignInTextFormField(
         labelText: Messages.emailFieldLabel,
         state: state,
         onChanged: (value) => context.read<SignInBloc>().add(SignInEvent.emailChanged(value)),
@@ -43,7 +43,7 @@ class SignInForm extends StatelessWidget {
   Widget _buildPasswordField(BuildContext context) {
     return BlocBuilder<SignInBloc, SignInState>(
       buildWhen: (p, c) => p.password != c.password || p.showErrorMessages != c.showErrorMessages,
-      builder: (context, state) => BlocTextFormField(
+      builder: (context, state) => SignInTextFormField(
         labelText: Messages.passwordFieldLabel,
         state: state,
         onChanged: (value) => context.read<SignInBloc>().add(SignInEvent.passwordChanged(value)),
