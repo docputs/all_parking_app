@@ -7,4 +7,5 @@ abstract class IManagerRepository {
   Future<Either<ManagerFailure, Unit>> addEmployee();
   Future<Either<ManagerFailure, Unit>> removeEmployee();
   Future<Either<ManagerFailure, List<ParkingLot>>> fetchParkingLots();
+  Future<Either<ManagerFailure, Unit>> addParkingLot(ParkingLot parkingLot);
 }
