@@ -25,6 +25,7 @@ final parkingLot = ParkingLot(
   id: '1',
   title: 'Estacionamento X',
   address: 'Rua 13 de maio, 1538',
+  cep: '04159001',
   availableSpots: 56,
   parkedVehicles: [parkedVehicle, parkedVehicle2],
   pricePerHour: 12.0,
