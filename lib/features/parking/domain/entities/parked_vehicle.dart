@@ -1,9 +1,24 @@
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'parked_vehicle.g.dart';
 
 enum VehicleColor { black, silver, white, gray, green, blue, red, brown, yellow }
 
+@JsonSerializable()
+class QRCode {
+  final String value;
+
+  const QRCode(this.value);
+
+   factory QRCode.fromJson(Map<String, dynamic> json) => _$QRCodeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$QRCodeToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class ParkedVehicle {
-  final String id;
+  final QRCode id;
   final String title;
   final String licensePlate;
   final VehicleColor color;
@@ -45,4 +60,8 @@ class ParkedVehicle {
         checkOut.hashCode ^
         observations.hashCode;
   }
+
+  factory ParkedVehicle.fromJson(Map<String, dynamic> json) => _$ParkedVehicleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ParkedVehicleToJson(this);
 }

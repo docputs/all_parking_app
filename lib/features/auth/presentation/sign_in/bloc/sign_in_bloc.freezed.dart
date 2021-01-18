@@ -135,6 +135,7 @@ class _$_EmailChanged implements _EmailChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(email);
 
+  @JsonKey(ignore: true)
   @override
   _$EmailChangedCopyWith<_EmailChanged> get copyWith =>
       __$EmailChangedCopyWithImpl<_EmailChanged>(this, _$identity);
@@ -200,6 +201,7 @@ abstract class _EmailChanged implements SignInEvent {
   const factory _EmailChanged(String email) = _$_EmailChanged;
 
   String get email;
+  @JsonKey(ignore: true)
   _$EmailChangedCopyWith<_EmailChanged> get copyWith;
 }
 
@@ -257,6 +259,7 @@ class _$_PasswordChanged implements _PasswordChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(password);
 
+  @JsonKey(ignore: true)
   @override
   _$PasswordChangedCopyWith<_PasswordChanged> get copyWith =>
       __$PasswordChangedCopyWithImpl<_PasswordChanged>(this, _$identity);
@@ -322,6 +325,7 @@ abstract class _PasswordChanged implements SignInEvent {
   const factory _PasswordChanged(String password) = _$_PasswordChanged;
 
   String get password;
+  @JsonKey(ignore: true)
   _$PasswordChangedCopyWith<_PasswordChanged> get copyWith;
 }
 
@@ -454,6 +458,7 @@ mixin _$SignInState {
   bool get showErrorMessages;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
 
+  @JsonKey(ignore: true)
   $SignInStateCopyWith<SignInState> get copyWith;
 }
 
@@ -610,6 +615,7 @@ class _$_SignInState implements _SignInState {
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
 
+  @JsonKey(ignore: true)
   @override
   _$SignInStateCopyWith<_SignInState> get copyWith =>
       __$SignInStateCopyWithImpl<_SignInState>(this, _$identity);
@@ -640,5 +646,6 @@ abstract class _SignInState implements SignInState {
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
   @override
+  @JsonKey(ignore: true)
   _$SignInStateCopyWith<_SignInState> get copyWith;
 }
