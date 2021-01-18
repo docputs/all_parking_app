@@ -15,4 +15,5 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.serverFailure() = _ServerFailure;
   const factory AuthFailure.unknownFailure() = _UnknownFailure;
   const factory AuthFailure.passwordsDontMatch() = _PasswordsDontMatch;
+  const factory AuthFailure.notAuthenticated() = _NotAuthenticated;
 }

@@ -11,12 +11,11 @@ class Manager extends User {
 
   const Manager({
     @required String id,
-    @required String firstName,
-    @required String lastName,
+    @required String displayName,
     @required this.email,
     @required this.parkingLots,
     @required this.employees,
-  }) : super(id: id, firstName: firstName, lastName: lastName);
+  }) : super(id: id, displayName: displayName);
 
   bool get hasEmployees => employees.isNotEmpty();
 
@@ -29,4 +28,18 @@ class Manager extends User {
 
   @override
   int get hashCode => email.hashCode ^ parkingLots.hashCode ^ employees.hashCode;
+
+  Manager copyWith({
+    String email,
+    KtList<String> parkingLots,
+    KtList<Employee> employees,
+  }) {
+    return Manager(
+      id: id ?? this.id,
+      displayName: displayName ?? this.displayName,
+      email: email ?? this.email,
+      parkingLots: parkingLots ?? this.parkingLots,
+      employees: employees ?? this.employees,
+    );
+  }
 }

@@ -11,9 +11,11 @@ import 'package:injectable/injectable.dart';
 
 import 'features/parking/domain/usecases/add_parking_lot.dart';
 import 'features/auth/presentation/auth_bloc.dart';
+import 'features/auth/domain/usecases/get_current_user.dart';
 import 'features/parking/domain/repositories/i_manager_repository.dart';
 import 'features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'features/auth/domain/repositories/i_user_repository.dart';
+import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
 import 'service_locator.dart';
 import 'features/auth/domain/usecases/sign_in.dart';
@@ -35,13 +37,18 @@ GetIt $initGetIt(
   final registerModule = _$RegisterModule();
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
+  gh.lazySingleton<IManagerRepository>(
+      () => ManagerRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IParkingLotRepository>(
       () => ParkingLotRepository(get<FirebaseFirestore>()));
-  gh.lazySingleton<IUserRepository>(() => UserRepository(get<FirebaseAuth>()));
+  gh.lazySingleton<IUserRepository>(
+      () => UserRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
   gh.lazySingleton<Validators>(() => Validators());
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IUserRepository>()));
+  gh.lazySingleton<GetCurrentUser>(
+      () => GetCurrentUser(get<IUserRepository>()));
   gh.lazySingleton<SignIn>(
       () => SignIn(get<Validators>(), get<IUserRepository>()));
   gh.factory<SignInBloc>(

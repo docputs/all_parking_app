@@ -67,6 +67,11 @@ class _$AuthFailureTearOff {
   _PasswordsDontMatch passwordsDontMatch() {
     return const _PasswordsDontMatch();
   }
+
+// ignore: unused_element
+  _NotAuthenticated notAuthenticated() {
+    return const _NotAuthenticated();
+  }
 }
 
 /// @nodoc
@@ -88,6 +93,7 @@ mixin _$AuthFailure {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -102,6 +108,7 @@ mixin _$AuthFailure {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -119,6 +126,7 @@ mixin _$AuthFailure {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -134,6 +142,7 @@ mixin _$AuthFailure {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   });
 }
@@ -203,6 +212,7 @@ class _$_EmptyField implements _EmptyField {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -215,6 +225,7 @@ class _$_EmptyField implements _EmptyField {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return emptyField();
   }
 
@@ -232,6 +243,7 @@ class _$_EmptyField implements _EmptyField {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -257,6 +269,7 @@ class _$_EmptyField implements _EmptyField {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -269,6 +282,7 @@ class _$_EmptyField implements _EmptyField {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return emptyField(this);
   }
 
@@ -287,6 +301,7 @@ class _$_EmptyField implements _EmptyField {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -351,6 +366,7 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -363,6 +379,7 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return displayNameTooLong();
   }
 
@@ -380,6 +397,7 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -405,6 +423,7 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -417,6 +436,7 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return displayNameTooLong(this);
   }
 
@@ -435,6 +455,7 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -499,6 +520,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -511,6 +533,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return emailAlreadyInUse();
   }
 
@@ -528,6 +551,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -553,6 +577,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -565,6 +590,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return emailAlreadyInUse(this);
   }
 
@@ -583,6 +609,7 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -647,6 +674,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -659,6 +687,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return cancelledByUser();
   }
 
@@ -676,6 +705,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -701,6 +731,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -713,6 +744,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return cancelledByUser(this);
   }
 
@@ -731,6 +763,7 @@ class _$_CancelledByUser implements _CancelledByUser {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -795,6 +828,7 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -807,6 +841,7 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return invalidEmailAddress();
   }
 
@@ -824,6 +859,7 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -849,6 +885,7 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -861,6 +898,7 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return invalidEmailAddress(this);
   }
 
@@ -879,6 +917,7 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -948,6 +987,7 @@ class _$_InvalidEmailAndPasswordCombination
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -960,6 +1000,7 @@ class _$_InvalidEmailAndPasswordCombination
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -977,6 +1018,7 @@ class _$_InvalidEmailAndPasswordCombination
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1002,6 +1044,7 @@ class _$_InvalidEmailAndPasswordCombination
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1014,6 +1057,7 @@ class _$_InvalidEmailAndPasswordCombination
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -1032,6 +1076,7 @@ class _$_InvalidEmailAndPasswordCombination
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1097,6 +1142,7 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1109,6 +1155,7 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return emailBadlyFormatted();
   }
 
@@ -1126,6 +1173,7 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1151,6 +1199,7 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1163,6 +1212,7 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return emailBadlyFormatted(this);
   }
 
@@ -1181,6 +1231,7 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1244,6 +1295,7 @@ class _$_WeakPassword implements _WeakPassword {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1256,6 +1308,7 @@ class _$_WeakPassword implements _WeakPassword {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return weakPassword();
   }
 
@@ -1273,6 +1326,7 @@ class _$_WeakPassword implements _WeakPassword {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1298,6 +1352,7 @@ class _$_WeakPassword implements _WeakPassword {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1310,6 +1365,7 @@ class _$_WeakPassword implements _WeakPassword {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return weakPassword(this);
   }
 
@@ -1328,6 +1384,7 @@ class _$_WeakPassword implements _WeakPassword {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1391,6 +1448,7 @@ class _$_ServerFailure implements _ServerFailure {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1403,6 +1461,7 @@ class _$_ServerFailure implements _ServerFailure {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return serverFailure();
   }
 
@@ -1420,6 +1479,7 @@ class _$_ServerFailure implements _ServerFailure {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1445,6 +1505,7 @@ class _$_ServerFailure implements _ServerFailure {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1457,6 +1518,7 @@ class _$_ServerFailure implements _ServerFailure {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return serverFailure(this);
   }
 
@@ -1475,6 +1537,7 @@ class _$_ServerFailure implements _ServerFailure {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1539,6 +1602,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1551,6 +1615,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return unknownFailure();
   }
 
@@ -1568,6 +1633,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1593,6 +1659,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1605,6 +1672,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return unknownFailure(this);
   }
 
@@ -1623,6 +1691,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1687,6 +1756,7 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
     @required TResult serverFailure(),
     @required TResult unknownFailure(),
     @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1699,6 +1769,7 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return passwordsDontMatch();
   }
 
@@ -1716,6 +1787,7 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
     TResult serverFailure(),
     TResult unknownFailure(),
     TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1741,6 +1813,7 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
     @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1753,6 +1826,7 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
     assert(serverFailure != null);
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
     return passwordsDontMatch(this);
   }
 
@@ -1771,6 +1845,7 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1783,4 +1858,158 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
 
 abstract class _PasswordsDontMatch implements AuthFailure {
   const factory _PasswordsDontMatch() = _$_PasswordsDontMatch;
+}
+
+/// @nodoc
+abstract class _$NotAuthenticatedCopyWith<$Res> {
+  factory _$NotAuthenticatedCopyWith(
+          _NotAuthenticated value, $Res Function(_NotAuthenticated) then) =
+      __$NotAuthenticatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NotAuthenticatedCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$NotAuthenticatedCopyWith<$Res> {
+  __$NotAuthenticatedCopyWithImpl(
+      _NotAuthenticated _value, $Res Function(_NotAuthenticated) _then)
+      : super(_value, (v) => _then(v as _NotAuthenticated));
+
+  @override
+  _NotAuthenticated get _value => super._value as _NotAuthenticated;
+}
+
+/// @nodoc
+class _$_NotAuthenticated implements _NotAuthenticated {
+  const _$_NotAuthenticated();
+
+  @override
+  String toString() {
+    return 'AuthFailure.notAuthenticated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NotAuthenticated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult emptyField(),
+    @required TResult displayNameTooLong(),
+    @required TResult emailAlreadyInUse(),
+    @required TResult cancelledByUser(),
+    @required TResult invalidEmailAddress(),
+    @required TResult invalidEmailAndPasswordCombination(),
+    @required TResult emailBadlyFormatted(),
+    @required TResult weakPassword(),
+    @required TResult serverFailure(),
+    @required TResult unknownFailure(),
+    @required TResult passwordsDontMatch(),
+    @required TResult notAuthenticated(),
+  }) {
+    assert(emptyField != null);
+    assert(displayNameTooLong != null);
+    assert(emailAlreadyInUse != null);
+    assert(cancelledByUser != null);
+    assert(invalidEmailAddress != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(emailBadlyFormatted != null);
+    assert(weakPassword != null);
+    assert(serverFailure != null);
+    assert(unknownFailure != null);
+    assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
+    return notAuthenticated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(),
+    TResult displayNameTooLong(),
+    TResult emailAlreadyInUse(),
+    TResult cancelledByUser(),
+    TResult invalidEmailAddress(),
+    TResult invalidEmailAndPasswordCombination(),
+    TResult emailBadlyFormatted(),
+    TResult weakPassword(),
+    TResult serverFailure(),
+    TResult unknownFailure(),
+    TResult passwordsDontMatch(),
+    TResult notAuthenticated(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (notAuthenticated != null) {
+      return notAuthenticated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
+    @required TResult displayNameTooLong(_DisplayNameTooLong value),
+    @required TResult emailAlreadyInUse(_EmailAlreadyInUse value),
+    @required TResult cancelledByUser(_CancelledByUser value),
+    @required TResult invalidEmailAddress(_InvalidEmailAddress value),
+    @required
+        TResult invalidEmailAndPasswordCombination(
+            _InvalidEmailAndPasswordCombination value),
+    @required TResult emailBadlyFormatted(_EmailBadlyFormatted value),
+    @required TResult weakPassword(_WeakPassword value),
+    @required TResult serverFailure(_ServerFailure value),
+    @required TResult unknownFailure(_UnknownFailure value),
+    @required TResult passwordsDontMatch(_PasswordsDontMatch value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
+  }) {
+    assert(emptyField != null);
+    assert(displayNameTooLong != null);
+    assert(emailAlreadyInUse != null);
+    assert(cancelledByUser != null);
+    assert(invalidEmailAddress != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(emailBadlyFormatted != null);
+    assert(weakPassword != null);
+    assert(serverFailure != null);
+    assert(unknownFailure != null);
+    assert(passwordsDontMatch != null);
+    assert(notAuthenticated != null);
+    return notAuthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
+    TResult displayNameTooLong(_DisplayNameTooLong value),
+    TResult emailAlreadyInUse(_EmailAlreadyInUse value),
+    TResult cancelledByUser(_CancelledByUser value),
+    TResult invalidEmailAddress(_InvalidEmailAddress value),
+    TResult invalidEmailAndPasswordCombination(
+        _InvalidEmailAndPasswordCombination value),
+    TResult emailBadlyFormatted(_EmailBadlyFormatted value),
+    TResult weakPassword(_WeakPassword value),
+    TResult serverFailure(_ServerFailure value),
+    TResult unknownFailure(_UnknownFailure value),
+    TResult passwordsDontMatch(_PasswordsDontMatch value),
+    TResult notAuthenticated(_NotAuthenticated value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (notAuthenticated != null) {
+      return notAuthenticated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotAuthenticated implements AuthFailure {
+  const factory _NotAuthenticated() = _$_NotAuthenticated;
 }
