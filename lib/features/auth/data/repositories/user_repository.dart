@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
 
+import '../../../parking/data/models/manager_dto.dart';
 import '../../core/errors/auth_failure.dart';
 import '../../core/util/firebase_user_mapper.dart';
 import '../../domain/entities/user.dart';
@@ -12,14 +14,18 @@ import '../models/sign_in_model.dart';
 @LazySingleton(as: IUserRepository)
 class UserRepository implements IUserRepository {
   final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
 
-  const UserRepository(this._firebaseAuth) : assert(_firebaseAuth != null);
+  const UserRepository(this._firebaseAuth, this._firestore) : assert(_firebaseAuth != null, _firestore != null);
 
   @override
   Future<Either<AuthFailure, Unit>> createAccount(RegisterModel registerModel) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(email: registerModel.email, password: registerModel.password);
-      await _firebaseAuth.currentUser.updateProfile(displayName: registerModel.fullName);
+      final credential = await _firebaseAuth.createUserWithEmailAndPassword(email: registerModel.email, password: registerModel.password);
+      await credential.user.updateProfile(displayName: registerModel.firstName);
+
+      final managerDTO = ManagerDTO.fromFirebaseUser(_firebaseAuth.currentUser);
+      await _firestore.collection('managers').doc(credential.user.uid).set(managerDTO.toJson());
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
