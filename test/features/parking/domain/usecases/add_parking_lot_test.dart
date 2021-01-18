@@ -26,21 +26,26 @@ void main() {
   group('success', () {
     setUp(() {
       when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Right(unit));
-      when(mockManagerRepository.addParkingLot(any)).thenAnswer((_) async => Right(unit));
+      when(mockManagerRepository.update(any)).thenAnswer((_) async => Right(unit));
+      when(mockManagerRepository.read()).thenAnswer((_) async => Right(manager));
     });
 
     test('should call create on repository', () async {
       await usecase(parkingLot);
 
       verify(mockParkingLotRepository.create(any));
-      verifyNoMoreInteractions(mockParkingLotRepository);
     });
 
-    test('should call addParkingLot on repository when ParkingLotRepository runs successfully', () async {
+    test('should call read on ManagerRepository when ParkingLotRepository runs successfully', () async {
       await usecase(parkingLot);
 
-      verify(mockManagerRepository.addParkingLot(parkingLot));
-      verifyNoMoreInteractions(mockManagerRepository);
+      verify(mockManagerRepository.read());
+    });
+
+    test('should call update on ManagerRepository with new manager data', () async {
+      await usecase(parkingLot);
+
+      verify(mockManagerRepository.update(newManager));
     });
 
     test('should return unit when call runs successfully', () async {
@@ -58,14 +63,15 @@ void main() {
 
       expect(result, Left(const ParkingFailure.serverFailure()));
     });
-  });
 
-  test('should return ParkingFailure when ManagerRepository fails', () async {
-    when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Right(unit));
-    when(mockManagerRepository.addParkingLot(any)).thenAnswer((_) async => Left(const ManagerFailure.serverFailure()));
+    test('should return ParkingFailure when ManagerRepository fails', () async {
+      when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Right(unit));
+      when(mockManagerRepository.read()).thenAnswer((_) async => Right(manager));
+      when(mockManagerRepository.update(any)).thenAnswer((_) async => Left(const ManagerFailure.serverFailure()));
 
-    final result = await usecase(parkingLot);
+      final result = await usecase(parkingLot);
 
-    expect(result, Left(const ParkingFailure.serverFailure()));
+      expect(result, Left(const ParkingFailure.serverFailure()));
+    });
   });
 }

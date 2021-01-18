@@ -1,5 +1,8 @@
+import 'package:all_parking/features/parking/domain/entities/employee.dart';
+import 'package:all_parking/features/parking/domain/entities/manager.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:kt_dart/kt.dart';
 
 final parkedVehicle = ParkedVehicle(
   id: QRCode('1'),
@@ -30,3 +33,18 @@ final parkingLot = ParkingLot(
   parkedVehicles: [parkedVehicle, parkedVehicle2],
   pricePerHour: 12.0,
 );
+
+final manager = Manager(
+  id: '123',
+  email: 'manager@test.com',
+  displayName: 'Vanessa',
+  employees: KtList.from([employee]),
+  parkingLots: KtList.empty(),
+);
+
+final employee = Employee(
+  id: '456',
+  displayName: 'Bruno',
+);
+
+final newManager = manager.copyWith(parkingLots: manager.parkingLots.plusElement(parkingLot.id));
