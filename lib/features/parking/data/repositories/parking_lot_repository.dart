@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../core/errors/parking_failure.dart';
-import '../../core/util/firebase_firestore_x.dart';
+import '../../core/util/firebase_helpers.dart';
 import '../../domain/entities/manager.dart';
 import '../../domain/entities/parked_vehicle.dart';
 import '../../domain/entities/parking_lot.dart';
