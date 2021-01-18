@@ -1,22 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'parked_vehicle.g.dart';
+import '../../domain/entities/parked_vehicle.dart';
 
-enum VehicleColor { black, silver, white, gray, green, blue, red, brown, yellow }
+part 'parked_vehicle_dto.g.dart';
 
-@JsonSerializable()
-class QRCode {
-  final String value;
-
-  const QRCode(this.value);
-
-  factory QRCode.fromJson(Map<String, dynamic> json) => _$QRCodeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$QRCodeToJson(this);
-}
-
-class ParkedVehicle {
+@JsonSerializable(explicitToJson: true)
+class ParkedVehicleDTO {
   final QRCode id;
   final String title;
   final String licensePlate;
@@ -25,7 +14,7 @@ class ParkedVehicle {
   final DateTime checkOut;
   final String observations;
 
-  const ParkedVehicle({
+  const ParkedVehicleDTO({
     @required this.id,
     @required this.title,
     @required this.licensePlate,
@@ -39,7 +28,7 @@ class ParkedVehicle {
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is ParkedVehicle &&
+    return o is ParkedVehicleDTO &&
         o.id == id &&
         o.title == title &&
         o.licensePlate == licensePlate &&
@@ -59,4 +48,29 @@ class ParkedVehicle {
         checkOut.hashCode ^
         observations.hashCode;
   }
+
+  ParkedVehicleDTO.fromDomain(ParkedVehicle model)
+      : this(
+          id: model.id,
+          title: model.title,
+          licensePlate: model.licensePlate,
+          color: model.color,
+          checkIn: model.checkIn,
+          checkOut: model.checkOut,
+          observations: model.observations,
+        );
+
+  ParkedVehicle toDomain() => ParkedVehicle(
+        id: id,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        title: title,
+        color: color,
+        licensePlate: licensePlate,
+        observations: observations,
+      );
+
+  factory ParkedVehicleDTO.fromJson(Map<String, dynamic> json) => _$ParkedVehicleDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ParkedVehicleDTOToJson(this);
 }

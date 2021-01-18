@@ -2,7 +2,7 @@ import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 
 final parkedVehicle = ParkedVehicle(
-  id: '2',
+  id: QRCode('1'),
   title: 'Ford Fiesta',
   color: VehicleColor.black,
   checkIn: DateTime(2021, 01, 01, 12, 30),
@@ -12,7 +12,7 @@ final parkedVehicle = ParkedVehicle(
 );
 
 final parkedVehicle2 = ParkedVehicle(
-  id: '3',
+  id: QRCode('2'),
   title: 'Fiat Palio',
   color: VehicleColor.blue,
   checkIn: DateTime(2021, 01, 02, 10, 00),

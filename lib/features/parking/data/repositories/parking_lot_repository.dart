@@ -1,8 +1,10 @@
+import 'package:all_parking/features/parking/data/models/parking_lot_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../core/errors/parking_failure.dart';
+import '../../core/util/firebase_firestore_x.dart';
 import '../../domain/entities/manager.dart';
 import '../../domain/entities/parked_vehicle.dart';
 import '../../domain/entities/parking_lot.dart';
@@ -29,7 +31,8 @@ class ParkingLotRepository implements IParkingLotRepository {
   @override
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot) async {
     try {
-      await _firestore.collection('parking_lots').doc(parkingLot.id).set(parkingLot.toJson());
+      final parkingLotDTO = ParkingLotDTO.fromDomain(parkingLot);
+      await _firestore.parkingLotsCollection.doc(parkingLotDTO.id).set(parkingLotDTO.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
