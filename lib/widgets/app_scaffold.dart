@@ -5,6 +5,8 @@ class AppScaffold extends StatelessWidget {
   final Widget body;
   final Widget floatingActionButton;
   final bool scrollable;
+  final Widget drawer;
+  final Widget customAppBar;
 
   const AppScaffold({
     Key key,
@@ -12,12 +14,15 @@ class AppScaffold extends StatelessWidget {
     this.body,
     this.floatingActionButton,
     this.scrollable = true,
+    this.drawer,
+    this.customAppBar,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      drawer: drawer,
+      appBar: customAppBar ?? AppBar(title: Text(title)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: _buildDefaultScreenBody(),
@@ -30,7 +35,7 @@ class AppScaffold extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
           return scrollable
               ? SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(minHeight: viewportConstraints.maxHeight),
                     child: body,

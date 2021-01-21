@@ -1,10 +1,9 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../res/messages.dart';
-import '../../../../../routes/router.gr.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../auth_bloc.dart';
@@ -12,6 +11,8 @@ import '../bloc/sign_up_bloc.dart';
 import 'components/sign_up_form.dart';
 
 class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -31,8 +32,8 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ).show(context),
               (_) {
+                Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
                 context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());
-                ExtendedNavigator.of(context).replace(Routes.homeScreen);
               },
             ),
           );

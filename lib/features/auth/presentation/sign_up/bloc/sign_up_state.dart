@@ -2,6 +2,7 @@ part of 'sign_up_bloc.dart';
 
 @freezed
 abstract class SignUpState with _$SignUpState {
+  @Implements(ValidationFormState)
   const factory SignUpState({
     @required String firstName,
     @required String lastName,
@@ -23,4 +24,8 @@ abstract class SignUpState with _$SignUpState {
         showErrorMessages: false,
         signUpSuccessOrFailureOption: none(),
       );
+}
+
+abstract class ValidationFormState {
+  bool get showErrorMessages;
 }

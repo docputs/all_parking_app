@@ -7,6 +7,7 @@ import '../entities/parking_lot.dart';
 
 abstract class IParkingLotRepository {
   Future<Either<ParkingFailure, List<ParkingLot>>> fetchAll(Manager manager);
+  Stream<Either<ParkingFailure, List<ParkingLot>>> watchAll(Manager manager);
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> delete();
   Future<Either<ParkingFailure, Unit>> edit(String id);

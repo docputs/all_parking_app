@@ -1104,6 +1104,8 @@ class __$SignUpStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
   }
 }
 
+@Implements(ValidationFormState)
+
 /// @nodoc
 class _$_SignUpState implements _SignUpState {
   const _$_SignUpState(
@@ -1195,7 +1197,7 @@ class _$_SignUpState implements _SignUpState {
       __$SignUpStateCopyWithImpl<_SignUpState>(this, _$identity);
 }
 
-abstract class _SignUpState implements SignUpState {
+abstract class _SignUpState implements SignUpState, ValidationFormState {
   const factory _SignUpState(
           {@required
               String firstName,

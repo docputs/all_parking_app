@@ -60,4 +60,10 @@ class ParkingLotRepository implements IParkingLotRepository {
     // TODO: implement fetchAll
     throw UnimplementedError();
   }
+
+  @override
+  Stream<Either<ParkingFailure, List<ParkingLot>>> watchAll(Manager manager) {
+    // TODO: implement watchAll
+    throw UnimplementedError();
+  }
 }

@@ -1,9 +1,8 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../res/theme.dart';
-import '../../../../../../routes/router.gr.dart';
 
 class CreateAccountText extends StatefulWidget {
   const CreateAccountText({Key key}) : super(key: key);
@@ -18,10 +17,7 @@ class _CreateAccountTextState extends State<CreateAccountText> {
   @override
   void initState() {
     super.initState();
-    _tapGestureRecognizer = TapGestureRecognizer()
-      ..onTap = () {
-        ExtendedNavigator.of(context).replace(Routes.signUpScreen);
-      };
+    _tapGestureRecognizer = TapGestureRecognizer()..onTap = () => Navigator.of(context).pushNamed(Constants.signUpRoute);
   }
 
   @override

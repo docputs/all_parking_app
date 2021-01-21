@@ -9,7 +9,7 @@ class SignUpTextFormField extends StatelessWidget {
   final String labelText;
   final void Function(String) onChanged;
   final Either<AuthFailure, String> Function(String) validationEither;
-  final SignUpState state;
+  final ValidationFormState state;
   final TextInputType keyboardType;
   final bool obscureText;
 
