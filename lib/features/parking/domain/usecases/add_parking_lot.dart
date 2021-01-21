@@ -1,3 +1,4 @@
+import 'package:all_parking/res/messages.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -23,7 +24,7 @@ class AddParkingLot {
       (_) async {
         final either = await caseParkingLotEitherSuccess(parkingLot);
         return either.fold(
-          (f) => left(const ParkingFailure.serverFailure()),
+          (f) => left(const ParkingFailure.serverFailure(Messages.serverFailure)),
           (_) => right(unit),
         );
       },

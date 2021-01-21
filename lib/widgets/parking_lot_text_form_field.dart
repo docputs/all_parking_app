@@ -1,19 +1,19 @@
+import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../widgets/default_text_form_field.dart';
-import '../../../../core/errors/auth_failure.dart';
-import '../../bloc/sign_up_bloc.dart';
+import 'default_text_form_field.dart';
 
-class SignUpTextFormField extends StatelessWidget {
+class ParkingLotTextFormField extends StatelessWidget {
   final String labelText;
   final void Function(String) onChanged;
-  final Either<AuthFailure, String> Function(String) validationEither;
+  final Either<ParkingFailure, String> Function(String) validationEither;
   final ValidationFormState state;
   final TextInputType keyboardType;
   final bool obscureText;
 
-  const SignUpTextFormField({
+  const ParkingLotTextFormField({
     Key key,
     @required this.labelText,
     @required this.state,
@@ -33,13 +33,8 @@ class SignUpTextFormField extends StatelessWidget {
       autovalidateMode: state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
       validator: (value) => validationEither(value).fold(
         (f) => f.maybeMap(
-          passwordsDontMatch: (_) => 'Senhas não conferem',
-          displayNameTooLong: (_) => 'Nome muito extenso',
-          invalidEmailAddress: (_) => 'E-mail inválido',
-          emailBadlyFormatted: (_) => 'E-mail inválido',
-          weakPassword: (_) => 'Senha fraca',
-          emailAlreadyInUse: (_) => 'E-mail já está em uso',
-          emptyField: (_) => 'Campo obrigatório',
+          serverFailure: (_) => _.message,
+          unknownFailure: (_) => _.message,
           orElse: () => null,
         ),
         (_) => null,

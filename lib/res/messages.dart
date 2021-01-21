@@ -7,6 +7,16 @@ class Messages {
   static const invalidEmailAndPasswordCombination = 'E-mail e/ou senha inválidos';
   static const cancelledByUser = 'Cancelado pelo usuário';
   static const emailAlreadyInUse = 'E-mail já está em uso';
+  static const weakPassword = 'Senha muito fraca';
+  static const notAuthenticated = 'Usuário não autenticado';
+  static const displayNameTooLong = 'Excedeu o limite de caracteres';
+  static const passwordsDontMatch = 'Senhas não conferem';
+
+  //ParkingFailure
+  static const invalidParkingLotTitle = 'Nome inválido';
+  static const invalidAvailableSpots = 'Número de vagas inválido';
+  static const invalidPricePerHour = 'Valor por hora inválido';
+  static const invalidAddress = 'Endereço inválido';
 
   static const emailFieldLabel = 'E-mail';
   static const passwordFieldLabel = 'Senha';

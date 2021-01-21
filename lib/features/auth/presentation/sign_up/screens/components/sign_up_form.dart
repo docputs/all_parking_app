@@ -1,12 +1,12 @@
+import 'package:all_parking/utils/validators.dart';
+import 'package:all_parking/widgets/auth_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../res/messages.dart';
 import '../../../../../../service_locator.dart';
 import '../../../../../../widgets/default_button.dart';
-import '../../../../core/util/validators.dart';
 import '../../bloc/sign_up_bloc.dart';
-import 'sign_up_text_form_field.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({Key key}) : super(key: key);
@@ -35,7 +35,7 @@ class SignUpForm extends StatelessWidget {
 
   Widget _buildFirstNameField() {
     return BlocBuilder<SignUpBloc, SignUpState>(
-      builder: (context, state) => SignUpTextFormField(
+      builder: (context, state) => AuthTextFormField(
         labelText: Messages.signUpFirstNameLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.firstNameChanged(value)),
@@ -46,7 +46,7 @@ class SignUpForm extends StatelessWidget {
 
   Widget _buildLastNameField() {
     return BlocBuilder<SignUpBloc, SignUpState>(
-      builder: (context, state) => SignUpTextFormField(
+      builder: (context, state) => AuthTextFormField(
         labelText: Messages.signUpLastNameLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.lastNameChanged(value)),
@@ -57,7 +57,7 @@ class SignUpForm extends StatelessWidget {
 
   Widget _buildEmailField() {
     return BlocBuilder<SignUpBloc, SignUpState>(
-      builder: (context, state) => SignUpTextFormField(
+      builder: (context, state) => AuthTextFormField(
         labelText: Messages.signUpEmailLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.emailChanged(value)),
@@ -68,7 +68,7 @@ class SignUpForm extends StatelessWidget {
 
   Widget _buildPasswordField() {
     return BlocBuilder<SignUpBloc, SignUpState>(
-      builder: (context, state) => SignUpTextFormField(
+      builder: (context, state) => AuthTextFormField(
         labelText: Messages.signUpPasswordLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.passwordChanged(value)),
@@ -80,7 +80,7 @@ class SignUpForm extends StatelessWidget {
 
   Widget _buildConfirmPasswordField() {
     return BlocBuilder<SignUpBloc, SignUpState>(
-      builder: (context, state) => SignUpTextFormField(
+      builder: (context, state) => AuthTextFormField(
         labelText: Messages.signUpConfirmPasswordLabel,
         state: state as ValidationFormState,
         validationEither: (value) => getIt<Validators>().validateConfirmPassword(value, state.password),

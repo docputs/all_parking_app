@@ -2,6 +2,7 @@ part of 'add_parking_lot_bloc.dart';
 
 @freezed
 abstract class AddParkingLotState with _$AddParkingLotState {
+  @Implements(ValidationFormState)
   const factory AddParkingLotState({
     @required ParkingLot parkingLot,
     @required bool showErrorMessages,

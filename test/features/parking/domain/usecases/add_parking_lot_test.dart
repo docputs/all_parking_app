@@ -3,6 +3,7 @@ import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/repositories/i_manager_repository.dart';
 import 'package:all_parking/features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'package:all_parking/features/parking/domain/usecases/add_parking_lot.dart';
+import 'package:all_parking/res/messages.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -57,11 +58,11 @@ void main() {
 
   group('failure', () {
     test('should return ParkingFailure when repository fails', () async {
-      when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Left(const ParkingFailure.serverFailure()));
+      when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
 
       final result = await usecase(parkingLot);
 
-      expect(result, Left(const ParkingFailure.serverFailure()));
+      expect(result, Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
     });
 
     test('should return ParkingFailure when ManagerRepository fails', () async {
@@ -71,7 +72,7 @@ void main() {
 
       final result = await usecase(parkingLot);
 
-      expect(result, Left(const ParkingFailure.serverFailure()));
+      expect(result, Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
     });
   });
 }

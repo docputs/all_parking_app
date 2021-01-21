@@ -14,63 +14,88 @@ class _$AuthFailureTearOff {
   const _$AuthFailureTearOff();
 
 // ignore: unused_element
-  _EmptyField emptyField() {
-    return const _EmptyField();
+  _EmptyField emptyField(String message) {
+    return _EmptyField(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _DisplayNameTooLong displayNameTooLong() {
-    return const _DisplayNameTooLong();
+  _DisplayNameTooLong displayNameTooLong(String message) {
+    return _DisplayNameTooLong(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _EmailAlreadyInUse emailAlreadyInUse() {
-    return const _EmailAlreadyInUse();
+  _EmailAlreadyInUse emailAlreadyInUse(String message) {
+    return _EmailAlreadyInUse(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _CancelledByUser cancelledByUser() {
-    return const _CancelledByUser();
+  _CancelledByUser cancelledByUser(String message) {
+    return _CancelledByUser(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _InvalidEmailAddress invalidEmailAddress() {
-    return const _InvalidEmailAddress();
+  _InvalidEmailAddress invalidEmailAddress(String message) {
+    return _InvalidEmailAddress(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
-    return const _InvalidEmailAndPasswordCombination();
+  _InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination(
+      String message) {
+    return _InvalidEmailAndPasswordCombination(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _EmailBadlyFormatted emailBadlyFormatted() {
-    return const _EmailBadlyFormatted();
+  _EmailBadlyFormatted emailBadlyFormatted(String message) {
+    return _EmailBadlyFormatted(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _WeakPassword weakPassword() {
-    return const _WeakPassword();
+  _WeakPassword weakPassword(String message) {
+    return _WeakPassword(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _ServerFailure serverFailure() {
-    return const _ServerFailure();
+  _ServerFailure serverFailure(String message) {
+    return _ServerFailure(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _UnknownFailure unknownFailure() {
-    return const _UnknownFailure();
+  _UnknownFailure unknownFailure(String message) {
+    return _UnknownFailure(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _PasswordsDontMatch passwordsDontMatch() {
-    return const _PasswordsDontMatch();
+  _PasswordsDontMatch passwordsDontMatch(String message) {
+    return _PasswordsDontMatch(
+      message,
+    );
   }
 
 // ignore: unused_element
-  _NotAuthenticated notAuthenticated() {
-    return const _NotAuthenticated();
+  _NotAuthenticated notAuthenticated(String message) {
+    return _NotAuthenticated(
+      message,
+    );
   }
 }
 
@@ -80,35 +105,37 @@ const $AuthFailure = _$AuthFailureTearOff();
 
 /// @nodoc
 mixin _$AuthFailure {
+  String get message;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -145,6 +172,9 @@ mixin _$AuthFailure {
     TResult notAuthenticated(_NotAuthenticated value),
     @required TResult orElse(),
   });
+
+  @JsonKey(ignore: true)
+  $AuthFailureCopyWith<AuthFailure> get copyWith;
 }
 
 /// @nodoc
@@ -152,6 +182,7 @@ abstract class $AuthFailureCopyWith<$Res> {
   factory $AuthFailureCopyWith(
           AuthFailure value, $Res Function(AuthFailure) then) =
       _$AuthFailureCopyWithImpl<$Res>;
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -161,13 +192,25 @@ class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
   final AuthFailure _value;
   // ignore: unused_field
   final $Res Function(AuthFailure) _then;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      message: message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$EmptyFieldCopyWith<$Res> {
+abstract class _$EmptyFieldCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$EmptyFieldCopyWith(
           _EmptyField value, $Res Function(_EmptyField) then) =
       __$EmptyFieldCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -179,40 +222,61 @@ class __$EmptyFieldCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   _EmptyField get _value => super._value as _EmptyField;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_EmptyField(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_EmptyField implements _EmptyField {
-  const _$_EmptyField();
+  const _$_EmptyField(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.emptyField()';
+    return 'AuthFailure.emptyField(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _EmptyField);
+    return identical(this, other) ||
+        (other is _EmptyField &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$EmptyFieldCopyWith<_EmptyField> get copyWith =>
+      __$EmptyFieldCopyWithImpl<_EmptyField>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -226,29 +290,29 @@ class _$_EmptyField implements _EmptyField {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return emptyField();
+    return emptyField(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emptyField != null) {
-      return emptyField();
+      return emptyField(message);
     }
     return orElse();
   }
@@ -313,14 +377,23 @@ class _$_EmptyField implements _EmptyField {
 }
 
 abstract class _EmptyField implements AuthFailure {
-  const factory _EmptyField() = _$_EmptyField;
+  const factory _EmptyField(String message) = _$_EmptyField;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$EmptyFieldCopyWith<_EmptyField> get copyWith;
 }
 
 /// @nodoc
-abstract class _$DisplayNameTooLongCopyWith<$Res> {
+abstract class _$DisplayNameTooLongCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$DisplayNameTooLongCopyWith(
           _DisplayNameTooLong value, $Res Function(_DisplayNameTooLong) then) =
       __$DisplayNameTooLongCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -333,40 +406,61 @@ class __$DisplayNameTooLongCopyWithImpl<$Res>
 
   @override
   _DisplayNameTooLong get _value => super._value as _DisplayNameTooLong;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_DisplayNameTooLong(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_DisplayNameTooLong implements _DisplayNameTooLong {
-  const _$_DisplayNameTooLong();
+  const _$_DisplayNameTooLong(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.displayNameTooLong()';
+    return 'AuthFailure.displayNameTooLong(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _DisplayNameTooLong);
+    return identical(this, other) ||
+        (other is _DisplayNameTooLong &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DisplayNameTooLongCopyWith<_DisplayNameTooLong> get copyWith =>
+      __$DisplayNameTooLongCopyWithImpl<_DisplayNameTooLong>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -380,29 +474,29 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return displayNameTooLong();
+    return displayNameTooLong(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (displayNameTooLong != null) {
-      return displayNameTooLong();
+      return displayNameTooLong(message);
     }
     return orElse();
   }
@@ -467,14 +561,23 @@ class _$_DisplayNameTooLong implements _DisplayNameTooLong {
 }
 
 abstract class _DisplayNameTooLong implements AuthFailure {
-  const factory _DisplayNameTooLong() = _$_DisplayNameTooLong;
+  const factory _DisplayNameTooLong(String message) = _$_DisplayNameTooLong;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$DisplayNameTooLongCopyWith<_DisplayNameTooLong> get copyWith;
 }
 
 /// @nodoc
-abstract class _$EmailAlreadyInUseCopyWith<$Res> {
+abstract class _$EmailAlreadyInUseCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$EmailAlreadyInUseCopyWith(
           _EmailAlreadyInUse value, $Res Function(_EmailAlreadyInUse) then) =
       __$EmailAlreadyInUseCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -487,40 +590,61 @@ class __$EmailAlreadyInUseCopyWithImpl<$Res>
 
   @override
   _EmailAlreadyInUse get _value => super._value as _EmailAlreadyInUse;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_EmailAlreadyInUse(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
-  const _$_EmailAlreadyInUse();
+  const _$_EmailAlreadyInUse(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.emailAlreadyInUse()';
+    return 'AuthFailure.emailAlreadyInUse(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _EmailAlreadyInUse);
+    return identical(this, other) ||
+        (other is _EmailAlreadyInUse &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$EmailAlreadyInUseCopyWith<_EmailAlreadyInUse> get copyWith =>
+      __$EmailAlreadyInUseCopyWithImpl<_EmailAlreadyInUse>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -534,29 +658,29 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return emailAlreadyInUse();
+    return emailAlreadyInUse(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailAlreadyInUse != null) {
-      return emailAlreadyInUse();
+      return emailAlreadyInUse(message);
     }
     return orElse();
   }
@@ -621,14 +745,23 @@ class _$_EmailAlreadyInUse implements _EmailAlreadyInUse {
 }
 
 abstract class _EmailAlreadyInUse implements AuthFailure {
-  const factory _EmailAlreadyInUse() = _$_EmailAlreadyInUse;
+  const factory _EmailAlreadyInUse(String message) = _$_EmailAlreadyInUse;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$EmailAlreadyInUseCopyWith<_EmailAlreadyInUse> get copyWith;
 }
 
 /// @nodoc
-abstract class _$CancelledByUserCopyWith<$Res> {
+abstract class _$CancelledByUserCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$CancelledByUserCopyWith(
           _CancelledByUser value, $Res Function(_CancelledByUser) then) =
       __$CancelledByUserCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -641,40 +774,61 @@ class __$CancelledByUserCopyWithImpl<$Res>
 
   @override
   _CancelledByUser get _value => super._value as _CancelledByUser;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_CancelledByUser(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_CancelledByUser implements _CancelledByUser {
-  const _$_CancelledByUser();
+  const _$_CancelledByUser(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.cancelledByUser()';
+    return 'AuthFailure.cancelledByUser(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _CancelledByUser);
+    return identical(this, other) ||
+        (other is _CancelledByUser &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$CancelledByUserCopyWith<_CancelledByUser> get copyWith =>
+      __$CancelledByUserCopyWithImpl<_CancelledByUser>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -688,29 +842,29 @@ class _$_CancelledByUser implements _CancelledByUser {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return cancelledByUser();
+    return cancelledByUser(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (cancelledByUser != null) {
-      return cancelledByUser();
+      return cancelledByUser(message);
     }
     return orElse();
   }
@@ -775,14 +929,23 @@ class _$_CancelledByUser implements _CancelledByUser {
 }
 
 abstract class _CancelledByUser implements AuthFailure {
-  const factory _CancelledByUser() = _$_CancelledByUser;
+  const factory _CancelledByUser(String message) = _$_CancelledByUser;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$CancelledByUserCopyWith<_CancelledByUser> get copyWith;
 }
 
 /// @nodoc
-abstract class _$InvalidEmailAddressCopyWith<$Res> {
+abstract class _$InvalidEmailAddressCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$InvalidEmailAddressCopyWith(_InvalidEmailAddress value,
           $Res Function(_InvalidEmailAddress) then) =
       __$InvalidEmailAddressCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -795,40 +958,62 @@ class __$InvalidEmailAddressCopyWithImpl<$Res>
 
   @override
   _InvalidEmailAddress get _value => super._value as _InvalidEmailAddress;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_InvalidEmailAddress(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_InvalidEmailAddress implements _InvalidEmailAddress {
-  const _$_InvalidEmailAddress();
+  const _$_InvalidEmailAddress(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.invalidEmailAddress()';
+    return 'AuthFailure.invalidEmailAddress(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _InvalidEmailAddress);
+    return identical(this, other) ||
+        (other is _InvalidEmailAddress &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$InvalidEmailAddressCopyWith<_InvalidEmailAddress> get copyWith =>
+      __$InvalidEmailAddressCopyWithImpl<_InvalidEmailAddress>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -842,29 +1027,29 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return invalidEmailAddress();
+    return invalidEmailAddress(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidEmailAddress != null) {
-      return invalidEmailAddress();
+      return invalidEmailAddress(message);
     }
     return orElse();
   }
@@ -929,15 +1114,24 @@ class _$_InvalidEmailAddress implements _InvalidEmailAddress {
 }
 
 abstract class _InvalidEmailAddress implements AuthFailure {
-  const factory _InvalidEmailAddress() = _$_InvalidEmailAddress;
+  const factory _InvalidEmailAddress(String message) = _$_InvalidEmailAddress;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$InvalidEmailAddressCopyWith<_InvalidEmailAddress> get copyWith;
 }
 
 /// @nodoc
-abstract class _$InvalidEmailAndPasswordCombinationCopyWith<$Res> {
+abstract class _$InvalidEmailAndPasswordCombinationCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$InvalidEmailAndPasswordCombinationCopyWith(
           _InvalidEmailAndPasswordCombination value,
           $Res Function(_InvalidEmailAndPasswordCombination) then) =
       __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -952,42 +1146,65 @@ class __$InvalidEmailAndPasswordCombinationCopyWithImpl<$Res>
   @override
   _InvalidEmailAndPasswordCombination get _value =>
       super._value as _InvalidEmailAndPasswordCombination;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_InvalidEmailAndPasswordCombination(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_InvalidEmailAndPasswordCombination
     implements _InvalidEmailAndPasswordCombination {
-  const _$_InvalidEmailAndPasswordCombination();
+  const _$_InvalidEmailAndPasswordCombination(this.message)
+      : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.invalidEmailAndPasswordCombination()';
+    return 'AuthFailure.invalidEmailAndPasswordCombination(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _InvalidEmailAndPasswordCombination);
+        (other is _InvalidEmailAndPasswordCombination &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$InvalidEmailAndPasswordCombinationCopyWith<
+          _InvalidEmailAndPasswordCombination>
+      get copyWith => __$InvalidEmailAndPasswordCombinationCopyWithImpl<
+          _InvalidEmailAndPasswordCombination>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1001,29 +1218,29 @@ class _$_InvalidEmailAndPasswordCombination
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return invalidEmailAndPasswordCombination();
+    return invalidEmailAndPasswordCombination(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (invalidEmailAndPasswordCombination != null) {
-      return invalidEmailAndPasswordCombination();
+      return invalidEmailAndPasswordCombination(message);
     }
     return orElse();
   }
@@ -1088,15 +1305,25 @@ class _$_InvalidEmailAndPasswordCombination
 }
 
 abstract class _InvalidEmailAndPasswordCombination implements AuthFailure {
-  const factory _InvalidEmailAndPasswordCombination() =
+  const factory _InvalidEmailAndPasswordCombination(String message) =
       _$_InvalidEmailAndPasswordCombination;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$InvalidEmailAndPasswordCombinationCopyWith<
+      _InvalidEmailAndPasswordCombination> get copyWith;
 }
 
 /// @nodoc
-abstract class _$EmailBadlyFormattedCopyWith<$Res> {
+abstract class _$EmailBadlyFormattedCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$EmailBadlyFormattedCopyWith(_EmailBadlyFormatted value,
           $Res Function(_EmailBadlyFormatted) then) =
       __$EmailBadlyFormattedCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -1109,40 +1336,62 @@ class __$EmailBadlyFormattedCopyWithImpl<$Res>
 
   @override
   _EmailBadlyFormatted get _value => super._value as _EmailBadlyFormatted;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_EmailBadlyFormatted(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
-  const _$_EmailBadlyFormatted();
+  const _$_EmailBadlyFormatted(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.emailBadlyFormatted()';
+    return 'AuthFailure.emailBadlyFormatted(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _EmailBadlyFormatted);
+    return identical(this, other) ||
+        (other is _EmailBadlyFormatted &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$EmailBadlyFormattedCopyWith<_EmailBadlyFormatted> get copyWith =>
+      __$EmailBadlyFormattedCopyWithImpl<_EmailBadlyFormatted>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1156,29 +1405,29 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return emailBadlyFormatted();
+    return emailBadlyFormatted(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailBadlyFormatted != null) {
-      return emailBadlyFormatted();
+      return emailBadlyFormatted(message);
     }
     return orElse();
   }
@@ -1243,14 +1492,23 @@ class _$_EmailBadlyFormatted implements _EmailBadlyFormatted {
 }
 
 abstract class _EmailBadlyFormatted implements AuthFailure {
-  const factory _EmailBadlyFormatted() = _$_EmailBadlyFormatted;
+  const factory _EmailBadlyFormatted(String message) = _$_EmailBadlyFormatted;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$EmailBadlyFormattedCopyWith<_EmailBadlyFormatted> get copyWith;
 }
 
 /// @nodoc
-abstract class _$WeakPasswordCopyWith<$Res> {
+abstract class _$WeakPasswordCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$WeakPasswordCopyWith(
           _WeakPassword value, $Res Function(_WeakPassword) then) =
       __$WeakPasswordCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -1262,40 +1520,61 @@ class __$WeakPasswordCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   _WeakPassword get _value => super._value as _WeakPassword;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_WeakPassword(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_WeakPassword implements _WeakPassword {
-  const _$_WeakPassword();
+  const _$_WeakPassword(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.weakPassword()';
+    return 'AuthFailure.weakPassword(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _WeakPassword);
+    return identical(this, other) ||
+        (other is _WeakPassword &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$WeakPasswordCopyWith<_WeakPassword> get copyWith =>
+      __$WeakPasswordCopyWithImpl<_WeakPassword>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1309,29 +1588,29 @@ class _$_WeakPassword implements _WeakPassword {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return weakPassword();
+    return weakPassword(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (weakPassword != null) {
-      return weakPassword();
+      return weakPassword(message);
     }
     return orElse();
   }
@@ -1396,14 +1675,23 @@ class _$_WeakPassword implements _WeakPassword {
 }
 
 abstract class _WeakPassword implements AuthFailure {
-  const factory _WeakPassword() = _$_WeakPassword;
+  const factory _WeakPassword(String message) = _$_WeakPassword;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$WeakPasswordCopyWith<_WeakPassword> get copyWith;
 }
 
 /// @nodoc
-abstract class _$ServerFailureCopyWith<$Res> {
+abstract class _$ServerFailureCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$ServerFailureCopyWith(
           _ServerFailure value, $Res Function(_ServerFailure) then) =
       __$ServerFailureCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -1415,40 +1703,61 @@ class __$ServerFailureCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   _ServerFailure get _value => super._value as _ServerFailure;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_ServerFailure(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_ServerFailure implements _ServerFailure {
-  const _$_ServerFailure();
+  const _$_ServerFailure(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.serverFailure()';
+    return 'AuthFailure.serverFailure(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ServerFailure);
+    return identical(this, other) ||
+        (other is _ServerFailure &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ServerFailureCopyWith<_ServerFailure> get copyWith =>
+      __$ServerFailureCopyWithImpl<_ServerFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1462,29 +1771,29 @@ class _$_ServerFailure implements _ServerFailure {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return serverFailure();
+    return serverFailure(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (serverFailure != null) {
-      return serverFailure();
+      return serverFailure(message);
     }
     return orElse();
   }
@@ -1549,14 +1858,23 @@ class _$_ServerFailure implements _ServerFailure {
 }
 
 abstract class _ServerFailure implements AuthFailure {
-  const factory _ServerFailure() = _$_ServerFailure;
+  const factory _ServerFailure(String message) = _$_ServerFailure;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$ServerFailureCopyWith<_ServerFailure> get copyWith;
 }
 
 /// @nodoc
-abstract class _$UnknownFailureCopyWith<$Res> {
+abstract class _$UnknownFailureCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$UnknownFailureCopyWith(
           _UnknownFailure value, $Res Function(_UnknownFailure) then) =
       __$UnknownFailureCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -1569,40 +1887,61 @@ class __$UnknownFailureCopyWithImpl<$Res>
 
   @override
   _UnknownFailure get _value => super._value as _UnknownFailure;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_UnknownFailure(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_UnknownFailure implements _UnknownFailure {
-  const _$_UnknownFailure();
+  const _$_UnknownFailure(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.unknownFailure()';
+    return 'AuthFailure.unknownFailure(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _UnknownFailure);
+    return identical(this, other) ||
+        (other is _UnknownFailure &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$UnknownFailureCopyWith<_UnknownFailure> get copyWith =>
+      __$UnknownFailureCopyWithImpl<_UnknownFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1616,29 +1955,29 @@ class _$_UnknownFailure implements _UnknownFailure {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return unknownFailure();
+    return unknownFailure(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unknownFailure != null) {
-      return unknownFailure();
+      return unknownFailure(message);
     }
     return orElse();
   }
@@ -1703,14 +2042,23 @@ class _$_UnknownFailure implements _UnknownFailure {
 }
 
 abstract class _UnknownFailure implements AuthFailure {
-  const factory _UnknownFailure() = _$_UnknownFailure;
+  const factory _UnknownFailure(String message) = _$_UnknownFailure;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$UnknownFailureCopyWith<_UnknownFailure> get copyWith;
 }
 
 /// @nodoc
-abstract class _$PasswordsDontMatchCopyWith<$Res> {
+abstract class _$PasswordsDontMatchCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$PasswordsDontMatchCopyWith(
           _PasswordsDontMatch value, $Res Function(_PasswordsDontMatch) then) =
       __$PasswordsDontMatchCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -1723,40 +2071,61 @@ class __$PasswordsDontMatchCopyWithImpl<$Res>
 
   @override
   _PasswordsDontMatch get _value => super._value as _PasswordsDontMatch;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_PasswordsDontMatch(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_PasswordsDontMatch implements _PasswordsDontMatch {
-  const _$_PasswordsDontMatch();
+  const _$_PasswordsDontMatch(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.passwordsDontMatch()';
+    return 'AuthFailure.passwordsDontMatch(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _PasswordsDontMatch);
+    return identical(this, other) ||
+        (other is _PasswordsDontMatch &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PasswordsDontMatchCopyWith<_PasswordsDontMatch> get copyWith =>
+      __$PasswordsDontMatchCopyWithImpl<_PasswordsDontMatch>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1770,29 +2139,29 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return passwordsDontMatch();
+    return passwordsDontMatch(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (passwordsDontMatch != null) {
-      return passwordsDontMatch();
+      return passwordsDontMatch(message);
     }
     return orElse();
   }
@@ -1857,14 +2226,23 @@ class _$_PasswordsDontMatch implements _PasswordsDontMatch {
 }
 
 abstract class _PasswordsDontMatch implements AuthFailure {
-  const factory _PasswordsDontMatch() = _$_PasswordsDontMatch;
+  const factory _PasswordsDontMatch(String message) = _$_PasswordsDontMatch;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$PasswordsDontMatchCopyWith<_PasswordsDontMatch> get copyWith;
 }
 
 /// @nodoc
-abstract class _$NotAuthenticatedCopyWith<$Res> {
+abstract class _$NotAuthenticatedCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
   factory _$NotAuthenticatedCopyWith(
           _NotAuthenticated value, $Res Function(_NotAuthenticated) then) =
       __$NotAuthenticatedCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -1877,40 +2255,61 @@ class __$NotAuthenticatedCopyWithImpl<$Res>
 
   @override
   _NotAuthenticated get _value => super._value as _NotAuthenticated;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_NotAuthenticated(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_NotAuthenticated implements _NotAuthenticated {
-  const _$_NotAuthenticated();
+  const _$_NotAuthenticated(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'AuthFailure.notAuthenticated()';
+    return 'AuthFailure.notAuthenticated(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NotAuthenticated);
+    return identical(this, other) ||
+        (other is _NotAuthenticated &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$NotAuthenticatedCopyWith<_NotAuthenticated> get copyWith =>
+      __$NotAuthenticatedCopyWithImpl<_NotAuthenticated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult emptyField(),
-    @required TResult displayNameTooLong(),
-    @required TResult emailAlreadyInUse(),
-    @required TResult cancelledByUser(),
-    @required TResult invalidEmailAddress(),
-    @required TResult invalidEmailAndPasswordCombination(),
-    @required TResult emailBadlyFormatted(),
-    @required TResult weakPassword(),
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-    @required TResult passwordsDontMatch(),
-    @required TResult notAuthenticated(),
+    @required TResult emptyField(String message),
+    @required TResult displayNameTooLong(String message),
+    @required TResult emailAlreadyInUse(String message),
+    @required TResult cancelledByUser(String message),
+    @required TResult invalidEmailAddress(String message),
+    @required TResult invalidEmailAndPasswordCombination(String message),
+    @required TResult emailBadlyFormatted(String message),
+    @required TResult weakPassword(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+    @required TResult passwordsDontMatch(String message),
+    @required TResult notAuthenticated(String message),
   }) {
     assert(emptyField != null);
     assert(displayNameTooLong != null);
@@ -1924,29 +2323,29 @@ class _$_NotAuthenticated implements _NotAuthenticated {
     assert(unknownFailure != null);
     assert(passwordsDontMatch != null);
     assert(notAuthenticated != null);
-    return notAuthenticated();
+    return notAuthenticated(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult emptyField(),
-    TResult displayNameTooLong(),
-    TResult emailAlreadyInUse(),
-    TResult cancelledByUser(),
-    TResult invalidEmailAddress(),
-    TResult invalidEmailAndPasswordCombination(),
-    TResult emailBadlyFormatted(),
-    TResult weakPassword(),
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    TResult passwordsDontMatch(),
-    TResult notAuthenticated(),
+    TResult emptyField(String message),
+    TResult displayNameTooLong(String message),
+    TResult emailAlreadyInUse(String message),
+    TResult cancelledByUser(String message),
+    TResult invalidEmailAddress(String message),
+    TResult invalidEmailAndPasswordCombination(String message),
+    TResult emailBadlyFormatted(String message),
+    TResult weakPassword(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    TResult passwordsDontMatch(String message),
+    TResult notAuthenticated(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (notAuthenticated != null) {
-      return notAuthenticated();
+      return notAuthenticated(message);
     }
     return orElse();
   }
@@ -2011,5 +2410,11 @@ class _$_NotAuthenticated implements _NotAuthenticated {
 }
 
 abstract class _NotAuthenticated implements AuthFailure {
-  const factory _NotAuthenticated() = _$_NotAuthenticated;
+  const factory _NotAuthenticated(String message) = _$_NotAuthenticated;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$NotAuthenticatedCopyWith<_NotAuthenticated> get copyWith;
 }

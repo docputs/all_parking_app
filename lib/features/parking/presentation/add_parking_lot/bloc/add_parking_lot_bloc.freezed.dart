@@ -1246,6 +1246,8 @@ class __$AddParkingLotStateCopyWithImpl<$Res>
   }
 }
 
+@Implements(ValidationFormState)
+
 /// @nodoc
 class _$_AddParkingLotState implements _AddParkingLotState {
   const _$_AddParkingLotState(
@@ -1306,7 +1308,8 @@ class _$_AddParkingLotState implements _AddParkingLotState {
       __$AddParkingLotStateCopyWithImpl<_AddParkingLotState>(this, _$identity);
 }
 
-abstract class _AddParkingLotState implements AddParkingLotState {
+abstract class _AddParkingLotState
+    implements AddParkingLotState, ValidationFormState {
   const factory _AddParkingLotState(
       {@required
           ParkingLot parkingLot,

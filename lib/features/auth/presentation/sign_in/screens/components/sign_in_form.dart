@@ -1,10 +1,10 @@
+import 'package:all_parking/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../res/messages.dart';
 import '../../../../../../service_locator.dart';
 import '../../../../../../widgets/default_button.dart';
-import '../../../../core/util/validators.dart';
 import '../../bloc/sign_in_bloc.dart';
 import 'create_account_text.dart';
 import 'sign_in_text_form_field.dart';

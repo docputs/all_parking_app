@@ -1,3 +1,5 @@
+import 'package:all_parking/res/messages.dart';
+
 import '../../core/errors/auth_failure.dart';
 import '../entities/user.dart';
 import '../repositories/i_user_repository.dart';
@@ -13,7 +15,7 @@ class GetCurrentUser {
   Future<Either<AuthFailure, User>> call() async {
     final userOption = await _repository.getCurrentUser();
     return userOption.fold(
-      () => left(const AuthFailure.notAuthenticated()),
+      () => left(const AuthFailure.notAuthenticated(Messages.notAuthenticated)),
       (user) => right(user),
     );
   }

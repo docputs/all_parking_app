@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:all_parking/utils/validators.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/errors/auth_failure.dart';
-import '../../../core/util/validators.dart';
 import '../../../domain/usecases/sign_in.dart';
 
 part 'sign_in_bloc.freezed.dart';

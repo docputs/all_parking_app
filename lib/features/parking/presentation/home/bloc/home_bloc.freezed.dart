@@ -25,11 +25,6 @@ class _$HomeEventTearOff {
       either,
     );
   }
-
-// ignore: unused_element
-  _ManageParkingLotsPressed manageParkingLotsPressed() {
-    return const _ManageParkingLotsPressed();
-  }
 }
 
 /// @nodoc
@@ -43,26 +38,22 @@ mixin _$HomeEvent {
     @required TResult watchAllStarted(),
     @required
         TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    @required TResult manageParkingLotsPressed(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult watchAllStarted(),
     TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    TResult manageParkingLotsPressed(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult watchAllStarted(_WatchAllStarted value),
     @required TResult updateReceived(_UpdateReceived value),
-    @required TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult watchAllStarted(_WatchAllStarted value),
     TResult updateReceived(_UpdateReceived value),
-    TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
     @required TResult orElse(),
   });
 }
@@ -123,11 +114,9 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     @required TResult watchAllStarted(),
     @required
         TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    @required TResult manageParkingLotsPressed(),
   }) {
     assert(watchAllStarted != null);
     assert(updateReceived != null);
-    assert(manageParkingLotsPressed != null);
     return watchAllStarted();
   }
 
@@ -136,7 +125,6 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   TResult maybeWhen<TResult extends Object>({
     TResult watchAllStarted(),
     TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    TResult manageParkingLotsPressed(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -151,11 +139,9 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   TResult map<TResult extends Object>({
     @required TResult watchAllStarted(_WatchAllStarted value),
     @required TResult updateReceived(_UpdateReceived value),
-    @required TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
   }) {
     assert(watchAllStarted != null);
     assert(updateReceived != null);
-    assert(manageParkingLotsPressed != null);
     return watchAllStarted(this);
   }
 
@@ -164,7 +150,6 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   TResult maybeMap<TResult extends Object>({
     TResult watchAllStarted(_WatchAllStarted value),
     TResult updateReceived(_UpdateReceived value),
-    TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -244,11 +229,9 @@ class _$_UpdateReceived implements _UpdateReceived {
     @required TResult watchAllStarted(),
     @required
         TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    @required TResult manageParkingLotsPressed(),
   }) {
     assert(watchAllStarted != null);
     assert(updateReceived != null);
-    assert(manageParkingLotsPressed != null);
     return updateReceived(either);
   }
 
@@ -257,7 +240,6 @@ class _$_UpdateReceived implements _UpdateReceived {
   TResult maybeWhen<TResult extends Object>({
     TResult watchAllStarted(),
     TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    TResult manageParkingLotsPressed(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -272,11 +254,9 @@ class _$_UpdateReceived implements _UpdateReceived {
   TResult map<TResult extends Object>({
     @required TResult watchAllStarted(_WatchAllStarted value),
     @required TResult updateReceived(_UpdateReceived value),
-    @required TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
   }) {
     assert(watchAllStarted != null);
     assert(updateReceived != null);
-    assert(manageParkingLotsPressed != null);
     return updateReceived(this);
   }
 
@@ -285,7 +265,6 @@ class _$_UpdateReceived implements _UpdateReceived {
   TResult maybeMap<TResult extends Object>({
     TResult watchAllStarted(_WatchAllStarted value),
     TResult updateReceived(_UpdateReceived value),
-    TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -303,105 +282,6 @@ abstract class _UpdateReceived implements HomeEvent {
   Either<ParkingFailure, List<ParkingLot>> get either;
   @JsonKey(ignore: true)
   _$UpdateReceivedCopyWith<_UpdateReceived> get copyWith;
-}
-
-/// @nodoc
-abstract class _$ManageParkingLotsPressedCopyWith<$Res> {
-  factory _$ManageParkingLotsPressedCopyWith(_ManageParkingLotsPressed value,
-          $Res Function(_ManageParkingLotsPressed) then) =
-      __$ManageParkingLotsPressedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$ManageParkingLotsPressedCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res>
-    implements _$ManageParkingLotsPressedCopyWith<$Res> {
-  __$ManageParkingLotsPressedCopyWithImpl(_ManageParkingLotsPressed _value,
-      $Res Function(_ManageParkingLotsPressed) _then)
-      : super(_value, (v) => _then(v as _ManageParkingLotsPressed));
-
-  @override
-  _ManageParkingLotsPressed get _value =>
-      super._value as _ManageParkingLotsPressed;
-}
-
-/// @nodoc
-class _$_ManageParkingLotsPressed implements _ManageParkingLotsPressed {
-  const _$_ManageParkingLotsPressed();
-
-  @override
-  String toString() {
-    return 'HomeEvent.manageParkingLotsPressed()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ManageParkingLotsPressed);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult watchAllStarted(),
-    @required
-        TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    @required TResult manageParkingLotsPressed(),
-  }) {
-    assert(watchAllStarted != null);
-    assert(updateReceived != null);
-    assert(manageParkingLotsPressed != null);
-    return manageParkingLotsPressed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult watchAllStarted(),
-    TResult updateReceived(Either<ParkingFailure, List<ParkingLot>> either),
-    TResult manageParkingLotsPressed(),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (manageParkingLotsPressed != null) {
-      return manageParkingLotsPressed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult watchAllStarted(_WatchAllStarted value),
-    @required TResult updateReceived(_UpdateReceived value),
-    @required TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
-  }) {
-    assert(watchAllStarted != null);
-    assert(updateReceived != null);
-    assert(manageParkingLotsPressed != null);
-    return manageParkingLotsPressed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult watchAllStarted(_WatchAllStarted value),
-    TResult updateReceived(_UpdateReceived value),
-    TResult manageParkingLotsPressed(_ManageParkingLotsPressed value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (manageParkingLotsPressed != null) {
-      return manageParkingLotsPressed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ManageParkingLotsPressed implements HomeEvent {
-  const factory _ManageParkingLotsPressed() = _$_ManageParkingLotsPressed;
 }
 
 /// @nodoc

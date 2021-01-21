@@ -1,4 +1,5 @@
 import 'package:all_parking/features/parking/data/models/parking_lot_dto.dart';
+import 'package:all_parking/res/messages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -36,10 +37,10 @@ class ParkingLotRepository implements IParkingLotRepository {
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
-      return left(const ParkingFailure.serverFailure());
+      return left(const ParkingFailure.serverFailure(Messages.serverFailure));
     } catch (e) {
       print(e);
-      return left(const ParkingFailure.unknownFailure());
+      return left(const ParkingFailure.unknownFailure(Messages.unknownFailure));
     }
   }
 
