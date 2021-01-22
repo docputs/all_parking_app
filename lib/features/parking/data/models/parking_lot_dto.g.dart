@@ -6,11 +6,12 @@ part of 'parking_lot_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ParkingLotDTO _$ParkingLotDTOFromJson(Map<String, dynamic> json) {
-  return ParkingLotDTO(
+_$_ParkingLotDTO _$_$_ParkingLotDTOFromJson(Map<String, dynamic> json) {
+  return _$_ParkingLotDTO(
     title: json['title'] as String,
-    address: json['address'] as String,
-    cep: json['cep'] as String,
+    address: json['address'] == null
+        ? null
+        : AddressDTO.fromJson(json['address'] as Map<String, dynamic>),
     availableSpots: json['availableSpots'] as int,
     pricePerHour: (json['pricePerHour'] as num)?.toDouble(),
     parkedVehicles: (json['parkedVehicles'] as List)
@@ -21,11 +22,10 @@ ParkingLotDTO _$ParkingLotDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ParkingLotDTOToJson(ParkingLotDTO instance) =>
+Map<String, dynamic> _$_$_ParkingLotDTOToJson(_$_ParkingLotDTO instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'address': instance.address,
-      'cep': instance.cep,
+      'address': instance.address?.toJson(),
       'availableSpots': instance.availableSpots,
       'pricePerHour': instance.pricePerHour,
       'parkedVehicles':

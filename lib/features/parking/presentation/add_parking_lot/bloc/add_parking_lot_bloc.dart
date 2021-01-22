@@ -4,6 +4,8 @@ import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/domain/usecases/add_parking_lot.dart';
+import 'package:all_parking/utils/cep_service.dart';
+import 'package:all_parking/utils/input_converter.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -25,29 +27,32 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
       started: (e) async* {
         yield state;
       },
-      changedAddress: (e) async* {
-        yield state.copyWith(
-          parkingLot: state.parkingLot.copyWith(address: e.input),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
       changedAvailableSpots: (e) async* {
-        yield state.copyWith(
-          parkingLot: state.parkingLot.copyWith(availableSpots: int.parse(e.input)),
-          saveFailureOrSuccessOption: none(),
-        );
+        final parsedInput = InputConverter.stringToInteger(e.input);
+        if (parsedInput != null)
+          yield state.copyWith(
+            parkingLot: state.parkingLot.copyWith(availableSpots: parsedInput),
+            saveFailureOrSuccessOption: none(),
+          );
       },
       changedCep: (e) async* {
-        yield state.copyWith(
-          parkingLot: state.parkingLot.copyWith(cep: e.input),
-          saveFailureOrSuccessOption: none(),
-        );
+        if (e.input.length == 8) {
+          final cepResponse = await CepService.getCep(e.input);
+          if (cepResponse == null) return;
+          final newAddress = CepService.convertFromCepResponse(cepResponse);
+          yield state.copyWith(
+            parkingLot: state.parkingLot.copyWith(address: newAddress),
+            saveFailureOrSuccessOption: none(),
+          );
+        }
       },
       changedPricePerHour: (e) async* {
-        yield state.copyWith(
-          parkingLot: state.parkingLot.copyWith(pricePerHour: double.parse(e.input)),
-          saveFailureOrSuccessOption: none(),
-        );
+        final parsedInput = InputConverter.stringToDouble(e.input);
+        if (parsedInput != null)
+          yield state.copyWith(
+            parkingLot: state.parkingLot.copyWith(pricePerHour: parsedInput),
+            saveFailureOrSuccessOption: none(),
+          );
       },
       changedTitle: (e) async* {
         yield state.copyWith(
@@ -55,7 +60,7 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
           saveFailureOrSuccessOption: none(),
         );
       },
-      submitParkingLot: (e) async* {
+      parkingLotSubmitted: (e) async* {
         yield state.copyWith(
           isSubmitting: true,
           saveFailureOrSuccessOption: none(),

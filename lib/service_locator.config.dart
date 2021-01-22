@@ -17,6 +17,7 @@ import 'features/parking/presentation/home/bloc/home_bloc.dart';
 import 'features/parking/domain/repositories/i_manager_repository.dart';
 import 'features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'features/auth/domain/repositories/i_user_repository.dart';
+import 'utils/location_service.dart';
 import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
 import 'service_locator.dart';
@@ -46,6 +47,7 @@ GetIt $initGetIt(
       () => ParkingLotRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IUserRepository>(
       () => UserRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
+  gh.lazySingleton<LocationService>(() => LocationService());
   gh.lazySingleton<Validators>(() => Validators());
   gh.lazySingleton<WatchParkingLots>(() => WatchParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));

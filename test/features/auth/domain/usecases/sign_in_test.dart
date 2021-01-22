@@ -1,7 +1,7 @@
 import 'package:all_parking/features/auth/data/models/sign_in_model.dart';
+import 'package:all_parking/utils/validators.dart';
 import 'package:dartz/dartz.dart';
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/auth/core/util/validators.dart';
 import 'package:all_parking/features/auth/domain/repositories/i_user_repository.dart';
 import 'package:all_parking/features/auth/domain/usecases/sign_in.dart';
 import 'package:flutter_test/flutter_test.dart';

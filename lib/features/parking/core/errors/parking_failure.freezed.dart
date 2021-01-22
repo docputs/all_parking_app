@@ -35,6 +35,13 @@ class _$ParkingFailureTearOff {
   }
 
 // ignore: unused_element
+  _InvalidCep invalidCep(String message) {
+    return _InvalidCep(
+      message,
+    );
+  }
+
+// ignore: unused_element
   _ServerFailure serverFailure(String message) {
     return _ServerFailure(
       message,
@@ -62,6 +69,7 @@ mixin _$ParkingFailure {
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   });
@@ -70,6 +78,7 @@ mixin _$ParkingFailure {
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
     TResult serverFailure(String message),
     TResult unknownFailure(String message),
     @required TResult orElse(),
@@ -79,6 +88,7 @@ mixin _$ParkingFailure {
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   });
@@ -87,6 +97,7 @@ mixin _$ParkingFailure {
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     @required TResult orElse(),
@@ -190,12 +201,14 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return invalidAvailableSpots(message);
@@ -207,6 +220,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
     TResult serverFailure(String message),
     TResult unknownFailure(String message),
     @required TResult orElse(),
@@ -224,12 +238,14 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return invalidAvailableSpots(this);
@@ -241,6 +257,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     @required TResult orElse(),
@@ -331,12 +348,14 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return invalidPricePerHour(message);
@@ -348,6 +367,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
     TResult serverFailure(String message),
     TResult unknownFailure(String message),
     @required TResult orElse(),
@@ -365,12 +385,14 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return invalidPricePerHour(this);
@@ -382,6 +404,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     @required TResult orElse(),
@@ -471,12 +494,14 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return invalidParkingLotTitle(message);
@@ -488,6 +513,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
     TResult serverFailure(String message),
     TResult unknownFailure(String message),
     @required TResult orElse(),
@@ -505,12 +531,14 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return invalidParkingLotTitle(this);
@@ -522,6 +550,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     @required TResult orElse(),
@@ -543,6 +572,150 @@ abstract class _InvalidParkingLotTitle implements ParkingFailure {
   @override
   @JsonKey(ignore: true)
   _$InvalidParkingLotTitleCopyWith<_InvalidParkingLotTitle> get copyWith;
+}
+
+/// @nodoc
+abstract class _$InvalidCepCopyWith<$Res>
+    implements $ParkingFailureCopyWith<$Res> {
+  factory _$InvalidCepCopyWith(
+          _InvalidCep value, $Res Function(_InvalidCep) then) =
+      __$InvalidCepCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$InvalidCepCopyWithImpl<$Res> extends _$ParkingFailureCopyWithImpl<$Res>
+    implements _$InvalidCepCopyWith<$Res> {
+  __$InvalidCepCopyWithImpl(
+      _InvalidCep _value, $Res Function(_InvalidCep) _then)
+      : super(_value, (v) => _then(v as _InvalidCep));
+
+  @override
+  _InvalidCep get _value => super._value as _InvalidCep;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_InvalidCep(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_InvalidCep implements _InvalidCep {
+  const _$_InvalidCep(this.message) : assert(message != null);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ParkingFailure.invalidCep(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _InvalidCep &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$InvalidCepCopyWith<_InvalidCep> get copyWith =>
+      __$InvalidCepCopyWithImpl<_InvalidCep>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult invalidAvailableSpots(String message),
+    @required TResult invalidPricePerHour(String message),
+    @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+  }) {
+    assert(invalidAvailableSpots != null);
+    assert(invalidPricePerHour != null);
+    assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
+    assert(serverFailure != null);
+    assert(unknownFailure != null);
+    return invalidCep(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult invalidAvailableSpots(String message),
+    TResult invalidPricePerHour(String message),
+    TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidCep != null) {
+      return invalidCep(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
+    @required TResult invalidPricePerHour(_InvalidPricePerHour value),
+    @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
+    @required TResult serverFailure(_ServerFailure value),
+    @required TResult unknownFailure(_UnknownFailure value),
+  }) {
+    assert(invalidAvailableSpots != null);
+    assert(invalidPricePerHour != null);
+    assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
+    assert(serverFailure != null);
+    assert(unknownFailure != null);
+    return invalidCep(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult invalidAvailableSpots(_InvalidAvailableSpots value),
+    TResult invalidPricePerHour(_InvalidPricePerHour value),
+    TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
+    TResult serverFailure(_ServerFailure value),
+    TResult unknownFailure(_UnknownFailure value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidCep != null) {
+      return invalidCep(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidCep implements ParkingFailure {
+  const factory _InvalidCep(String message) = _$_InvalidCep;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$InvalidCepCopyWith<_InvalidCep> get copyWith;
 }
 
 /// @nodoc
@@ -611,12 +784,14 @@ class _$_ServerFailure implements _ServerFailure {
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return serverFailure(message);
@@ -628,6 +803,7 @@ class _$_ServerFailure implements _ServerFailure {
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
     TResult serverFailure(String message),
     TResult unknownFailure(String message),
     @required TResult orElse(),
@@ -645,12 +821,14 @@ class _$_ServerFailure implements _ServerFailure {
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return serverFailure(this);
@@ -662,6 +840,7 @@ class _$_ServerFailure implements _ServerFailure {
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     @required TResult orElse(),
@@ -750,12 +929,14 @@ class _$_UnknownFailure implements _UnknownFailure {
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return unknownFailure(message);
@@ -767,6 +948,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
     TResult serverFailure(String message),
     TResult unknownFailure(String message),
     @required TResult orElse(),
@@ -784,12 +966,14 @@ class _$_UnknownFailure implements _UnknownFailure {
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
     assert(serverFailure != null);
     assert(unknownFailure != null);
     return unknownFailure(this);
@@ -801,6 +985,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
     TResult serverFailure(_ServerFailure value),
     TResult unknownFailure(_UnknownFailure value),
     @required TResult orElse(),

@@ -3,6 +3,7 @@ import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/a
 import 'package:all_parking/features/parking/presentation/home/bloc/home_bloc.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/theme.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -125,7 +126,9 @@ class HomeScreen extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.place),
           onPressed: () {
-            Navigator.of(context).pushNamed(Constants.addParkingLotRoute);
+            Navigator.of(context)
+                .pushNamed(Constants.addParkingLotRoute)
+                .then((value) => FlushbarHelper.createInformation(message: '$value salvo com sucesso!').show(context));
           },
         ),
       ],

@@ -9,6 +9,8 @@ class DefaultTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final String Function(String) validator;
   final AutovalidateMode autovalidateMode;
+  final bool enabled;
+  final TextEditingController controller;
 
   const DefaultTextFormField({
     Key key,
@@ -20,6 +22,8 @@ class DefaultTextFormField extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.autovalidateMode,
+    this.enabled = true,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -33,6 +37,8 @@ class DefaultTextFormField extends StatelessWidget {
       autovalidateMode: autovalidateMode,
       keyboardType: keyboardType,
       validator: validator,
+      enabled: enabled,
+      controller: controller,
     );
   }
 }

@@ -8,6 +8,228 @@ part of 'parking_lot.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+Address _$AddressFromJson(Map<String, dynamic> json) {
+  return _Address.fromJson(json);
+}
+
+/// @nodoc
+class _$AddressTearOff {
+  const _$AddressTearOff();
+
+// ignore: unused_element
+  _Address call(
+      {@required String street,
+      @required String number,
+      @required String cep,
+      @required String city,
+      @required String uf}) {
+    return _Address(
+      street: street,
+      number: number,
+      cep: cep,
+      city: city,
+      uf: uf,
+    );
+  }
+
+// ignore: unused_element
+  Address fromJson(Map<String, Object> json) {
+    return Address.fromJson(json);
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $Address = _$AddressTearOff();
+
+/// @nodoc
+mixin _$Address {
+  String get street;
+  String get number;
+  String get cep;
+  String get city;
+  String get uf;
+
+  Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
+  $AddressCopyWith<Address> get copyWith;
+}
+
+/// @nodoc
+abstract class $AddressCopyWith<$Res> {
+  factory $AddressCopyWith(Address value, $Res Function(Address) then) =
+      _$AddressCopyWithImpl<$Res>;
+  $Res call({String street, String number, String cep, String city, String uf});
+}
+
+/// @nodoc
+class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
+  _$AddressCopyWithImpl(this._value, this._then);
+
+  final Address _value;
+  // ignore: unused_field
+  final $Res Function(Address) _then;
+
+  @override
+  $Res call({
+    Object street = freezed,
+    Object number = freezed,
+    Object cep = freezed,
+    Object city = freezed,
+    Object uf = freezed,
+  }) {
+    return _then(_value.copyWith(
+      street: street == freezed ? _value.street : street as String,
+      number: number == freezed ? _value.number : number as String,
+      cep: cep == freezed ? _value.cep : cep as String,
+      city: city == freezed ? _value.city : city as String,
+      uf: uf == freezed ? _value.uf : uf as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
+  factory _$AddressCopyWith(_Address value, $Res Function(_Address) then) =
+      __$AddressCopyWithImpl<$Res>;
+  @override
+  $Res call({String street, String number, String cep, String city, String uf});
+}
+
+/// @nodoc
+class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
+    implements _$AddressCopyWith<$Res> {
+  __$AddressCopyWithImpl(_Address _value, $Res Function(_Address) _then)
+      : super(_value, (v) => _then(v as _Address));
+
+  @override
+  _Address get _value => super._value as _Address;
+
+  @override
+  $Res call({
+    Object street = freezed,
+    Object number = freezed,
+    Object cep = freezed,
+    Object city = freezed,
+    Object uf = freezed,
+  }) {
+    return _then(_Address(
+      street: street == freezed ? _value.street : street as String,
+      number: number == freezed ? _value.number : number as String,
+      cep: cep == freezed ? _value.cep : cep as String,
+      city: city == freezed ? _value.city : city as String,
+      uf: uf == freezed ? _value.uf : uf as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_Address with DiagnosticableTreeMixin implements _Address {
+  const _$_Address(
+      {@required this.street,
+      @required this.number,
+      @required this.cep,
+      @required this.city,
+      @required this.uf})
+      : assert(street != null),
+        assert(number != null),
+        assert(cep != null),
+        assert(city != null),
+        assert(uf != null);
+
+  factory _$_Address.fromJson(Map<String, dynamic> json) =>
+      _$_$_AddressFromJson(json);
+
+  @override
+  final String street;
+  @override
+  final String number;
+  @override
+  final String cep;
+  @override
+  final String city;
+  @override
+  final String uf;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Address(street: $street, number: $number, cep: $cep, city: $city, uf: $uf)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Address'))
+      ..add(DiagnosticsProperty('street', street))
+      ..add(DiagnosticsProperty('number', number))
+      ..add(DiagnosticsProperty('cep', cep))
+      ..add(DiagnosticsProperty('city', city))
+      ..add(DiagnosticsProperty('uf', uf));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Address &&
+            (identical(other.street, street) ||
+                const DeepCollectionEquality().equals(other.street, street)) &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.cep, cep) ||
+                const DeepCollectionEquality().equals(other.cep, cep)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.uf, uf) ||
+                const DeepCollectionEquality().equals(other.uf, uf)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(street) ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(cep) ^
+      const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(uf);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddressCopyWith<_Address> get copyWith =>
+      __$AddressCopyWithImpl<_Address>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_AddressToJson(this);
+  }
+}
+
+abstract class _Address implements Address {
+  const factory _Address(
+      {@required String street,
+      @required String number,
+      @required String cep,
+      @required String city,
+      @required String uf}) = _$_Address;
+
+  factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
+
+  @override
+  String get street;
+  @override
+  String get number;
+  @override
+  String get cep;
+  @override
+  String get city;
+  @override
+  String get uf;
+  @override
+  @JsonKey(ignore: true)
+  _$AddressCopyWith<_Address> get copyWith;
+}
 
 /// @nodoc
 class _$ParkingLotTearOff {
@@ -17,8 +239,7 @@ class _$ParkingLotTearOff {
   _ParkingLot call(
       {@required String id,
       @required String title,
-      @required String address,
-      @required String cep,
+      @required Address address,
       @required int availableSpots,
       @required double pricePerHour,
       @required List<ParkedVehicle> parkedVehicles}) {
@@ -26,7 +247,6 @@ class _$ParkingLotTearOff {
       id: id,
       title: title,
       address: address,
-      cep: cep,
       availableSpots: availableSpots,
       pricePerHour: pricePerHour,
       parkedVehicles: parkedVehicles,
@@ -42,8 +262,7 @@ const $ParkingLot = _$ParkingLotTearOff();
 mixin _$ParkingLot {
   String get id;
   String get title;
-  String get address;
-  String get cep;
+  Address get address;
   int get availableSpots;
   double get pricePerHour;
   List<ParkedVehicle> get parkedVehicles;
@@ -60,11 +279,12 @@ abstract class $ParkingLotCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      String address,
-      String cep,
+      Address address,
       int availableSpots,
       double pricePerHour,
       List<ParkedVehicle> parkedVehicles});
+
+  $AddressCopyWith<$Res> get address;
 }
 
 /// @nodoc
@@ -80,7 +300,6 @@ class _$ParkingLotCopyWithImpl<$Res> implements $ParkingLotCopyWith<$Res> {
     Object id = freezed,
     Object title = freezed,
     Object address = freezed,
-    Object cep = freezed,
     Object availableSpots = freezed,
     Object pricePerHour = freezed,
     Object parkedVehicles = freezed,
@@ -88,8 +307,7 @@ class _$ParkingLotCopyWithImpl<$Res> implements $ParkingLotCopyWith<$Res> {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
-      address: address == freezed ? _value.address : address as String,
-      cep: cep == freezed ? _value.cep : cep as String,
+      address: address == freezed ? _value.address : address as Address,
       availableSpots: availableSpots == freezed
           ? _value.availableSpots
           : availableSpots as int,
@@ -100,6 +318,16 @@ class _$ParkingLotCopyWithImpl<$Res> implements $ParkingLotCopyWith<$Res> {
           ? _value.parkedVehicles
           : parkedVehicles as List<ParkedVehicle>,
     ));
+  }
+
+  @override
+  $AddressCopyWith<$Res> get address {
+    if (_value.address == null) {
+      return null;
+    }
+    return $AddressCopyWith<$Res>(_value.address, (value) {
+      return _then(_value.copyWith(address: value));
+    });
   }
 }
 
@@ -112,11 +340,13 @@ abstract class _$ParkingLotCopyWith<$Res> implements $ParkingLotCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      String address,
-      String cep,
+      Address address,
       int availableSpots,
       double pricePerHour,
       List<ParkedVehicle> parkedVehicles});
+
+  @override
+  $AddressCopyWith<$Res> get address;
 }
 
 /// @nodoc
@@ -134,7 +364,6 @@ class __$ParkingLotCopyWithImpl<$Res> extends _$ParkingLotCopyWithImpl<$Res>
     Object id = freezed,
     Object title = freezed,
     Object address = freezed,
-    Object cep = freezed,
     Object availableSpots = freezed,
     Object pricePerHour = freezed,
     Object parkedVehicles = freezed,
@@ -142,8 +371,7 @@ class __$ParkingLotCopyWithImpl<$Res> extends _$ParkingLotCopyWithImpl<$Res>
     return _then(_ParkingLot(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
-      address: address == freezed ? _value.address : address as String,
-      cep: cep == freezed ? _value.cep : cep as String,
+      address: address == freezed ? _value.address : address as Address,
       availableSpots: availableSpots == freezed
           ? _value.availableSpots
           : availableSpots as int,
@@ -163,14 +391,12 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
       {@required this.id,
       @required this.title,
       @required this.address,
-      @required this.cep,
       @required this.availableSpots,
       @required this.pricePerHour,
       @required this.parkedVehicles})
       : assert(id != null),
         assert(title != null),
         assert(address != null),
-        assert(cep != null),
         assert(availableSpots != null),
         assert(pricePerHour != null),
         assert(parkedVehicles != null);
@@ -180,9 +406,7 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
   @override
   final String title;
   @override
-  final String address;
-  @override
-  final String cep;
+  final Address address;
   @override
   final int availableSpots;
   @override
@@ -192,7 +416,7 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ParkingLot(id: $id, title: $title, address: $address, cep: $cep, availableSpots: $availableSpots, pricePerHour: $pricePerHour, parkedVehicles: $parkedVehicles)';
+    return 'ParkingLot(id: $id, title: $title, address: $address, availableSpots: $availableSpots, pricePerHour: $pricePerHour, parkedVehicles: $parkedVehicles)';
   }
 
   @override
@@ -203,7 +427,6 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('address', address))
-      ..add(DiagnosticsProperty('cep', cep))
       ..add(DiagnosticsProperty('availableSpots', availableSpots))
       ..add(DiagnosticsProperty('pricePerHour', pricePerHour))
       ..add(DiagnosticsProperty('parkedVehicles', parkedVehicles));
@@ -220,8 +443,6 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
             (identical(other.address, address) ||
                 const DeepCollectionEquality()
                     .equals(other.address, address)) &&
-            (identical(other.cep, cep) ||
-                const DeepCollectionEquality().equals(other.cep, cep)) &&
             (identical(other.availableSpots, availableSpots) ||
                 const DeepCollectionEquality()
                     .equals(other.availableSpots, availableSpots)) &&
@@ -239,7 +460,6 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(cep) ^
       const DeepCollectionEquality().hash(availableSpots) ^
       const DeepCollectionEquality().hash(pricePerHour) ^
       const DeepCollectionEquality().hash(parkedVehicles);
@@ -254,8 +474,7 @@ abstract class _ParkingLot implements ParkingLot {
   const factory _ParkingLot(
       {@required String id,
       @required String title,
-      @required String address,
-      @required String cep,
+      @required Address address,
       @required int availableSpots,
       @required double pricePerHour,
       @required List<ParkedVehicle> parkedVehicles}) = _$_ParkingLot;
@@ -265,9 +484,7 @@ abstract class _ParkingLot implements ParkingLot {
   @override
   String get title;
   @override
-  String get address;
-  @override
-  String get cep;
+  Address get address;
   @override
   int get availableSpots;
   @override

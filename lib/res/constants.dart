@@ -5,4 +5,6 @@ class Constants {
   static const signUpRoute = '/signUp';
 
   static const addParkingLotRoute = '/home/add-parking-lot';
+
+  static final cepRegex = RegExp(r'^\d{8}$');
 }
