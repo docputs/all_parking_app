@@ -10,11 +10,8 @@ import '../repositories/i_user_repository.dart';
 @lazySingleton
 class SignUp {
   final IUserRepository _userRepository;
-  final Validators _validators;
 
-  const SignUp(this._userRepository, this._validators)
-      : assert(_userRepository != null),
-        assert(_validators != null);
+  const SignUp(this._userRepository) : assert(_userRepository != null);
 
   Future<Either<AuthFailure, Unit>> call({
     @required String firstName,
@@ -22,13 +19,13 @@ class SignUp {
     @required String email,
     @required String password,
   }) {
-    final displayNameEither = _validators.validateDisplayName('$firstName $lastName');
+    final displayNameEither = Validators.validateDisplayName('$firstName $lastName');
     if (displayNameEither.isLeft()) return displayNameEither.fold((f) => Future.value(left(f)), null);
 
-    final emailEither = _validators.validateEmailAddress(email);
+    final emailEither = Validators.validateEmailAddress(email);
     if (emailEither.isLeft()) return emailEither.fold((f) => Future.value(left(f)), null);
 
-    final passwordEither = _validators.validatePassword(password);
+    final passwordEither = Validators.validatePassword(password);
     if (passwordEither.isLeft()) return passwordEither.fold((f) => Future.value(left(f)), null);
 
     return _userRepository.createAccount(RegisterModel(email: email, firstName: firstName, lastName: lastName, password: password));

@@ -6,5 +6,6 @@ class Constants {
 
   static const addParkingLotRoute = '/home/add-parking-lot';
 
-  static final cepRegex = RegExp(r'^\d{8}$');
+  static final cepRegex = RegExp(r"^\d{8}$");
+  static final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 }

@@ -9,15 +9,12 @@ import '../repositories/i_user_repository.dart';
 
 @lazySingleton
 class SignIn {
-  final Validators _validators;
   final IUserRepository _userRepository;
 
-  const SignIn(this._validators, this._userRepository)
-      : assert(_userRepository != null),
-        assert(_validators != null);
+  const SignIn(this._userRepository) : assert(_userRepository != null);
 
   Future<Either<AuthFailure, Unit>> call({@required String email, @required String password}) {
-    final emailEither = _validators.validateEmailAddress(email);
+    final emailEither = Validators.validateEmailAddress(email);
     return emailEither.fold(
       (failure) => Future.value(left(failure)),
       (_) => _userRepository.signInWithEmailAndPassword(SignInModel(email: email, password: password)),
