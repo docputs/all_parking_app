@@ -126,9 +126,9 @@ class HomeScreen extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.place),
           onPressed: () {
-            Navigator.of(context)
-                .pushNamed(Constants.addParkingLotRoute)
-                .then((value) => FlushbarHelper.createInformation(message: '$value salvo com sucesso!').show(context));
+            Navigator.of(context).pushNamed(Constants.addParkingLotRoute).then((value) {
+              if (value != null) FlushbarHelper.createInformation(message: '$value salvo com sucesso!').show(context);
+            });
           },
         ),
       ],
