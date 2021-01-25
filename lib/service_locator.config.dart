@@ -25,7 +25,7 @@ import 'features/auth/presentation/sign_in/bloc/sign_in_bloc.dart';
 import 'features/auth/domain/usecases/sign_up.dart';
 import 'features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'features/auth/data/repositories/user_repository.dart';
-import 'features/parking/domain/usecases/watch_parking_lots.dart';
+import 'features/parking/domain/usecases/watch_parking_lot.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -49,15 +49,15 @@ GetIt $initGetIt(
   gh.factory<SignInBloc>(() => SignInBloc(get<SignIn>()));
   gh.lazySingleton<SignUp>(() => SignUp(get<IUserRepository>()));
   gh.factory<SignUpBloc>(() => SignUpBloc(get<SignUp>()));
-  gh.lazySingleton<WatchParkingLots>(() => WatchParkingLots(
-      get<IParkingLotRepository>(), get<IManagerRepository>()));
+  gh.lazySingleton<WatchParkingLot>(() =>
+      WatchParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AddParkingLotBloc>(() => AddParkingLotBloc(get<AddParkingLot>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IUserRepository>()));
   gh.lazySingleton<GetCurrentUser>(
       () => GetCurrentUser(get<IUserRepository>()));
-  gh.factory<HomeBloc>(() => HomeBloc(get<WatchParkingLots>()));
+  gh.factory<HomeBloc>(() => HomeBloc(get<WatchParkingLot>()));
   return get;
 }
 

@@ -7,8 +7,6 @@ import 'package:all_parking/widgets/static_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../service_locator.dart';
-
 class AddParkingLotForm extends StatelessWidget {
   const AddParkingLotForm({Key key}) : super(key: key);
 

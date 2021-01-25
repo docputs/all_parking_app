@@ -8,21 +8,24 @@ import '../repositories/i_manager_repository.dart';
 import '../repositories/i_parking_lot_repository.dart';
 
 @lazySingleton
-class WatchParkingLots {
+class WatchParkingLot {
   final IManagerRepository _managerRepository;
   final IParkingLotRepository _parkingLotRepository;
 
-  const WatchParkingLots(this._parkingLotRepository, this._managerRepository)
+  const WatchParkingLot(this._parkingLotRepository, this._managerRepository)
       : assert(_parkingLotRepository != null, _managerRepository != null);
 
-  Stream<Either<ParkingFailure, List<ParkingLot>>> call() async* {
+  Stream<Either<ParkingFailure, ParkingLot>> call(ParkingLot parkingLot) async* {
     final managerEither = await _managerRepository.read();
     yield* managerEither.fold(
       (f) async* {
         yield left(const ParkingFailure.serverFailure(Messages.serverFailure));
       },
       (manager) async* {
-        yield* _parkingLotRepository.watchAll(manager);
+        if (manager.parkingLots.contains(parkingLot.id))
+          yield* _parkingLotRepository.watchById(parkingLot.id);
+        else
+          yield left(const ParkingFailure.serverFailure(Messages.serverFailure));
       },
     );
   }

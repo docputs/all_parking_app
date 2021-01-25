@@ -3,7 +3,7 @@ import 'package:all_parking/res/messages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-
+import 'package:rxdart/rxdart.dart';
 import '../../core/errors/parking_failure.dart';
 import '../../core/util/firebase_helpers.dart';
 import '../../domain/entities/manager.dart';
@@ -63,8 +63,14 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Stream<Either<ParkingFailure, List<ParkingLot>>> watchAll(Manager manager) {
-    // TODO: implement watchAll
-    throw UnimplementedError();
+  Stream<Either<ParkingFailure, ParkingLot>> watchById(String id) {
+    return _firestore.parkingLotsCollection
+        .where(FieldPath.documentId, isEqualTo: id)
+        .snapshots()
+        .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).first))
+        .onErrorReturnWith((error) {
+      print(error);
+      return left(ParkingFailure.serverFailure(Messages.serverFailure));
+    });
   }
 }
