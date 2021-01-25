@@ -1,4 +1,4 @@
-import 'package:all_parking/widgets/default_text_form_field.dart';
+import 'package:all_parking/widgets/default_text_field.dart';
 import 'package:flutter/material.dart';
 
 class StaticTextFormField extends StatefulWidget {
@@ -26,7 +26,7 @@ class _StaticTextFormFieldState extends State<StaticTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextFormField(
+    return DefaultTextField(
       labelText: widget.labelText,
       enabled: false,
       controller: _controller,

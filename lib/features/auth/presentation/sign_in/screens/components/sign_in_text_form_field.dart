@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../widgets/default_text_form_field.dart';
+import '../../../../../../widgets/default_text_field.dart';
 import '../../../../core/errors/auth_failure.dart';
 import '../../bloc/sign_in_bloc.dart';
 
@@ -25,7 +25,7 @@ class SignInTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextFormField(
+    return DefaultTextField(
       labelText: labelText,
       onChanged: onChanged,
       obscureText: obscureText,
