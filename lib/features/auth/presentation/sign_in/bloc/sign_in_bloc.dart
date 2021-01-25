@@ -16,9 +16,8 @@ part 'sign_in_state.dart';
 @injectable
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final SignIn signIn;
-  final Validators validators;
 
-  SignInBloc({@required this.signIn, @required this.validators}) : super(SignInState.initial());
+  SignInBloc(this.signIn) : super(SignInState.initial());
 
   @override
   Stream<SignInState> mapEventToState(SignInEvent event) async* {
@@ -43,7 +42,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           authFailureOrSuccessOption: none(),
         );
 
-        if (validators.isValidEmail(state.email)) {
+        if (Validators.isValidEmail(state.email)) {
           authFailureOrSuccess = await signIn(email: state.email, password: state.password);
         }
 

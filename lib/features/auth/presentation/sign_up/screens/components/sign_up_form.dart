@@ -39,7 +39,7 @@ class SignUpForm extends StatelessWidget {
         labelText: Messages.signUpFirstNameLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.firstNameChanged(value)),
-        validationEither: getIt<Validators>().validateDisplayName,
+        validationEither: Validators.validateDisplayName,
       ),
     );
   }
@@ -50,7 +50,7 @@ class SignUpForm extends StatelessWidget {
         labelText: Messages.signUpLastNameLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.lastNameChanged(value)),
-        validationEither: getIt<Validators>().validateDisplayName,
+        validationEither: Validators.validateDisplayName,
       ),
     );
   }
@@ -61,7 +61,7 @@ class SignUpForm extends StatelessWidget {
         labelText: Messages.signUpEmailLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.emailChanged(value)),
-        validationEither: getIt<Validators>().validateEmailAddress,
+        validationEither: Validators.validateEmailAddress,
       ),
     );
   }
@@ -72,7 +72,7 @@ class SignUpForm extends StatelessWidget {
         labelText: Messages.signUpPasswordLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.passwordChanged(value)),
-        validationEither: getIt<Validators>().validatePassword,
+        validationEither: Validators.validatePassword,
         obscureText: true,
       ),
     );
@@ -83,7 +83,7 @@ class SignUpForm extends StatelessWidget {
       builder: (context, state) => AuthTextFormField(
         labelText: Messages.signUpConfirmPasswordLabel,
         state: state as ValidationFormState,
-        validationEither: (value) => getIt<Validators>().validateConfirmPassword(value, state.password),
+        validationEither: (value) => Validators.validateConfirmPassword(value, state.password),
         onChanged: (value) => context.read<SignUpBloc>().add(SignUpEvent.confirmPasswordChanged(value)),
         obscureText: true,
       ),

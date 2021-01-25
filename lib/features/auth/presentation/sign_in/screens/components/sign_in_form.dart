@@ -35,7 +35,7 @@ class SignInForm extends StatelessWidget {
         state: state,
         onChanged: (value) => context.read<SignInBloc>().add(SignInEvent.emailChanged(value)),
         keyboardType: TextInputType.emailAddress,
-        validationEither: getIt<Validators>().validateEmailAddress,
+        validationEither: Validators.validateEmailAddress,
       ),
     );
   }
@@ -49,7 +49,7 @@ class SignInForm extends StatelessWidget {
         onChanged: (value) => context.read<SignInBloc>().add(SignInEvent.passwordChanged(value)),
         obscureText: true,
         keyboardType: TextInputType.emailAddress,
-        validationEither: getIt<Validators>().validatePassword,
+        validationEither: Validators.validatePassword,
       ),
     );
   }

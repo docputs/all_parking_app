@@ -39,7 +39,7 @@ class AddParkingLotForm extends StatelessWidget {
           labelText: 'Nome do estacionamento',
           state: state as ValidationFormState,
           onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedTitle(value)),
-          validationEither: getIt<Validators>().validateParkingLotTitle,
+          validationEither: Validators.validateParkingLotTitle,
         );
       },
     );
@@ -53,7 +53,7 @@ class AddParkingLotForm extends StatelessWidget {
           labelText: 'CEP',
           state: state as ValidationFormState,
           onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedCep(value)),
-          validationEither: getIt<Validators>().validateCep,
+          validationEither: Validators.validateCep,
           keyboardType: TextInputType.number,
         );
       },
@@ -118,7 +118,7 @@ class AddParkingLotForm extends StatelessWidget {
         labelText: 'Número de vagas',
         state: state as ValidationFormState,
         onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedAvailableSpots(value)),
-        validationEither: getIt<Validators>().validateAvailableSpotsField,
+        validationEither: Validators.validateAvailableSpotsField,
         keyboardType: TextInputType.number,
       ),
     );
@@ -131,7 +131,7 @@ class AddParkingLotForm extends StatelessWidget {
         labelText: 'Valor por hora',
         state: state as ValidationFormState,
         onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedPricePerHour(value)),
-        validationEither: getIt<Validators>().validatePricePerHour,
+        validationEither: Validators.validatePricePerHour,
         keyboardType: TextInputType.number,
       ),
     );

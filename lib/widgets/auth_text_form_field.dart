@@ -3,7 +3,7 @@ import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-import 'default_text_form_field.dart';
+import 'default_text_field.dart';
 
 class AuthTextFormField extends StatelessWidget {
   final String labelText;
@@ -25,7 +25,7 @@ class AuthTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextFormField(
+    return DefaultTextField(
       labelText: labelText,
       onChanged: onChanged,
       obscureText: obscureText,

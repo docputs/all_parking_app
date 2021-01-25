@@ -16,9 +16,8 @@ part 'sign_up_state.dart';
 @injectable
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final SignUp _signUp;
-  final Validators _validators;
 
-  SignUpBloc(this._signUp, this._validators) : super(SignUpState.initial());
+  SignUpBloc(this._signUp) : super(SignUpState.initial());
 
   @override
   Stream<SignUpState> mapEventToState(SignUpEvent event) async* {
@@ -61,11 +60,11 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           signUpSuccessOrFailureOption: none(),
         );
 
-        if (_validators.isValidDisplayName(state.firstName) &&
-            _validators.isValidDisplayName(state.lastName) &&
-            _validators.isValidEmail(state.email) &&
-            _validators.isValidPassword(state.password) &&
-            _validators.isPasswordMatch(state.password, state.confirmPassword)) {
+        if (Validators.isValidDisplayName(state.firstName) &&
+            Validators.isValidDisplayName(state.lastName) &&
+            Validators.isValidEmail(state.email) &&
+            Validators.isValidPassword(state.password) &&
+            Validators.isPasswordMatch(state.password, state.confirmPassword)) {
           signUpSuccessOrFailure = await _signUp(
             firstName: state.firstName,
             lastName: state.lastName,
