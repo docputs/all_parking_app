@@ -38,5 +38,5 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   @override
-  Future<void> close() => Future.wait([super.close(), _subscription.cancel()]);
+  Future<void> close() => Future.wait([super.close(), _subscription?.cancel()]);
 }
