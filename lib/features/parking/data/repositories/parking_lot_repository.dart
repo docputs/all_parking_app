@@ -59,6 +59,7 @@ class ParkingLotRepository implements IParkingLotRepository {
   @override
   Future<Either<ParkingFailure, List<ParkingLot>>> fetchAll(Manager manager) async {
     try {
+      if (manager.parkingLots.isEmpty()) return right(List.empty());
       final snapshot = await _firestore.parkingLotsCollection.where(FieldPath.documentId, whereIn: manager.parkingLots.asList()).get();
       return right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toList());
     } on FirebaseException catch (e) {
@@ -72,7 +73,6 @@ class ParkingLotRepository implements IParkingLotRepository {
 
   @override
   Stream<Either<ParkingFailure, ParkingLot>> watchById(String id) {
-    final stream = _firestore.parkingLotsCollection.where(FieldPath.documentId, isEqualTo: id).snapshots();
     return _firestore.parkingLotsCollection
         .where(FieldPath.documentId, isEqualTo: id)
         .snapshots()
