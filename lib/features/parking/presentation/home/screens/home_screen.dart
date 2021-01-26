@@ -1,4 +1,3 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/home_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_selector/parking_lot_selector_bloc.dart';
@@ -74,7 +73,8 @@ class HomeScreen extends StatelessWidget {
           return state.maybeWhen(
             loading: () => Text('Carregando...'),
             success: (parkingLot) => Text(parkingLot.title),
-            orElse: () => const SizedBox(),
+            error: (failure) => Text(failure.toString()),
+            orElse: () => const Text('All Parking'),
           );
         },
       ),
@@ -91,9 +91,9 @@ class HomeScreen extends StatelessWidget {
                         if (value != null) FlushbarHelper.createInformation(message: ' salvo com sucesso!').show(context);
                       });
                     } else {
-                      Navigator.of(context)
-                          .pushNamed(Constants.selectParkingLotRoute)
-                          .then((parkingLot) => context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot)));
+                      Navigator.of(context).pushNamed(Constants.selectParkingLotRoute).then((parkingLot) {
+                        if (parkingLot != null) context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot));
+                      });
                     }
                   },
                 );
