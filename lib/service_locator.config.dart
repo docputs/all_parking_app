@@ -12,6 +12,7 @@ import 'package:injectable/injectable.dart';
 import 'features/parking/domain/usecases/add_parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
 import 'features/auth/presentation/auth_bloc.dart';
+import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
 import 'features/parking/presentation/home/bloc/home_bloc.dart';
 import 'features/parking/domain/repositories/i_manager_repository.dart';
@@ -19,6 +20,7 @@ import 'features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'features/auth/domain/repositories/i_user_repository.dart';
 import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
+import 'features/parking/presentation/home/bloc/parking_lot_selector/parking_lot_selector_bloc.dart';
 import 'service_locator.dart';
 import 'features/auth/domain/usecases/sign_in.dart';
 import 'features/auth/presentation/sign_in/bloc/sign_in_bloc.dart';
@@ -55,9 +57,13 @@ GetIt $initGetIt(
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AddParkingLotBloc>(() => AddParkingLotBloc(get<AddParkingLot>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IUserRepository>()));
+  gh.lazySingleton<FetchParkingLots>(() => FetchParkingLots(
+      get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<GetCurrentUser>(
       () => GetCurrentUser(get<IUserRepository>()));
   gh.factory<HomeBloc>(() => HomeBloc(get<WatchParkingLot>()));
+  gh.factory<ParkingLotSelectorBloc>(
+      () => ParkingLotSelectorBloc(get<FetchParkingLots>()));
   return get;
 }
 

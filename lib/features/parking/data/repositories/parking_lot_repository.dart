@@ -57,9 +57,17 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Future<Either<ParkingFailure, List<ParkingLot>>> fetchAll(Manager manager) {
-    // TODO: implement fetchAll
-    throw UnimplementedError();
+  Future<Either<ParkingFailure, List<ParkingLot>>> fetchAll(Manager manager) async {
+    try {
+      final snapshot = await _firestore.parkingLotsCollection.where(FieldPath.documentId, whereIn: manager.parkingLots.asList()).get();
+      return right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toList());
+    } on FirebaseException catch (e) {
+      print(e);
+      return left(const ParkingFailure.serverFailure(Messages.serverFailure));
+    } catch (e) {
+      print(e);
+      return left(const ParkingFailure.unknownFailure(Messages.unknownFailure));
+    }
   }
 
   @override
