@@ -1,5 +1,7 @@
-class InputConverter {
-  static double stringToDouble(String input) => double.tryParse(input);
+import 'package:dartz/dartz.dart';
 
-  static int stringToInteger(String input) => int.tryParse(input);
+class InputConverter {
+  static Option<double> stringToDouble(String input) => optionOf(double.tryParse(input));
+
+  static Option<int> stringToInteger(String input) => optionOf(int.tryParse(input));
 }

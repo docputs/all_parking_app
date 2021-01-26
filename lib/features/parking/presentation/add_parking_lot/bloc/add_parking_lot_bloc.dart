@@ -28,12 +28,16 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
         yield state;
       },
       changedAvailableSpots: (e) async* {
-        final parsedInput = InputConverter.stringToInteger(e.input);
-        if (parsedInput != null)
-          yield state.copyWith(
-            parkingLot: state.parkingLot.copyWith(availableSpots: parsedInput),
-            saveFailureOrSuccessOption: none(),
-          );
+        final parsedInputOption = InputConverter.stringToInteger(e.input);
+        yield parsedInputOption.fold(
+          () => null,
+          (parsedInput) {
+            return state.copyWith(
+              parkingLot: state.parkingLot.copyWith(availableSpots: parsedInput),
+              saveFailureOrSuccessOption: none(),
+            );
+          },
+        );
       },
       changedCep: (e) async* {
         if (e.input.length == 8) {
@@ -47,12 +51,16 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
         }
       },
       changedPricePerHour: (e) async* {
-        final parsedInput = InputConverter.stringToDouble(e.input);
-        if (parsedInput != null)
-          yield state.copyWith(
-            parkingLot: state.parkingLot.copyWith(pricePerHour: parsedInput),
-            saveFailureOrSuccessOption: none(),
-          );
+        final parsedInputOption = InputConverter.stringToDouble(e.input);
+        yield parsedInputOption.fold(
+          () => state,
+          (parsedInput) {
+            return state.copyWith(
+              parkingLot: state.parkingLot.copyWith(pricePerHour: parsedInput),
+              saveFailureOrSuccessOption: none(),
+            );
+          },
+        );
       },
       changedTitle: (e) async* {
         yield state.copyWith(
