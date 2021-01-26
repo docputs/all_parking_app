@@ -8,6 +8,151 @@ part of 'parked_vehicle.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+QRCode _$QRCodeFromJson(Map<String, dynamic> json) {
+  return _QRCode.fromJson(json);
+}
+
+/// @nodoc
+class _$QRCodeTearOff {
+  const _$QRCodeTearOff();
+
+// ignore: unused_element
+  _QRCode call(String value) {
+    return _QRCode(
+      value,
+    );
+  }
+
+// ignore: unused_element
+  QRCode fromJson(Map<String, Object> json) {
+    return QRCode.fromJson(json);
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $QRCode = _$QRCodeTearOff();
+
+/// @nodoc
+mixin _$QRCode {
+  String get value;
+
+  Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
+  $QRCodeCopyWith<QRCode> get copyWith;
+}
+
+/// @nodoc
+abstract class $QRCodeCopyWith<$Res> {
+  factory $QRCodeCopyWith(QRCode value, $Res Function(QRCode) then) =
+      _$QRCodeCopyWithImpl<$Res>;
+  $Res call({String value});
+}
+
+/// @nodoc
+class _$QRCodeCopyWithImpl<$Res> implements $QRCodeCopyWith<$Res> {
+  _$QRCodeCopyWithImpl(this._value, this._then);
+
+  final QRCode _value;
+  // ignore: unused_field
+  final $Res Function(QRCode) _then;
+
+  @override
+  $Res call({
+    Object value = freezed,
+  }) {
+    return _then(_value.copyWith(
+      value: value == freezed ? _value.value : value as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$QRCodeCopyWith<$Res> implements $QRCodeCopyWith<$Res> {
+  factory _$QRCodeCopyWith(_QRCode value, $Res Function(_QRCode) then) =
+      __$QRCodeCopyWithImpl<$Res>;
+  @override
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$QRCodeCopyWithImpl<$Res> extends _$QRCodeCopyWithImpl<$Res>
+    implements _$QRCodeCopyWith<$Res> {
+  __$QRCodeCopyWithImpl(_QRCode _value, $Res Function(_QRCode) _then)
+      : super(_value, (v) => _then(v as _QRCode));
+
+  @override
+  _QRCode get _value => super._value as _QRCode;
+
+  @override
+  $Res call({
+    Object value = freezed,
+  }) {
+    return _then(_QRCode(
+      value == freezed ? _value.value : value as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_QRCode with DiagnosticableTreeMixin implements _QRCode {
+  const _$_QRCode(this.value) : assert(value != null);
+
+  factory _$_QRCode.fromJson(Map<String, dynamic> json) =>
+      _$_$_QRCodeFromJson(json);
+
+  @override
+  final String value;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'QRCode(value: $value)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'QRCode'))
+      ..add(DiagnosticsProperty('value', value));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _QRCode &&
+            (identical(other.value, value) ||
+                const DeepCollectionEquality().equals(other.value, value)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
+
+  @JsonKey(ignore: true)
+  @override
+  _$QRCodeCopyWith<_QRCode> get copyWith =>
+      __$QRCodeCopyWithImpl<_QRCode>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_QRCodeToJson(this);
+  }
+}
+
+abstract class _QRCode implements QRCode {
+  const factory _QRCode(String value) = _$_QRCode;
+
+  factory _QRCode.fromJson(Map<String, dynamic> json) = _$_QRCode.fromJson;
+
+  @override
+  String get value;
+  @override
+  @JsonKey(ignore: true)
+  _$QRCodeCopyWith<_QRCode> get copyWith;
+}
 
 /// @nodoc
 class _$ParkedVehicleTearOff {
@@ -65,6 +210,8 @@ abstract class $ParkedVehicleCopyWith<$Res> {
       DateTime checkIn,
       DateTime checkOut,
       String observations});
+
+  $QRCodeCopyWith<$Res> get id;
 }
 
 /// @nodoc
@@ -100,6 +247,16 @@ class _$ParkedVehicleCopyWithImpl<$Res>
           : observations as String,
     ));
   }
+
+  @override
+  $QRCodeCopyWith<$Res> get id {
+    if (_value.id == null) {
+      return null;
+    }
+    return $QRCodeCopyWith<$Res>(_value.id, (value) {
+      return _then(_value.copyWith(id: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -117,6 +274,9 @@ abstract class _$ParkedVehicleCopyWith<$Res>
       DateTime checkIn,
       DateTime checkOut,
       String observations});
+
+  @override
+  $QRCodeCopyWith<$Res> get id;
 }
 
 /// @nodoc

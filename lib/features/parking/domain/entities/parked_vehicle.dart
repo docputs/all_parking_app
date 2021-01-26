@@ -6,23 +6,11 @@ part 'parked_vehicle.g.dart';
 
 enum VehicleColor { black, silver, white, gray, green, blue, red, brown, yellow }
 
-@JsonSerializable()
-class QRCode {
-  final String value;
-
-  const QRCode(this.value);
+@freezed
+abstract class QRCode with _$QRCode {
+  const factory QRCode(String value) = _QRCode;
 
   factory QRCode.fromJson(Map<String, dynamic> json) => _$QRCodeFromJson(json);
-
-  Map<String, dynamic> toJson() => _$QRCodeToJson(this);
-
-  QRCode copyWith({
-    String value,
-  }) {
-    return QRCode(
-      value ?? this.value,
-    );
-  }
 }
 
 @freezed
