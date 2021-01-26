@@ -14,11 +14,6 @@ class _$AddParkingLotEventTearOff {
   const _$AddParkingLotEventTearOff();
 
 // ignore: unused_element
-  _Started started() {
-    return const _Started();
-  }
-
-// ignore: unused_element
   _ChangedTitle changedTitle(String input) {
     return _ChangedTitle(
       input,
@@ -60,7 +55,6 @@ const $AddParkingLotEvent = _$AddParkingLotEventTearOff();
 mixin _$AddParkingLotEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
     @required TResult changedTitle(String input),
     @required TResult changedCep(String input),
     @required TResult changedAvailableSpots(String input),
@@ -69,7 +63,6 @@ mixin _$AddParkingLotEvent {
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
     TResult changedTitle(String input),
     TResult changedCep(String input),
     TResult changedAvailableSpots(String input),
@@ -79,7 +72,6 @@ mixin _$AddParkingLotEvent {
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
     @required TResult changedTitle(_ChangedTitle value),
     @required TResult changedCep(_ChangedCep value),
     @required TResult changedAvailableSpots(_ChangedAvailableSpots value),
@@ -88,7 +80,6 @@ mixin _$AddParkingLotEvent {
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
     TResult changedTitle(_ChangedTitle value),
     TResult changedCep(_ChangedCep value),
     TResult changedAvailableSpots(_ChangedAvailableSpots value),
@@ -113,119 +104,6 @@ class _$AddParkingLotEventCopyWithImpl<$Res>
   final AddParkingLotEvent _value;
   // ignore: unused_field
   final $Res Function(AddParkingLotEvent) _then;
-}
-
-/// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$StartedCopyWithImpl<$Res>
-    extends _$AddParkingLotEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
-
-  @override
-  _Started get _value => super._value as _Started;
-}
-
-/// @nodoc
-class _$_Started implements _Started {
-  const _$_Started();
-
-  @override
-  String toString() {
-    return 'AddParkingLotEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult started(),
-    @required TResult changedTitle(String input),
-    @required TResult changedCep(String input),
-    @required TResult changedAvailableSpots(String input),
-    @required TResult changedPricePerHour(String input),
-    @required TResult parkingLotSubmitted(),
-  }) {
-    assert(started != null);
-    assert(changedTitle != null);
-    assert(changedCep != null);
-    assert(changedAvailableSpots != null);
-    assert(changedPricePerHour != null);
-    assert(parkingLotSubmitted != null);
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult started(),
-    TResult changedTitle(String input),
-    TResult changedCep(String input),
-    TResult changedAvailableSpots(String input),
-    TResult changedPricePerHour(String input),
-    TResult parkingLotSubmitted(),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
-    @required TResult changedTitle(_ChangedTitle value),
-    @required TResult changedCep(_ChangedCep value),
-    @required TResult changedAvailableSpots(_ChangedAvailableSpots value),
-    @required TResult changedPricePerHour(_ChangedPricePerHour value),
-    @required TResult parkingLotSubmitted(_ParkingLotSubmitted value),
-  }) {
-    assert(started != null);
-    assert(changedTitle != null);
-    assert(changedCep != null);
-    assert(changedAvailableSpots != null);
-    assert(changedPricePerHour != null);
-    assert(parkingLotSubmitted != null);
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
-    TResult changedTitle(_ChangedTitle value),
-    TResult changedCep(_ChangedCep value),
-    TResult changedAvailableSpots(_ChangedAvailableSpots value),
-    TResult changedPricePerHour(_ChangedPricePerHour value),
-    TResult parkingLotSubmitted(_ParkingLotSubmitted value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements AddParkingLotEvent {
-  const factory _Started() = _$_Started;
 }
 
 /// @nodoc
@@ -289,14 +167,12 @@ class _$_ChangedTitle implements _ChangedTitle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
     @required TResult changedTitle(String input),
     @required TResult changedCep(String input),
     @required TResult changedAvailableSpots(String input),
     @required TResult changedPricePerHour(String input),
     @required TResult parkingLotSubmitted(),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -308,7 +184,6 @@ class _$_ChangedTitle implements _ChangedTitle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
     TResult changedTitle(String input),
     TResult changedCep(String input),
     TResult changedAvailableSpots(String input),
@@ -326,14 +201,12 @@ class _$_ChangedTitle implements _ChangedTitle {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
     @required TResult changedTitle(_ChangedTitle value),
     @required TResult changedCep(_ChangedCep value),
     @required TResult changedAvailableSpots(_ChangedAvailableSpots value),
     @required TResult changedPricePerHour(_ChangedPricePerHour value),
     @required TResult parkingLotSubmitted(_ParkingLotSubmitted value),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -345,7 +218,6 @@ class _$_ChangedTitle implements _ChangedTitle {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
     TResult changedTitle(_ChangedTitle value),
     TResult changedCep(_ChangedCep value),
     TResult changedAvailableSpots(_ChangedAvailableSpots value),
@@ -430,14 +302,12 @@ class _$_ChangedCep implements _ChangedCep {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
     @required TResult changedTitle(String input),
     @required TResult changedCep(String input),
     @required TResult changedAvailableSpots(String input),
     @required TResult changedPricePerHour(String input),
     @required TResult parkingLotSubmitted(),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -449,7 +319,6 @@ class _$_ChangedCep implements _ChangedCep {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
     TResult changedTitle(String input),
     TResult changedCep(String input),
     TResult changedAvailableSpots(String input),
@@ -467,14 +336,12 @@ class _$_ChangedCep implements _ChangedCep {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
     @required TResult changedTitle(_ChangedTitle value),
     @required TResult changedCep(_ChangedCep value),
     @required TResult changedAvailableSpots(_ChangedAvailableSpots value),
     @required TResult changedPricePerHour(_ChangedPricePerHour value),
     @required TResult parkingLotSubmitted(_ParkingLotSubmitted value),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -486,7 +353,6 @@ class _$_ChangedCep implements _ChangedCep {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
     TResult changedTitle(_ChangedTitle value),
     TResult changedCep(_ChangedCep value),
     TResult changedAvailableSpots(_ChangedAvailableSpots value),
@@ -572,14 +438,12 @@ class _$_ChangedAvailableSpots implements _ChangedAvailableSpots {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
     @required TResult changedTitle(String input),
     @required TResult changedCep(String input),
     @required TResult changedAvailableSpots(String input),
     @required TResult changedPricePerHour(String input),
     @required TResult parkingLotSubmitted(),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -591,7 +455,6 @@ class _$_ChangedAvailableSpots implements _ChangedAvailableSpots {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
     TResult changedTitle(String input),
     TResult changedCep(String input),
     TResult changedAvailableSpots(String input),
@@ -609,14 +472,12 @@ class _$_ChangedAvailableSpots implements _ChangedAvailableSpots {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
     @required TResult changedTitle(_ChangedTitle value),
     @required TResult changedCep(_ChangedCep value),
     @required TResult changedAvailableSpots(_ChangedAvailableSpots value),
     @required TResult changedPricePerHour(_ChangedPricePerHour value),
     @required TResult parkingLotSubmitted(_ParkingLotSubmitted value),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -628,7 +489,6 @@ class _$_ChangedAvailableSpots implements _ChangedAvailableSpots {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
     TResult changedTitle(_ChangedTitle value),
     TResult changedCep(_ChangedCep value),
     TResult changedAvailableSpots(_ChangedAvailableSpots value),
@@ -714,14 +574,12 @@ class _$_ChangedPricePerHour implements _ChangedPricePerHour {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
     @required TResult changedTitle(String input),
     @required TResult changedCep(String input),
     @required TResult changedAvailableSpots(String input),
     @required TResult changedPricePerHour(String input),
     @required TResult parkingLotSubmitted(),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -733,7 +591,6 @@ class _$_ChangedPricePerHour implements _ChangedPricePerHour {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
     TResult changedTitle(String input),
     TResult changedCep(String input),
     TResult changedAvailableSpots(String input),
@@ -751,14 +608,12 @@ class _$_ChangedPricePerHour implements _ChangedPricePerHour {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
     @required TResult changedTitle(_ChangedTitle value),
     @required TResult changedCep(_ChangedCep value),
     @required TResult changedAvailableSpots(_ChangedAvailableSpots value),
     @required TResult changedPricePerHour(_ChangedPricePerHour value),
     @required TResult parkingLotSubmitted(_ParkingLotSubmitted value),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -770,7 +625,6 @@ class _$_ChangedPricePerHour implements _ChangedPricePerHour {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
     TResult changedTitle(_ChangedTitle value),
     TResult changedCep(_ChangedCep value),
     TResult changedAvailableSpots(_ChangedAvailableSpots value),
@@ -833,14 +687,12 @@ class _$_ParkingLotSubmitted implements _ParkingLotSubmitted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
     @required TResult changedTitle(String input),
     @required TResult changedCep(String input),
     @required TResult changedAvailableSpots(String input),
     @required TResult changedPricePerHour(String input),
     @required TResult parkingLotSubmitted(),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -852,7 +704,6 @@ class _$_ParkingLotSubmitted implements _ParkingLotSubmitted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
     TResult changedTitle(String input),
     TResult changedCep(String input),
     TResult changedAvailableSpots(String input),
@@ -870,14 +721,12 @@ class _$_ParkingLotSubmitted implements _ParkingLotSubmitted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
     @required TResult changedTitle(_ChangedTitle value),
     @required TResult changedCep(_ChangedCep value),
     @required TResult changedAvailableSpots(_ChangedAvailableSpots value),
     @required TResult changedPricePerHour(_ChangedPricePerHour value),
     @required TResult parkingLotSubmitted(_ParkingLotSubmitted value),
   }) {
-    assert(started != null);
     assert(changedTitle != null);
     assert(changedCep != null);
     assert(changedAvailableSpots != null);
@@ -889,7 +738,6 @@ class _$_ParkingLotSubmitted implements _ParkingLotSubmitted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
     TResult changedTitle(_ChangedTitle value),
     TResult changedCep(_ChangedCep value),
     TResult changedAvailableSpots(_ChangedAvailableSpots value),

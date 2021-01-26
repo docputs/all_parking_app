@@ -24,9 +24,6 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
   @override
   Stream<AddParkingLotState> mapEventToState(AddParkingLotEvent event) async* {
     yield* event.map(
-      started: (e) async* {
-        yield state;
-      },
       changedAvailableSpots: (e) async* {
         final parsedInputOption = InputConverter.stringToInteger(e.input);
         yield parsedInputOption.fold(
