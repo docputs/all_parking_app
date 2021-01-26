@@ -21,9 +21,7 @@ class HomeScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.maybeMap(
-          unauthenticated: (_) {
-            Navigator.of(context).pushReplacementNamed(Constants.signInRoute);
-          },
+          unauthenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
           orElse: () {},
         );
       },
@@ -36,20 +34,8 @@ class HomeScreen extends StatelessWidget {
         customAppBar: _buildCustomAppBar(context),
         drawer: const DefaultDrawer(),
         scrollable: true,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.directions_car),
-        ),
-        body: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            return state.when(
-              initial: () => const SizedBox(),
-              loading: () => const Center(child: CircularProgressIndicator()),
-              success: (parkingLot) => ParkingLotDashboard(parkingLot),
-              error: (failure) => Text('$failure'),
-            );
-          },
-        ),
+        floatingActionButton: _buildCustomFAB(),
+        body: _buildBody(),
       ),
     );
   }
@@ -81,6 +67,26 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ],
+    );
+  }
+
+  Widget _buildCustomFAB() {
+    return FloatingActionButton(
+      onPressed: () {},
+      child: Icon(Icons.directions_car),
+    );
+  }
+
+  Widget _buildBody() {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () => const SizedBox(),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          success: (parkingLot) => ParkingLotDashboard(parkingLot),
+          error: (failure) => Text('$failure'),
+        );
+      },
     );
   }
 
