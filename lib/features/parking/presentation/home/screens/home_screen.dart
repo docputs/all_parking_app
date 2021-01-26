@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/home_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_selector/parking_lot_selector_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../../auth/presentation/auth_bloc.dart';
+import 'components/default_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -32,19 +34,7 @@ class HomeScreen extends StatelessWidget {
           getIt<AddParkingLotBloc>(),
         ],
         customAppBar: _buildCustomAppBar(context),
-        drawer: Drawer(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RaisedButton(
-                child: Text('LOGOUT'),
-                onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.signedOut());
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: const DefaultDrawer(),
         scrollable: true,
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
@@ -94,7 +84,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void _calculateAppBarNavigation(BuildContext context, List<ParkingLots> parkingLots) {
+  void _calculateAppBarNavigation(BuildContext context, List<ParkingLot> parkingLots) {
     if (parkingLots.isEmpty) {
       Navigator.of(context).pushNamed(Constants.addParkingLotRoute).then((value) {
         if (value != null) FlushbarHelper.createInformation(message: ' salvo com sucesso!').show(context);
