@@ -16,51 +16,49 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => getIt<ParkingLotSelectorBloc>()..add(const ParkingLotSelectorEvent.started())),
-        BlocProvider(create: (context) => getIt<HomeBloc>()),
-        BlocProvider(create: (context) => getIt<AddParkingLotBloc>()),
-      ],
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          state.maybeMap(
-            unauthenticated: (_) {
-              Navigator.of(context).pushReplacementNamed(Constants.signInRoute);
-            },
-            orElse: () {},
-          );
-        },
-        child: AppScaffold(
-          customAppBar: _buildCustomAppBar(context),
-          drawer: Drawer(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RaisedButton(
-                  child: Text('LOGOUT'),
-                  onPressed: () {
-                    context.read<AuthBloc>().add(const AuthEvent.signedOut());
-                  },
-                ),
-              ],
-            ),
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        state.maybeMap(
+          unauthenticated: (_) {
+            Navigator.of(context).pushReplacementNamed(Constants.signInRoute);
+          },
+          orElse: () {},
+        );
+      },
+      child: AppScaffold(
+        blocs: [
+          getIt<HomeBloc>(),
+          getIt<ParkingLotSelectorBloc>()..add(const ParkingLotSelectorEvent.started()),
+          getIt<AddParkingLotBloc>(),
+        ],
+        customAppBar: _buildCustomAppBar(context),
+        drawer: Drawer(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RaisedButton(
+                child: Text('LOGOUT'),
+                onPressed: () {
+                  context.read<AuthBloc>().add(const AuthEvent.signedOut());
+                },
+              ),
+            ],
           ),
-          scrollable: true,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            child: Icon(Icons.directions_car),
-          ),
-          body: BlocBuilder<HomeBloc, HomeState>(
-            builder: (context, state) {
-              return state.when(
-                initial: () => const SizedBox(),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                success: (parkingLot) => ParkingLotDashboard(parkingLot),
-                error: (failure) => Text('$failure'),
-              );
-            },
-          ),
+        ),
+        scrollable: true,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.directions_car),
+        ),
+        body: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => const SizedBox(),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              success: (parkingLot) => ParkingLotDashboard(parkingLot),
+              error: (failure) => Text('$failure'),
+            );
+          },
         ),
       ),
     );
@@ -85,17 +83,7 @@ class HomeScreen extends StatelessWidget {
               success: (parkingLots) {
                 return IconButton(
                   icon: Icon(parkingLots.isEmpty ? Icons.add : Icons.place),
-                  onPressed: () {
-                    if (parkingLots.isEmpty) {
-                      Navigator.of(context).pushNamed(Constants.addParkingLotRoute).then((value) {
-                        if (value != null) FlushbarHelper.createInformation(message: ' salvo com sucesso!').show(context);
-                      });
-                    } else {
-                      Navigator.of(context).pushNamed(Constants.selectParkingLotRoute).then((parkingLot) {
-                        if (parkingLot != null) context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot));
-                      });
-                    }
-                  },
+                  onPressed: () => _calculateAppBarNavigation(context, parkingLots),
                 );
               },
               orElse: () => const SizedBox(),
@@ -104,5 +92,17 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _calculateAppBarNavigation(BuildContext context, List<ParkingLots> parkingLots) {
+    if (parkingLots.isEmpty) {
+      Navigator.of(context).pushNamed(Constants.addParkingLotRoute).then((value) {
+        if (value != null) FlushbarHelper.createInformation(message: ' salvo com sucesso!').show(context);
+      });
+    } else {
+      Navigator.of(context).pushNamed(Constants.selectParkingLotRoute).then((parkingLot) {
+        if (parkingLot != null) context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot));
+      });
+    }
   }
 }
