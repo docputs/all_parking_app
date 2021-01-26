@@ -1,9 +1,10 @@
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/utils/car_color_converter.dart';
+import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
+
+import 'cards_display.dart';
 
 class ParkingLotDashboard extends StatelessWidget {
   final ParkingLot parkingLot;
@@ -24,30 +25,7 @@ class ParkingLotDashboard extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Card(
-          elevation: 3,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          child: Container(
-            padding: const EdgeInsets.all(25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.accentColor, width: 15)),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(Messages.remainingCards(parkingLot), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                    Text(Messages.usedCards(parkingLot), style: TextStyle(color: AppColors.textColor, fontSize: 12)),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
+        CardsDisplay(parkingLot),
         const SizedBox(height: 40),
         Text(
           'Veículos estacionados',
@@ -58,19 +36,10 @@ class ParkingLotDashboard extends StatelessWidget {
           ),
         ),
         ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
-            final vehicle = parkedVehicles[index];
-            return ListTile(
-              contentPadding: const EdgeInsets.all(0),
-              title: Text(vehicle.title),
-              subtitle: Text(vehicle.licensePlate),
-              leading: CircleAvatar(backgroundColor: VehicleColorConverter.convert(vehicle.color)),
-              trailing: Icon(Icons.arrow_forward_ios, size: 18),
-            );
-          },
-          itemCount: 3,
           shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (context, index) => ParkedVehicleTile(parkingLot.parkedVehicles[index]),
+          itemCount: parkingLot.parkedVehicles.length,
         ),
       ],
     );
