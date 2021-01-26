@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/home_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_selector/parking_lot_selector_bloc.dart';
@@ -55,7 +56,7 @@ class HomeScreen extends StatelessWidget {
             builder: (context, state) {
               return state.when(
                 initial: () => const SizedBox(),
-                loading: () => const CircularProgressIndicator(),
+                loading: () => const Center(child: CircularProgressIndicator()),
                 success: (parkingLot) => ParkingLotDashboard(parkingLot),
                 error: (failure) => Text('$failure'),
               );
@@ -68,7 +69,15 @@ class HomeScreen extends StatelessWidget {
 
   AppBar _buildCustomAppBar(BuildContext context) {
     return AppBar(
-      title: Text('Estacionamento X'),
+      title: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            loading: () => Text('Carregando...'),
+            success: (parkingLot) => Text(parkingLot.title),
+            orElse: () => const SizedBox(),
+          );
+        },
+      ),
       actions: [
         BlocBuilder<ParkingLotSelectorBloc, ParkingLotSelectorState>(
           builder: (context, state) {
@@ -82,8 +91,9 @@ class HomeScreen extends StatelessWidget {
                         if (value != null) FlushbarHelper.createInformation(message: ' salvo com sucesso!').show(context);
                       });
                     } else {
-                      print(parkingLots);
-                      Navigator.of(context).pushNamed(Constants.selectParkingLotRoute);
+                      Navigator.of(context)
+                          .pushNamed(Constants.selectParkingLotRoute)
+                          .then((parkingLot) => context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot)));
                     }
                   },
                 );

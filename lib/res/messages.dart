@@ -1,3 +1,5 @@
+import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+
 class Messages {
   //AuthFailure
   static const emailBadlyFormatted = 'E-mail inválido';
@@ -34,4 +36,9 @@ class Messages {
   static const signUpPasswordLabel = 'Senha';
   static const signUpConfirmPasswordLabel = 'Confirme sua senha';
   static const signUpCreateAccountButton = 'CRIAR CONTA';
+
+  //Home
+  static const cardsLabel = 'Cartões';
+  static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.parkedVehicles.length} restantes';
+  static String usedCards(ParkingLot parkingLot) => '${parkingLot.parkedVehicles.length} de ${parkingLot.availableSpots} cartões usados';
 }
