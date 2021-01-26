@@ -25,22 +25,23 @@ class HomeScreen extends StatelessWidget {
           orElse: () {},
         );
       },
-      child: AppScaffold(
-        blocs: [
-          getIt<HomeBloc>(),
-          getIt<ParkingLotSelectorBloc>()..add(const ParkingLotSelectorEvent.started()),
-          getIt<AddParkingLotBloc>(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => getIt<HomeBloc>()),
+          BlocProvider(create: (context) => getIt<ParkingLotSelectorBloc>()..add(const ParkingLotSelectorEvent.started())),
+          BlocProvider(create: (context) => getIt<AddParkingLotBloc>()),
         ],
-        customAppBar: _buildCustomAppBar(context),
-        drawer: const DefaultDrawer(),
-        scrollable: true,
-        floatingActionButton: _buildCustomFAB(),
-        body: _buildBody(),
+        child: AppScaffold(
+          customAppBar: _buildCustomAppBar(),
+          drawer: const DefaultDrawer(),
+          floatingActionButton: _buildCustomFAB(),
+          body: _buildBody(),
+        ),
       ),
     );
   }
 
-  AppBar _buildCustomAppBar(BuildContext context) {
+  AppBar _buildCustomAppBar() {
     return AppBar(
       title: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {

@@ -12,7 +12,7 @@ class AppScaffold extends StatelessWidget {
 
   const AppScaffold({
     Key key,
-    this.title,
+    this.title = '',
     this.body,
     this.floatingActionButton,
     this.scrollable = true,
@@ -23,17 +23,14 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: blocs.map((bloc) => BlocProvider.value(value: bloc)).toList(),
-      child: Scaffold(
-        drawer: drawer,
-        appBar: customAppBar ?? AppBar(title: Text(title)),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: _buildDefaultScreenBody(),
-        ),
-        floatingActionButton: floatingActionButton,
+    return Scaffold(
+      drawer: drawer,
+      appBar: customAppBar ?? AppBar(title: Text(title)),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: _buildDefaultScreenBody(),
       ),
+      floatingActionButton: floatingActionButton,
     );
   }
 
