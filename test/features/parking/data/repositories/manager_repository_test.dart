@@ -15,7 +15,7 @@ void main() {
   });
 
   test('should call Firebase Firestore with parsed ParkingLot and return unit', () async {
-    final result = await repository.update(manager);
+    final result = await repository.update(Fixtures.manager);
 
     print(mockFirestoreInstance.dump());
     expect(result, Right(unit));

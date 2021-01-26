@@ -15,7 +15,7 @@ void main() {
   });
 
   test('should call Firebase Firestore with parsed ParkingLot and return unit', () async {
-    final result = await repository.create(parkingLot);
+    final result = await repository.create(Fixtures.parkingLot);
 
     print(mockFirestoreInstance.dump());
     expect(result, Right(unit));

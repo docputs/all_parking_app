@@ -28,29 +28,29 @@ void main() {
     setUp(() {
       when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Right(unit));
       when(mockManagerRepository.update(any)).thenAnswer((_) async => Right(unit));
-      when(mockManagerRepository.read()).thenAnswer((_) async => Right(manager));
+      when(mockManagerRepository.read()).thenAnswer((_) async => Right(Fixtures.manager));
     });
 
     test('should call create on repository', () async {
-      await usecase(parkingLot);
+      await usecase(Fixtures.parkingLot);
 
       verify(mockParkingLotRepository.create(any));
     });
 
     test('should call read on ManagerRepository when ParkingLotRepository runs successfully', () async {
-      await usecase(parkingLot);
+      await usecase(Fixtures.parkingLot);
 
       verify(mockManagerRepository.read());
     });
 
     test('should call update on ManagerRepository with new manager data', () async {
-      await usecase(parkingLot);
+      await usecase(Fixtures.parkingLot);
 
-      verify(mockManagerRepository.update(newManager));
+      verify(mockManagerRepository.update(Fixtures.newManager));
     });
 
     test('should return unit when call runs successfully', () async {
-      final result = await usecase(parkingLot);
+      final result = await usecase(Fixtures.parkingLot);
 
       expect(result, Right(unit));
     });
@@ -60,17 +60,17 @@ void main() {
     test('should return ParkingFailure when repository fails', () async {
       when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
 
-      final result = await usecase(parkingLot);
+      final result = await usecase(Fixtures.parkingLot);
 
       expect(result, Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
     });
 
     test('should return ParkingFailure when ManagerRepository fails', () async {
       when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Right(unit));
-      when(mockManagerRepository.read()).thenAnswer((_) async => Right(manager));
+      when(mockManagerRepository.read()).thenAnswer((_) async => Right(Fixtures.manager));
       when(mockManagerRepository.update(any)).thenAnswer((_) async => Left(const ManagerFailure.serverFailure()));
 
-      final result = await usecase(parkingLot);
+      final result = await usecase(Fixtures.parkingLot);
 
       expect(result, Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
     });
