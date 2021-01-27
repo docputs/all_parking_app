@@ -31,7 +31,7 @@ class AddParkingLotForm extends StatelessWidget {
 
   Widget _buildTitleField() {
     return BlocBuilder<AddParkingLotBloc, AddParkingLotState>(
-      buildWhen: (p, c) => p.parkingLot.title != c.parkingLot.title,
+      buildWhen: (p, c) => p.parkingLot.title != c.parkingLot.title || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) {
         return ParkingLotTextFormField(
           labelText: 'Nome do estacionamento',
@@ -45,7 +45,7 @@ class AddParkingLotForm extends StatelessWidget {
 
   Widget _buildCepField() {
     return BlocBuilder<AddParkingLotBloc, AddParkingLotState>(
-      buildWhen: (p, c) => p.parkingLot.address.cep != c.parkingLot.address.cep,
+      buildWhen: (p, c) => p.parkingLot.address.cep != c.parkingLot.address.cep || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) {
         return ParkingLotTextFormField(
           labelText: 'CEP',
@@ -111,7 +111,7 @@ class AddParkingLotForm extends StatelessWidget {
 
   Widget _buildAvailableSpotsField() {
     return BlocBuilder<AddParkingLotBloc, AddParkingLotState>(
-      buildWhen: (p, c) => p.parkingLot.availableSpots != c.parkingLot.availableSpots,
+      buildWhen: (p, c) => p.parkingLot.availableSpots != c.parkingLot.availableSpots || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
         labelText: 'Número de vagas',
         state: state as ValidationFormState,
@@ -124,7 +124,7 @@ class AddParkingLotForm extends StatelessWidget {
 
   Widget _buildPricePerHourField() {
     return BlocBuilder<AddParkingLotBloc, AddParkingLotState>(
-      buildWhen: (p, c) => p.parkingLot.pricePerHour != c.parkingLot.pricePerHour,
+      buildWhen: (p, c) => p.parkingLot.pricePerHour != c.parkingLot.pricePerHour || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
         labelText: 'Valor por hora',
         state: state as ValidationFormState,
