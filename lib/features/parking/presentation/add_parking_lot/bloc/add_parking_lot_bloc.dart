@@ -6,8 +6,10 @@ import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/domain/usecases/add_parking_lot.dart';
 import 'package:all_parking/utils/cep_service.dart';
 import 'package:all_parking/utils/input_converter.dart';
+import 'package:all_parking/utils/validators.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -27,7 +29,7 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
       changedAvailableSpots: (e) async* {
         final parsedInputOption = InputConverter.stringToInteger(e.input);
         yield parsedInputOption.fold(
-          () => null,
+          () => state,
           (parsedInput) {
             return state.copyWith(
               parkingLot: state.parkingLot.copyWith(availableSpots: parsedInput),
@@ -66,16 +68,23 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
         );
       },
       parkingLotSubmitted: (e) async* {
+        Either<ParkingFailure, Unit> failureOrSuccess;
+
         yield state.copyWith(
           isSubmitting: true,
           saveFailureOrSuccessOption: none(),
         );
 
-        //TODO: implement validation
-        final failureOrSuccess = await _addParkingLot(state.parkingLot);
+        if (Validators.isValidCep(state.parkingLot.address.cep) &&
+            Validators.isValidAvailableSpots(state.parkingLot.availableSpots.toString()) &&
+            Validators.isValidParkingLotTitle(state.parkingLot.title) &&
+            Validators.isValidPricePerHour(state.parkingLot.pricePerHour.toString())) {
+          failureOrSuccess = await _addParkingLot(state.parkingLot);
+        }
 
         yield state.copyWith(
           isSubmitting: false,
+          showErrorMessages: true,
           saveFailureOrSuccessOption: optionOf(failureOrSuccess),
         );
       },
