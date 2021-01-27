@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
         state.map(
           initializing: (_) {},
           authenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
-          unauthenticated: (_) async => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
+          unauthenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
         );
       },
       child: Scaffold(body: Center(child: CircularProgressIndicator())),
