@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -23,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final userOption = await userRepository.getCurrentUser();
         yield userOption.fold(
           () => const AuthState.unauthenticated(),
-          (user) => const AuthState.authenticated(),
+          (user) => AuthState.authenticated(user),
         );
       },
       signedOut: (e) async* {
