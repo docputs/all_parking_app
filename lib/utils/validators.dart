@@ -41,13 +41,16 @@ class Validators {
   }
 
   static Either<ParkingFailure, String> validateParkingLotTitle(String input) {
-    if (input.length <= 30)
+    if (input.length <= 30 && input.length > 0)
       return right(input);
+    else if (input.isEmpty)
+      return left(const ParkingFailure.emptyField(Messages.emptyField));
     else
       return left(const ParkingFailure.invalidParkingLotTitle(Messages.invalidParkingLotTitle));
   }
 
   static Either<ParkingFailure, String> validateAvailableSpotsField(String input) {
+    if (input.isEmpty) return left(const ParkingFailure.emptyField(Messages.emptyField));
     final intInput = int.tryParse(input);
     if (intInput > 0 && intInput != null)
       return right(input);
@@ -56,6 +59,7 @@ class Validators {
   }
 
   static Either<ParkingFailure, String> validatePricePerHour(String input) {
+    if (input.isEmpty) return left(const ParkingFailure.emptyField(Messages.emptyField));
     final parsedInput = double.tryParse(input);
     if (parsedInput > 0 && parsedInput < 100 && parsedInput != null)
       return right(input);
@@ -74,19 +78,15 @@ class Validators {
 
   static bool isPasswordMatch(String input, String password) => input == password;
 
-  static bool isValidEmail(String input) {
-    if (Constants.emailRegex.hasMatch(input)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  static bool isValidEmail(String input) => validateEmailAddress(input).fold((_) => false, (_) => true);
 
-  static bool isValidDisplayName(String input) {
-    if (input.length <= 30) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  static bool isValidDisplayName(String input) => validateDisplayName(input).fold((_) => false, (_) => true);
+
+  static bool isValidParkingLotTitle(String input) => validateParkingLotTitle(input).fold((_) => false, (_) => true);
+
+  static bool isValidAvailableSpots(String input) => validateAvailableSpotsField(input).fold((_) => false, (_) => true);
+
+  static bool isValidPricePerHour(String input) => validatePricePerHour(input).fold((_) => false, (_) => true);
+
+  static bool isValidCep(String input) => validateCep(input).fold((_) => false, (_) => true);
 }

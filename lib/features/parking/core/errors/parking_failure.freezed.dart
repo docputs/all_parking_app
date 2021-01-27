@@ -14,6 +14,13 @@ class _$ParkingFailureTearOff {
   const _$ParkingFailureTearOff();
 
 // ignore: unused_element
+  _EmptyField emptyField(String message) {
+    return _EmptyField(
+      message,
+    );
+  }
+
+// ignore: unused_element
   _InvalidAvailableSpots invalidAvailableSpots(String message) {
     return _InvalidAvailableSpots(
       message,
@@ -66,6 +73,7 @@ mixin _$ParkingFailure {
 
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
@@ -75,6 +83,7 @@ mixin _$ParkingFailure {
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
@@ -85,6 +94,7 @@ mixin _$ParkingFailure {
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -94,6 +104,7 @@ mixin _$ParkingFailure {
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -132,6 +143,156 @@ class _$ParkingFailureCopyWithImpl<$Res>
       message: message == freezed ? _value.message : message as String,
     ));
   }
+}
+
+/// @nodoc
+abstract class _$EmptyFieldCopyWith<$Res>
+    implements $ParkingFailureCopyWith<$Res> {
+  factory _$EmptyFieldCopyWith(
+          _EmptyField value, $Res Function(_EmptyField) then) =
+      __$EmptyFieldCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$EmptyFieldCopyWithImpl<$Res> extends _$ParkingFailureCopyWithImpl<$Res>
+    implements _$EmptyFieldCopyWith<$Res> {
+  __$EmptyFieldCopyWithImpl(
+      _EmptyField _value, $Res Function(_EmptyField) _then)
+      : super(_value, (v) => _then(v as _EmptyField));
+
+  @override
+  _EmptyField get _value => super._value as _EmptyField;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_EmptyField(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_EmptyField implements _EmptyField {
+  const _$_EmptyField(this.message) : assert(message != null);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ParkingFailure.emptyField(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _EmptyField &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  _$EmptyFieldCopyWith<_EmptyField> get copyWith =>
+      __$EmptyFieldCopyWithImpl<_EmptyField>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
+    @required TResult invalidAvailableSpots(String message),
+    @required TResult invalidPricePerHour(String message),
+    @required TResult invalidParkingLotTitle(String message),
+    @required TResult invalidCep(String message),
+    @required TResult serverFailure(String message),
+    @required TResult unknownFailure(String message),
+  }) {
+    assert(emptyField != null);
+    assert(invalidAvailableSpots != null);
+    assert(invalidPricePerHour != null);
+    assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
+    assert(serverFailure != null);
+    assert(unknownFailure != null);
+    return emptyField(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
+    TResult invalidAvailableSpots(String message),
+    TResult invalidPricePerHour(String message),
+    TResult invalidParkingLotTitle(String message),
+    TResult invalidCep(String message),
+    TResult serverFailure(String message),
+    TResult unknownFailure(String message),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (emptyField != null) {
+      return emptyField(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
+    @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
+    @required TResult invalidPricePerHour(_InvalidPricePerHour value),
+    @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    @required TResult invalidCep(_InvalidCep value),
+    @required TResult serverFailure(_ServerFailure value),
+    @required TResult unknownFailure(_UnknownFailure value),
+  }) {
+    assert(emptyField != null);
+    assert(invalidAvailableSpots != null);
+    assert(invalidPricePerHour != null);
+    assert(invalidParkingLotTitle != null);
+    assert(invalidCep != null);
+    assert(serverFailure != null);
+    assert(unknownFailure != null);
+    return emptyField(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
+    TResult invalidAvailableSpots(_InvalidAvailableSpots value),
+    TResult invalidPricePerHour(_InvalidPricePerHour value),
+    TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
+    TResult invalidCep(_InvalidCep value),
+    TResult serverFailure(_ServerFailure value),
+    TResult unknownFailure(_UnknownFailure value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (emptyField != null) {
+      return emptyField(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyField implements ParkingFailure {
+  const factory _EmptyField(String message) = _$_EmptyField;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$EmptyFieldCopyWith<_EmptyField> get copyWith;
 }
 
 /// @nodoc
@@ -198,6 +359,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
@@ -205,6 +367,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -217,6 +380,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
@@ -235,6 +399,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -242,6 +407,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -254,6 +420,7 @@ class _$_InvalidAvailableSpots implements _InvalidAvailableSpots {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -345,6 +512,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
@@ -352,6 +520,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -364,6 +533,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
@@ -382,6 +552,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -389,6 +560,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -401,6 +573,7 @@ class _$_InvalidPricePerHour implements _InvalidPricePerHour {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -491,6 +664,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
@@ -498,6 +672,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -510,6 +685,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
@@ -528,6 +704,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -535,6 +712,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -547,6 +725,7 @@ class _$_InvalidParkingLotTitle implements _InvalidParkingLotTitle {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -636,6 +815,7 @@ class _$_InvalidCep implements _InvalidCep {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
@@ -643,6 +823,7 @@ class _$_InvalidCep implements _InvalidCep {
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -655,6 +836,7 @@ class _$_InvalidCep implements _InvalidCep {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
@@ -673,6 +855,7 @@ class _$_InvalidCep implements _InvalidCep {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -680,6 +863,7 @@ class _$_InvalidCep implements _InvalidCep {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -692,6 +876,7 @@ class _$_InvalidCep implements _InvalidCep {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -781,6 +966,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
@@ -788,6 +974,7 @@ class _$_ServerFailure implements _ServerFailure {
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -800,6 +987,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
@@ -818,6 +1006,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -825,6 +1014,7 @@ class _$_ServerFailure implements _ServerFailure {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -837,6 +1027,7 @@ class _$_ServerFailure implements _ServerFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -926,6 +1117,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult emptyField(String message),
     @required TResult invalidAvailableSpots(String message),
     @required TResult invalidPricePerHour(String message),
     @required TResult invalidParkingLotTitle(String message),
@@ -933,6 +1125,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     @required TResult serverFailure(String message),
     @required TResult unknownFailure(String message),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -945,6 +1138,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult emptyField(String message),
     TResult invalidAvailableSpots(String message),
     TResult invalidPricePerHour(String message),
     TResult invalidParkingLotTitle(String message),
@@ -963,6 +1157,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult emptyField(_EmptyField value),
     @required TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     @required TResult invalidPricePerHour(_InvalidPricePerHour value),
     @required TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),
@@ -970,6 +1165,7 @@ class _$_UnknownFailure implements _UnknownFailure {
     @required TResult serverFailure(_ServerFailure value),
     @required TResult unknownFailure(_UnknownFailure value),
   }) {
+    assert(emptyField != null);
     assert(invalidAvailableSpots != null);
     assert(invalidPricePerHour != null);
     assert(invalidParkingLotTitle != null);
@@ -982,6 +1178,7 @@ class _$_UnknownFailure implements _UnknownFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult emptyField(_EmptyField value),
     TResult invalidAvailableSpots(_InvalidAvailableSpots value),
     TResult invalidPricePerHour(_InvalidPricePerHour value),
     TResult invalidParkingLotTitle(_InvalidParkingLotTitle value),

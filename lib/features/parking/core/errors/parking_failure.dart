@@ -4,6 +4,7 @@ part 'parking_failure.freezed.dart';
 
 @freezed
 abstract class ParkingFailure with _$ParkingFailure {
+  const factory ParkingFailure.emptyField(String message) = _EmptyField;
   const factory ParkingFailure.invalidAvailableSpots(String message) = _InvalidAvailableSpots;
   const factory ParkingFailure.invalidPricePerHour(String message) = _InvalidPricePerHour;
   const factory ParkingFailure.invalidParkingLotTitle(String message) = _InvalidParkingLotTitle;
