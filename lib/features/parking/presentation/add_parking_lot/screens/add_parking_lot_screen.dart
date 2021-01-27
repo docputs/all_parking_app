@@ -21,7 +21,7 @@ class AddParkingLotScreen extends StatelessWidget {
             () => null,
             (either) => either.fold(
               (f) => FlushbarHelper.createError(message: f.message).show(context),
-              (_) => Navigator.of(context).pop(state.parkingLot.title),
+              (_) => Navigator.of(context).pop(state.parkingLot),
             ),
           );
         },

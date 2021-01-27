@@ -13,9 +13,14 @@ import '../../../../../widgets/app_scaffold.dart';
 import '../../../../auth/presentation/auth_bloc.dart';
 import 'components/default_drawer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
@@ -94,7 +99,11 @@ class HomeScreen extends StatelessWidget {
   void _calculateAppBarNavigation(BuildContext context, List<ParkingLot> parkingLots) {
     if (parkingLots.isEmpty) {
       Navigator.of(context).pushNamed(Constants.addParkingLotRoute).then((value) {
-        if (value != null) FlushbarHelper.createInformation(message: ' salvo com sucesso!').show(context);
+        if (value != null) {
+          final parkingLot = value as ParkingLot;
+          context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot));
+          FlushbarHelper.createInformation(message: '${parkingLot.title} salvo com sucesso!').show(context);
+        }
       });
     } else {
       Navigator.of(context).pushNamed(Constants.selectParkingLotRoute).then((parkingLot) {
