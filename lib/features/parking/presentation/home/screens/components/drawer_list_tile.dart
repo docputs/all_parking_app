@@ -10,7 +10,11 @@ class DrawerListTile extends StatelessWidget {
     return ListTile(
       title: Text(item.title),
       leading: Icon(item.icon),
-      onTap: item.customOnTap ?? () => Navigator.of(context).pushNamed(item.route),
+      onTap: item.customOnTap ??
+          () {
+            Navigator.of(context).pop();
+            return Navigator.of(context).pushReplacementNamed(item.route);
+          },
     );
   }
 }

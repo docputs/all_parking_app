@@ -4,12 +4,16 @@ class DefaultListTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final void Function() onTap;
+  final Widget trailing;
+  final Widget leading;
 
   const DefaultListTile({
     Key key,
     @required this.title,
     this.subtitle,
     this.onTap,
+    this.trailing,
+    this.leading,
   }) : super(key: key);
 
   @override
@@ -17,7 +21,9 @@ class DefaultListTile extends StatelessWidget {
     return ListTile(
       title: Text(title),
       contentPadding: const EdgeInsets.all(0),
-      subtitle: Text(subtitle),
+      subtitle: subtitle == null ? null : Text(subtitle),
+      leading: leading,
+      trailing: trailing,
       onTap: onTap,
     );
   }

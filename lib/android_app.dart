@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_routes.dart';
 import 'features/auth/presentation/auth_bloc.dart';
+import 'features/parking/presentation/home/bloc/parking_lot_selector/parking_lot_selector_bloc.dart';
 import 'res/theme.dart';
 import 'service_locator.dart';
 
@@ -12,6 +13,7 @@ class AndroidApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested())),
+        BlocProvider(create: (context) => getIt<ParkingLotSelectorBloc>()..add(const ParkingLotSelectorEvent.started())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

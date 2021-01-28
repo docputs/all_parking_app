@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => getIt<HomeBloc>()..add(const HomeEvent.fetchRequested())),
-          BlocProvider(create: (context) => getIt<ParkingLotSelectorBloc>()..add(const ParkingLotSelectorEvent.started())),
           BlocProvider(create: (context) => getIt<AddParkingLotBloc>()),
         ],
         child: AppScaffold(
