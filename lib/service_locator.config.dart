@@ -61,7 +61,8 @@ GetIt $initGetIt(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<GetCurrentUser>(
       () => GetCurrentUser(get<IUserRepository>()));
-  gh.factory<HomeBloc>(() => HomeBloc(get<WatchParkingLot>()));
+  gh.factory<HomeBloc>(
+      () => HomeBloc(get<WatchParkingLot>(), get<FetchParkingLots>()));
   gh.factory<ParkingLotSelectorBloc>(
       () => ParkingLotSelectorBloc(get<FetchParkingLots>()));
   return get;

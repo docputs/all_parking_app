@@ -35,13 +35,29 @@ class ParkingLotDashboard extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) => ParkedVehicleTile(parkingLot.parkedVehicles[index]),
-          itemCount: parkingLot.parkedVehicles.length,
-        ),
+        parkingLot.parkedVehicles.isEmpty ? _buildEmptyWarning() : _buildParkedVehicleList(),
       ],
+    );
+  }
+
+  Widget _buildEmptyWarning() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(height: 40),
+        Icon(Icons.mood_bad, color: AppColors.accentColor, size: 60),
+        const SizedBox(height: 10),
+        Text('NENHUM VEÍCULO ESTACIONADO', style: TextStyle(color: AppColors.textColor)),
+      ],
+    );
+  }
+
+  Widget _buildParkedVehicleList() {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (context, index) => ParkedVehicleTile(parkingLot.parkedVehicles[index]),
+      itemCount: parkingLot.parkedVehicles.length,
     );
   }
 }
