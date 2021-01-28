@@ -45,13 +45,21 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Future<Either<ParkingFailure, Unit>> delete() {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot) async {
+    try {
+      await _firestore.parkingLotsCollection.doc(parkingLot.id).delete();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      print(e);
+      return left(const ParkingFailure.serverFailure(Messages.serverFailure));
+    } catch (e) {
+      print(e);
+      return left(const ParkingFailure.unknownFailure(Messages.unknownFailure));
+    }
   }
 
   @override
-  Future<Either<ParkingFailure, Unit>> edit(String id) {
+  Future<Either<ParkingFailure, Unit>> edit(ParkingLot parkingLot) {
     // TODO: implement edit
     throw UnimplementedError();
   }

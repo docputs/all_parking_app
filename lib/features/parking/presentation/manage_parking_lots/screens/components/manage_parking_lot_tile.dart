@@ -1,7 +1,9 @@
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/default_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ManageParkingLotTile extends StatelessWidget {
   final ParkingLot parkingLot;
@@ -13,7 +15,7 @@ class ManageParkingLotTile extends StatelessWidget {
     return Dismissible(
       key: ValueKey(parkingLot.id),
       direction: DismissDirection.endToStart,
-      onDismissed: (_) {},
+      onDismissed: (_) => context.read<ManageParkingLotsBloc>().add(ManageParkingLotsEvent.deleted(parkingLot)),
       confirmDismiss: (_) => _showDismissDialog(context),
       background: Container(
         padding: const EdgeInsets.all(16),
@@ -47,7 +49,10 @@ class ManageParkingLotTile extends StatelessWidget {
           content: Text('Deseja remover ${parkingLot.title} da sua lista de estacionamentos?'),
           actions: [
             FlatButton(
-              child: Text('VOLTAR', style: TextStyle(color: AppColors.primaryColor),),
+              child: Text(
+                'VOLTAR',
+                style: TextStyle(color: AppColors.primaryColor),
+              ),
               onPressed: () => Navigator.of(context).pop(false),
             ),
             FlatButton(

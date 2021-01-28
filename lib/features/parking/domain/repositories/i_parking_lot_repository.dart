@@ -9,8 +9,8 @@ abstract class IParkingLotRepository {
   Future<Either<ParkingFailure, List<ParkingLot>>> fetchAll(Manager manager);
   Stream<Either<ParkingFailure, ParkingLot>> watchById(String id);
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot);
-  Future<Either<ParkingFailure, Unit>> delete();
-  Future<Either<ParkingFailure, Unit>> edit(String id);
+  Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot);
+  Future<Either<ParkingFailure, Unit>> edit(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> checkInVehicle(ParkedVehicle vehicle);
   Future<Either<ParkingFailure, Unit>> checkOutVehicle(ParkedVehicle vehicle);
 }
