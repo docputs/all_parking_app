@@ -5,6 +5,7 @@ import 'package:all_parking/features/parking/presentation/manage_parking_lots/bl
 import 'package:all_parking/features/parking/presentation/manage_parking_lots/screens/components/manage_parking_lot_tile.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
+import 'package:all_parking/widgets/no_parking_lots_found.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +34,7 @@ class ManageParkingLotsScreen extends StatelessWidget {
         return state.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),
-          success: (parkingLots) => _buildParkingLotList(parkingLots),
+          success: (parkingLots) => parkingLots.isEmpty ? const NoParkingLotsFound() : _buildParkingLotList(parkingLots),
           error: (f) => Text(f.message),
         );
       },

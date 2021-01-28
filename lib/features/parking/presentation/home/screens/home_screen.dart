@@ -4,7 +4,7 @@ import 'package:all_parking/features/parking/presentation/home/bloc/home_bloc.da
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_selector/parking_lot_selector_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/parking_lot_dashboard.dart';
 import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/theme.dart';
+import 'package:all_parking/widgets/no_parking_lots_found.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return state.when(
-          initial: () => _buildAddParkingLotImage(),
+          initial: () => const NoParkingLotsFound(),
           loading: () => const Center(child: CircularProgressIndicator()),
           success: (parkingLot) => ParkingLotDashboard(parkingLot),
           error: (f) => Text(f.message),
@@ -110,18 +110,5 @@ class _HomeScreenState extends State<HomeScreen> {
         if (parkingLot != null) context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot));
       });
     }
-  }
-
-  Widget _buildAddParkingLotImage() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset('assets/images/undraw_vehicle_sale_a645.png'),
-        const SizedBox(height: 20),
-        Text('Nenhum estacionamento encontrado', style: TextStyle(color: AppColors.textColor)),
-        const SizedBox(height: 10),
-        Text('Toque em + para adicionar', style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.textColor)),
-      ],
-    );
   }
 }
