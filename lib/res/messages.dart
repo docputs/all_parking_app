@@ -20,6 +20,7 @@ class Messages {
   static const invalidPricePerHour = 'Valor por hora inválido';
   static const invalidAddress = 'Endereço inválido';
   static const invalidCep = 'CEP inválido';
+  static const exceededParkingLots = 'Limite de estacionamentos atingido';
 
   static const emailFieldLabel = 'E-mail';
   static const passwordFieldLabel = 'Senha';
