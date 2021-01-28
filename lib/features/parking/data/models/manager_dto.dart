@@ -28,7 +28,7 @@ abstract class ManagerDTO implements _$ManagerDTO {
   Manager toDomain() => Manager(
         id: id,
         displayName: displayName,
-        email: displayName,
+        email: email,
         employees: KtList.from(employees.map((employee) => employee.toDomain()).toList()),
         parkingLots: KtList.from(parkingLots),
       );
