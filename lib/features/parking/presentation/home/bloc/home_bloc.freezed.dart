@@ -14,6 +14,11 @@ class _$HomeEventTearOff {
   const _$HomeEventTearOff();
 
 // ignore: unused_element
+  _FetchRequested fetchRequested() {
+    return const _FetchRequested();
+  }
+
+// ignore: unused_element
   _WatchStarted watchStarted(ParkingLot parkingLot) {
     return _WatchStarted(
       parkingLot,
@@ -36,22 +41,26 @@ const $HomeEvent = _$HomeEventTearOff();
 mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult fetchRequested(),
     @required TResult watchStarted(ParkingLot parkingLot),
     @required TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult fetchRequested(),
     TResult watchStarted(ParkingLot parkingLot),
     TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult fetchRequested(_FetchRequested value),
     @required TResult watchStarted(_WatchStarted value),
     @required TResult updateReceived(_UpdateReceived value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult fetchRequested(_FetchRequested value),
     TResult watchStarted(_WatchStarted value),
     TResult updateReceived(_UpdateReceived value),
     @required TResult orElse(),
@@ -71,6 +80,102 @@ class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
   final HomeEvent _value;
   // ignore: unused_field
   final $Res Function(HomeEvent) _then;
+}
+
+/// @nodoc
+abstract class _$FetchRequestedCopyWith<$Res> {
+  factory _$FetchRequestedCopyWith(
+          _FetchRequested value, $Res Function(_FetchRequested) then) =
+      __$FetchRequestedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$FetchRequestedCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements _$FetchRequestedCopyWith<$Res> {
+  __$FetchRequestedCopyWithImpl(
+      _FetchRequested _value, $Res Function(_FetchRequested) _then)
+      : super(_value, (v) => _then(v as _FetchRequested));
+
+  @override
+  _FetchRequested get _value => super._value as _FetchRequested;
+}
+
+/// @nodoc
+class _$_FetchRequested implements _FetchRequested {
+  const _$_FetchRequested();
+
+  @override
+  String toString() {
+    return 'HomeEvent.fetchRequested()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _FetchRequested);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult fetchRequested(),
+    @required TResult watchStarted(ParkingLot parkingLot),
+    @required TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
+  }) {
+    assert(fetchRequested != null);
+    assert(watchStarted != null);
+    assert(updateReceived != null);
+    return fetchRequested();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult fetchRequested(),
+    TResult watchStarted(ParkingLot parkingLot),
+    TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetchRequested != null) {
+      return fetchRequested();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult fetchRequested(_FetchRequested value),
+    @required TResult watchStarted(_WatchStarted value),
+    @required TResult updateReceived(_UpdateReceived value),
+  }) {
+    assert(fetchRequested != null);
+    assert(watchStarted != null);
+    assert(updateReceived != null);
+    return fetchRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult fetchRequested(_FetchRequested value),
+    TResult watchStarted(_WatchStarted value),
+    TResult updateReceived(_UpdateReceived value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (fetchRequested != null) {
+      return fetchRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchRequested implements HomeEvent {
+  const factory _FetchRequested() = _$_FetchRequested;
 }
 
 /// @nodoc
@@ -146,9 +251,11 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult fetchRequested(),
     @required TResult watchStarted(ParkingLot parkingLot),
     @required TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
   }) {
+    assert(fetchRequested != null);
     assert(watchStarted != null);
     assert(updateReceived != null);
     return watchStarted(parkingLot);
@@ -157,6 +264,7 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult fetchRequested(),
     TResult watchStarted(ParkingLot parkingLot),
     TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
     @required TResult orElse(),
@@ -171,9 +279,11 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult fetchRequested(_FetchRequested value),
     @required TResult watchStarted(_WatchStarted value),
     @required TResult updateReceived(_UpdateReceived value),
   }) {
+    assert(fetchRequested != null);
     assert(watchStarted != null);
     assert(updateReceived != null);
     return watchStarted(this);
@@ -182,6 +292,7 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult fetchRequested(_FetchRequested value),
     TResult watchStarted(_WatchStarted value),
     TResult updateReceived(_UpdateReceived value),
     @required TResult orElse(),
@@ -264,9 +375,11 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult fetchRequested(),
     @required TResult watchStarted(ParkingLot parkingLot),
     @required TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
   }) {
+    assert(fetchRequested != null);
     assert(watchStarted != null);
     assert(updateReceived != null);
     return updateReceived(either);
@@ -275,6 +388,7 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult fetchRequested(),
     TResult watchStarted(ParkingLot parkingLot),
     TResult updateReceived(Either<ParkingFailure, ParkingLot> either),
     @required TResult orElse(),
@@ -289,9 +403,11 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult fetchRequested(_FetchRequested value),
     @required TResult watchStarted(_WatchStarted value),
     @required TResult updateReceived(_UpdateReceived value),
   }) {
+    assert(fetchRequested != null);
     assert(watchStarted != null);
     assert(updateReceived != null);
     return updateReceived(this);
@@ -300,6 +416,7 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult fetchRequested(_FetchRequested value),
     TResult watchStarted(_WatchStarted value),
     TResult updateReceived(_UpdateReceived value),
     @required TResult orElse(),

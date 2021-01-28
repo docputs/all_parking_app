@@ -4,6 +4,7 @@ import 'package:all_parking/features/parking/presentation/home/bloc/home_bloc.da
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_selector/parking_lot_selector_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/parking_lot_dashboard.dart';
 import 'package:all_parking/res/constants.dart';
+import 'package:all_parking/res/theme.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => getIt<HomeBloc>()),
+          BlocProvider(create: (context) => getIt<HomeBloc>()..add(const HomeEvent.fetchRequested())),
           BlocProvider(create: (context) => getIt<ParkingLotSelectorBloc>()..add(const ParkingLotSelectorEvent.started())),
           BlocProvider(create: (context) => getIt<AddParkingLotBloc>()),
         ],
@@ -51,9 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
       title: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => Text('Carregando...'),
+            loading: () => const Text('Carregando...'),
             success: (parkingLot) => Text(parkingLot.title),
-            error: (failure) => Text(failure.toString()),
+            error: (f) => Text(f.message),
             orElse: () => const Text('All Parking'),
           );
         },
@@ -87,10 +88,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         return state.when(
-          initial: () => const SizedBox(),
+          initial: () => _buildAddParkingLotImage(),
           loading: () => const Center(child: CircularProgressIndicator()),
           success: (parkingLot) => ParkingLotDashboard(parkingLot),
-          error: (failure) => Text('$failure'),
+          error: (f) => Text(f.message),
         );
       },
     );
@@ -110,5 +111,18 @@ class _HomeScreenState extends State<HomeScreen> {
         if (parkingLot != null) context.read<HomeBloc>().add(HomeEvent.watchStarted(parkingLot));
       });
     }
+  }
+
+  Widget _buildAddParkingLotImage() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset('assets/images/undraw_vehicle_sale_a645.png'),
+        const SizedBox(height: 20),
+        Text('Nenhum estacionamento encontrado', style: TextStyle(color: AppColors.textColor)),
+        const SizedBox(height: 10),
+        Text('Toque em + para adicionar', style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.textColor)),
+      ],
+    );
   }
 }
