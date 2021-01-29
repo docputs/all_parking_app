@@ -1,9 +1,8 @@
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
+import 'package:all_parking/features/parking/presentation/select_parking_lot/screens/components/parking_lot_info_tile.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
-import 'package:all_parking/widgets/default_list_tile.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
@@ -37,18 +36,7 @@ class SelectParkingLotScreen extends StatelessWidget {
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
       itemCount: parkingLots.size,
-      itemBuilder: (context, index) {
-        final parkingLot = parkingLots[index];
-        return DefaultListTile(
-          key: ValueKey(parkingLot.id),
-          title: parkingLot.title,
-          subtitle: '${parkingLot.address.street} | ${parkingLot.address.cep}',
-          onTap: () {
-            currentParkingLot.value = optionOf(parkingLot);
-            return Navigator.of(context).pop();
-          },
-        );
-      },
+      itemBuilder: (context, index) => ParkingLotInfoTile(parkingLots[index]),
       separatorBuilder: (context, index) => const Divider(),
     );
   }
