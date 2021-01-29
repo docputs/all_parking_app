@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   static const primaryColor = Color(0xff233e94);
@@ -16,5 +17,7 @@ ThemeData buildThemeData() {
     accentColor: AppColors.accentColor,
     cursorColor: AppColors.accentLighterColor,
     errorColor: AppColors.errorColor,
+    scaffoldBackgroundColor: Colors.white,
+    // textTheme: GoogleFonts.latoTextTheme(),
   );
 }
