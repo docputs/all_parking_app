@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +14,10 @@ class SplashScreen extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initializing: (_) {},
-          authenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
+          authenticated: (_) {
+            context.read<ParkingLotWatcherBloc>().add(const ParkingLotWatcherEvent.watchStarted());
+            return Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
+          },
           unauthenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
         );
       },

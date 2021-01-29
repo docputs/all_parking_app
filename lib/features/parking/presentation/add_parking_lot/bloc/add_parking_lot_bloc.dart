@@ -4,6 +4,7 @@ import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/domain/usecases/add_parking_lot.dart';
+import 'package:all_parking/service_locator.dart';
 import 'package:all_parking/utils/cep_service.dart';
 import 'package:all_parking/utils/input_converter.dart';
 import 'package:all_parking/utils/validators.dart';
@@ -12,6 +13,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../current_parking_lot.dart';
 
 part 'add_parking_lot_bloc.freezed.dart';
 part 'add_parking_lot_event.dart';
@@ -22,6 +25,8 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
   final AddParkingLot _addParkingLot;
 
   AddParkingLotBloc(this._addParkingLot) : super(AddParkingLotState.initial());
+
+  final _currentParkingLot = getIt<CurrentParkingLot>();
 
   @override
   Stream<AddParkingLotState> mapEventToState(AddParkingLotEvent event) async* {
@@ -81,6 +86,8 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
             Validators.isValidPricePerHour(state.parkingLot.pricePerHour.toString())) {
           failureOrSuccess = await _addParkingLot(state.parkingLot);
         }
+
+        failureOrSuccess.fold((l) {}, (_) => _currentParkingLot.value = optionOf(state.parkingLot));
 
         yield state.copyWith(
           isSubmitting: false,

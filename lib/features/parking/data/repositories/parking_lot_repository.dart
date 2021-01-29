@@ -3,6 +3,7 @@ import 'package:all_parking/res/messages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../core/errors/parking_failure.dart';
 import '../../core/util/firebase_helpers.dart';
@@ -84,10 +85,26 @@ class ParkingLotRepository implements IParkingLotRepository {
     return _firestore.parkingLotsCollection
         .where(FieldPath.documentId, isEqualTo: id)
         .snapshots()
-        .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).first));
-    //     .onErrorReturnWith((error) {
-    //   print(error);
-    //   return left(ParkingFailure.serverFailure(Messages.serverFailure));
-    // });
+        .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).first))
+          ..onErrorReturnWith((error) {
+            print(error);
+            return left(ParkingFailure.serverFailure(Messages.serverFailure));
+          });
+  }
+
+  @override
+  Stream<Either<ParkingFailure, KtList<ParkingLot>>> watchAll(Manager manager) async* {
+    final parkingLots = manager.parkingLots.asList();
+    if (parkingLots.isEmpty)
+      yield right(KtList.empty());
+    else
+      yield* _firestore.parkingLotsCollection
+          .where(FieldPath.documentId, whereIn: parkingLots)
+          .snapshots()
+          .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList()))
+            ..onErrorReturnWith((error) {
+              print('ERROR: $error');
+              return left(const ParkingFailure.serverFailure(Messages.serverFailure));
+            });
   }
 }

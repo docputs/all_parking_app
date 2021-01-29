@@ -11,11 +11,11 @@ import 'package:flutter/widgets.dart';
 Map<String, Widget Function(BuildContext)> buildAppRoutes() {
   return {
     Constants.splashRoute: (context) => const SplashScreen(),
-    Constants.homeRoute: (context) => const HomeScreen(),
+    Constants.homeRoute: (context) => HomeScreen(),
     Constants.signInRoute: (context) => const SignInScreen(),
     Constants.signUpRoute: (context) => const SignUpScreen(),
-    Constants.addParkingLotRoute: (context) => const AddParkingLotScreen(),
-    Constants.selectParkingLotRoute: (context) => const SelectParkingLotScreen(),
-    Constants.manageParkingLotsRoute: (context) => const ManageParkingLotsScreen(),
+    Constants.addParkingLotRoute: (context) => AddParkingLotScreen(),
+    Constants.selectParkingLotRoute: (context) => SelectParkingLotScreen(),
+    Constants.manageParkingLotsRoute: (context) => ManageParkingLotsScreen(),
   };
 }
