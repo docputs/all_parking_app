@@ -33,6 +33,7 @@ dependencies:
   flutter_bloc: ^6.1.1
   freezed_annotation: ^0.12.0
   get_it: ^5.0.6
+  google_fonts: ^1.1.2
   http: ^0.12.2
   injectable: ^1.0.7
   json_annotation: ^3.1.1
@@ -63,6 +64,7 @@ flutter:
   assets:
     - assets/images/logos/
     - assets/images/undraw_vehicle_sale_a645.png
+    - assets/images/undraw_No_data_re_kwbl.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

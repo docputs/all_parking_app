@@ -3,6 +3,7 @@ import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'cards_display.dart';
 
@@ -18,11 +19,10 @@ class ParkingLotDashboard extends StatelessWidget {
       children: [
         const SizedBox(height: 20),
         Text(
-          'Cartões',
+          'CARTÕES',
           style: TextStyle(
-            fontSize: 12,
+            fontSize: 14,
             color: AppColors.textColor,
-            fontWeight: FontWeight.bold,
           ),
         ),
         CardsDisplay(parkingLot),
@@ -35,17 +35,20 @@ class ParkingLotDashboard extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        parkingLot.parkedVehicles.isEmpty ? _buildEmptyWarning() : _buildParkedVehicleList(),
+        parkingLot.parkedVehicles.isEmpty ? _buildEmptyWarning(context) : _buildParkedVehicleList(),
       ],
     );
   }
 
-  Widget _buildEmptyWarning() {
+  Widget _buildEmptyWarning(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(height: 40),
-        Icon(Icons.mood_bad, color: AppColors.accentColor, size: 60),
+        Image.asset(
+          'assets/images/undraw_No_data_re_kwbl.png',
+          width: MediaQuery.of(context).size.width / 2,
+        ),
         const SizedBox(height: 10),
         Text('NENHUM VEÍCULO ESTACIONADO', style: TextStyle(color: AppColors.textColor)),
       ],
