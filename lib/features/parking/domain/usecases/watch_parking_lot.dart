@@ -1,4 +1,3 @@
-import 'package:all_parking/res/messages.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,13 +18,13 @@ class WatchParkingLot {
     final managerEither = await _managerRepository.read();
     yield* managerEither.fold(
       (f) async* {
-        yield left(const ParkingFailure.serverFailure(Messages.serverFailure));
+        yield left(ParkingFailure.serverFailure());
       },
       (manager) async* {
         if (manager.parkingLots.contains(parkingLot.id))
           yield* _parkingLotRepository.watchById(parkingLot.id);
         else
-          yield left(const ParkingFailure.serverFailure(Messages.serverFailure));
+          yield left(ParkingFailure.serverFailure());
       },
     );
   }

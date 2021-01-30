@@ -1,10 +1,10 @@
 import 'package:all_parking/features/parking/data/models/parking_lot_dto.dart';
-import 'package:all_parking/res/messages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:rxdart/rxdart.dart';
+
 import '../../core/errors/parking_failure.dart';
 import '../../core/util/firebase_helpers.dart';
 import '../../domain/entities/manager.dart';
@@ -38,10 +38,10 @@ class ParkingLotRepository implements IParkingLotRepository {
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
-      return left(const ParkingFailure.serverFailure(Messages.serverFailure));
+      return left(ParkingFailure.serverFailure());
     } catch (e) {
       print(e);
-      return left(const ParkingFailure.unknownFailure(Messages.unknownFailure));
+      return left(ParkingFailure.unknownFailure());
     }
   }
 
@@ -52,10 +52,10 @@ class ParkingLotRepository implements IParkingLotRepository {
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
-      return left(const ParkingFailure.serverFailure(Messages.serverFailure));
+      return left(ParkingFailure.serverFailure());
     } catch (e) {
       print(e);
-      return left(const ParkingFailure.unknownFailure(Messages.unknownFailure));
+      return left(ParkingFailure.unknownFailure());
     }
   }
 
@@ -73,10 +73,10 @@ class ParkingLotRepository implements IParkingLotRepository {
       return right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toList());
     } on FirebaseException catch (e) {
       print(e);
-      return left(const ParkingFailure.serverFailure(Messages.serverFailure));
+      return left(ParkingFailure.serverFailure());
     } catch (e) {
       print(e);
-      return left(const ParkingFailure.unknownFailure(Messages.unknownFailure));
+      return left(ParkingFailure.unknownFailure());
     }
   }
 
@@ -88,7 +88,7 @@ class ParkingLotRepository implements IParkingLotRepository {
         .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).first))
           ..onErrorReturnWith((error) {
             print(error);
-            return left(ParkingFailure.serverFailure(Messages.serverFailure));
+            return left(ParkingFailure.serverFailure());
           });
   }
 
@@ -104,7 +104,7 @@ class ParkingLotRepository implements IParkingLotRepository {
           .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList()))
             ..onErrorReturnWith((error) {
               print('ERROR: $error');
-              return left(const ParkingFailure.serverFailure(Messages.serverFailure));
+              return left(ParkingFailure.serverFailure());
             });
   }
 }

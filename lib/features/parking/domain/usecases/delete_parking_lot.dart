@@ -3,7 +3,6 @@ import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/domain/repositories/i_manager_repository.dart';
 import 'package:all_parking/features/parking/domain/repositories/i_parking_lot_repository.dart';
-import 'package:all_parking/res/messages.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -22,7 +21,7 @@ class DeleteParkingLot {
       (_) async {
         final either = await caseParkingLotEitherSuccess(parkingLot);
         return either.fold(
-          (f) => left(const ParkingFailure.serverFailure(Messages.serverFailure)),
+          (f) => left(ParkingFailure.serverFailure()),
           (_) => right(unit),
         );
       },

@@ -9,9 +9,9 @@ class Validators {
     if (Constants.emailRegex.hasMatch(input)) {
       return right(input);
     } else if (input.isEmpty) {
-      return left(const AuthFailure.emptyField(Messages.emptyField));
+      return left(AuthFailure.emptyField(Messages.emptyField));
     } else {
-      return left(const AuthFailure.emailBadlyFormatted(Messages.emailBadlyFormatted));
+      return left(AuthFailure.emailBadlyFormatted(Messages.emailBadlyFormatted));
     }
   }
 
@@ -19,9 +19,9 @@ class Validators {
     if (input.length <= 30 && input.length > 0) {
       return right(input);
     } else if (input.isEmpty) {
-      return left(const AuthFailure.emptyField(Messages.emptyField));
+      return left(AuthFailure.emptyField(Messages.emptyField));
     } else {
-      return left(const AuthFailure.displayNameTooLong(Messages.displayNameTooLong));
+      return left(AuthFailure.displayNameTooLong(Messages.displayNameTooLong));
     }
   }
 
@@ -29,7 +29,7 @@ class Validators {
     if (input.isNotEmpty) {
       return right(input);
     } else {
-      return left(const AuthFailure.emptyField(Messages.emptyField));
+      return left(AuthFailure.emptyField(Messages.emptyField));
     }
   }
 
@@ -37,41 +37,41 @@ class Validators {
     if (input == password)
       return right(input);
     else
-      return left(const AuthFailure.passwordsDontMatch(Messages.passwordsDontMatch));
+      return left(AuthFailure.passwordsDontMatch(Messages.passwordsDontMatch));
   }
 
   static Either<ParkingFailure, String> validateParkingLotTitle(String input) {
     if (input.length <= 30 && input.length > 0)
       return right(input);
     else if (input.isEmpty)
-      return left(const ParkingFailure.emptyField(Messages.emptyField));
+      return left(ParkingFailure.emptyField());
     else
-      return left(const ParkingFailure.invalidParkingLotTitle(Messages.invalidParkingLotTitle));
+      return left(ParkingFailure.invalidParkingLotTitle());
   }
 
   static Either<ParkingFailure, String> validateAvailableSpotsField(String input) {
-    if (input.isEmpty) return left(const ParkingFailure.emptyField(Messages.emptyField));
+    if (input.isEmpty) return left(ParkingFailure.emptyField());
     final intInput = int.tryParse(input);
     if (intInput > 0 && intInput != null)
       return right(input);
     else
-      return left(const ParkingFailure.invalidAvailableSpots(Messages.invalidAvailableSpots));
+      return left(ParkingFailure.invalidAvailableSpots());
   }
 
   static Either<ParkingFailure, String> validatePricePerHour(String input) {
-    if (input.isEmpty) return left(const ParkingFailure.emptyField(Messages.emptyField));
+    if (input.isEmpty) return left(ParkingFailure.emptyField());
     final parsedInput = double.tryParse(input);
     if (parsedInput > 0 && parsedInput < 100 && parsedInput != null)
       return right(input);
     else
-      return left(const ParkingFailure.invalidPricePerHour(Messages.invalidPricePerHour));
+      return left(ParkingFailure.invalidPricePerHour());
   }
 
   static Either<ParkingFailure, String> validateCep(String input) {
     if (Constants.cepRegex.hasMatch(input))
       return right(input);
     else
-      return left(const ParkingFailure.invalidCep(Messages.invalidCep));
+      return left(ParkingFailure.invalidCep());
   }
 
   static bool isValidPassword(String input) => input.isNotEmpty;

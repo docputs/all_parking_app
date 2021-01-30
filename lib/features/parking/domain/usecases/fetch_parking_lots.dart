@@ -1,4 +1,3 @@
-import 'package:all_parking/res/messages.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,7 +17,7 @@ class FetchParkingLots {
   Future<Either<ParkingFailure, List<ParkingLot>>> call() async {
     final managerEither = await _managerRepository.read();
     return managerEither.fold(
-      (f) => left(const ParkingFailure.serverFailure(Messages.serverFailure)),
+      (f) => left(ParkingFailure.serverFailure()),
       (manager) => _parkingLotRepository.fetchAll(manager),
     );
   }

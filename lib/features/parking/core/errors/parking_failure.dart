@@ -1,15 +1,18 @@
+import 'package:all_parking/res/messages.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'parking_failure.freezed.dart';
 
 @freezed
 abstract class ParkingFailure with _$ParkingFailure {
-  const factory ParkingFailure.emptyField(String message) = _EmptyField;
-  const factory ParkingFailure.invalidAvailableSpots(String message) = _InvalidAvailableSpots;
-  const factory ParkingFailure.invalidPricePerHour(String message) = _InvalidPricePerHour;
-  const factory ParkingFailure.invalidParkingLotTitle(String message) = _InvalidParkingLotTitle;
-  const factory ParkingFailure.invalidCep(String message) = _InvalidCep;
-  const factory ParkingFailure.exceededParkingLots(String message) = _ExceededParkingLots;
-  const factory ParkingFailure.serverFailure(String message) = _ServerFailure;
-  const factory ParkingFailure.unknownFailure(String message) = _UnknownFailure;
+  const factory ParkingFailure(String message) = _ParkingFailure;
+
+  factory ParkingFailure.emptyField() => const ParkingFailure(Messages.emptyField);
+  factory ParkingFailure.invalidAvailableSpots() => const ParkingFailure(Messages.invalidAvailableSpots);
+  factory ParkingFailure.invalidPricePerHour() => const ParkingFailure(Messages.invalidPricePerHour);
+  factory ParkingFailure.invalidParkingLotTitle() => const ParkingFailure(Messages.invalidParkingLotTitle);
+  factory ParkingFailure.invalidCep() => const ParkingFailure(Messages.invalidCep);
+  factory ParkingFailure.exceededParkingLots() => const ParkingFailure(Messages.exceededParkingLots);
+  factory ParkingFailure.serverFailure() => const ParkingFailure(Messages.serverFailure);
+  factory ParkingFailure.unknownFailure() => const ParkingFailure(Messages.unknownFailure);
 }
