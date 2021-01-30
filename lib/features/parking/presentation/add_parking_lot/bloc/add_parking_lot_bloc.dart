@@ -85,9 +85,8 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
             Validators.isValidParkingLotTitle(state.parkingLot.title) &&
             Validators.isValidPricePerHour(state.parkingLot.pricePerHour.toString())) {
           failureOrSuccess = await _addParkingLot(state.parkingLot);
+          failureOrSuccess.fold((l) {}, (_) => _currentParkingLot.value = optionOf(state.parkingLot));
         }
-
-        failureOrSuccess.fold((l) {}, (_) => _currentParkingLot.value = optionOf(state.parkingLot));
 
         yield state.copyWith(
           isSubmitting: false,
