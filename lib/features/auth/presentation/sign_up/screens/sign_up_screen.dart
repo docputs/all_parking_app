@@ -23,14 +23,7 @@ class SignUpScreen extends StatelessWidget {
           state.signUpSuccessOrFailureOption.fold(
             () {},
             (either) => either.fold(
-              (f) => FlushbarHelper.createError(
-                message: f.maybeMap(
-                  emailAlreadyInUse: (_) => Messages.emailAlreadyInUse,
-                  serverFailure: (_) => Messages.serverFailure,
-                  unknownFailure: (_) => Messages.unknownFailure,
-                  orElse: () => Messages.unknownFailure,
-                ),
-              ).show(context),
+              (f) => FlushbarHelper.createError(message: f.message).show(context),
               (_) {
                 Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
                 context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());

@@ -7,6 +7,7 @@ class Messages {
   static const unknownFailure = 'Erro desconhecido';
   static const serverFailure = 'Erro no servidor';
   static const invalidEmailAndPasswordCombination = 'E-mail e/ou senha inválidos';
+  static const invalidEmailAddress = 'E-mail e/ou senhas inválidos';
   static const cancelledByUser = 'Cancelado pelo usuário';
   static const emailAlreadyInUse = 'E-mail já está em uso';
   static const weakPassword = 'Senha muito fraca';

@@ -1,7 +1,6 @@
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/messages.dart';
 import 'package:dartz/dartz.dart';
 
 class Validators {
@@ -9,9 +8,9 @@ class Validators {
     if (Constants.emailRegex.hasMatch(input)) {
       return right(input);
     } else if (input.isEmpty) {
-      return left(AuthFailure.emptyField(Messages.emptyField));
+      return left(AuthFailure.emptyField());
     } else {
-      return left(AuthFailure.emailBadlyFormatted(Messages.emailBadlyFormatted));
+      return left(AuthFailure.emailBadlyFormatted());
     }
   }
 
@@ -19,9 +18,9 @@ class Validators {
     if (input.length <= 30 && input.length > 0) {
       return right(input);
     } else if (input.isEmpty) {
-      return left(AuthFailure.emptyField(Messages.emptyField));
+      return left(AuthFailure.emptyField());
     } else {
-      return left(AuthFailure.displayNameTooLong(Messages.displayNameTooLong));
+      return left(AuthFailure.displayNameTooLong());
     }
   }
 
@@ -29,7 +28,7 @@ class Validators {
     if (input.isNotEmpty) {
       return right(input);
     } else {
-      return left(AuthFailure.emptyField(Messages.emptyField));
+      return left(AuthFailure.emptyField());
     }
   }
 
@@ -37,7 +36,7 @@ class Validators {
     if (input == password)
       return right(input);
     else
-      return left(AuthFailure.passwordsDontMatch(Messages.passwordsDontMatch));
+      return left(AuthFailure.passwordsDontMatch());
   }
 
   static Either<ParkingFailure, String> validateParkingLotTitle(String input) {

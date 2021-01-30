@@ -24,15 +24,7 @@ class SignInScreen extends StatelessWidget {
           listener: (context, state) => state.authFailureOrSuccessOption.fold(
             () => null,
             (either) => either.fold(
-              (f) => FlushbarHelper.createError(
-                message: f.maybeMap(
-                  invalidEmailAndPasswordCombination: (_) => Messages.invalidEmailAndPasswordCombination,
-                  cancelledByUser: (_) => Messages.unknownFailure,
-                  unknownFailure: (_) => Messages.unknownFailure,
-                  serverFailure: (_) => Messages.serverFailure,
-                  orElse: () => null,
-                ),
-              ).show(context),
+              (f) => FlushbarHelper.createError(message: f.message).show(context),
               (_) {
                 Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
                 context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());

@@ -5,16 +5,18 @@ part 'auth_failure.freezed.dart';
 
 @freezed
 abstract class AuthFailure with _$AuthFailure {
-  const factory AuthFailure.emptyField(String message) = _EmptyField;
-  const factory AuthFailure.displayNameTooLong(String message) = _DisplayNameTooLong;
-  const factory AuthFailure.emailAlreadyInUse(String message) = _EmailAlreadyInUse;
-  const factory AuthFailure.cancelledByUser(String message) = _CancelledByUser;
-  const factory AuthFailure.invalidEmailAddress(String message) = _InvalidEmailAddress;
-  const factory AuthFailure.invalidEmailAndPasswordCombination(String message) = _InvalidEmailAndPasswordCombination;
-  const factory AuthFailure.emailBadlyFormatted(String message) = _EmailBadlyFormatted;
-  const factory AuthFailure.weakPassword(String message) = _WeakPassword;
-  const factory AuthFailure.serverFailure(String message) = _ServerFailure;
-  const factory AuthFailure.unknownFailure(String message) = _UnknownFailure;
-  const factory AuthFailure.passwordsDontMatch(String message) = _PasswordsDontMatch;
-  const factory AuthFailure.notAuthenticated(String message) = _NotAuthenticated;
+  const factory AuthFailure(String message) = _AuthFailure;
+
+  factory AuthFailure.emptyField() => const AuthFailure(Messages.emptyField);
+  factory AuthFailure.displayNameTooLong() => const AuthFailure(Messages.displayNameTooLong);
+  factory AuthFailure.emailAlreadyInUse() => const AuthFailure(Messages.emailAlreadyInUse);
+  factory AuthFailure.cancelledByUser() => const AuthFailure(Messages.cancelledByUser);
+  factory AuthFailure.invalidEmailAddress() => const AuthFailure(Messages.invalidEmailAddress);
+  factory AuthFailure.invalidEmailAndPasswordCombination() => const AuthFailure(Messages.invalidEmailAndPasswordCombination);
+  factory AuthFailure.emailBadlyFormatted() => const AuthFailure(Messages.emailBadlyFormatted);
+  factory AuthFailure.weakPassword() => const AuthFailure(Messages.weakPassword);
+  factory AuthFailure.passwordsDontMatch() => const AuthFailure(Messages.passwordsDontMatch);
+  factory AuthFailure.notAuthenticated() => const AuthFailure(Messages.notAuthenticated);
+  factory AuthFailure.serverFailure() => const AuthFailure(Messages.serverFailure);
+  factory AuthFailure.unknownFailure() => const AuthFailure(Messages.unknownFailure);
 }

@@ -31,18 +31,7 @@ class SignInTextFormField extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: keyboardType,
       autovalidateMode: state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
-      validator: (value) => validationEither(value).fold(
-        (f) => f.maybeMap(
-          displayNameTooLong: (_) => 'Nome muito extenso',
-          invalidEmailAddress: (_) => 'E-mail inválido',
-          emailBadlyFormatted: (_) => 'E-mail inválido',
-          weakPassword: (_) => 'Senha fraca',
-          emailAlreadyInUse: (_) => 'E-mail já está em uso',
-          emptyField: (_) => 'Campo obrigatório',
-          orElse: () => null,
-        ),
-        (_) => null,
-      ),
+      validator: (value) => validationEither(value).fold((f) => f.message, (_) => null),
     );
   }
 }

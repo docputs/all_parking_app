@@ -1,4 +1,3 @@
-import 'package:all_parking/res/messages.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
@@ -30,16 +29,16 @@ class UserRepository implements IUserRepository {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
-        return left(const AuthFailure.invalidEmailAddress(Messages.invalidEmailAndPasswordCombination));
+        return left(AuthFailure.invalidEmailAddress());
       } else if (e.code == 'email-already-in-use') {
-        return left(const AuthFailure.emailAlreadyInUse(Messages.emailAlreadyInUse));
+        return left(AuthFailure.emailAlreadyInUse());
       } else if (e.code == 'weak-password') {
-        return left(const AuthFailure.weakPassword(Messages.weakPassword));
+        return left(AuthFailure.weakPassword());
       } else {
-        return left(const AuthFailure.serverFailure(Messages.serverFailure));
+        return left(AuthFailure.serverFailure());
       }
     } catch (e) {
-      return left(const AuthFailure.unknownFailure(Messages.unknownFailure));
+      return left(AuthFailure.unknownFailure());
     }
   }
 
@@ -61,14 +60,14 @@ class UserRepository implements IUserRepository {
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
-        return left(const AuthFailure.invalidEmailAddress(Messages.invalidEmailAndPasswordCombination));
+        return left(AuthFailure.invalidEmailAddress());
       } else if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-        return left(const AuthFailure.invalidEmailAndPasswordCombination(Messages.invalidEmailAndPasswordCombination));
+        return left(AuthFailure.invalidEmailAndPasswordCombination());
       } else {
-        return left(const AuthFailure.serverFailure(Messages.serverFailure));
+        return left(AuthFailure.serverFailure());
       }
     } catch (e) {
-      return left(const AuthFailure.unknownFailure(Messages.unknownFailure));
+      return left(AuthFailure.unknownFailure());
     }
   }
 

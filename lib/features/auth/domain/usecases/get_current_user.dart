@@ -1,10 +1,9 @@
-import 'package:all_parking/res/messages.dart';
+import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../core/errors/auth_failure.dart';
 import '../entities/user.dart';
 import '../repositories/i_user_repository.dart';
-import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class GetCurrentUser {
@@ -15,7 +14,7 @@ class GetCurrentUser {
   Future<Either<AuthFailure, User>> call() async {
     final userOption = await _repository.getCurrentUser();
     return userOption.fold(
-      () => left(const AuthFailure.notAuthenticated(Messages.notAuthenticated)),
+      () => left(AuthFailure.notAuthenticated()),
       (user) => right(user),
     );
   }
