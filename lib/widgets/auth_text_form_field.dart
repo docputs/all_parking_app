@@ -31,19 +31,7 @@ class AuthTextFormField extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: keyboardType,
       autovalidateMode: state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
-      validator: (value) => validationEither(value).fold(
-        (f) => f.maybeMap(
-          passwordsDontMatch: (_) => _.message,
-          displayNameTooLong: (_) => _.message,
-          invalidEmailAddress: (_) => _.message,
-          emailBadlyFormatted: (_) => _.message,
-          weakPassword: (_) => _.message,
-          emailAlreadyInUse: (_) => _.message,
-          emptyField: (_) => _.message,
-          orElse: () => null,
-        ),
-        (_) => null,
-      ),
+      validator: (value) => validationEither(value).fold((f) => f.message, (_) => null),
     );
   }
 }
