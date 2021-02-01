@@ -11,6 +11,6 @@ class EditParkingLot {
   const EditParkingLot(this._parkingLotRepository) : assert(_parkingLotRepository != null);
 
   Future<Either<ParkingFailure, Unit>> call(ParkingLot parkingLot) {
-    return _parkingLotRepository.edit(parkingLot);
+    return _parkingLotRepository.update(parkingLot);
   }
 }

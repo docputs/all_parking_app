@@ -1,5 +1,4 @@
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/auth/core/util/validators.dart';
 import 'package:all_parking/features/auth/data/models/register_model.dart';
 import 'package:all_parking/features/auth/domain/repositories/i_user_repository.dart';
 import 'package:all_parking/features/auth/domain/usecases/sign_up.dart';
@@ -9,17 +8,13 @@ import 'package:mockito/mockito.dart';
 
 class MockUserRepository extends Mock implements IUserRepository {}
 
-class MockValidators extends Mock implements Validators {}
-
 void main() {
   MockUserRepository mockUserRepository;
-  MockValidators mockValidators;
   SignUp usecase;
 
   setUp(() {
     mockUserRepository = MockUserRepository();
-    mockValidators = MockValidators();
-    usecase = SignUp(mockUserRepository, mockValidators);
+    usecase = SignUp(mockUserRepository);
   });
 
   final firstName = 'John';
@@ -30,9 +25,6 @@ void main() {
 
   test('should return User when successfully signed up', () async {
     when(mockUserRepository.createAccount(any)).thenAnswer((_) async => Right(unit));
-    when(mockValidators.validateDisplayName(any)).thenReturn(Right('$firstName $lastName'));
-    when(mockValidators.validateEmailAddress(any)).thenReturn(Right(email));
-    when(mockValidators.validatePassword(any)).thenReturn(Right(password));
 
     final result = await usecase(firstName: firstName, lastName: lastName, email: email, password: password);
 
@@ -47,30 +39,21 @@ void main() {
     });
 
     test('should return failure when displayName is invalid', () async {
-      when(mockValidators.validateDisplayName(any)).thenReturn(Left(const AuthFailure.displayNameTooLong()));
+      final result = await usecase(firstName: 'oaksoakskoasaks', lastName: 'asoaijsajsjiasassasas', email: email, password: password);
 
-      final result = await usecase(firstName: firstName, lastName: lastName, email: email, password: password);
-
-      expect(result, Left(const AuthFailure.displayNameTooLong()));
+      expect(result, Left(AuthFailure.displayNameTooLong()));
     });
 
     test('should return failure when email is invalid', () async {
-      when(mockValidators.validateDisplayName(any)).thenReturn(Right('$firstName $lastName'));
-      when(mockValidators.validateEmailAddress(any)).thenReturn(Left(const AuthFailure.emailBadlyFormatted()));
+      final result = await usecase(firstName: firstName, lastName: lastName, email: 'teste', password: password);
 
-      final result = await usecase(firstName: firstName, lastName: lastName, email: email, password: password);
-
-      expect(result, Left(const AuthFailure.emailBadlyFormatted()));
+      expect(result, Left(AuthFailure.emailBadlyFormatted()));
     });
 
     test('should return failure when password is weak', () async {
-      when(mockValidators.validateDisplayName(any)).thenReturn(Right('$firstName $lastName'));
-      when(mockValidators.validateEmailAddress(any)).thenReturn(Right(email));
-      when(mockValidators.validatePassword(any)).thenReturn(Left(const AuthFailure.weakPassword()));
+      final result = await usecase(firstName: firstName, lastName: lastName, email: email, password: 'weak');
 
-      final result = await usecase(firstName: firstName, lastName: lastName, email: email, password: password);
-
-      expect(result, Left(const AuthFailure.weakPassword()));
+      expect(result, Left(AuthFailure.weakPassword()));
     });
   });
 }

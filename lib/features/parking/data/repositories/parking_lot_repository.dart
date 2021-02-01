@@ -60,7 +60,7 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Future<Either<ParkingFailure, Unit>> edit(ParkingLot parkingLot) async {
+  Future<Either<ParkingFailure, Unit>> update(ParkingLot parkingLot) async {
     try {
       final parkingLotDTO = ParkingLotDTO.fromDomain(parkingLot);
       await _firestore.parkingLotsCollection.doc(parkingLotDTO.id).update(parkingLotDTO.toJson());

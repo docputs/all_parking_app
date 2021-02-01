@@ -25,8 +25,10 @@ class Validators {
   }
 
   static Either<AuthFailure, String> validatePassword(String input) {
-    if (input.isNotEmpty) {
+    if (input.isNotEmpty && input.length > 4) {
       return right(input);
+    } else if (input.length <= 4) {
+      return left(AuthFailure.weakPassword());
     } else {
       return left(AuthFailure.emptyField());
     }

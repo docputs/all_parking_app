@@ -3,10 +3,10 @@ import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/repositories/i_manager_repository.dart';
 import 'package:all_parking/features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'package:all_parking/features/parking/domain/usecases/add_parking_lot.dart';
-import 'package:all_parking/res/messages.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+
 import '../../../../fixtures/parking_lot_fixtures.dart';
 
 class MockParkingLotRepository extends Mock implements IParkingLotRepository {}
@@ -58,21 +58,21 @@ void main() {
 
   group('failure', () {
     test('should return ParkingFailure when repository fails', () async {
-      when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
+      when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Left( ParkingFailure.serverFailure()));
 
       final result = await usecase(Fixtures.parkingLot);
 
-      expect(result, Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
+      expect(result, Left( ParkingFailure.serverFailure()));
     });
 
     test('should return ParkingFailure when ManagerRepository fails', () async {
       when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Right(unit));
       when(mockManagerRepository.read()).thenAnswer((_) async => Right(Fixtures.manager));
-      when(mockManagerRepository.update(any)).thenAnswer((_) async => Left(const ManagerFailure.serverFailure()));
+      when(mockManagerRepository.update(any)).thenAnswer((_) async => Left(ManagerFailure.serverFailure()));
 
       final result = await usecase(Fixtures.parkingLot);
 
-      expect(result, Left(const ParkingFailure.serverFailure(Messages.serverFailure)));
+      expect(result, Left( ParkingFailure.serverFailure()));
     });
   });
 }

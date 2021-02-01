@@ -12,7 +12,7 @@ abstract class IParkingLotRepository {
   Stream<Either<ParkingFailure, KtList<ParkingLot>>> watchAll(Manager manager);
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot);
-  Future<Either<ParkingFailure, Unit>> edit(ParkingLot parkingLot);
+  Future<Either<ParkingFailure, Unit>> update(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> checkInVehicle(ParkedVehicle vehicle);
   Future<Either<ParkingFailure, Unit>> checkOutVehicle(ParkedVehicle vehicle);
 }
