@@ -14,6 +14,7 @@ class Messages {
   static const notAuthenticated = 'Usuário não autenticado';
   static const displayNameTooLong = 'Excedeu o limite de caracteres';
   static const passwordsDontMatch = 'Senhas não conferem';
+  static const noCurrentParkingLot = 'Nenhum estacionamento foi selecionado';
 
   //ParkingFailure
   static const invalidParkingLotTitle = 'Nome inválido';

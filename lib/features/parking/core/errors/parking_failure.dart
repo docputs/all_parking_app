@@ -13,6 +13,7 @@ abstract class ParkingFailure with _$ParkingFailure {
   factory ParkingFailure.invalidParkingLotTitle() => const ParkingFailure(Messages.invalidParkingLotTitle);
   factory ParkingFailure.invalidCep() => const ParkingFailure(Messages.invalidCep);
   factory ParkingFailure.exceededParkingLots() => const ParkingFailure(Messages.exceededParkingLots);
+  factory ParkingFailure.noCurrentParkingLot() => const ParkingFailure(Messages.noCurrentParkingLot);
   factory ParkingFailure.serverFailure() => const ParkingFailure(Messages.serverFailure);
   factory ParkingFailure.unknownFailure() => const ParkingFailure(Messages.unknownFailure);
 }
