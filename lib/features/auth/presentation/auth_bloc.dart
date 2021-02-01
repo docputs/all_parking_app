@@ -13,22 +13,22 @@ part 'auth_state.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final IUserRepository userRepository;
+  final IUserRepository _userRepository;
 
-  AuthBloc(this.userRepository) : super(AuthState.initializing());
+  AuthBloc(this._userRepository) : super(AuthState.initializing());
 
   @override
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
     yield* event.map(
       authCheckRequested: (e) async* {
-        final userOption = await userRepository.getCurrentUser();
+        final userOption = await _userRepository.getCurrentUser();
         yield userOption.fold(
           () => const AuthState.unauthenticated(),
           (user) => AuthState.authenticated(user),
         );
       },
       signedOut: (e) async* {
-        await userRepository.signOut();
+        await _userRepository.signOut();
         yield const AuthState.unauthenticated();
       },
     );

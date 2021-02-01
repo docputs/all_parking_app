@@ -11,6 +11,7 @@ import 'package:injectable/injectable.dart';
 
 import 'features/parking/domain/usecases/add_parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
+import 'app_navigator.dart';
 import 'features/auth/presentation/auth_bloc.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
@@ -42,6 +43,7 @@ GetIt $initGetIt(
 }) {
   final gh = GetItHelper(get, environment, environmentFilter);
   final registerModule = _$RegisterModule();
+  gh.lazySingleton<AppNavigator>(() => AppNavigator());
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
