@@ -15,6 +15,7 @@ import 'app_navigator.dart';
 import 'features/auth/presentation/auth_bloc.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
+import 'features/parking/domain/usecases/edit_parking_lot.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
 import 'features/parking/domain/repositories/i_manager_repository.dart';
@@ -63,10 +64,11 @@ GetIt $initGetIt(
       WatchParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
-  gh.factory<AddParkingLotBloc>(() => AddParkingLotBloc(get<AddParkingLot>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IUserRepository>()));
   gh.lazySingleton<DeleteParkingLot>(() => DeleteParkingLot(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
+  gh.lazySingleton<EditParkingLot>(
+      () => EditParkingLot(get<IParkingLotRepository>()));
   gh.lazySingleton<FetchParkingLots>(() => FetchParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<GetCurrentUser>(
@@ -75,6 +77,8 @@ GetIt $initGetIt(
       () => ManageParkingLotsBloc(get<DeleteParkingLot>()));
   gh.factory<ParkingLotWatcherBloc>(
       () => ParkingLotWatcherBloc(get<WatchAllParkingLots>()));
+  gh.factory<AddParkingLotBloc>(
+      () => AddParkingLotBloc(get<AddParkingLot>(), get<EditParkingLot>()));
   return get;
 }
 

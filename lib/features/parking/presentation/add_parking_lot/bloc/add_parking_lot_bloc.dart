@@ -4,6 +4,7 @@ import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/domain/usecases/add_parking_lot.dart';
+import 'package:all_parking/features/parking/domain/usecases/edit_parking_lot.dart';
 import 'package:all_parking/service_locator.dart';
 import 'package:all_parking/utils/cep_service.dart';
 import 'package:all_parking/utils/input_converter.dart';
@@ -23,14 +24,21 @@ part 'add_parking_lot_state.dart';
 @injectable
 class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
   final AddParkingLot _addParkingLot;
+  final EditParkingLot _editParkingLot;
 
-  AddParkingLotBloc(this._addParkingLot) : super(AddParkingLotState.initial());
+  AddParkingLotBloc(this._addParkingLot, this._editParkingLot) : super(AddParkingLotState.initial());
 
   final _currentParkingLot = getIt<CurrentParkingLot>();
 
   @override
   Stream<AddParkingLotState> mapEventToState(AddParkingLotEvent event) async* {
     yield* event.map(
+      started: (e) async* {
+        yield e.initialParkingLotOption.fold(
+          () => state,
+          (initialParkingLot) => state.copyWith(parkingLot: initialParkingLot, isEditing: true),
+        );
+      },
       changedAvailableSpots: (e) async* {
         final parsedInputOption = InputConverter.stringToInteger(e.input);
         yield parsedInputOption.fold(
@@ -84,7 +92,7 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
             Validators.isValidAvailableSpots(state.parkingLot.availableSpots.toString()) &&
             Validators.isValidParkingLotTitle(state.parkingLot.title) &&
             Validators.isValidPricePerHour(state.parkingLot.pricePerHour.toString())) {
-          failureOrSuccess = await _addParkingLot(state.parkingLot);
+          failureOrSuccess = state.isEditing ? await _editParkingLot(state.parkingLot) : await _addParkingLot(state.parkingLot);
           failureOrSuccess.fold((l) {}, (_) => _currentParkingLot.value = optionOf(state.parkingLot));
         }
 

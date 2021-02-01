@@ -1,6 +1,9 @@
+import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
+import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,15 +14,17 @@ import '../../current_parking_lot.dart';
 import 'components/add_parking_lot_form.dart';
 
 class AddParkingLotScreen extends StatelessWidget {
-  final currentParkingLot = getIt<CurrentParkingLot>();
+  final ParkingLot editedParkingLot;
 
-  AddParkingLotScreen({Key key}) : super(key: key);
+  AddParkingLotScreen({Key key,this.editedParkingLot}) : super(key: key);
+
+  final currentParkingLot = getIt<CurrentParkingLot>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AddParkingLotBloc>(),
-      child: BlocListener<AddParkingLotBloc, AddParkingLotState>(
+      create: (context) => getIt<AddParkingLotBloc>()..add(AddParkingLotEvent.started(optionOf(editedParkingLot))),
+      child: BlocConsumer<AddParkingLotBloc, AddParkingLotState>(
         listenWhen: (p, c) => p.saveFailureOrSuccessOption != c.saveFailureOrSuccessOption,
         listener: (context, state) {
           state.saveFailureOrSuccessOption.fold(
@@ -36,11 +41,14 @@ class AddParkingLotScreen extends StatelessWidget {
             ),
           );
         },
-        child: AppScaffold(
-          title: 'Adicionar um estacionamento',
-          scrollable: true,
-          body: const AddParkingLotForm(),
-        ),
+        buildWhen: (p, c) => p.isEditing != c.isEditing,
+        builder: (context, state) {
+          return AppScaffold(
+            title: state.isEditing ? Messages.editParkingLotTitle : Messages.addParkingLotTitle,
+            scrollable: true,
+            body: const AddParkingLotForm(),
+          );
+        },
       ),
     );
   }

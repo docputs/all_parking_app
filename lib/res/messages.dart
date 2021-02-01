@@ -43,4 +43,9 @@ class Messages {
   static const cardsLabel = 'Cartões';
   static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.parkedVehicles.length} restantes';
   static String usedCards(ParkingLot parkingLot) => '${parkingLot.parkedVehicles.length} de ${parkingLot.availableSpots} cartões usados';
+
+  //AddParkingLotScreen
+  static const editParkingLotTitle = 'Editar estacionamento';
+  static const addParkingLotTitle = 'Adicionar estacionamento';
+  static const addParkingLotSubmitButton = 'SALVAR';
 }

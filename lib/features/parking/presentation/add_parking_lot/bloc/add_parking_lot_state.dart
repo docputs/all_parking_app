@@ -8,6 +8,7 @@ abstract class AddParkingLotState with _$AddParkingLotState {
     @required bool showErrorMessages,
     @required bool isSubmitting,
     @required Option<Either<ParkingFailure, Unit>> saveFailureOrSuccessOption,
+    @required bool isEditing,
   }) = _AddParkingLotState;
 
   factory AddParkingLotState.initial() => AddParkingLotState(
@@ -15,5 +16,6 @@ abstract class AddParkingLotState with _$AddParkingLotState {
     isSubmitting: false,
     saveFailureOrSuccessOption: none(),
     showErrorMessages: false,
+    isEditing: false,
   );
 }
