@@ -1,5 +1,5 @@
 import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
-import 'package:all_parking/utils/validators.dart';
+import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ import 'default_text_field.dart';
 class ParkingLotTextFormField extends StatelessWidget {
   final String labelText;
   final void Function(String) onChanged;
-  final Either<ValidationFailure, String> Function(String) validationEither;
+  final Either<ParkingFailure, String> Function(String) validationEither;
   final ValidationFormState state;
   final TextInputType keyboardType;
   final bool obscureText;
