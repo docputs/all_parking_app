@@ -8,6 +8,7 @@ class AppColors {
   static const accentDarkerColor = Color(0xff693696);
   static const textColor = Color(0xff707070);
   static const errorColor = Colors.red;
+  static const shadowColor = Colors.black12;
 }
 
 ThemeData buildThemeData() {

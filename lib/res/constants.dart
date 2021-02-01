@@ -1,3 +1,6 @@
+import 'package:all_parking/res/theme.dart';
+import 'package:flutter/widgets.dart';
+
 class Constants {
   static const splashRoute = '/';
   static const homeRoute = '/home';
@@ -15,4 +18,6 @@ class Constants {
 
   static final cepRegex = RegExp(r"^\d{5}-\d{3}$");
   static final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+
+  static final defaultBoxShadow = BoxShadow(offset: Offset(0, 15), blurRadius: 20, color: AppColors.shadowColor);
 }

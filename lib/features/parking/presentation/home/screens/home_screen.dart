@@ -30,29 +30,26 @@ class HomeScreen extends StatelessWidget {
           orElse: () {},
         );
       },
-      child: MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => getIt<AddParkingLotBloc>())],
-        child: AppScaffold(
-          customAppBar: CustomAppBar(),
-          drawer: const DefaultDrawer(),
-          body: HawkFabMenu(
-            fabColor: AppColors.accentColor,
-            body: _buildBody(),
-            items: [
-              HawkFabMenuItem(
-                label: 'CHECK-IN',
-                labelBackgroundColor: Colors.white,
-                icon: Icon(Icons.south_east),
-                ontap: () {},
-              ),
-              HawkFabMenuItem(
-                label: 'CHECK-OUT',
-                labelBackgroundColor: Colors.white,
-                icon: Icon(Icons.north_east),
-                ontap: () {},
-              ),
-            ],
-          ),
+      child: AppScaffold(
+        customAppBar: CustomAppBar(),
+        drawer: const DefaultDrawer(),
+        body: HawkFabMenu(
+          fabColor: AppColors.accentColor,
+          body: _buildBody(),
+          items: [
+            HawkFabMenuItem(
+              label: 'CHECK-IN',
+              labelBackgroundColor: Colors.white,
+              icon: Icon(Icons.south_east),
+              ontap: () {},
+            ),
+            HawkFabMenuItem(
+              label: 'CHECK-OUT',
+              labelBackgroundColor: Colors.white,
+              icon: Icon(Icons.north_east),
+              ontap: () {},
+            ),
+          ],
         ),
       ),
     );

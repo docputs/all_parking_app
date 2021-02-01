@@ -1,5 +1,6 @@
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
@@ -26,16 +27,23 @@ class ParkingLotDashboard extends StatelessWidget {
           ),
         ),
         CardsDisplay(parkingLot),
-        const SizedBox(height: 40),
+        const SizedBox(height: 60),
         Text(
-          'Veículos estacionados',
+          'VEÍCULOS ESTACIONADOS',
           style: TextStyle(
-            fontSize: 12,
+            fontSize: 14,
             color: AppColors.textColor,
-            fontWeight: FontWeight.bold,
           ),
         ),
-        parkingLot.parkedVehicles.isEmpty ? _buildEmptyWarning(context) : _buildParkedVehicleList(),
+        Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [Constants.defaultBoxShadow],
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: parkingLot.parkedVehicles.isEmpty ? _buildEmptyWarning(context) : _buildParkedVehicleList(),
+        ),
       ],
     );
   }
@@ -44,13 +52,14 @@ class ParkingLotDashboard extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(height: 40),
+        const SizedBox(height: 20),
         Image.asset(
           'assets/images/undraw_No_data_re_kwbl.png',
           width: MediaQuery.of(context).size.width / 2,
         ),
         const SizedBox(height: 10),
         Text('NENHUM VEÍCULO ESTACIONADO', style: TextStyle(color: AppColors.textColor)),
+        const SizedBox(height: 20),
       ],
     );
   }
