@@ -19,7 +19,7 @@ class AndroidApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'All Parking',
         theme: buildThemeData(),
-        routes: buildAppRoutes(),
+        onGenerateRoute: generateRoutes,
       ),
     );
   }
