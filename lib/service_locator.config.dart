@@ -13,6 +13,8 @@ import 'features/parking/domain/usecases/add_parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
 import 'app_navigator.dart';
 import 'features/auth/presentation/auth_bloc.dart';
+import 'features/parking/presentation/check-in/bloc/check_in_bloc.dart';
+import 'features/parking/domain/usecases/check_in_vehicle.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
 import 'features/parking/domain/usecases/edit_parking_lot.dart';
@@ -65,6 +67,8 @@ GetIt $initGetIt(
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IUserRepository>()));
+  gh.lazySingleton<CheckInVehicle>(() =>
+      CheckInVehicle(get<IParkingLotRepository>(), get<CurrentParkingLot>()));
   gh.lazySingleton<DeleteParkingLot>(() => DeleteParkingLot(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<EditParkingLot>(
@@ -79,6 +83,7 @@ GetIt $initGetIt(
       () => ParkingLotWatcherBloc(get<WatchAllParkingLots>()));
   gh.factory<AddParkingLotBloc>(
       () => AddParkingLotBloc(get<AddParkingLot>(), get<EditParkingLot>()));
+  gh.factory<CheckInBloc>(() => CheckInBloc(get<CheckInVehicle>()));
   return get;
 }
 

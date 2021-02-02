@@ -151,7 +151,7 @@ class __$ManagerDTOCopyWithImpl<$Res> extends _$ManagerDTOCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
-  _$_ManagerDTO(
+  const _$_ManagerDTO(
       {@JsonKey(ignore: true) this.id,
       @required this.displayName,
       @required this.email,
@@ -235,8 +235,8 @@ class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
 }
 
 abstract class _ManagerDTO extends ManagerDTO {
-  _ManagerDTO._() : super._();
-  factory _ManagerDTO(
+  const _ManagerDTO._() : super._();
+  const factory _ManagerDTO(
       {@JsonKey(ignore: true) String id,
       @required String displayName,
       @required String email,

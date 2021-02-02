@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/domain/entities/owner_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -5,6 +6,8 @@ part 'parked_vehicle.freezed.dart';
 part 'parked_vehicle.g.dart';
 
 enum VehicleColor { black, silver, white, gray, green, blue, red, brown, yellow }
+
+enum VehicleType { car, motorcycle }
 
 @freezed
 abstract class QRCode with _$QRCode {
@@ -22,6 +25,19 @@ abstract class ParkedVehicle with _$ParkedVehicle {
     @required VehicleColor color,
     @required DateTime checkIn,
     @required DateTime checkOut,
+    @required VehicleType type,
     @required String observations,
+    OwnerData ownerData,
   }) = _ParkedVehicle;
+
+  factory ParkedVehicle.empty() => ParkedVehicle(
+        id: QRCode(''),
+        title: '',
+        licensePlate: '',
+        color: null,
+        checkIn: null,
+        checkOut: null,
+        type: null,
+        observations: '',
+      );
 }

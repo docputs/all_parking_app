@@ -83,6 +83,7 @@ final parkedVehicles = [
     checkIn: DateTime(2020, 01, 19, 12, 30),
     checkOut: DateTime(2020, 01, 19, 12, 30),
     observations: '',
+    type: VehicleType.car,
   ),
   ParkedVehicle(
     id: QRCode('2'),
@@ -92,6 +93,7 @@ final parkedVehicles = [
     checkIn: DateTime(2020, 01, 19, 12, 30),
     checkOut: DateTime(2020, 01, 19, 12, 30),
     observations: '',
+    type: VehicleType.car,
   ),
   ParkedVehicle(
     id: QRCode('3'),
@@ -101,5 +103,6 @@ final parkedVehicles = [
     checkIn: DateTime(2020, 01, 19, 12, 30),
     checkOut: DateTime(2020, 01, 19, 12, 30),
     observations: '',
+    type: VehicleType.car,
   ),
 ];

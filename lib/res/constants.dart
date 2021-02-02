@@ -15,6 +15,8 @@ class Constants {
   static const editInformationRoute = '/home/edit-information';
   static const parkedVehicles = '/home/manage-parked-vehicles';
   static const editParkingLotRoute = '/home/manage-parking-lots/edit-parking-lot';
+  static const checkInVehicleRoute = '/home/check-in';
+  static const checkOutVehicleRoute = '/home/check-out';
 
   static final cepRegex = RegExp(r"^\d{5}-\d{3}$");
   static final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");

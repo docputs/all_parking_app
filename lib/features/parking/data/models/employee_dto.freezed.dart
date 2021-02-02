@@ -112,7 +112,8 @@ class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_EmployeeDTO extends _EmployeeDTO {
-  _$_EmployeeDTO({@JsonKey(ignore: true) this.id, @required this.displayName})
+  const _$_EmployeeDTO(
+      {@JsonKey(ignore: true) this.id, @required this.displayName})
       : assert(displayName != null),
         super._();
 
@@ -159,8 +160,8 @@ class _$_EmployeeDTO extends _EmployeeDTO {
 }
 
 abstract class _EmployeeDTO extends EmployeeDTO {
-  _EmployeeDTO._() : super._();
-  factory _EmployeeDTO(
+  const _EmployeeDTO._() : super._();
+  const factory _EmployeeDTO(
       {@JsonKey(ignore: true) String id,
       @required String displayName}) = _$_EmployeeDTO;
 

@@ -6,8 +6,8 @@ part of 'parked_vehicle_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ParkedVehicleDTO _$ParkedVehicleDTOFromJson(Map<String, dynamic> json) {
-  return ParkedVehicleDTO(
+_$_ParkedVehicleDTO _$_$_ParkedVehicleDTOFromJson(Map<String, dynamic> json) {
+  return _$_ParkedVehicleDTO(
     id: json['id'] == null
         ? null
         : QRCode.fromJson(json['id'] as Map<String, dynamic>),
@@ -20,11 +20,16 @@ ParkedVehicleDTO _$ParkedVehicleDTOFromJson(Map<String, dynamic> json) {
     checkOut: json['checkOut'] == null
         ? null
         : DateTime.parse(json['checkOut'] as String),
+    type: _$enumDecodeNullable(_$VehicleTypeEnumMap, json['type']),
     observations: json['observations'] as String,
+    ownerData: json['ownerData'] == null
+        ? null
+        : OwnerDataDTO.fromJson(json['ownerData'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$ParkedVehicleDTOToJson(ParkedVehicleDTO instance) =>
+Map<String, dynamic> _$_$_ParkedVehicleDTOToJson(
+        _$_ParkedVehicleDTO instance) =>
     <String, dynamic>{
       'id': instance.id?.toJson(),
       'title': instance.title,
@@ -32,7 +37,9 @@ Map<String, dynamic> _$ParkedVehicleDTOToJson(ParkedVehicleDTO instance) =>
       'color': _$VehicleColorEnumMap[instance.color],
       'checkIn': instance.checkIn?.toIso8601String(),
       'checkOut': instance.checkOut?.toIso8601String(),
+      'type': _$VehicleTypeEnumMap[instance.type],
       'observations': instance.observations,
+      'ownerData': instance.ownerData?.toJson(),
     };
 
 T _$enumDecode<T>(
@@ -77,4 +84,9 @@ const _$VehicleColorEnumMap = {
   VehicleColor.red: 'red',
   VehicleColor.brown: 'brown',
   VehicleColor.yellow: 'yellow',
+};
+
+const _$VehicleTypeEnumMap = {
+  VehicleType.car: 'car',
+  VehicleType.motorcycle: 'motorcycle',
 };

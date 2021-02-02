@@ -9,7 +9,7 @@ part 'employee_dto.g.dart';
 abstract class EmployeeDTO implements _$EmployeeDTO {
   const EmployeeDTO._();
 
-  factory EmployeeDTO({
+  const factory EmployeeDTO({
     @JsonKey(ignore: true) String id,
     @required String displayName,
   }) = _EmployeeDTO;

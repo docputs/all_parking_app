@@ -3,7 +3,9 @@ import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart
 import 'package:all_parking/features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class CheckInVehicle {
   final IParkingLotRepository _parkingLotRepository;
   final CurrentParkingLot _currentParkingLot;

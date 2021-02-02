@@ -25,8 +25,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        state.maybeMap(
-          unauthenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
+        state.maybeWhen(
+          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
           orElse: () {},
         );
       },
@@ -37,21 +37,31 @@ class HomeScreen extends StatelessWidget {
           fabColor: AppColors.accentColor,
           body: _buildBody(),
           items: [
-            _buildFABMenuItem(labelText: Messages.checkInVehicleLabel, color: AppColors.checkColor, onPressed: () {}),
-            _buildFABMenuItem(labelText: Messages.checkOutVehicleLabel, color: AppColors.errorColor, onPressed: () {}),
+            _buildFABMenuItem(
+              labelText: Messages.checkInVehicleLabel,
+              color: AppColors.checkColor,
+              icon: Icons.south_east,
+              onPressed: () => Navigator.of(context).pushNamed(Constants.checkInVehicleRoute),
+            ),
+            _buildFABMenuItem(
+              labelText: Messages.checkOutVehicleLabel,
+              color: AppColors.errorColor,
+              icon: Icons.north_east,
+              onPressed: () {},
+            ),
           ],
         ),
       ),
     );
   }
 
-  HawkFabMenuItem _buildFABMenuItem({String labelText, Color color, void Function() onPressed}) {
+  HawkFabMenuItem _buildFABMenuItem({String labelText, Color color, IconData icon, void Function() onPressed}) {
     return HawkFabMenuItem(
       label: labelText,
       labelColor: Colors.white,
       color: color,
       labelBackgroundColor: Colors.black54,
-      icon: Icon(Icons.south_east),
+      icon: Icon(icon),
       ontap: onPressed,
     );
   }

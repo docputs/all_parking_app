@@ -15,7 +15,7 @@ abstract class ManagerDTO implements _$ManagerDTO {
   const ManagerDTO._();
 
   @JsonSerializable(explicitToJson: true)
-  factory ManagerDTO({
+  const factory ManagerDTO({
     @JsonKey(ignore: true) String id,
     @required String displayName,
     @required String email,

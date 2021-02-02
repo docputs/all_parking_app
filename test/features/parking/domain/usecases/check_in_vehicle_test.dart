@@ -22,7 +22,7 @@ void main() {
   });
 
   group('CurrentParkingLot is not empty', () {
-    setUp(() => currentParkingLot.value = some(Fixtures.parkingLot));
+    setUp(() => currentParkingLot.setValue(Fixtures.parkingLot));
 
     test('should call update on repository with new parked vehicle', () async {
       when(mockParkingLotRepository.update(any)).thenAnswer((_) async => Right(unit));
