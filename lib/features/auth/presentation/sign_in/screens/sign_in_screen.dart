@@ -1,3 +1,4 @@
+import 'package:all_parking/res/assets.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class SignInScreen extends StatelessWidget {
 
   Widget _buildLogo(BuildContext context) {
     return Image.asset(
-      'assets/images/logos/extended_logo.png',
+      Assets.extendedLogo,
       width: MediaQuery.of(context).size.width / 1.5,
     );
   }

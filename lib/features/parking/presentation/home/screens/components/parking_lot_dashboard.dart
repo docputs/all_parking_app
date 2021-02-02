@@ -1,6 +1,8 @@
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/res/assets.dart';
 import 'package:all_parking/res/constants.dart';
+import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
@@ -53,12 +55,9 @@ class ParkingLotDashboard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(height: 20),
-        Image.asset(
-          'assets/images/undraw_No_data_re_kwbl.png',
-          width: MediaQuery.of(context).size.width / 2,
-        ),
+        Image.asset(Assets.noData, width: MediaQuery.of(context).size.width / 2),
         const SizedBox(height: 10),
-        Text('NENHUM VEÍCULO ESTACIONADO', style: TextStyle(color: AppColors.textColor)),
+        const Text(Messages.noParkedVehicles, style: TextStyle(color: AppColors.textColor)),
         const SizedBox(height: 20),
       ],
     );

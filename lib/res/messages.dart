@@ -45,6 +45,9 @@ class Messages {
   static String usedCards(ParkingLot parkingLot) => '${parkingLot.parkedVehicles.length} de ${parkingLot.availableSpots} cartões usados';
   static const checkInVehicleLabel = 'CHECK-IN';
   static const checkOutVehicleLabel = 'CHECK-OUT';
+  static const pressMoreToAddParkingLot = 'Toque em + para adicionar';
+  static const noParkingLotsFound = 'Nenhum estacionamento encontrado';
+  static const noParkedVehicles = 'NENHUM VEÍCULO ESTACIONADO';
 
   //AddParkingLotScreen
   static const editParkingLotTitle = 'Editar estacionamento';
