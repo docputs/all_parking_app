@@ -7,7 +7,8 @@ class AppColors {
   static const accentLighterColor = Color(0xffa983cd);
   static const accentDarkerColor = Color(0xff693696);
   static const textColor = Color(0xff707070);
-  static const errorColor = Colors.red;
+  static const errorColor = Color(0xffdb504a);
+  static const checkColor = Color(0xff419d78);
   static const shadowColor = Colors.black12;
 }
 

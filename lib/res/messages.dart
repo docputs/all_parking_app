@@ -24,12 +24,11 @@ class Messages {
   static const invalidCep = 'CEP inválido';
   static const exceededParkingLots = 'Limite de estacionamentos atingido';
 
-  static const emailFieldLabel = 'E-mail';
-  static const passwordFieldLabel = 'Senha';
-
   //SignIn
   static const signInScreenTitle = 'Acesse sua conta';
+  static const emailFieldLabel = 'E-mail';
   static const signInButton = 'ENTRAR';
+  static const passwordFieldLabel = 'Senha';
 
   //SignUp
   static const signUpScreenTitle = 'Crie sua conta';
@@ -44,6 +43,8 @@ class Messages {
   static const cardsLabel = 'Cartões';
   static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.parkedVehicles.length} restantes';
   static String usedCards(ParkingLot parkingLot) => '${parkingLot.parkedVehicles.length} de ${parkingLot.availableSpots} cartões usados';
+  static const checkInVehicleLabel = 'CHECK-IN';
+  static const checkOutVehicleLabel = 'CHECK-OUT';
 
   //AddParkingLotScreen
   static const editParkingLotTitle = 'Editar estacionamento';
