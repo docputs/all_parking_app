@@ -37,9 +37,11 @@ class ParkingLotWatcherBloc extends Bloc<ParkingLotWatcherEvent, ParkingLotWatch
           (f) => ParkingLotWatcherState.error(f),
           (parkingLots) {
             if (currentParkingLot.value.isNone() && parkingLots.isNotEmpty()) {
-              currentParkingLot.value = optionOf(parkingLots.elementAt(0));
+              currentParkingLot.setValue(parkingLots.first());
             } else if (parkingLots.isEmpty()) {
-              currentParkingLot.value = none();
+              currentParkingLot.resetField();
+            } else if (!parkingLots.contains(currentParkingLot.value.getOrElse(() => null))) {
+              currentParkingLot.setValue(parkingLots.first());
             }
             return ParkingLotWatcherState.success(parkingLots);
           },

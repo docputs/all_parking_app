@@ -6,4 +6,8 @@ import 'package:injectable/injectable.dart';
 @lazySingleton
 class CurrentParkingLot extends ValueNotifier<Option<ParkingLot>> {
   CurrentParkingLot() : super(none());
+
+  void setValue(ParkingLot value) => this.value = optionOf(value);
+
+  void resetField() => this.value = none();
 }
