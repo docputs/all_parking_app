@@ -41,6 +41,7 @@ abstract class ParkedVehicle with _$ParkedVehicle {
       checkOut: now,
       type: VehicleType.car,
       observations: '',
+      ownerData: OwnerData.empty(),
     );
   }
 }

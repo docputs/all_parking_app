@@ -21,6 +21,7 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
     @required int availableSpots,
     @required double pricePerHour,
     @required List<ParkedVehicleDTO> parkedVehicles,
+    
   }) = _ParkingLotDTO;
 
   factory ParkingLotDTO.fromDomain(ParkingLot model) => ParkingLotDTO(

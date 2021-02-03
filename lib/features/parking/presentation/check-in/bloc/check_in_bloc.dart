@@ -4,8 +4,10 @@ import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/usecases/check_in_vehicle.dart';
+import 'package:all_parking/utils/validators.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -24,7 +26,7 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
     yield* event.when(
       changedLicensePlate: (input) async* {
         yield state.copyWith(
-          vehicle: state.vehicle.copyWith(licensePlate: input),
+          vehicle: state.vehicle.copyWith(licensePlate: input.toUpperCase()),
           saveFailureOrSuccessOption: none(),
         );
       },
@@ -70,7 +72,7 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
           saveFailureOrSuccessOption: none(),
         );
       },
-      submitted: () async* {
+      submitted: (confirmSubmit, context) async* {
         Either<ParkingFailure, Unit> failureOrSuccess;
 
         yield state.copyWith(
@@ -78,7 +80,15 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
           saveFailureOrSuccessOption: none(),
         );
 
-        // failureOrSuccess = await _checkInVehicle(state.vehicle);
+        if (Validators.isValidVehicleLabel(state.vehicle.title) &&
+            Validators.isValidLicensePlate(state.vehicle.licensePlate) &&
+            Validators.isValidObservations(state.vehicle.observations) &&
+            Validators.isValidCpf(state.vehicle.ownerData.cpf)) {
+          final currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
+          final result = await confirmSubmit(context);
+          if (result) failureOrSuccess = await _checkInVehicle(state.vehicle);
+        }
 
         yield state.copyWith(
           isSubmitting: false,

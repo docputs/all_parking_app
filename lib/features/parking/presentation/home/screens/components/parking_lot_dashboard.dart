@@ -64,11 +64,12 @@ class ParkingLotDashboard extends StatelessWidget {
   }
 
   Widget _buildParkedVehicleList() {
-    return ListView.builder(
+    return ListView.separated(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => ParkedVehicleTile(parkingLot.parkedVehicles[index]),
       itemCount: parkingLot.parkedVehicles.length,
+      separatorBuilder: (context, index) => const Divider(),
     );
   }
 }

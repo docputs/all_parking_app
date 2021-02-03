@@ -2,6 +2,7 @@ import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/theme.dart';
+import 'package:all_parking/widgets/default_alert_dialog.dart';
 import 'package:all_parking/widgets/default_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,25 +45,13 @@ class ManageParkingLotTile extends StatelessWidget {
     return showDialog<bool>(
       context: context,
       barrierDismissible: false,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Tem certeza?'),
-          content: Text('Deseja remover ${parkingLot.title} da sua lista de estacionamentos?'),
-          actions: [
-            FlatButton(
-              child: Text(
-                'VOLTAR',
-                style: TextStyle(color: AppColors.primaryColor),
-              ),
-              onPressed: () => Navigator.of(context).pop(false),
-            ),
-            FlatButton(
-              child: Text('REMOVER', style: TextStyle(color: AppColors.errorColor)),
-              onPressed: () => Navigator.of(context).pop(true),
-            ),
-          ],
-        );
-      },
+      builder: (context) => DefaultAlertDialog(
+        title: 'Tem certeza?',
+        message: 'Deseja remover ${parkingLot.title} da sua lista de estacionamentos?',
+        rightButtonText: 'REMOVER',
+        leftButtonText: 'VOLTAR',
+        useWarningButton: true,
+      ),
     );
   }
 }

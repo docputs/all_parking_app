@@ -16,11 +16,14 @@ abstract class OwnerDataDTO implements _$OwnerDataDTO {
 
   factory OwnerDataDTO.fromJson(Map<String, dynamic> json) => _$OwnerDataDTOFromJson(json);
 
-  factory OwnerDataDTO.fromDomain(OwnerData model) => OwnerDataDTO(
-        name: model.name,
-        phoneNumber: model.phoneNumber,
-        cpf: model.cpf,
-      );
+  factory OwnerDataDTO.fromDomain(OwnerData model) {
+    if (model == null || [model.name, model.phoneNumber, model.cpf].every((element) => element.isEmpty)) return null;
+    return OwnerDataDTO(
+      name: model.name,
+      phoneNumber: model.phoneNumber,
+      cpf: model.cpf,
+    );
+  }
 
   OwnerData toDomain() => OwnerData(name: name, phoneNumber: phoneNumber, cpf: cpf);
 }

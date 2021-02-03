@@ -20,7 +20,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
     @required DateTime checkOut,
     @required VehicleType type,
     @required String observations,
-    OwnerDataDTO ownerData,
+    @JsonKey(includeIfNull: false) OwnerDataDTO ownerData,
   }) = _ParkedVehicleDTO;
 
   factory ParkedVehicleDTO.fromDomain(ParkedVehicle model) => ParkedVehicleDTO(
@@ -44,7 +44,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
         licensePlate: licensePlate,
         observations: observations,
         type: type,
-        ownerData: ownerData.toDomain(),
+        ownerData: ownerData?.toDomain(),
       );
 
   factory ParkedVehicleDTO.fromJson(Map<String, dynamic> json) => _$ParkedVehicleDTOFromJson(json);

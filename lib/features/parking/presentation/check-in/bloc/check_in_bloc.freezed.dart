@@ -70,8 +70,12 @@ class _$CheckInEventTearOff {
   }
 
 // ignore: unused_element
-  _Submitted submitted() {
-    return const _Submitted();
+  _Submitted submitted(
+      Future<bool> Function(BuildContext) confirmSubmit, BuildContext context) {
+    return _Submitted(
+      confirmSubmit,
+      context,
+    );
   }
 }
 
@@ -91,7 +95,9 @@ mixin _$CheckInEvent {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -103,7 +109,8 @@ mixin _$CheckInEvent {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -219,7 +226,9 @@ class _$_ChangedLicensePlate implements _ChangedLicensePlate {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -244,7 +253,8 @@ class _$_ChangedLicensePlate implements _ChangedLicensePlate {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -377,7 +387,9 @@ class _$_ChangedLabel implements _ChangedLabel {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -402,7 +414,8 @@ class _$_ChangedLabel implements _ChangedLabel {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -535,7 +548,9 @@ class _$_ChangedColor implements _ChangedColor {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -560,7 +575,8 @@ class _$_ChangedColor implements _ChangedColor {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -694,7 +710,9 @@ class _$_ChangedVehicleType implements _ChangedVehicleType {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -719,7 +737,8 @@ class _$_ChangedVehicleType implements _ChangedVehicleType {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -854,7 +873,9 @@ class _$_ChangedObservations implements _ChangedObservations {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -879,7 +900,8 @@ class _$_ChangedObservations implements _ChangedObservations {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1013,7 +1035,9 @@ class _$_ChangedOwnerName implements _ChangedOwnerName {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -1038,7 +1062,8 @@ class _$_ChangedOwnerName implements _ChangedOwnerName {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1172,7 +1197,9 @@ class _$_ChangedOwnerPhone implements _ChangedOwnerPhone {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -1197,7 +1224,8 @@ class _$_ChangedOwnerPhone implements _ChangedOwnerPhone {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1331,7 +1359,9 @@ class _$_ChangedOwnerCpf implements _ChangedOwnerCpf {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -1356,7 +1386,8 @@ class _$_ChangedOwnerCpf implements _ChangedOwnerCpf {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1426,6 +1457,9 @@ abstract class _$SubmittedCopyWith<$Res> {
   factory _$SubmittedCopyWith(
           _Submitted value, $Res Function(_Submitted) then) =
       __$SubmittedCopyWithImpl<$Res>;
+  $Res call(
+      {Future<bool> Function(BuildContext) confirmSubmit,
+      BuildContext context});
 }
 
 /// @nodoc
@@ -1436,24 +1470,58 @@ class __$SubmittedCopyWithImpl<$Res> extends _$CheckInEventCopyWithImpl<$Res>
 
   @override
   _Submitted get _value => super._value as _Submitted;
+
+  @override
+  $Res call({
+    Object confirmSubmit = freezed,
+    Object context = freezed,
+  }) {
+    return _then(_Submitted(
+      confirmSubmit == freezed
+          ? _value.confirmSubmit
+          : confirmSubmit as Future<bool> Function(BuildContext),
+      context == freezed ? _value.context : context as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_Submitted implements _Submitted {
-  const _$_Submitted();
+  const _$_Submitted(this.confirmSubmit, this.context)
+      : assert(confirmSubmit != null),
+        assert(context != null);
+
+  @override
+  final Future<bool> Function(BuildContext) confirmSubmit;
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'CheckInEvent.submitted()';
+    return 'CheckInEvent.submitted(confirmSubmit: $confirmSubmit, context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Submitted);
+    return identical(this, other) ||
+        (other is _Submitted &&
+            (identical(other.confirmSubmit, confirmSubmit) ||
+                const DeepCollectionEquality()
+                    .equals(other.confirmSubmit, confirmSubmit)) &&
+            (identical(other.context, context) ||
+                const DeepCollectionEquality().equals(other.context, context)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(confirmSubmit) ^
+      const DeepCollectionEquality().hash(context);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SubmittedCopyWith<_Submitted> get copyWith =>
+      __$SubmittedCopyWithImpl<_Submitted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1466,7 +1534,9 @@ class _$_Submitted implements _Submitted {
     @required TResult changedOwnerName(String input),
     @required TResult changedOwnerPhone(String input),
     @required TResult changedOwnerCpf(String input),
-    @required TResult submitted(),
+    @required
+        TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+            BuildContext context),
   }) {
     assert(changedLicensePlate != null);
     assert(changedLabel != null);
@@ -1477,7 +1547,7 @@ class _$_Submitted implements _Submitted {
     assert(changedOwnerPhone != null);
     assert(changedOwnerCpf != null);
     assert(submitted != null);
-    return submitted();
+    return submitted(confirmSubmit, context);
   }
 
   @override
@@ -1491,12 +1561,13 @@ class _$_Submitted implements _Submitted {
     TResult changedOwnerName(String input),
     TResult changedOwnerPhone(String input),
     TResult changedOwnerCpf(String input),
-    TResult submitted(),
+    TResult submitted(Future<bool> Function(BuildContext) confirmSubmit,
+        BuildContext context),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (submitted != null) {
-      return submitted();
+      return submitted(confirmSubmit, context);
     }
     return orElse();
   }
@@ -1549,7 +1620,13 @@ class _$_Submitted implements _Submitted {
 }
 
 abstract class _Submitted implements CheckInEvent {
-  const factory _Submitted() = _$_Submitted;
+  const factory _Submitted(Future<bool> Function(BuildContext) confirmSubmit,
+      BuildContext context) = _$_Submitted;
+
+  Future<bool> Function(BuildContext) get confirmSubmit;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$SubmittedCopyWith<_Submitted> get copyWith;
 }
 
 /// @nodoc

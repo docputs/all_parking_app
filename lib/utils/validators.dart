@@ -2,6 +2,7 @@ import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:dartz/dartz.dart';
+import 'package:cpfcnpj/cpfcnpj.dart';
 
 class Validators {
   static Either<AuthFailure, String> validateEmailAddress(String input) {
@@ -87,15 +88,22 @@ class Validators {
   static Either<ParkingFailure, String> validateLicensePlate(String input) {
     if (Constants.licensePlateRegex.hasMatch(input))
       return right(input);
+    else if (input.isEmpty)
+      return left(ParkingFailure.emptyField());
     else
       return left(ParkingFailure.invalidField());
   }
 
   static Either<ParkingFailure, String> validateObservations(String input) {
-    if (input.length <= 120 && input.isNotEmpty)
+    if (input.length <= 120)
       return right(input);
-    else if (input.isEmpty)
-      return left(ParkingFailure.emptyField());
+    else
+      return left(ParkingFailure.invalidField());
+  }
+
+  static Either<ParkingFailure, String> validateCpf(String input) {
+    if (CPF.isValid(input) || input.isEmpty)
+      return right(input);
     else
       return left(ParkingFailure.invalidField());
   }
@@ -115,4 +123,12 @@ class Validators {
   static bool isValidPricePerHour(String input) => validatePricePerHour(input).fold((_) => false, (_) => true);
 
   static bool isValidCep(String input) => validateCep(input).fold((_) => false, (_) => true);
+
+  static bool isValidCpf(String input) => validateCpf(input).fold((_) => false, (_) => true);
+
+  static bool isValidObservations(String input) => validateObservations(input).fold((_) => false, (_) => true);
+
+  static bool isValidLicensePlate(String input) => validateLicensePlate(input).fold((_) => false, (_) => true);
+
+  static bool isValidVehicleLabel(String input) => validateVehicleLabel(input).fold((_) => false, (_) => true);
 }

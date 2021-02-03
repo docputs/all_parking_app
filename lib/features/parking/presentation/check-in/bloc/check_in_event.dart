@@ -10,5 +10,5 @@ abstract class CheckInEvent with _$CheckInEvent {
   const factory CheckInEvent.changedOwnerName(String input) = _ChangedOwnerName;
   const factory CheckInEvent.changedOwnerPhone(String input) = _ChangedOwnerPhone;
   const factory CheckInEvent.changedOwnerCpf(String input) = _ChangedOwnerCpf;
-  const factory CheckInEvent.submitted() = _Submitted;
+  const factory CheckInEvent.submitted(Future<bool> Function(BuildContext) confirmSubmit, BuildContext context) = _Submitted;
 }

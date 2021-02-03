@@ -26,7 +26,7 @@ class _$ParkedVehicleDTOTearOff {
       @required DateTime checkOut,
       @required VehicleType type,
       @required String observations,
-      OwnerDataDTO ownerData}) {
+      @JsonKey(includeIfNull: false) OwnerDataDTO ownerData}) {
     return _ParkedVehicleDTO(
       id: id,
       title: title,
@@ -60,6 +60,7 @@ mixin _$ParkedVehicleDTO {
   DateTime get checkOut;
   VehicleType get type;
   String get observations;
+  @JsonKey(includeIfNull: false)
   OwnerDataDTO get ownerData;
 
   Map<String, dynamic> toJson();
@@ -81,7 +82,7 @@ abstract class $ParkedVehicleDTOCopyWith<$Res> {
       DateTime checkOut,
       VehicleType type,
       String observations,
-      OwnerDataDTO ownerData});
+      @JsonKey(includeIfNull: false) OwnerDataDTO ownerData});
 
   $QRCodeCopyWith<$Res> get id;
   $OwnerDataDTOCopyWith<$Res> get ownerData;
@@ -163,7 +164,7 @@ abstract class _$ParkedVehicleDTOCopyWith<$Res>
       DateTime checkOut,
       VehicleType type,
       String observations,
-      OwnerDataDTO ownerData});
+      @JsonKey(includeIfNull: false) OwnerDataDTO ownerData});
 
   @override
   $QRCodeCopyWith<$Res> get id;
@@ -226,7 +227,7 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
       @required this.checkOut,
       @required this.type,
       @required this.observations,
-      this.ownerData})
+      @JsonKey(includeIfNull: false) this.ownerData})
       : assert(id != null),
         assert(title != null),
         assert(licensePlate != null),
@@ -257,6 +258,7 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
   @override
   final String observations;
   @override
+  @JsonKey(includeIfNull: false)
   final OwnerDataDTO ownerData;
 
   @override
@@ -320,15 +322,16 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
 abstract class _ParkedVehicleDTO extends ParkedVehicleDTO {
   const _ParkedVehicleDTO._() : super._();
   const factory _ParkedVehicleDTO(
-      {@required QRCode id,
-      @required String title,
-      @required String licensePlate,
-      @required VehicleColor color,
-      @required DateTime checkIn,
-      @required DateTime checkOut,
-      @required VehicleType type,
-      @required String observations,
-      OwnerDataDTO ownerData}) = _$_ParkedVehicleDTO;
+          {@required QRCode id,
+          @required String title,
+          @required String licensePlate,
+          @required VehicleColor color,
+          @required DateTime checkIn,
+          @required DateTime checkOut,
+          @required VehicleType type,
+          @required String observations,
+          @JsonKey(includeIfNull: false) OwnerDataDTO ownerData}) =
+      _$_ParkedVehicleDTO;
 
   factory _ParkedVehicleDTO.fromJson(Map<String, dynamic> json) =
       _$_ParkedVehicleDTO.fromJson;
@@ -350,6 +353,7 @@ abstract class _ParkedVehicleDTO extends ParkedVehicleDTO {
   @override
   String get observations;
   @override
+  @JsonKey(includeIfNull: false)
   OwnerDataDTO get ownerData;
   @override
   @JsonKey(ignore: true)

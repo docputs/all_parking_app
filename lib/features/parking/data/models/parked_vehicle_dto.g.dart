@@ -28,19 +28,27 @@ _$_ParkedVehicleDTO _$_$_ParkedVehicleDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_ParkedVehicleDTOToJson(
-        _$_ParkedVehicleDTO instance) =>
-    <String, dynamic>{
-      'id': instance.id?.toJson(),
-      'title': instance.title,
-      'licensePlate': instance.licensePlate,
-      'color': _$VehicleColorEnumMap[instance.color],
-      'checkIn': instance.checkIn?.toIso8601String(),
-      'checkOut': instance.checkOut?.toIso8601String(),
-      'type': _$VehicleTypeEnumMap[instance.type],
-      'observations': instance.observations,
-      'ownerData': instance.ownerData?.toJson(),
-    };
+Map<String, dynamic> _$_$_ParkedVehicleDTOToJson(_$_ParkedVehicleDTO instance) {
+  final val = <String, dynamic>{
+    'id': instance.id?.toJson(),
+    'title': instance.title,
+    'licensePlate': instance.licensePlate,
+    'color': _$VehicleColorEnumMap[instance.color],
+    'checkIn': instance.checkIn?.toIso8601String(),
+    'checkOut': instance.checkOut?.toIso8601String(),
+    'type': _$VehicleTypeEnumMap[instance.type],
+    'observations': instance.observations,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ownerData', instance.ownerData?.toJson());
+  return val;
+}
 
 T _$enumDecode<T>(
   Map<T, dynamic> enumValues,

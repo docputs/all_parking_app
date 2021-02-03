@@ -1,5 +1,6 @@
 import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/utils/validators.dart';
 import 'package:all_parking/widgets/parking_lot_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,7 @@ class OwnerDataForm extends StatelessWidget {
       builder: (context, state) => ParkingLotTextFormField(
         labelText: 'Nome',
         state: state as ValidationFormState,
-        validationEither: Validators.validateVehicleLabel,
-        onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedLabel(value)),
+        onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedOwnerName(value)),
       ),
     );
   }
@@ -44,8 +44,9 @@ class OwnerDataForm extends StatelessWidget {
       builder: (context, state) => ParkingLotTextFormField(
         labelText: 'Celular',
         state: state as ValidationFormState,
-        validationEither: Validators.validateVehicleLabel,
-        onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedLabel(value)),
+        onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedOwnerPhone(value)),
+        mask: Constants.phoneNumberMask,
+        keyboardType: TextInputType.number,
       ),
     );
   }
@@ -55,8 +56,10 @@ class OwnerDataForm extends StatelessWidget {
       builder: (context, state) => ParkingLotTextFormField(
         labelText: 'CPF',
         state: state as ValidationFormState,
-        validationEither: Validators.validateVehicleLabel,
-        onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedLabel(value)),
+        validationEither: Validators.validateCpf,
+        onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedOwnerCpf(value)),
+        mask: Constants.cpfMask,
+        keyboardType: TextInputType.number,
       ),
     );
   }

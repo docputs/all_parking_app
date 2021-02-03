@@ -3,6 +3,7 @@ import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/a
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/utils/validators.dart';
 import 'package:all_parking/widgets/default_button.dart';
+import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:all_parking/widgets/parking_lot_text_form_field.dart';
 import 'package:all_parking/widgets/static_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -33,15 +34,12 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text('Dados gerais', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        const SizedBox(height: 10),
+        const DefaultSectionTitle('Dados gerais'),
         _buildTitleField(),
         _buildSpotsAndPriceFields(),
         const SizedBox(height: 40),
-        Text('Endereço do local', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        const SizedBox(height: 10),
+        const DefaultSectionTitle('Endereço do local'),
         _buildCepField(),
         _buildAddressField(),
         _buildCityAndStateField(),

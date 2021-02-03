@@ -11,7 +11,7 @@ class ParkedVehicleTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.all(0),
-      title: Text(vehicle.title),
+      title: Text(vehicle.title, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(vehicle.licensePlate),
       leading: CircleAvatar(backgroundColor: VehicleColorConverter.convert(vehicle.color)),
       trailing: Icon(Icons.arrow_forward_ios, size: 18),

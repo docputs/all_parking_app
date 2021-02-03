@@ -21,6 +21,7 @@ ThemeData buildThemeData() {
     accentColor: AppColors.accentColor,
     errorColor: AppColors.errorColor,
     scaffoldBackgroundColor: AppColors.backgroundColor,
+    dividerTheme: DividerThemeData(color: AppColors.textColor),
     // textTheme: GoogleFonts.latoTextTheme(),
   );
 }
