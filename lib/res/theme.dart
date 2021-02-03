@@ -9,17 +9,18 @@ class AppColors {
   static const textColor = Color(0xff707070);
   static const errorColor = Color(0xffdb504a);
   static const checkColor = Color(0xff419d78);
-  static const shadowColor = Colors.black12;
+  static const shadowColor = Color(0xffeeeeee);
+  static const backgroundColor = Color(0xfff7f7f7);
 }
 
 ThemeData buildThemeData() {
   return ThemeData(
+    textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.accentLighterColor),
     appBarTheme: AppBarTheme(color: AppColors.primaryColor),
     primaryColor: AppColors.primaryColor,
     accentColor: AppColors.accentColor,
-    cursorColor: AppColors.accentLighterColor,
     errorColor: AppColors.errorColor,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.backgroundColor,
     // textTheme: GoogleFonts.latoTextTheme(),
   );
 }

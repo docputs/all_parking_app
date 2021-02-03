@@ -20,7 +20,7 @@ class CheckInForm extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         const VehicleDataForm(),
-        const SizedBox(height: 60),
+        const SizedBox(height: 40),
         Text(
           'Dados do cliente (opcional)',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),

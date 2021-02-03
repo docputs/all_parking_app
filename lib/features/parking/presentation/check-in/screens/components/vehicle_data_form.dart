@@ -17,9 +17,7 @@ class VehicleDataForm extends StatelessWidget {
     return Column(
       children: [
         _buildLabelAndColorField(),
-        const SizedBox(height: 10),
         _buildPlateAndVehicleTypeField(),
-        const SizedBox(height: 10),
         _buildObservationsField(),
       ],
     );
@@ -27,7 +25,6 @@ class VehicleDataForm extends StatelessWidget {
 
   Widget _buildLabelAndColorField() {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Expanded(child: _buildVehicleLabelField()),
         const SizedBox(width: 40),

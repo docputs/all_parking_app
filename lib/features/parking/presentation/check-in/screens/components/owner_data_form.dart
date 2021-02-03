@@ -14,9 +14,7 @@ class OwnerDataForm extends StatelessWidget {
     return Column(
       children: [
         _buildOwnerNameField(),
-        const SizedBox(height: 10),
         _buildPhoneAndCpfFields(),
-        const SizedBox(height: 10),
       ],
     );
   }

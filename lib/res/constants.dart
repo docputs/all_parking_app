@@ -22,5 +22,6 @@ class Constants {
   static final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   static final licensePlateRegex = RegExp(r"^[A-Z]{3}[0-9][0-9A-Z][0-9]{2}$");
 
-  static final defaultBoxShadow = BoxShadow(offset: Offset(0, 15), blurRadius: 15, color: AppColors.shadowColor);
+  static final defaultBoxShadow = const BoxShadow(offset: Offset(0, 15), blurRadius: 15, color: AppColors.shadowColor);
+  static final defaultFormFieldShadow = const BoxShadow(offset: Offset(1, 4), blurRadius: 4, color: AppColors.shadowColor, spreadRadius: -2.5);
 }

@@ -1,3 +1,5 @@
+import 'package:all_parking/res/constants.dart';
+import 'package:all_parking/res/theme.dart';
 import 'package:flutter/material.dart';
 
 class DefaultTextField extends StatelessWidget {
@@ -32,19 +34,37 @@ class DefaultTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(labelText: labelText, counterText: ''),
-      autocorrect: false,
-      enableSuggestions: false,
-      obscureText: obscureText ?? false,
-      onChanged: onChanged,
-      autovalidateMode: autovalidateMode,
-      keyboardType: keyboardType,
-      validator: validator,
-      enabled: enabled,
-      controller: controller,
-      maxLength: maxLength,
-      maxLines: maxLines,
+    return Container(
+      decoration: BoxDecoration(boxShadow: [Constants.defaultFormFieldShadow], borderRadius: BorderRadius.circular(10)),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: labelText,
+          counterText: '',
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(width: 0.5, color: AppColors.textColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(width: 0.5, color: AppColors.textColor),
+          ),
+          filled: true,
+          isDense: true,
+        ),
+        autocorrect: false,
+        enableSuggestions: false,
+        obscureText: obscureText ?? false,
+        onChanged: onChanged,
+        autovalidateMode: autovalidateMode,
+        keyboardType: keyboardType,
+        validator: validator,
+        enabled: enabled,
+        controller: controller,
+        maxLength: maxLength,
+        maxLines: maxLines,
+      ),
     );
   }
 }
