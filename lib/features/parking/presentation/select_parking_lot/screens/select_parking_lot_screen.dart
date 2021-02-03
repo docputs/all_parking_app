@@ -3,7 +3,9 @@ import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/a
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import 'package:all_parking/features/parking/presentation/select_parking_lot/screens/components/parking_lot_info_tile.dart';
+import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
+import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
@@ -27,7 +29,7 @@ class SelectParkingLotScreen extends StatelessWidget {
             return state.maybeWhen(
               orElse: () => const SizedBox(),
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (failure) => Container(height: 100, width: 100, color: Colors.red),
+              error: (failure) => Container(height: 100, width: 100, color: AppColors.errorColor),
               success: (parkingLots) => _buildParkingLotList(parkingLots),
             );
           },
@@ -37,11 +39,17 @@ class SelectParkingLotScreen extends StatelessWidget {
   }
 
   Widget _buildParkingLotList(KtList<ParkingLot> parkingLots) {
-    return ListView.separated(
-      physics: const BouncingScrollPhysics(),
-      itemCount: parkingLots.size,
-      itemBuilder: (context, index) => ParkingLotInfoTile(parkingLots[index]),
-      separatorBuilder: (context, index) => const Divider(),
+    return Column(
+      children: [
+        const DefaultSectionTitle('Seus estacionamentos'),
+        Expanded(
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: parkingLots.size,
+            itemBuilder: (context, index) => ParkingLotInfoTile(parkingLots[index]),
+          ),
+        ),
+      ],
     );
   }
 }

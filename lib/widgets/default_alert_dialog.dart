@@ -1,3 +1,4 @@
+import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class DefaultAlertDialog extends StatelessWidget {
                 onPressed: () => Navigator.of(context).pop(true),
               ),
       ],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
     );
   }
 }

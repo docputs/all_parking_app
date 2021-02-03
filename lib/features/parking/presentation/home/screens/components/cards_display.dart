@@ -15,7 +15,7 @@ class CardsDisplay extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [Constants.defaultBoxShadow],
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: Constants.defaultBorderRadius,
       ),
       padding: const EdgeInsets.all(25),
       child: Row(

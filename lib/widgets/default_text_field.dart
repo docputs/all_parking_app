@@ -34,7 +34,7 @@ class DefaultTextField extends StatefulWidget {
     this.maxLength,
     this.maxLines = 1,
     this.mask,
-    this.textCapitalization,
+    this.textCapitalization = TextCapitalization.none,
   }) : super(key: key);
 
   @override
@@ -60,11 +60,11 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
           counterText: '',
           fillColor: Colors.white,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: Constants.defaultBorderRadius,
             borderSide: const BorderSide(width: 0.3, color: AppColors.textColor),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: Constants.defaultBorderRadius,
             borderSide: const BorderSide(width: 0.3, color: AppColors.textColor),
           ),
           filled: true,

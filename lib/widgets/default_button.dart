@@ -1,3 +1,4 @@
+import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:all_parking/res/theme.dart';
@@ -14,7 +15,7 @@ class DefaultButton extends StatelessWidget {
     @required this.text,
     @required this.onPressed,
     this.padding,
-    this.height,
+    this.height = 46,
     this.width = double.infinity,
   }) : super(key: key);
 
@@ -25,6 +26,7 @@ class DefaultButton extends StatelessWidget {
       width: width,
       height: height,
       child: RaisedButton(
+        shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
         child: Text(text, style: TextStyle(fontWeight: FontWeight.w500)),
         color: AppColors.accentColor,
         colorBrightness: Brightness.dark,

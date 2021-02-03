@@ -1,7 +1,7 @@
+import 'package:all_parking/features/parking/core/util/car_color_converter.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
 import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/utils/car_color_converter.dart';
 import 'package:all_parking/widgets/default_dropdown_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

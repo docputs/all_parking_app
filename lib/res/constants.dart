@@ -29,4 +29,5 @@ class Constants {
   static final defaultBoxShadow = const BoxShadow(offset: Offset(0, 15), blurRadius: 15, color: AppColors.shadowColor);
   static final defaultFormFieldShadow =
       const BoxShadow(offset: Offset(1, 3), blurRadius: 5, color: AppColors.shadowColor, spreadRadius: -3);
+  static final defaultBorderRadius = BorderRadius.circular(10);
 }

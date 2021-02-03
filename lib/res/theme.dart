@@ -9,7 +9,7 @@ class AppColors {
   static const textColor = Color(0xff707070);
   static const errorColor = Color(0xffdb504a);
   static const checkColor = Color(0xff419d78);
-  static const shadowColor = Color(0xffeeeeee);
+  static const shadowColor = Color(0xfff1f1f1);
   static const backgroundColor = Color(0xfff7f7f7);
 }
 

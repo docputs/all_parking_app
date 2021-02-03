@@ -40,7 +40,7 @@ class ParkingLotWatcherBloc extends Bloc<ParkingLotWatcherEvent, ParkingLotWatch
               currentParkingLot.setValue(parkingLots.first());
             } else if (parkingLots.isEmpty()) {
               currentParkingLot.resetField();
-            } else if (!parkingLots.contains(currentParkingLot.value.getOrElse(() => null))) {
+            } else if (!_isCurrentParkingLotRegistered(parkingLots)) {
               currentParkingLot.setValue(parkingLots.first());
             }
             return ParkingLotWatcherState.success(parkingLots);
@@ -48,6 +48,10 @@ class ParkingLotWatcherBloc extends Bloc<ParkingLotWatcherEvent, ParkingLotWatch
         );
       },
     );
+  }
+
+  bool _isCurrentParkingLotRegistered(KtList<ParkingLot> parkingLots) {
+    return parkingLots.any((parkingLot) => parkingLot.id == currentParkingLot.value.getOrElse(() => null).id);
   }
 
   @override

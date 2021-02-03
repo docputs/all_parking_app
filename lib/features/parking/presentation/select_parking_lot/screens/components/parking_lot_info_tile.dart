@@ -18,7 +18,7 @@ class ParkingLotInfoTile extends StatelessWidget {
       title: parkingLot.title,
       subtitle: '${parkingLot.address.street} | ${parkingLot.address.cep}',
       onTap: () {
-        getIt<CurrentParkingLot>().value = optionOf(parkingLot);
+        getIt<CurrentParkingLot>().setValue(parkingLot);
         return Navigator.of(context).pop();
       },
     );

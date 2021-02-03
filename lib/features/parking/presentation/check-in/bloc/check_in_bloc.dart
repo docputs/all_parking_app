@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
+import 'package:all_parking/features/parking/core/util/qr_code_scanner.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/usecases/check_in_vehicle.dart';
 import 'package:all_parking/utils/validators.dart';
@@ -75,19 +76,17 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
       submitted: (confirmSubmit, context) async* {
         Either<ParkingFailure, Unit> failureOrSuccess;
 
-        yield state.copyWith(
-          isSubmitting: true,
-          saveFailureOrSuccessOption: none(),
-        );
-
-        if (Validators.isValidVehicleLabel(state.vehicle.title) &&
-            Validators.isValidLicensePlate(state.vehicle.licensePlate) &&
-            Validators.isValidObservations(state.vehicle.observations) &&
-            Validators.isValidCpf(state.vehicle.ownerData.cpf)) {
-          final currentFocus = FocusScope.of(context);
-          if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
-          final result = await confirmSubmit(context);
-          if (result) failureOrSuccess = await _checkInVehicle(state.vehicle);
+        if (isFormValid()) {
+          _dismissKeyboard(context);
+          final confirmDialogResult = await confirmSubmit(context);
+          if (confirmDialogResult) {
+            yield state.copyWith(isSubmitting: true, saveFailureOrSuccessOption: none());
+            final qrCodeOption = await QRCodeScanner.scan();
+            await qrCodeOption.fold(
+              () => null,
+              (qrCode) async => failureOrSuccess = await _checkInVehicle(state.vehicle.copyWith(id: qrCode)),
+            );
+          }
         }
 
         yield state.copyWith(
@@ -97,5 +96,20 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
         );
       },
     );
+  }
+
+  void _dismissKeyboard(BuildContext context) {
+    final currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
+  }
+
+  bool isFormValid() {
+    if (Validators.isValidVehicleLabel(state.vehicle.title) &&
+        Validators.isValidLicensePlate(state.vehicle.licensePlate) &&
+        Validators.isValidObservations(state.vehicle.observations) &&
+        Validators.isValidCpf(state.vehicle.ownerData.cpf))
+      return true;
+    else
+      return false;
   }
 }

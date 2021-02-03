@@ -13,6 +13,7 @@ class Fixtures {
     checkOut: DateTime(2021, 01, 01, 17, 30),
     licensePlate: 'GAF1246',
     observations: '',
+    type: VehicleType.car,
   );
 
   static final parkedVehicle2 = ParkedVehicle(
@@ -23,6 +24,7 @@ class Fixtures {
     checkOut: DateTime(2021, 01, 03, 12, 00),
     licensePlate: 'DMB1234',
     observations: 'Lorem ipsum',
+    type: VehicleType.car,
   );
 
   static final parkingLot = ParkingLot(
@@ -58,33 +60,5 @@ class Fixtures {
 
   static final newManager = manager.copyWith(parkingLots: manager.parkingLots.plusElement(parkingLot.id));
 
-  static final parkedVehicles = [
-    ParkedVehicle(
-      id: QRCode('1'),
-      title: 'Ford Fiesta',
-      licensePlate: 'GAF1246',
-      color: VehicleColor.black,
-      checkIn: DateTime(2020, 01, 19, 12, 30),
-      checkOut: DateTime(2020, 01, 19, 12, 30),
-      observations: '',
-    ),
-    ParkedVehicle(
-      id: QRCode('2'),
-      title: 'Fiat Palio',
-      licensePlate: 'DMB2871',
-      color: VehicleColor.gray,
-      checkIn: DateTime(2020, 01, 19, 12, 30),
-      checkOut: DateTime(2020, 01, 19, 12, 30),
-      observations: '',
-    ),
-    ParkedVehicle(
-      id: QRCode('3'),
-      title: 'Hyundai i30',
-      licensePlate: 'ABC1234',
-      color: VehicleColor.red,
-      checkIn: DateTime(2020, 01, 19, 12, 30),
-      checkOut: DateTime(2020, 01, 19, 12, 30),
-      observations: '',
-    ),
-  ];
+  static final parkedVehicles = [parkedVehicle, parkedVehicle2, parkedVehicle];
 }

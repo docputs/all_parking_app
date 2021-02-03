@@ -1,7 +1,7 @@
+import 'package:all_parking/features/parking/core/util/car_color_converter.dart';
+import 'package:all_parking/features/parking/core/util/vehicle_type_converter.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/utils/car_color_converter.dart';
-import 'package:all_parking/utils/vehicle_type_translator.dart';
 
 class Messages {
   //AuthFailure
