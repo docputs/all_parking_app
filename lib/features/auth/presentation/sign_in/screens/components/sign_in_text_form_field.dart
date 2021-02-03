@@ -32,6 +32,7 @@ class SignInTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       autovalidateMode: state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
       validator: (value) => validationEither(value).fold((f) => f.message, (_) => null),
+      maxLines: 1,
     );
   }
 }

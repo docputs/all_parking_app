@@ -33,16 +33,18 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Text('Dados gerais', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        const SizedBox(height: 10),
         _buildTitleField(),
+        _buildSpotsAndPriceFields(),
+        const SizedBox(height: 40),
+        Text('Endereço do local', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
         const SizedBox(height: 10),
         _buildCepField(),
-        const SizedBox(height: 10),
         _buildAddressField(),
-        const SizedBox(height: 10),
         _buildCityAndStateField(),
-        const SizedBox(height: 10),
-        _buildSpotsAndPriceFields(),
         const SizedBox(height: 40),
         _buildSubmitButton(context),
       ],
@@ -90,7 +92,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
       builder: (context, state) {
         return StaticTextFormField(
           key: ValueKey(state.parkingLot.address),
-          labelText: 'Endereço',
+          labelText: 'Logradouro',
           value: state.parkingLot.address.street,
         );
       },

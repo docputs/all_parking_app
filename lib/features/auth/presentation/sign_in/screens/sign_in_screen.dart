@@ -16,11 +16,11 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      title: Messages.signInScreenTitle,
-      body: BlocProvider(
-        create: (context) => getIt<SignInBloc>(),
-        child: BlocListener<SignInBloc, SignInState>(
+    return BlocProvider(
+      create: (context) => getIt<SignInBloc>(),
+      child: AppScaffold(
+        title: Messages.signInScreenTitle,
+        body: BlocListener<SignInBloc, SignInState>(
           listenWhen: (p, c) => p.authFailureOrSuccessOption != c.authFailureOrSuccessOption,
           listener: (context, state) => state.authFailureOrSuccessOption.fold(
             () => null,

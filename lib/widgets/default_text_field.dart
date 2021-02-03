@@ -29,14 +29,17 @@ class DefaultTextField extends StatelessWidget {
     this.enabled = true,
     this.controller,
     this.maxLength,
-    this.maxLines,
+    this.maxLines = 1,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(boxShadow: [Constants.defaultFormFieldShadow], borderRadius: BorderRadius.circular(10)),
-      padding: const EdgeInsets.symmetric(vertical: 10),
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      color: Colors.transparent,
+      elevation: 3,
+      shadowColor: AppColors.shadowColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: TextFormField(
         decoration: InputDecoration(
           labelText: labelText,
@@ -44,11 +47,11 @@ class DefaultTextField extends StatelessWidget {
           fillColor: Colors.white,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(width: 0.5, color: AppColors.textColor),
+            borderSide: const BorderSide(width: 0.3, color: AppColors.textColor),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(width: 0.5, color: AppColors.textColor),
+            borderSide: const BorderSide(width: 0.3, color: AppColors.textColor),
           ),
           filled: true,
           isDense: true,

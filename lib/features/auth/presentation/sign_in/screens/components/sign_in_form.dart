@@ -17,7 +17,6 @@ class SignInForm extends StatelessWidget {
     return Column(
       children: [
         _buildEmailField(),
-        const SizedBox(height: 10),
         _buildPasswordField(context),
         const SizedBox(height: 40),
         _buildButtonOrLoading(context),

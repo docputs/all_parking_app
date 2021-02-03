@@ -27,7 +27,7 @@ class VehicleDataForm extends StatelessWidget {
     return Row(
       children: [
         Expanded(child: _buildVehicleLabelField()),
-        const SizedBox(width: 40),
+        const SizedBox(width: 20),
         _buildVehicleColorField(),
       ],
     );
@@ -56,7 +56,7 @@ class VehicleDataForm extends StatelessWidget {
     return Row(
       children: [
         Expanded(child: _buildLicensePlateField()),
-        const SizedBox(width: 40),
+        const SizedBox(width: 20),
         _buildVehicleTypeField(),
       ],
     );

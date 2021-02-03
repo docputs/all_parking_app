@@ -1,6 +1,5 @@
 import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/utils/validators.dart';
 import 'package:all_parking/widgets/parking_lot_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class OwnerDataForm extends StatelessWidget {
     return Row(
       children: [
         Expanded(child: _buildOwnerPhoneField()),
-        const SizedBox(width: 40),
+        const SizedBox(width: 20),
         Expanded(child: _buildOwnerCpfField()),
       ],
     );
