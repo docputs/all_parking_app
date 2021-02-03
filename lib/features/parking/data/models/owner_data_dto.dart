@@ -5,7 +5,9 @@ part 'owner_data_dto.freezed.dart';
 part 'owner_data_dto.g.dart';
 
 @freezed
-abstract class OwnerDataDTO with _$OwnerDataDTO {
+abstract class OwnerDataDTO implements _$OwnerDataDTO {
+  const OwnerDataDTO._();
+
   const factory OwnerDataDTO({
     @required String name,
     @required String phoneNumber,

@@ -20,6 +20,7 @@ class Constants {
 
   static final cepRegex = RegExp(r"^\d{5}-\d{3}$");
   static final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  static final licensePlateRegex = RegExp(r"^[A-Z]{3}[0-9][0-9A-Z][0-9]{2}$");
 
-  static final defaultBoxShadow = BoxShadow(offset: Offset(0, 15), blurRadius: 20, color: AppColors.shadowColor);
+  static final defaultBoxShadow = BoxShadow(offset: Offset(0, 15), blurRadius: 15, color: AppColors.shadowColor);
 }

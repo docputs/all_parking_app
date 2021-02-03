@@ -2,6 +2,7 @@ part of 'check_in_bloc.dart';
 
 @freezed
 abstract class CheckInState with _$CheckInState {
+  @Implements(ValidationFormState)
   const factory CheckInState({
     @required ParkedVehicle vehicle,
     @required bool showErrorMessages,

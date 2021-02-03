@@ -4,31 +4,37 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('validateCep', () {
     test('should return cep String when cep is valid', () {
-      final cep1 = '04159001';
-      final cep2 = '12345678';
-      final cep3 = '00000000';
+      final ceps = ['04159-001', '12345-678', '00000-000'];
 
-      final valid1 = Validators.validateCep(cep1);
-      final valid2 = Validators.validateCep(cep2);
-      final valid3 = Validators.validateCep(cep3);
+      final result = ceps.every((element) => Validators.validateCep(element).isRight());
 
-      final result = [valid1, valid2, valid3].every((element) => element.isRight());
-
-      expect(true, result);
+      expect(result, true);
     });
 
     test('should return failure when cep is invalid', () {
-      final cep1 = '000a1234';
-      final cep2 = '123456789';
-      final cep3 = '0987651';
+      final ceps = ['000a1-234', '123456-789', '0987-651', '04159001'];
 
-      final valid1 = Validators.validateCep(cep1);
-      final valid2 = Validators.validateCep(cep2);
-      final valid3 = Validators.validateCep(cep3);
+      final result = ceps.every((element) => Validators.validateCep(element).isLeft());
 
-      final result = [valid1, valid2, valid3].every((element) => element.isLeft());
+      expect(result, true);
+    });
+  });
 
-      expect(true, result);
+  group('validateLicensePlate', () {
+    test('should return license plate when it is valid', () {
+      final plates = ['GAF1246', 'DMB3456', 'ABC1234', 'XYZ0000'];
+
+      final result = plates.every((element) => Validators.validateLicensePlate(element).isRight());
+
+      expect(result, true);
+    });
+
+    test('should return failure when license plate is invalid', () {
+      final plates = ['ABC12345', 'ABCD1234', '1234ABC', 'ABC123', 'AB1234'];
+
+      final result = plates.every((element) => Validators.validateLicensePlate(element).isLeft());
+
+      expect(result, true);
     });
   });
 }

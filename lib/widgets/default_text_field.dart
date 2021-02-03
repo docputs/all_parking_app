@@ -11,6 +11,8 @@ class DefaultTextField extends StatelessWidget {
   final AutovalidateMode autovalidateMode;
   final bool enabled;
   final TextEditingController controller;
+  final int maxLength;
+  final int maxLines;
 
   const DefaultTextField({
     Key key,
@@ -24,12 +26,14 @@ class DefaultTextField extends StatelessWidget {
     this.autovalidateMode,
     this.enabled = true,
     this.controller,
+    this.maxLength,
+    this.maxLines,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(labelText: labelText),
+      decoration: InputDecoration(labelText: labelText, counterText: ''),
       autocorrect: false,
       enableSuggestions: false,
       obscureText: obscureText ?? false,
@@ -39,6 +43,8 @@ class DefaultTextField extends StatelessWidget {
       validator: validator,
       enabled: enabled,
       controller: controller,
+      maxLength: maxLength,
+      maxLines: maxLines,
     );
   }
 }

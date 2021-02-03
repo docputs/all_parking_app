@@ -27,7 +27,7 @@ class AppScaffold extends StatelessWidget {
       drawer: drawer,
       appBar: customAppBar ?? AppBar(title: Text(title)),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: _buildDefaultScreenBody(),
       ),
       floatingActionButton: floatingActionButton,

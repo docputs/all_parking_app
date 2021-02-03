@@ -75,6 +75,31 @@ class Validators {
       return left(ParkingFailure.invalidCep());
   }
 
+  static Either<ParkingFailure, String> validateVehicleLabel(String input) {
+    if (input.length > 0 && input.length <= 30)
+      return right(input);
+    else if (input.isEmpty)
+      return left(ParkingFailure.emptyField());
+    else
+      return left(ParkingFailure.invalidField());
+  }
+
+  static Either<ParkingFailure, String> validateLicensePlate(String input) {
+    if (Constants.licensePlateRegex.hasMatch(input))
+      return right(input);
+    else
+      return left(ParkingFailure.invalidField());
+  }
+
+  static Either<ParkingFailure, String> validateObservations(String input) {
+    if (input.length <= 120 && input.isNotEmpty)
+      return right(input);
+    else if (input.isEmpty)
+      return left(ParkingFailure.emptyField());
+    else
+      return left(ParkingFailure.invalidField());
+  }
+
   static bool isValidPassword(String input) => input.isNotEmpty;
 
   static bool isPasswordMatch(String input, String password) => input == password;

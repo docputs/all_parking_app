@@ -118,12 +118,13 @@ class __$OwnerDataDTOCopyWithImpl<$Res> extends _$OwnerDataDTOCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_OwnerDataDTO implements _OwnerDataDTO {
+class _$_OwnerDataDTO extends _OwnerDataDTO {
   const _$_OwnerDataDTO(
       {@required this.name, @required this.phoneNumber, @required this.cpf})
       : assert(name != null),
         assert(phoneNumber != null),
-        assert(cpf != null);
+        assert(cpf != null),
+        super._();
 
   factory _$_OwnerDataDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_OwnerDataDTOFromJson(json);
@@ -171,7 +172,8 @@ class _$_OwnerDataDTO implements _OwnerDataDTO {
   }
 }
 
-abstract class _OwnerDataDTO implements OwnerDataDTO {
+abstract class _OwnerDataDTO extends OwnerDataDTO {
+  const _OwnerDataDTO._() : super._();
   const factory _OwnerDataDTO(
       {@required String name,
       @required String phoneNumber,

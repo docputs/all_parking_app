@@ -1,44 +1,52 @@
+import 'package:all_parking/utils/validators.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DefaultTextFormField extends StatelessWidget {
+import 'package:all_parking/widgets/default_text_field.dart';
+
+abstract class ValidatorState {
+  bool get showErrorMessages;
+}
+
+class DefaultTextFormField<A extends Cubit<ValidatorState>, B> extends StatelessWidget {
   final String labelText;
-  final bool autocorrect;
-  final bool enableSuggestions;
+  final TextInputType keyboardType;
   final bool obscureText;
   final void Function(String) onChanged;
-  final TextInputType keyboardType;
-  final String Function(String) validator;
-  final AutovalidateMode autovalidateMode;
-  final bool enabled;
-  final TextEditingController controller;
+  final bool Function(ValidatorState, ValidatorState) buildWhen;
 
   const DefaultTextFormField({
     Key key,
-    @required this.labelText,
-    this.autocorrect,
-    this.enableSuggestions,
-    this.onChanged,
-    this.obscureText = false,
+    this.buildWhen,
+    this.labelText,
     this.keyboardType,
-    this.validator,
-    this.autovalidateMode,
-    this.enabled = true,
-    this.controller,
+    this.obscureText,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(labelText: labelText),
-      autocorrect: false,
-      enableSuggestions: false,
-      obscureText: obscureText ?? false,
-      onChanged: onChanged,
-      autovalidateMode: autovalidateMode,
-      keyboardType: keyboardType,
-      validator: validator,
-      enabled: enabled,
-      controller: controller,
+    return BlocBuilder<A, ValidatorState>(
+      buildWhen: buildWhen,
+      builder: (context, state) {
+        return DefaultTextField(
+          labelText: labelText,
+          onChanged: onChanged,
+          keyboardType: keyboardType,
+          autovalidateMode: state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled,
+        );
+      },
     );
+  }
+}
+
+class FormField {
+  final String value;
+  final Validators validator;
+
+  const FormField(this.value, this.validator);
+
+  String runValidation() {
+
   }
 }

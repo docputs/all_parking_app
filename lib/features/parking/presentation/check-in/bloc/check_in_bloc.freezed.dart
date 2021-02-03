@@ -1691,6 +1691,8 @@ class __$CheckInStateCopyWithImpl<$Res> extends _$CheckInStateCopyWithImpl<$Res>
   }
 }
 
+@Implements(ValidationFormState)
+
 /// @nodoc
 class _$_CheckInState implements _CheckInState {
   const _$_CheckInState(
@@ -1751,7 +1753,7 @@ class _$_CheckInState implements _CheckInState {
       __$CheckInStateCopyWithImpl<_CheckInState>(this, _$identity);
 }
 
-abstract class _CheckInState implements CheckInState {
+abstract class _CheckInState implements CheckInState, ValidationFormState {
   const factory _CheckInState(
       {@required
           ParkedVehicle vehicle,

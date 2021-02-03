@@ -30,14 +30,17 @@ abstract class ParkedVehicle with _$ParkedVehicle {
     OwnerData ownerData,
   }) = _ParkedVehicle;
 
-  factory ParkedVehicle.empty() => ParkedVehicle(
-        id: QRCode(''),
-        title: '',
-        licensePlate: '',
-        color: null,
-        checkIn: null,
-        checkOut: null,
-        type: null,
-        observations: '',
-      );
+  factory ParkedVehicle.empty() {
+    final now = DateTime.now();
+    return ParkedVehicle(
+      id: QRCode(''),
+      title: '',
+      licensePlate: '',
+      color: VehicleColor.black,
+      checkIn: now,
+      checkOut: now,
+      type: VehicleType.car,
+      observations: '',
+    );
+  }
 }

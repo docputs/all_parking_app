@@ -1,9 +1,13 @@
+import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/utils/car_color_converter.dart';
+import 'package:all_parking/utils/vehicle_type_translator.dart';
 
 class Messages {
   //AuthFailure
   static const emailBadlyFormatted = 'E-mail inválido';
   static const emptyField = 'Campo obrigatório';
+  static const invalidField = 'Campo inválido';
   static const unknownFailure = 'Erro desconhecido';
   static const serverFailure = 'Erro no servidor';
   static const invalidEmailAndPasswordCombination = 'E-mail e/ou senha inválidos';
@@ -53,4 +57,9 @@ class Messages {
   static const editParkingLotTitle = 'Editar estacionamento';
   static const addParkingLotTitle = 'Adicionar estacionamento';
   static const addParkingLotSubmitButton = 'SALVAR';
+
+  //Check-In
+  static String vehicleColorDropdownItem(VehicleColor color) => VehicleColorConverter.translate(color);
+  static String vehicleTypeDropdownItem(VehicleType type) => VehicleTypeConverter.translate(type);
+  static const checkInVehicleSubmitButton = 'ESCANEAR QR CODE';
 }
