@@ -17,7 +17,9 @@ abstract class QRCode with _$QRCode {
 }
 
 @freezed
-abstract class ParkedVehicle with _$ParkedVehicle {
+abstract class ParkedVehicle implements _$ParkedVehicle {
+  const ParkedVehicle._();
+
   const factory ParkedVehicle({
     @required QRCode id,
     @required String title,
@@ -44,4 +46,6 @@ abstract class ParkedVehicle with _$ParkedVehicle {
       ownerData: OwnerData.empty(),
     );
   }
+
+  Duration getElapsedTime() => DateTime.now().difference(checkIn);
 }

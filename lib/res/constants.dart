@@ -13,7 +13,8 @@ class Constants {
   static const reportsRoute = '/home/reports';
   static const manageParkingLotsRoute = '/home/manage-parking-lots';
   static const editInformationRoute = '/home/edit-information';
-  static const parkedVehicles = '/home/manage-parked-vehicles';
+  static const parkedVehiclesRoute = '/home/parked-vehicles';
+  static const parkedVehicleDetailsRoute = '/home/parked-vehicles/:id';
   static const editParkingLotRoute = '/home/manage-parking-lots/edit-parking-lot';
   static const checkInVehicleRoute = '/home/check-in';
   static const checkOutVehicleRoute = '/home/check-out';

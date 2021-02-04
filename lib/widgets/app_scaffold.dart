@@ -9,6 +9,7 @@ class AppScaffold extends StatelessWidget {
   final Widget drawer;
   final Widget customAppBar;
   final List<Bloc> blocs;
+  final List<IconButton> actions;
 
   const AppScaffold({
     Key key,
@@ -19,13 +20,14 @@ class AppScaffold extends StatelessWidget {
     this.drawer,
     this.customAppBar,
     this.blocs,
+    this.actions,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: drawer,
-      appBar: customAppBar ?? AppBar(title: Text(title)),
+      appBar: customAppBar ?? AppBar(title: Text(title), actions: actions),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: _buildDefaultScreenBody(),

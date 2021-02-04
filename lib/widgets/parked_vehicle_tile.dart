@@ -18,7 +18,7 @@ class ParkedVehicleTile extends StatelessWidget {
       subtitle: vehicle.licensePlate,
       leading: VehicleColorDisplay(vehicle.color),
       trailing: Icon(Icons.arrow_forward_ios, size: 18),
-      onTap: () {},
+      onTap: () => Navigator.of(context).pushNamed(Constants.parkedVehicleDetailsRoute, arguments: vehicle),
     );
   }
 }

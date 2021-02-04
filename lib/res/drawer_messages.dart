@@ -8,7 +8,7 @@ class DrawerMessages {
     const DrawerItem('Gerenciar funcionários', icon: Icons.person, route: Constants.manageEmployeesRoute),
     const DrawerItem('Gerenciar estacionamentos', icon: Icons.local_parking, route: Constants.manageParkingLotsRoute),
     const DrawerItem('Relatórios', icon: Icons.history, route: Constants.reportsRoute),
-    const DrawerItem('Veículos estacionados', icon: Icons.directions_car, route: Constants.parkedVehicles),
+    const DrawerItem('Veículos estacionados', icon: Icons.directions_car, route: Constants.parkedVehiclesRoute),
     const DrawerItem('Editar informações', icon: Icons.edit, route: Constants.editInformationRoute),
   ];
 }

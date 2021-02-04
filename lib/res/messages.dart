@@ -62,4 +62,38 @@ class Messages {
   static String vehicleColorDropdownItem(VehicleColor color) => VehicleColorConverter.translate(color);
   static String vehicleTypeDropdownItem(VehicleType type) => VehicleTypeConverter.translate(type);
   static const checkInVehicleSubmitButton = 'ESCANEAR QR CODE';
+
+  //VehicleDetailsScreen
+  static Map<String, Map<String, String>> generateVehicleInfoMap(ParkedVehicle vehicle) {
+    return {
+      'Informações gerais': {
+        'Marca/modelo': vehicle.title,
+        'Placa': vehicle.licensePlate,
+        'Cor': VehicleColorConverter.translate(vehicle.color),
+        'Tipo': VehicleTypeConverter.translate(vehicle.type),
+      },
+      'Entrada': {
+        'Data e hora': parseDateTime(vehicle.checkIn),
+        'Tempo decorrido': parseDuration(vehicle.getElapsedTime()),
+      },
+      'Dados do cliente': {
+        'Nome': vehicle.ownerData?.name ?? notProvided,
+        'Celular': vehicle.ownerData?.phoneNumber ?? notProvided,
+        'CPF': vehicle.ownerData?.cpf ?? notProvided,
+      },
+    };
+  }
+
+  static const notProvided = 'Não fornecido';
+  static String parseDateTime(DateTime date) {
+    final day = _twoDigits(date.day);
+    final month = _twoDigits(date.month);
+    final hour = _twoDigits(date.hour);
+    final minute = _twoDigits(date.minute);
+    final second = _twoDigits(date.second);
+    return '$day/$month/${date.year} $hour:$minute:$second';
+  }
+
+  static String _twoDigits(int n) => n.toString().padLeft(2, '0');
+  static String parseDuration(Duration duration) => '${duration.inHours}h ${duration.inMinutes.remainder(60)}min';
 }

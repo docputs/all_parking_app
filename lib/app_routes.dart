@@ -1,11 +1,14 @@
 import 'package:all_parking/features/auth/presentation/sign_in/screens/sign_in_screen.dart';
 import 'package:all_parking/features/auth/presentation/sign_up/screens/sign_up_screen.dart';
 import 'package:all_parking/features/auth/presentation/splash/splash_screen.dart';
+import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/add_parking_lot/screens/add_parking_lot_screen.dart';
 import 'package:all_parking/features/parking/presentation/check-in/screens/check_in_screen.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/home_screen.dart';
 import 'package:all_parking/features/parking/presentation/manage_parking_lots/screens/manage_parking_lots_screen.dart';
+import 'package:all_parking/features/parking/presentation/parked_vehicles/screens/parked_vehicle_details_screen.dart';
+import 'package:all_parking/features/parking/presentation/parked_vehicles/screens/parked_vehicles_screen.dart';
 import 'package:all_parking/features/parking/presentation/select_parking_lot/screens/select_parking_lot_screen.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +43,13 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       break;
     case Constants.checkInVehicleRoute:
       return MaterialPageRoute(builder: (context) => const CheckInScreen());
+      break;
+    case Constants.parkedVehiclesRoute:
+      return MaterialPageRoute(builder: (context) => const ParkedVehiclesScreen());
+      break;
+    case Constants.parkedVehicleDetailsRoute:
+      final vehicle = settings.arguments as ParkedVehicle;
+      return MaterialPageRoute(builder: (context) => ParkedVehicleDetailsScreen(vehicle));
       break;
     default:
       return MaterialPageRoute(builder: (context) => Scaffold(body: Center(child: Text('rota nao encontrada'))));

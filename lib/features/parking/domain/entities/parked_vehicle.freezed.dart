@@ -350,7 +350,7 @@ class __$ParkedVehicleCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_ParkedVehicle with DiagnosticableTreeMixin implements _ParkedVehicle {
+class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
   const _$_ParkedVehicle(
       {@required this.id,
       @required this.title,
@@ -368,7 +368,8 @@ class _$_ParkedVehicle with DiagnosticableTreeMixin implements _ParkedVehicle {
         assert(checkIn != null),
         assert(checkOut != null),
         assert(type != null),
-        assert(observations != null);
+        assert(observations != null),
+        super._();
 
   @override
   final QRCode id;
@@ -458,7 +459,8 @@ class _$_ParkedVehicle with DiagnosticableTreeMixin implements _ParkedVehicle {
       __$ParkedVehicleCopyWithImpl<_ParkedVehicle>(this, _$identity);
 }
 
-abstract class _ParkedVehicle implements ParkedVehicle {
+abstract class _ParkedVehicle extends ParkedVehicle {
+  const _ParkedVehicle._() : super._();
   const factory _ParkedVehicle(
       {@required QRCode id,
       @required String title,
