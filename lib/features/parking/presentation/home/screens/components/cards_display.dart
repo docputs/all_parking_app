@@ -1,4 +1,5 @@
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/features/parking/presentation/home/screens/components/gauge_painter.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/res/theme.dart';
@@ -21,10 +22,9 @@ class CardsDisplay extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.accentColor, width: 15)),
+          CustomPaint(
+            painter: GaugePainter(ocuppied: parkingLot.parkedVehicles.length, totalAmount: parkingLot.availableSpots),
+            child: const SizedBox(width: 100, height: 100),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

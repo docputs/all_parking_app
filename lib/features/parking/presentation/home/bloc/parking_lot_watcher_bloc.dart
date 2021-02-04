@@ -42,6 +42,8 @@ class ParkingLotWatcherBloc extends Bloc<ParkingLotWatcherEvent, ParkingLotWatch
               currentParkingLot.resetField();
             } else if (!_isCurrentParkingLotRegistered(parkingLots)) {
               currentParkingLot.setValue(parkingLots.first());
+            } else {
+              currentParkingLot.updateValue(parkingLots);
             }
             return ParkingLotWatcherState.success(parkingLots);
           },
