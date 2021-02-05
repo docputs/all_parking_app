@@ -45,6 +45,15 @@ class Fixtures {
     pricePerHour: 12.0,
   );
 
+  static final parkingLotWithRemovedParkedVehicle = ParkingLot(
+    id: '1',
+    title: 'Estacionamento X',
+    address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
+    availableSpots: 56,
+    parkedVehicles: [parkedVehicle2],
+    pricePerHour: 12.0,
+  );
+
   static final manager = Manager(
     id: '123',
     email: 'manager@test.com',
