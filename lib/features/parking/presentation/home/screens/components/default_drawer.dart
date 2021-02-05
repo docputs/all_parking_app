@@ -47,12 +47,12 @@ class DefaultDrawer extends StatelessWidget {
             children: [
               Text(
                 state.maybeWhen(orElse: () => '', authenticated: (user) => user.displayName),
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
+                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
               ),
               Text(
                 //TODO: implement user type identification
                 'Administrador',
-                style: TextStyle(color: Colors.white, fontSize: 12),
+                style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
             ],
           ),

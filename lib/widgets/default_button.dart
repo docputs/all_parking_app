@@ -27,7 +27,7 @@ class DefaultButton extends StatelessWidget {
       height: height,
       child: RaisedButton(
         shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
-        child: Text(text, style: TextStyle(fontWeight: FontWeight.w500)),
+        child: Text(text, style: const TextStyle(fontWeight: FontWeight.w500)),
         color: AppColors.accentColor,
         colorBrightness: Brightness.dark,
         onPressed: onPressed,

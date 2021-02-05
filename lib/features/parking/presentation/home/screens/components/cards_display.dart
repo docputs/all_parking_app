@@ -29,8 +29,8 @@ class CardsDisplay extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(Messages.remainingCards(parkingLot), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-              Text(Messages.usedCards(parkingLot), style: TextStyle(color: AppColors.textColor, fontSize: 12)),
+              Text(Messages.remainingCards(parkingLot), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+              Text(Messages.usedCards(parkingLot), style: const TextStyle(color: AppColors.textColor, fontSize: 12)),
             ],
           ),
         ],

@@ -36,7 +36,7 @@ class ParkingLotDashboard extends StatelessWidget {
         Expanded(child: const DefaultSectionTitle('Veículos estacionados')),
         Padding(
           padding: const EdgeInsets.only(bottom: 10.0),
-          child: Text('VER MAIS', style: TextStyle(color: AppColors.accentColor, fontWeight: FontWeight.bold)),
+          child: const Text('VER MAIS', style: TextStyle(color: AppColors.accentColor, fontWeight: FontWeight.bold)),
         ),
       ],
     );

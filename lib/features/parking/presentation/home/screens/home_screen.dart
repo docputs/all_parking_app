@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/custom_app_bar.dart';
@@ -9,7 +11,7 @@ import 'package:all_parking/widgets/no_parking_lots_found.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hawk_fab_menu/hawk_fab_menu.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
@@ -33,36 +35,39 @@ class HomeScreen extends StatelessWidget {
       child: AppScaffold(
         customAppBar: CustomAppBar(),
         drawer: const DefaultDrawer(),
-        body: HawkFabMenu(
-          fabColor: AppColors.accentColor,
-          body: _buildBody(),
-          items: [
-            _buildFABMenuItem(
-              labelText: Messages.checkInVehicleLabel,
-              color: AppColors.checkColor,
-              icon: Icons.south_east,
-              onPressed: () => Navigator.of(context).pushNamed(Constants.checkInVehicleRoute),
-            ),
-            _buildFABMenuItem(
-              labelText: Messages.checkOutVehicleLabel,
-              color: AppColors.errorColor,
-              icon: Icons.north_east,
-              onPressed: () {},
-            ),
-          ],
-        ),
+        body: _buildBody(),
+        floatingActionButton: _buildCustomFAB(context),
       ),
     );
   }
 
-  HawkFabMenuItem _buildFABMenuItem({String labelText, Color color, IconData icon, void Function() onPressed}) {
-    return HawkFabMenuItem(
+  SpeedDial _buildCustomFAB(BuildContext context) {
+    return SpeedDial(
+      animatedIcon: AnimatedIcons.menu_close,
+      children: [
+        _buildFABMenuItem(
+          labelText: Messages.checkOutVehicleLabel,
+          icon: Icons.north_east,
+          color: AppColors.errorColor,
+          onTap: () => Navigator.of(context).pushNamed(Constants.checkOutVehicleRoute),
+        ),
+        _buildFABMenuItem(
+          labelText: Messages.checkInVehicleLabel,
+          icon: Icons.south_east,
+          color: AppColors.checkColor,
+          onTap: () => Navigator.of(context).pushNamed(Constants.checkInVehicleRoute),
+        ),
+      ],
+    );
+  }
+
+  SpeedDialChild _buildFABMenuItem({String labelText, Color color, IconData icon, void Function() onTap}) {
+    return SpeedDialChild(
       label: labelText,
-      labelColor: Colors.white,
-      color: color,
-      labelBackgroundColor: Colors.black54,
-      icon: Icon(icon),
-      ontap: onPressed,
+      labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+      backgroundColor: color,
+      child: Icon(icon),
+      onTap: onTap,
     );
   }
 

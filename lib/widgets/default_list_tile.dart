@@ -28,7 +28,7 @@ class DefaultListTile extends StatelessWidget {
       child: ClipRRect(
         borderRadius: Constants.defaultBorderRadius,
         child: ListTile(
-          title: Text(title, style: TextStyle(fontWeight: FontWeight.w500)),
+          title: Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           subtitle: subtitle == null ? null : Text(subtitle),
           leading: leading,

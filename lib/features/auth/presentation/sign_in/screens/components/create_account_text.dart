@@ -27,11 +27,11 @@ class _CreateAccountTextState extends State<CreateAccountText> {
         children: [
           TextSpan(
             text: 'Não tem uma conta? ',
-            style: TextStyle(color: AppColors.textColor),
+            style: const TextStyle(color: AppColors.textColor),
           ),
           TextSpan(
             text: 'Crie uma.',
-            style: TextStyle(color: AppColors.accentColor, fontWeight: FontWeight.w500),
+            style: const TextStyle(color: AppColors.accentColor, fontWeight: FontWeight.w500),
             recognizer: _tapGestureRecognizer,
           ),
         ],
