@@ -2,6 +2,9 @@ import 'package:all_parking/features/parking/core/util/car_color_converter.dart'
 import 'package:all_parking/features/parking/core/util/vehicle_type_converter.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Messages {
   //AuthFailure
@@ -96,4 +99,16 @@ class Messages {
 
   static String _twoDigits(int n) => n.toString().padLeft(2, '0');
   static String parseDuration(Duration duration) => '${duration.inHours}h ${duration.inMinutes.remainder(60)}min';
+
+  //CheckOut
+  static String formatCurrency(double value) => NumberFormat.currency(locale: 'pt-BR', symbol: 'R\$').format(value);
+  static String elapsedTime(ParkedVehicle vehicle) => '${vehicle.getElapsedTime().inHours}h';
+  static String pricePerHourLabel(double price) => '${formatCurrency(price)} por hora';
+  static Map<IconData, String> getDateAndTime(ParkedVehicle vehicle) {
+    final date = parseDateTime(vehicle.checkIn);
+    return {
+      Icons.access_time: date.split(' ')[1],
+      Icons.calendar_today: date.split(' ')[0],
+    };
+  }
 }

@@ -48,4 +48,6 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
   }
 
   Duration getElapsedTime() => DateTime.now().difference(checkIn);
+
+  double calculateAmountToPay(double pricePerHour) => getElapsedTime().inHours * pricePerHour;
 }

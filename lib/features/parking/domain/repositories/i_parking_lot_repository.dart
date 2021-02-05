@@ -3,7 +3,6 @@ import 'package:kt_dart/kt.dart';
 
 import '../../core/errors/parking_failure.dart';
 import '../entities/manager.dart';
-import '../entities/parked_vehicle.dart';
 import '../entities/parking_lot.dart';
 
 abstract class IParkingLotRepository {
@@ -13,6 +12,4 @@ abstract class IParkingLotRepository {
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> update(ParkingLot parkingLot);
-  Future<Either<ParkingFailure, Unit>> checkInVehicle(ParkedVehicle vehicle);
-  Future<Either<ParkingFailure, Unit>> checkOutVehicle(ParkedVehicle vehicle);
 }

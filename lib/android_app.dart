@@ -1,5 +1,7 @@
+import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import 'app_routes.dart';
 import 'features/auth/presentation/auth_bloc.dart';
@@ -15,11 +17,14 @@ class AndroidApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested())),
         BlocProvider(create: (context) => getIt<ParkingLotWatcherBloc>()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'All Parking',
-        theme: buildThemeData(),
-        onGenerateRoute: generateRoutes,
+      child: ChangeNotifierProvider(
+        create: (context) => getIt<CurrentParkingLot>(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'All Parking',
+          theme: buildThemeData(),
+          onGenerateRoute: generateRoutes,
+        ),
       ),
     );
   }

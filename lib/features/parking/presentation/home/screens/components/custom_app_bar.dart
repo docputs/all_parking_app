@@ -4,25 +4,21 @@ import 'package:all_parking/res/constants.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../service_locator.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  final currentParkingLot = getIt<CurrentParkingLot>();
-
-  CustomAppBar({Key key}) : super(key: key);
+  const CustomAppBar({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Option<ParkingLot>>(
-      valueListenable: currentParkingLot,
-      builder: (context, parkingLotOption, child) {
+    return Consumer<CurrentParkingLot>(
+      builder: (context, currentParkingLot, child) {
         return AppBar(
-          title: Text(parkingLotOption.fold(() => 'All Parking', (parkingLot) => parkingLot.title)),
+          title: Text(currentParkingLot.value.fold(() => 'All Parking', (parkingLot) => parkingLot.title)),
           actions: [
             IconButton(
-              icon: Icon(parkingLotOption.fold(() => Icons.add, (a) => Icons.place)),
-              onPressed: () => _calculateAppBarNavigation(context, parkingLotOption),
+              icon: Icon(currentParkingLot.value.fold(() => Icons.add, (a) => Icons.place)),
+              onPressed: () => _calculateAppBarNavigation(context, currentParkingLot.value),
             ),
           ],
         );

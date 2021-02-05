@@ -10,15 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../service_locator.dart';
-import '../../current_parking_lot.dart';
 import 'components/add_parking_lot_form.dart';
 
 class AddParkingLotScreen extends StatelessWidget {
   final ParkingLot editedParkingLot;
 
-  AddParkingLotScreen({Key key,this.editedParkingLot}) : super(key: key);
-
-  final currentParkingLot = getIt<CurrentParkingLot>();
+  const AddParkingLotScreen({Key key,this.editedParkingLot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

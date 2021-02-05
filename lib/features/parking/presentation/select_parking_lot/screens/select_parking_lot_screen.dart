@@ -1,6 +1,5 @@
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
-import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import 'package:all_parking/features/parking/presentation/select_parking_lot/screens/components/parking_lot_info_tile.dart';
 import 'package:all_parking/res/theme.dart';
@@ -13,9 +12,7 @@ import 'package:kt_dart/kt.dart';
 import '../../../../../service_locator.dart';
 
 class SelectParkingLotScreen extends StatelessWidget {
-  final currentParkingLot = getIt<CurrentParkingLot>();
-
-  SelectParkingLotScreen({Key key}) : super(key: key);
+  const SelectParkingLotScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

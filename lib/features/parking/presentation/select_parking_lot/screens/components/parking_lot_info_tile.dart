@@ -1,10 +1,8 @@
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:all_parking/widgets/default_list_tile.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../service_locator.dart';
+import 'package:provider/provider.dart';
 
 class ParkingLotInfoTile extends StatelessWidget {
   final ParkingLot parkingLot;
@@ -18,7 +16,7 @@ class ParkingLotInfoTile extends StatelessWidget {
       title: parkingLot.title,
       subtitle: '${parkingLot.address.street} | ${parkingLot.address.cep}',
       onTap: () {
-        getIt<CurrentParkingLot>().setValue(parkingLot);
+        context.read<CurrentParkingLot>().setValue(parkingLot);
         return Navigator.of(context).pop();
       },
     );

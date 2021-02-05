@@ -8,7 +8,6 @@ import 'package:rxdart/rxdart.dart';
 import '../../core/errors/parking_failure.dart';
 import '../../core/util/firebase_helpers.dart';
 import '../../domain/entities/manager.dart';
-import '../../domain/entities/parked_vehicle.dart';
 import '../../domain/entities/parking_lot.dart';
 import '../../domain/repositories/i_parking_lot_repository.dart';
 
@@ -17,18 +16,6 @@ class ParkingLotRepository implements IParkingLotRepository {
   final FirebaseFirestore _firestore;
 
   const ParkingLotRepository(this._firestore) : assert(_firestore != null);
-
-  @override
-  Future<Either<ParkingFailure, Unit>> checkInVehicle(ParkedVehicle vehicle) {
-    // TODO: implement checkInVehicle
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<ParkingFailure, Unit>> checkOutVehicle(ParkedVehicle vehicle) {
-    // TODO: implement checkOutVehicle
-    throw UnimplementedError();
-  }
 
   @override
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot) async {

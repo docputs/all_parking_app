@@ -12,9 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../service_locator.dart';
 
 class ManageParkingLotsScreen extends StatelessWidget {
-  final currentParkingLot = getIt<CurrentParkingLot>();
-
-  ManageParkingLotsScreen({Key key}) : super(key: key);
+  const ManageParkingLotsScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

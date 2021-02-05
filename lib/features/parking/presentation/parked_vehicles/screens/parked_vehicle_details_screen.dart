@@ -1,5 +1,6 @@
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/presentation/parked_vehicles/components/vehicle_info_item.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:all_parking/widgets/default_section_title.dart';
@@ -17,7 +18,7 @@ class ParkedVehicleDetailsScreen extends StatelessWidget {
       actions: [
         IconButton(
           icon: Icon(Icons.north_east),
-          onPressed: () {},
+          onPressed: () => Navigator.of(context).pushNamed(Constants.checkOutVehicleRoute, arguments: vehicle),
         ),
       ],
       title: 'Detalhes do veículo',

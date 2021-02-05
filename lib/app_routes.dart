@@ -14,6 +14,8 @@ import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'features/parking/presentation/check_out/screens/check_out_screen.dart';
+
 Route<dynamic> generateRoutes(RouteSettings settings) {
   switch (settings.name) {
     case Constants.splashRoute:
@@ -50,6 +52,10 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
     case Constants.parkedVehicleDetailsRoute:
       final vehicle = settings.arguments as ParkedVehicle;
       return MaterialPageRoute(builder: (context) => ParkedVehicleDetailsScreen(vehicle));
+      break;
+    case Constants.checkOutVehicleRoute:
+      final vehicle = settings.arguments as ParkedVehicle;
+      return MaterialPageRoute(builder: (context) => CheckOutScreen(vehicle));
       break;
     default:
       return MaterialPageRoute(builder: (context) => Scaffold(body: Center(child: Text('rota nao encontrada'))));
