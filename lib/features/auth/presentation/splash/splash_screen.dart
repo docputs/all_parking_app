@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
           unauthenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
         );
       },
-      child: Scaffold(body: Center(child: CircularProgressIndicator())),
+      child: const Scaffold(body: Center(child: CircularProgressIndicator())),
     );
   }
 }

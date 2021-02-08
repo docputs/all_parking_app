@@ -15,6 +15,8 @@ class CurrentParkingLot extends ValueNotifier<Option<ParkingLot>> {
   void updateValue(KtList<ParkingLot> parkingLots) {
     return setValue(parkingLots.find((parkingLot) => parkingLot.id == this.value.getOrElse(() => throw const ParkingLotException()).id));
   }
+
+  bool get isEmpty => this.value.fold(() => true, (_) => false);
 }
 
 class ParkingLotException implements Exception {

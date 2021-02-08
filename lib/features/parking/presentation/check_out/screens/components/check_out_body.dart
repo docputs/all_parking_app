@@ -2,12 +2,11 @@ import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart
 import 'package:all_parking/features/parking/presentation/check_out/bloc/check_out_bloc.dart';
 import 'package:all_parking/features/parking/presentation/check_out/screens/components/check_out_steps.dart';
 import 'package:all_parking/features/parking/presentation/check_out/screens/components/check_out_summary_card.dart';
-import 'package:all_parking/features/parking/presentation/home/screens/components/cards_display.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/default_button.dart';
 import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOutBody extends StatelessWidget {
   const CheckOutBody({Key key, @required this.vehicle}) : super(key: key);
