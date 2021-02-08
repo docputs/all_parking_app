@@ -17,6 +17,7 @@ class CardsDisplay extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
       child: Padding(
         padding: const EdgeInsets.all(25),
+        
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

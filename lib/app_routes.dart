@@ -22,7 +22,7 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SplashScreen());
       break;
     case Constants.homeRoute:
-      return MaterialPageRoute(builder: (context) => HomeScreen());
+      return MaterialPageRoute(builder: (context) => const HomeScreen());
       break;
     case Constants.signInRoute:
       return MaterialPageRoute(builder: (context) => const SignInScreen());
@@ -31,13 +31,13 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SignUpScreen());
       break;
     case Constants.addParkingLotRoute:
-      return MaterialPageRoute(builder: (context) => AddParkingLotScreen());
+      return MaterialPageRoute(builder: (context) => const AddParkingLotScreen());
       break;
     case Constants.selectParkingLotRoute:
-      return MaterialPageRoute(builder: (context) => SelectParkingLotScreen());
+      return MaterialPageRoute(builder: (context) => const SelectParkingLotScreen());
       break;
     case Constants.manageParkingLotsRoute:
-      return MaterialPageRoute(builder: (context) => ManageParkingLotsScreen());
+      return MaterialPageRoute(builder: (context) => const ManageParkingLotsScreen());
       break;
     case Constants.editParkingLotRoute:
       final editedParkingLot = settings.arguments as ParkingLot;
@@ -58,6 +58,6 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => CheckOutScreen(vehicle));
       break;
     default:
-      return MaterialPageRoute(builder: (context) => Scaffold(body: Center(child: Text('rota nao encontrada'))));
+      return MaterialPageRoute(builder: (context) => const Scaffold(body: Center(child: Text('rota nao encontrada'))));
   }
 }

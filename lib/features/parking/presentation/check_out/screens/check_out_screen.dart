@@ -25,7 +25,7 @@ class CheckOutScreen extends StatelessWidget {
             state.maybeWhen(
               orElse: () {},
               error: (f) => FlushbarHelper.createError(message: f.message).show(context),
-              success: () => Navigator.of(context).popUntil(ModalRoute.withName(Constants.homeRoute)),
+              success: () => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
             );
           },
           child: CheckOutBody(vehicle: vehicle),

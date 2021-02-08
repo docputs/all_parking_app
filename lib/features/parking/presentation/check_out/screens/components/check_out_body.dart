@@ -41,9 +41,7 @@ class CheckOutBody extends StatelessWidget {
               onPressed: () => context.read<CheckOutBloc>().add(CheckOutEvent.submitted(vehicle)),
             );
           },
-          loading: (_) {
-            return const CircularProgressIndicator();
-          },
+          loading: (_) => const CircularProgressIndicator(),
         );
       },
     );
