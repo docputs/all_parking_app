@@ -18,17 +18,17 @@ class CheckOutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<CheckOutBloc>(),
-      child: AppScaffold(
-        title: 'Saída de veículo',
-        body: BlocListener<CheckOutBloc, CheckOutState>(
-          listener: (context, state) {
-            state.maybeWhen(
-              orElse: () {},
-              error: (f) => FlushbarHelper.createError(message: f.message).show(context),
-              success: () => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
-            );
-          },
-          child: CheckOutBody(vehicle: vehicle),
+      child: BlocListener<CheckOutBloc, CheckOutState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            orElse: () {},
+            error: (f) => FlushbarHelper.createError(message: f.message).show(context),
+            success: () => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
+          );
+        },
+        child: AppScaffold(
+          title: 'Saída de veículo',
+          body: CheckOutBody(vehicle: vehicle),
         ),
       ),
     );

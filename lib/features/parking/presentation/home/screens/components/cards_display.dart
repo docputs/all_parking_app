@@ -13,18 +13,16 @@ class CardsDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 15,
+      elevation: 10,
       shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
       child: Padding(
         padding: const EdgeInsets.all(25),
-        
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CustomPaint(
               painter: GaugePainter(ocuppied: parkingLot.parkedVehicles.length, totalAmount: parkingLot.availableSpots),
-              child: const SizedBox(width: 100, 
-              height: 100),
+              child: const SizedBox(width: 100, height: 100),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

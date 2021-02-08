@@ -1,5 +1,6 @@
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/default_drawer.dart';
+import 'package:all_parking/features/parking/presentation/parked_vehicles/components/no_parked_vehicles.dart';
 import 'package:all_parking/features/parking/presentation/parked_vehicles/components/parked_vehicles_dashboard.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,10 @@ class ParkedVehiclesScreen extends StatelessWidget {
       body: Consumer<CurrentParkingLot>(
         builder: (context, currentParkingLot, _) {
           return currentParkingLot.value.fold(
-            () => const Center(child: Text('nenhum veiculo')),
-            (parkingLot) => ParkedVehiclesDashboard(parkingLot.parkedVehicles),
+            () => const Center(child: Text('Nenhum estacionamento selecionado')),
+            (parkingLot) {
+              return parkingLot.parkedVehicles.isEmpty ? const NoParkedVehicles() : ParkedVehiclesDashboard(parkingLot.parkedVehicles);
+            },
           );
         },
       ),

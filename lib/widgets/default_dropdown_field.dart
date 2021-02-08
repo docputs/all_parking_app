@@ -18,7 +18,6 @@ class DefaultDropdownField<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 3,
-      shadowColor: AppColors.shadowColor,
       shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
       child: Padding(
         padding: const EdgeInsets.only(left: 16, right: 10),

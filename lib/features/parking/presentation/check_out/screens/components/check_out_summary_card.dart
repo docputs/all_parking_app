@@ -17,7 +17,7 @@ class CheckOutSummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
-      elevation: 15,
+      elevation: 10,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         child: Column(

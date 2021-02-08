@@ -4,6 +4,7 @@ import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/default_section_title.dart';
+import 'package:all_parking/widgets/default_text_button.dart';
 import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -24,19 +25,22 @@ class ParkingLotDashboard extends StatelessWidget {
         const DefaultSectionTitle('Cartões'),
         CardsDisplay(parkingLot),
         const SizedBox(height: 60),
-        _buildParkedVehicleHeader(),
+        _buildParkedVehicleHeader(context),
         parkingLot.parkedVehicles.isEmpty ? _buildEmptyWarning(context) : _buildParkedVehicleList(),
       ],
     );
   }
 
-  Widget _buildParkedVehicleHeader() {
+  Widget _buildParkedVehicleHeader(BuildContext context) {
     return Row(
       children: [
         Expanded(child: const DefaultSectionTitle('Veículos estacionados')),
         Padding(
-          padding: const EdgeInsets.only(bottom: 10.0),
-          child: const Text('VER MAIS', style: TextStyle(color: AppColors.accentColor, fontWeight: FontWeight.bold)),
+          padding: const EdgeInsets.only(bottom: 7),
+          child: DefaultTextButton(
+            text: 'VER MAIS',
+            onPressed: () => Navigator.of(context).pushNamed(Constants.parkedVehiclesRoute),
+          ),
         ),
       ],
     );

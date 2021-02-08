@@ -104,8 +104,8 @@ class Messages {
   static String formatCurrency(double value) => NumberFormat.currency(locale: 'pt-BR', symbol: 'R\$').format(value);
   static String elapsedTime(ParkedVehicle vehicle) => '${vehicle.getElapsedTime().inHours}h';
   static String pricePerHourLabel(double price) => '${formatCurrency(price)} por hora';
-  static Map<IconData, String> getDateAndTime(ParkedVehicle vehicle) {
-    final date = parseDateTime(vehicle.checkIn);
+  static Map<IconData, String> getDateAndTime(DateTime dateTime) {
+    final date = parseDateTime(dateTime);
     return {
       Icons.access_time: date.split(' ')[1],
       Icons.calendar_today: date.split(' ')[0],

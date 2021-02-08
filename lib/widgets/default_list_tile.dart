@@ -22,7 +22,6 @@ class DefaultListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-      shadowColor: AppColors.shadowColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
       child: ClipRRect(
