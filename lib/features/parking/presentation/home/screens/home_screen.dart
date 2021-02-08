@@ -7,6 +7,7 @@ import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/no_parking_lots_found.dart';
+import 'package:all_parking/widgets/parking_lot_watcher_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -28,11 +29,15 @@ class HomeScreen extends StatelessWidget {
           orElse: () {},
         );
       },
-      child: AppScaffold(
-        customAppBar: CustomAppBar(),
-        drawer: const DefaultDrawer(),
-        body: _buildBody(),
-        floatingActionButton: _buildCustomFAB(context),
+      child: ParkingLotWatcherBuilder(
+        useScaffold: true,
+        onError: (f) => Center(child: Text(f.message)),
+        onSuccess: (_) => AppScaffold(
+          customAppBar: CustomAppBar(),
+          drawer: const DefaultDrawer(),
+          body: _buildBody(),
+          floatingActionButton: _buildCustomFAB(context),
+        ),
       ),
     );
   }

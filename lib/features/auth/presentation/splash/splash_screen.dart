@@ -12,13 +12,13 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        state.map(
-          initializing: (_) {},
+        state.when(
+          initializing: () {},
           authenticated: (_) {
             context.read<ParkingLotWatcherBloc>().add(const ParkingLotWatcherEvent.watchStarted());
             return Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
           },
-          unauthenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
+          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
         );
       },
       child: const Scaffold(body: Center(child: CircularProgressIndicator())),
