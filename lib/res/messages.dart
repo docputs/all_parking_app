@@ -48,8 +48,8 @@ class Messages {
 
   //Home
   static const cardsLabel = 'Cartões';
-  static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.parkedVehicles.length} restantes';
-  static String usedCards(ParkingLot parkingLot) => '${parkingLot.parkedVehicles.length} de ${parkingLot.availableSpots} cartões usados';
+  static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.activeParkedVehicles().length} restantes';
+  static String usedCards(ParkingLot parkingLot) => '${parkingLot.activeParkedVehicles().length} de ${parkingLot.availableSpots} cartões usados';
   static const checkInVehicleLabel = 'CHECK-IN';
   static const checkOutVehicleLabel = 'CHECK-OUT';
   static const pressMoreToAddParkingLot = 'Toque em + para adicionar';

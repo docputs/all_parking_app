@@ -14,6 +14,7 @@ class Fixtures {
     licensePlate: 'GAF1246',
     observations: '',
     type: VehicleType.car,
+    isActive: true,
   );
 
   static final parkedVehicle2 = ParkedVehicle(
@@ -25,32 +26,35 @@ class Fixtures {
     licensePlate: 'DMB1234',
     observations: 'Lorem ipsum',
     type: VehicleType.car,
+    isActive: true,
   );
+
+  static final inactiveParkedVehicle = parkedVehicle.copyWith(isActive: false);
 
   static final parkingLot = ParkingLot(
     id: '1',
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: [parkedVehicle, parkedVehicle2],
+    parkedVehicles: KtList.of(parkedVehicle, parkedVehicle2),
     pricePerHour: 12.0,
   );
 
-  static final parkingLotWithNewParkedVehicle = ParkingLot(
+  static final parkingLotWithParkedVehicles = ParkingLot(
     id: '1',
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: [parkedVehicle, parkedVehicle2, parkedVehicle],
+    parkedVehicles: KtList.of(parkedVehicle, parkedVehicle2),
     pricePerHour: 12.0,
   );
 
-  static final parkingLotWithRemovedParkedVehicle = ParkingLot(
+  static final parkingLotWithInactiveParkedVehicle = ParkingLot(
     id: '1',
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: [parkedVehicle2],
+    parkedVehicles: KtList.of(inactiveParkedVehicle, parkedVehicle2),
     pricePerHour: 12.0,
   );
 

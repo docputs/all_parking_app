@@ -20,6 +20,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
     @required DateTime checkOut,
     @required VehicleType type,
     @required String observations,
+    @required bool isActive,
     @JsonKey(includeIfNull: false) OwnerDataDTO ownerData,
   }) = _ParkedVehicleDTO;
 
@@ -32,6 +33,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
         checkOut: model.checkOut,
         type: model.type,
         observations: model.observations,
+        isActive: model.isActive,
         ownerData: OwnerDataDTO.fromDomain(model.ownerData),
       );
 
@@ -44,6 +46,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
         licensePlate: licensePlate,
         observations: observations,
         type: type,
+        isActive: isActive,
         ownerData: ownerData?.toDomain(),
       );
 

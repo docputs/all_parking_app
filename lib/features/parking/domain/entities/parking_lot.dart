@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/collection.dart';
 import 'package:uuid/uuid.dart';
 
 import 'parked_vehicle.dart';
@@ -23,14 +24,16 @@ abstract class Address with _$Address {
 }
 
 @freezed
-abstract class ParkingLot with _$ParkingLot {
+abstract class ParkingLot implements _$ParkingLot {
+  const ParkingLot._();
+
   const factory ParkingLot({
     @required String id,
     @required String title,
     @required Address address,
     @required int availableSpots,
     @required double pricePerHour,
-    @required List<ParkedVehicle> parkedVehicles,
+    @required KtList<ParkedVehicle> parkedVehicles,
   }) = _ParkingLot;
 
   factory ParkingLot.empty() {
@@ -40,7 +43,11 @@ abstract class ParkingLot with _$ParkingLot {
       address: Address.empty(),
       availableSpots: 0,
       pricePerHour: 10,
-      parkedVehicles: [],
+      parkedVehicles: KtList.empty(),
     );
   }
+
+  bool isEmpty() => !(parkedVehicles.any((vehicle) => vehicle.isActive));
+
+  List<ParkedVehicle> activeParkedVehicles() => parkedVehicles.filter((vehicle) => vehicle.isActive).asList();
 }

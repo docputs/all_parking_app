@@ -26,6 +26,7 @@ class _$ParkedVehicleDTOTearOff {
       @required DateTime checkOut,
       @required VehicleType type,
       @required String observations,
+      @required bool isActive,
       @JsonKey(includeIfNull: false) OwnerDataDTO ownerData}) {
     return _ParkedVehicleDTO(
       id: id,
@@ -36,6 +37,7 @@ class _$ParkedVehicleDTOTearOff {
       checkOut: checkOut,
       type: type,
       observations: observations,
+      isActive: isActive,
       ownerData: ownerData,
     );
   }
@@ -60,6 +62,7 @@ mixin _$ParkedVehicleDTO {
   DateTime get checkOut;
   VehicleType get type;
   String get observations;
+  bool get isActive;
   @JsonKey(includeIfNull: false)
   OwnerDataDTO get ownerData;
 
@@ -82,6 +85,7 @@ abstract class $ParkedVehicleDTOCopyWith<$Res> {
       DateTime checkOut,
       VehicleType type,
       String observations,
+      bool isActive,
       @JsonKey(includeIfNull: false) OwnerDataDTO ownerData});
 
   $QRCodeCopyWith<$Res> get id;
@@ -107,6 +111,7 @@ class _$ParkedVehicleDTOCopyWithImpl<$Res>
     Object checkOut = freezed,
     Object type = freezed,
     Object observations = freezed,
+    Object isActive = freezed,
     Object ownerData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -122,6 +127,7 @@ class _$ParkedVehicleDTOCopyWithImpl<$Res>
       observations: observations == freezed
           ? _value.observations
           : observations as String,
+      isActive: isActive == freezed ? _value.isActive : isActive as bool,
       ownerData:
           ownerData == freezed ? _value.ownerData : ownerData as OwnerDataDTO,
     ));
@@ -164,6 +170,7 @@ abstract class _$ParkedVehicleDTOCopyWith<$Res>
       DateTime checkOut,
       VehicleType type,
       String observations,
+      bool isActive,
       @JsonKey(includeIfNull: false) OwnerDataDTO ownerData});
 
   @override
@@ -193,6 +200,7 @@ class __$ParkedVehicleDTOCopyWithImpl<$Res>
     Object checkOut = freezed,
     Object type = freezed,
     Object observations = freezed,
+    Object isActive = freezed,
     Object ownerData = freezed,
   }) {
     return _then(_ParkedVehicleDTO(
@@ -208,6 +216,7 @@ class __$ParkedVehicleDTOCopyWithImpl<$Res>
       observations: observations == freezed
           ? _value.observations
           : observations as String,
+      isActive: isActive == freezed ? _value.isActive : isActive as bool,
       ownerData:
           ownerData == freezed ? _value.ownerData : ownerData as OwnerDataDTO,
     ));
@@ -227,6 +236,7 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
       @required this.checkOut,
       @required this.type,
       @required this.observations,
+      @required this.isActive,
       @JsonKey(includeIfNull: false) this.ownerData})
       : assert(id != null),
         assert(title != null),
@@ -236,6 +246,7 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
         assert(checkOut != null),
         assert(type != null),
         assert(observations != null),
+        assert(isActive != null),
         super._();
 
   factory _$_ParkedVehicleDTO.fromJson(Map<String, dynamic> json) =>
@@ -258,12 +269,14 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
   @override
   final String observations;
   @override
+  final bool isActive;
+  @override
   @JsonKey(includeIfNull: false)
   final OwnerDataDTO ownerData;
 
   @override
   String toString() {
-    return 'ParkedVehicleDTO(id: $id, title: $title, licensePlate: $licensePlate, color: $color, checkIn: $checkIn, checkOut: $checkOut, type: $type, observations: $observations, ownerData: $ownerData)';
+    return 'ParkedVehicleDTO(id: $id, title: $title, licensePlate: $licensePlate, color: $color, checkIn: $checkIn, checkOut: $checkOut, type: $type, observations: $observations, isActive: $isActive, ownerData: $ownerData)';
   }
 
   @override
@@ -290,6 +303,9 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
             (identical(other.observations, observations) ||
                 const DeepCollectionEquality()
                     .equals(other.observations, observations)) &&
+            (identical(other.isActive, isActive) ||
+                const DeepCollectionEquality()
+                    .equals(other.isActive, isActive)) &&
             (identical(other.ownerData, ownerData) ||
                 const DeepCollectionEquality()
                     .equals(other.ownerData, ownerData)));
@@ -306,6 +322,7 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
       const DeepCollectionEquality().hash(checkOut) ^
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(observations) ^
+      const DeepCollectionEquality().hash(isActive) ^
       const DeepCollectionEquality().hash(ownerData);
 
   @JsonKey(ignore: true)
@@ -330,6 +347,7 @@ abstract class _ParkedVehicleDTO extends ParkedVehicleDTO {
           @required DateTime checkOut,
           @required VehicleType type,
           @required String observations,
+          @required bool isActive,
           @JsonKey(includeIfNull: false) OwnerDataDTO ownerData}) =
       _$_ParkedVehicleDTO;
 
@@ -352,6 +370,8 @@ abstract class _ParkedVehicleDTO extends ParkedVehicleDTO {
   VehicleType get type;
   @override
   String get observations;
+  @override
+  bool get isActive;
   @override
   @JsonKey(includeIfNull: false)
   OwnerDataDTO get ownerData;

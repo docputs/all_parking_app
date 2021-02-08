@@ -30,7 +30,7 @@ void main() {
       final result = await usecase(Fixtures.parkedVehicle);
 
       expect(result, Right(unit));
-      verify(mockParkingLotRepository.update(Fixtures.parkingLotWithNewParkedVehicle)).called(1);
+      verify(mockParkingLotRepository.update(Fixtures.parkingLotWithParkedVehicles)).called(1);
       verifyNoMoreInteractions(mockParkingLotRepository);
     });
   });

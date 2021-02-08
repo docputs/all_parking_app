@@ -21,7 +21,7 @@ class CardsDisplay extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CustomPaint(
-              painter: GaugePainter(ocuppied: parkingLot.parkedVehicles.length, totalAmount: parkingLot.availableSpots),
+              painter: GaugePainter(ocuppied: parkingLot.activeParkedVehicles().length, totalAmount: parkingLot.availableSpots),
               child: const SizedBox(width: 100, height: 100),
             ),
             Column(

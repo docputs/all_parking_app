@@ -242,7 +242,7 @@ class _$ParkingLotTearOff {
       @required Address address,
       @required int availableSpots,
       @required double pricePerHour,
-      @required List<ParkedVehicle> parkedVehicles}) {
+      @required KtList<ParkedVehicle> parkedVehicles}) {
     return _ParkingLot(
       id: id,
       title: title,
@@ -265,7 +265,7 @@ mixin _$ParkingLot {
   Address get address;
   int get availableSpots;
   double get pricePerHour;
-  List<ParkedVehicle> get parkedVehicles;
+  KtList<ParkedVehicle> get parkedVehicles;
 
   @JsonKey(ignore: true)
   $ParkingLotCopyWith<ParkingLot> get copyWith;
@@ -282,7 +282,7 @@ abstract class $ParkingLotCopyWith<$Res> {
       Address address,
       int availableSpots,
       double pricePerHour,
-      List<ParkedVehicle> parkedVehicles});
+      KtList<ParkedVehicle> parkedVehicles});
 
   $AddressCopyWith<$Res> get address;
 }
@@ -316,7 +316,7 @@ class _$ParkingLotCopyWithImpl<$Res> implements $ParkingLotCopyWith<$Res> {
           : pricePerHour as double,
       parkedVehicles: parkedVehicles == freezed
           ? _value.parkedVehicles
-          : parkedVehicles as List<ParkedVehicle>,
+          : parkedVehicles as KtList<ParkedVehicle>,
     ));
   }
 
@@ -343,7 +343,7 @@ abstract class _$ParkingLotCopyWith<$Res> implements $ParkingLotCopyWith<$Res> {
       Address address,
       int availableSpots,
       double pricePerHour,
-      List<ParkedVehicle> parkedVehicles});
+      KtList<ParkedVehicle> parkedVehicles});
 
   @override
   $AddressCopyWith<$Res> get address;
@@ -380,13 +380,13 @@ class __$ParkingLotCopyWithImpl<$Res> extends _$ParkingLotCopyWithImpl<$Res>
           : pricePerHour as double,
       parkedVehicles: parkedVehicles == freezed
           ? _value.parkedVehicles
-          : parkedVehicles as List<ParkedVehicle>,
+          : parkedVehicles as KtList<ParkedVehicle>,
     ));
   }
 }
 
 /// @nodoc
-class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
+class _$_ParkingLot extends _ParkingLot with DiagnosticableTreeMixin {
   const _$_ParkingLot(
       {@required this.id,
       @required this.title,
@@ -399,7 +399,8 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
         assert(address != null),
         assert(availableSpots != null),
         assert(pricePerHour != null),
-        assert(parkedVehicles != null);
+        assert(parkedVehicles != null),
+        super._();
 
   @override
   final String id;
@@ -412,7 +413,7 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
   @override
   final double pricePerHour;
   @override
-  final List<ParkedVehicle> parkedVehicles;
+  final KtList<ParkedVehicle> parkedVehicles;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -470,14 +471,15 @@ class _$_ParkingLot with DiagnosticableTreeMixin implements _ParkingLot {
       __$ParkingLotCopyWithImpl<_ParkingLot>(this, _$identity);
 }
 
-abstract class _ParkingLot implements ParkingLot {
+abstract class _ParkingLot extends ParkingLot {
+  const _ParkingLot._() : super._();
   const factory _ParkingLot(
       {@required String id,
       @required String title,
       @required Address address,
       @required int availableSpots,
       @required double pricePerHour,
-      @required List<ParkedVehicle> parkedVehicles}) = _$_ParkingLot;
+      @required KtList<ParkedVehicle> parkedVehicles}) = _$_ParkingLot;
 
   @override
   String get id;
@@ -490,7 +492,7 @@ abstract class _ParkingLot implements ParkingLot {
   @override
   double get pricePerHour;
   @override
-  List<ParkedVehicle> get parkedVehicles;
+  KtList<ParkedVehicle> get parkedVehicles;
   @override
   @JsonKey(ignore: true)
   _$ParkingLotCopyWith<_ParkingLot> get copyWith;

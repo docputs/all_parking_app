@@ -24,13 +24,13 @@ void main() {
   group('CurrentParkingLot is not empty', () {
     setUp(() => currentParkingLot.setValue(Fixtures.parkingLot));
 
-    test('should call update on repository with removed parked vehicle', () async {
+    test('should call update on repository with inactive parked vehicle', () async {
       when(mockParkingLotRepository.update(any)).thenAnswer((_) async => Right(unit));
 
       final result = await usecase(Fixtures.parkedVehicle);
 
       expect(result, Right(unit));
-      verify(mockParkingLotRepository.update(Fixtures.parkingLotWithRemovedParkedVehicle)).called(1);
+      verify(mockParkingLotRepository.update(Fixtures.parkingLotWithInactiveParkedVehicle)).called(1);
       verifyNoMoreInteractions(mockParkingLotRepository);
     });
   });

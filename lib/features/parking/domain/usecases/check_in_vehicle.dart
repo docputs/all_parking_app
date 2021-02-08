@@ -4,6 +4,7 @@ import 'package:all_parking/features/parking/domain/repositories/i_parking_lot_r
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kt_dart/kt.dart ';
 
 @lazySingleton
 class CheckInVehicle {
@@ -16,7 +17,7 @@ class CheckInVehicle {
     return _currentParkingLot.value.fold(
       () async => left(ParkingFailure.noCurrentParkingLot()),
       (parkingLot) {
-        final newParkedVehicles = parkingLot.parkedVehicles..add(vehicle);
+        final newParkedVehicles = parkingLot.parkedVehicles.plusElement(vehicle);
         final newParkingLot = parkingLot.copyWith(parkedVehicles: newParkedVehicles);
         return _parkingLotRepository.update(newParkingLot);
       },

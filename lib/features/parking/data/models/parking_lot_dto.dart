@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/parking_lot.dart';
 import 'address_dto.dart';
+import 'package:kt_dart/kt.dart';
 import 'parked_vehicle_dto.dart';
 
 part 'parking_lot_dto.freezed.dart';
@@ -21,7 +22,6 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
     @required int availableSpots,
     @required double pricePerHour,
     @required List<ParkedVehicleDTO> parkedVehicles,
-    
   }) = _ParkingLotDTO;
 
   factory ParkingLotDTO.fromDomain(ParkingLot model) => ParkingLotDTO(
@@ -30,7 +30,7 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
         address: AddressDTO.fromDomain(model.address),
         availableSpots: model.availableSpots,
         pricePerHour: model.pricePerHour,
-        parkedVehicles: model.parkedVehicles.map((vehicle) => ParkedVehicleDTO.fromDomain(vehicle)).toList(),
+        parkedVehicles: model.parkedVehicles.map((vehicle) => ParkedVehicleDTO.fromDomain(vehicle)).asList(),
       );
 
   ParkingLot toDomain() => ParkingLot(
@@ -38,7 +38,7 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
         title: title,
         address: address.toDomain(),
         availableSpots: availableSpots,
-        parkedVehicles: parkedVehicles.map((vehicle) => vehicle.toDomain()).toList(),
+        parkedVehicles: parkedVehicles.map((vehicle) => vehicle.toDomain()).toImmutableList(),
         pricePerHour: pricePerHour,
       );
 

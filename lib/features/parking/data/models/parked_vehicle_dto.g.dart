@@ -22,6 +22,7 @@ _$_ParkedVehicleDTO _$_$_ParkedVehicleDTOFromJson(Map<String, dynamic> json) {
         : DateTime.parse(json['checkOut'] as String),
     type: _$enumDecodeNullable(_$VehicleTypeEnumMap, json['type']),
     observations: json['observations'] as String,
+    isActive: json['isActive'] as bool,
     ownerData: json['ownerData'] == null
         ? null
         : OwnerDataDTO.fromJson(json['ownerData'] as Map<String, dynamic>),
@@ -38,6 +39,7 @@ Map<String, dynamic> _$_$_ParkedVehicleDTOToJson(_$_ParkedVehicleDTO instance) {
     'checkOut': instance.checkOut?.toIso8601String(),
     'type': _$VehicleTypeEnumMap[instance.type],
     'observations': instance.observations,
+    'isActive': instance.isActive,
   };
 
   void writeNotNull(String key, dynamic value) {

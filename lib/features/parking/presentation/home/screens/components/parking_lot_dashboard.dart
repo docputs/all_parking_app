@@ -26,7 +26,7 @@ class ParkingLotDashboard extends StatelessWidget {
         CardsDisplay(parkingLot),
         const SizedBox(height: 60),
         _buildParkedVehicleHeader(context),
-        parkingLot.parkedVehicles.isEmpty ? _buildEmptyWarning(context) : _buildParkedVehicleList(),
+        parkingLot.isEmpty() ? _buildEmptyWarning(context) : _buildParkedVehicleList(),
       ],
     );
   }
@@ -71,8 +71,8 @@ class ParkingLotDashboard extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
-      itemBuilder: (context, index) => ParkedVehicleTile(parkingLot.parkedVehicles[index]),
-      itemCount: parkingLot.parkedVehicles.length,
+      itemBuilder: (context, index) => ParkedVehicleTile(parkingLot.activeParkedVehicles()[index]),
+      itemCount: parkingLot.activeParkedVehicles().length,
     );
   }
 }

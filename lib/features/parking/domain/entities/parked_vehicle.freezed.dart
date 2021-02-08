@@ -168,6 +168,7 @@ class _$ParkedVehicleTearOff {
       @required DateTime checkOut,
       @required VehicleType type,
       @required String observations,
+      @required bool isActive,
       OwnerData ownerData}) {
     return _ParkedVehicle(
       id: id,
@@ -178,6 +179,7 @@ class _$ParkedVehicleTearOff {
       checkOut: checkOut,
       type: type,
       observations: observations,
+      isActive: isActive,
       ownerData: ownerData,
     );
   }
@@ -197,6 +199,7 @@ mixin _$ParkedVehicle {
   DateTime get checkOut;
   VehicleType get type;
   String get observations;
+  bool get isActive;
   OwnerData get ownerData;
 
   @JsonKey(ignore: true)
@@ -217,6 +220,7 @@ abstract class $ParkedVehicleCopyWith<$Res> {
       DateTime checkOut,
       VehicleType type,
       String observations,
+      bool isActive,
       OwnerData ownerData});
 
   $QRCodeCopyWith<$Res> get id;
@@ -242,6 +246,7 @@ class _$ParkedVehicleCopyWithImpl<$Res>
     Object checkOut = freezed,
     Object type = freezed,
     Object observations = freezed,
+    Object isActive = freezed,
     Object ownerData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -257,6 +262,7 @@ class _$ParkedVehicleCopyWithImpl<$Res>
       observations: observations == freezed
           ? _value.observations
           : observations as String,
+      isActive: isActive == freezed ? _value.isActive : isActive as bool,
       ownerData:
           ownerData == freezed ? _value.ownerData : ownerData as OwnerData,
     ));
@@ -299,6 +305,7 @@ abstract class _$ParkedVehicleCopyWith<$Res>
       DateTime checkOut,
       VehicleType type,
       String observations,
+      bool isActive,
       OwnerData ownerData});
 
   @override
@@ -328,6 +335,7 @@ class __$ParkedVehicleCopyWithImpl<$Res>
     Object checkOut = freezed,
     Object type = freezed,
     Object observations = freezed,
+    Object isActive = freezed,
     Object ownerData = freezed,
   }) {
     return _then(_ParkedVehicle(
@@ -343,6 +351,7 @@ class __$ParkedVehicleCopyWithImpl<$Res>
       observations: observations == freezed
           ? _value.observations
           : observations as String,
+      isActive: isActive == freezed ? _value.isActive : isActive as bool,
       ownerData:
           ownerData == freezed ? _value.ownerData : ownerData as OwnerData,
     ));
@@ -360,6 +369,7 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
       @required this.checkOut,
       @required this.type,
       @required this.observations,
+      @required this.isActive,
       this.ownerData})
       : assert(id != null),
         assert(title != null),
@@ -369,6 +379,7 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
         assert(checkOut != null),
         assert(type != null),
         assert(observations != null),
+        assert(isActive != null),
         super._();
 
   @override
@@ -388,11 +399,13 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
   @override
   final String observations;
   @override
+  final bool isActive;
+  @override
   final OwnerData ownerData;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ParkedVehicle(id: $id, title: $title, licensePlate: $licensePlate, color: $color, checkIn: $checkIn, checkOut: $checkOut, type: $type, observations: $observations, ownerData: $ownerData)';
+    return 'ParkedVehicle(id: $id, title: $title, licensePlate: $licensePlate, color: $color, checkIn: $checkIn, checkOut: $checkOut, type: $type, observations: $observations, isActive: $isActive, ownerData: $ownerData)';
   }
 
   @override
@@ -408,6 +421,7 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('checkOut', checkOut))
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('observations', observations))
+      ..add(DiagnosticsProperty('isActive', isActive))
       ..add(DiagnosticsProperty('ownerData', ownerData));
   }
 
@@ -435,6 +449,9 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
             (identical(other.observations, observations) ||
                 const DeepCollectionEquality()
                     .equals(other.observations, observations)) &&
+            (identical(other.isActive, isActive) ||
+                const DeepCollectionEquality()
+                    .equals(other.isActive, isActive)) &&
             (identical(other.ownerData, ownerData) ||
                 const DeepCollectionEquality()
                     .equals(other.ownerData, ownerData)));
@@ -451,6 +468,7 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(checkOut) ^
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(observations) ^
+      const DeepCollectionEquality().hash(isActive) ^
       const DeepCollectionEquality().hash(ownerData);
 
   @JsonKey(ignore: true)
@@ -470,6 +488,7 @@ abstract class _ParkedVehicle extends ParkedVehicle {
       @required DateTime checkOut,
       @required VehicleType type,
       @required String observations,
+      @required bool isActive,
       OwnerData ownerData}) = _$_ParkedVehicle;
 
   @override
@@ -488,6 +507,8 @@ abstract class _ParkedVehicle extends ParkedVehicle {
   VehicleType get type;
   @override
   String get observations;
+  @override
+  bool get isActive;
   @override
   OwnerData get ownerData;
   @override

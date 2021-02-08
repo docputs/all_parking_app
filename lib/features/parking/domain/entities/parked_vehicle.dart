@@ -29,6 +29,7 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
     @required DateTime checkOut,
     @required VehicleType type,
     @required String observations,
+    @required bool isActive,
     OwnerData ownerData,
   }) = _ParkedVehicle;
 
@@ -44,6 +45,7 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
       type: VehicleType.car,
       observations: '',
       ownerData: OwnerData.empty(),
+      isActive: true,
     );
   }
 
