@@ -5,12 +5,14 @@ import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:kt_dart/kt.dart';
 
 class Fixtures {
+  static final checkOutDateTime = DateTime(2021, 01, 01, 14);
+
   static final parkedVehicle = ParkedVehicle(
     id: QRCode('1'),
     title: 'Ford Fiesta',
     color: VehicleColor.black,
     checkIn: DateTime(2021, 01, 01, 12, 30),
-    checkOut: DateTime(2021, 01, 01, 17, 30),
+    checkOut: null,
     licensePlate: 'GAF1246',
     observations: '',
     type: VehicleType.car,
@@ -22,14 +24,14 @@ class Fixtures {
     title: 'Fiat Palio',
     color: VehicleColor.blue,
     checkIn: DateTime(2021, 01, 02, 10, 00),
-    checkOut: DateTime(2021, 01, 03, 12, 00),
+    checkOut: null,
     licensePlate: 'DMB1234',
     observations: 'Lorem ipsum',
     type: VehicleType.car,
     isActive: true,
   );
 
-  static final inactiveParkedVehicle = parkedVehicle.copyWith(isActive: false);
+  static final inactiveParkedVehicle = parkedVehicle.copyWith(isActive: false, checkOut: checkOutDateTime);
 
   static final parkingLot = ParkingLot(
     id: '1',

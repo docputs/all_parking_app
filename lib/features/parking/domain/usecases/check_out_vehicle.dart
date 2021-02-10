@@ -17,12 +17,12 @@ class CheckOutVehicle {
     return _currentParkingLot.value.fold(
       () async => left(ParkingFailure.noCurrentParkingLot()),
       (parkingLot) {
-        final newParkedVehicles = parkingLot.parkedVehicles.map((element) {
-          if (element.id == vehicle.id) return element.copyWith(isActive: false, checkOut: DateTime.now());
-        });
+        final newParkedVehicles = parkingLot.parkedVehicles.map((element) => element == vehicle ? _assignCheckOut(element) : element);
         final newParkingLot = parkingLot.copyWith(parkedVehicles: newParkedVehicles);
         return _parkingLotRepository.update(newParkingLot);
       },
     );
   }
+
+  ParkedVehicle _assignCheckOut(ParkedVehicle element) => element.copyWith(isActive: false, checkOut: DateTime.now());
 }

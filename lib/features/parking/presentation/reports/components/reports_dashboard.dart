@@ -3,8 +3,6 @@ import 'package:all_parking/features/parking/presentation/reports/components/ear
 import 'package:all_parking/features/parking/presentation/reports/components/vehicle_report_tile.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/utils/format_utils.dart';
-import 'package:all_parking/widgets/default_card.dart';
 import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
