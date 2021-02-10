@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/presentation/reports/bloc/reports_bloc.dart';
 import 'package:all_parking/features/parking/presentation/reports/components/earnings_card.dart';
 import 'package:all_parking/features/parking/presentation/reports/components/vehicle_report_tile.dart';
@@ -6,6 +7,7 @@ import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kt_dart/kt.dart';
 
 class ReportsDashboard extends StatelessWidget {
   const ReportsDashboard({Key key}) : super(key: key);
@@ -29,17 +31,28 @@ class ReportsDashboard extends StatelessWidget {
         return state.maybeWhen(
           (selectedDate, viewModel) {
             final vehicles = viewModel.parkedVehicles.fromDateTime(selectedDate);
-            return ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index) => VehicleReportTile(vehicles[index]),
-              itemCount: vehicles.size,
-              separatorBuilder: (context, index) => const Divider(),
-            );
+            return vehicles.isEmpty() ? _buildNoDataToShow() : _buildList(vehicles);
           },
           orElse: () => const SizedBox(),
         );
       },
+    );
+  }
+
+  Widget _buildList(KtList<ParkedVehicle> vehicles) {
+    return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (context, index) => VehicleReportTile(vehicles[index]),
+      itemCount: vehicles.size,
+      separatorBuilder: (context, index) => const Divider(),
+    );
+  }
+
+  Widget _buildNoDataToShow() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 60),
+      child: Text('Sem dados para exibir', style: const TextStyle(color: AppColors.textColor)),
     );
   }
 
