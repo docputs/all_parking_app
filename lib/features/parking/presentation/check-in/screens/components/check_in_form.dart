@@ -1,4 +1,4 @@
-import 'package:all_parking/features/parking/core/util/car_color_converter.dart';
+import 'package:all_parking/features/parking/core/util/vehicle_color_converter.dart';
 import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
 import 'package:all_parking/features/parking/presentation/check-in/screens/components/owner_data_form.dart';
 import 'package:all_parking/features/parking/presentation/check-in/screens/components/vehicle_data_form.dart';

@@ -30,6 +30,7 @@ import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
 import 'features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import 'service_locator.dart';
+import 'features/parking/presentation/reports/bloc/reports_bloc.dart';
 import 'features/auth/domain/usecases/sign_in.dart';
 import 'features/auth/presentation/sign_in/bloc/sign_in_bloc.dart';
 import 'features/auth/domain/usecases/sign_up.dart';
@@ -58,6 +59,7 @@ GetIt $initGetIt(
       () => ParkingLotRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IUserRepository>(
       () => UserRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
+  gh.factory<ReportsBloc>(() => ReportsBloc());
   gh.lazySingleton<SignIn>(() => SignIn(get<IUserRepository>()));
   gh.factory<SignInBloc>(() => SignInBloc(get<SignIn>()));
   gh.lazySingleton<SignUp>(() => SignUp(get<IUserRepository>()));

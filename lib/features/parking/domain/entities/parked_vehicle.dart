@@ -26,7 +26,7 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
     @required String licensePlate,
     @required VehicleColor color,
     @required DateTime checkIn,
-    @required DateTime checkOut,
+    @required @nullable DateTime checkOut,
     @required VehicleType type,
     @required String observations,
     @required bool isActive,
@@ -34,14 +34,13 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
   }) = _ParkedVehicle;
 
   factory ParkedVehicle.empty() {
-    final now = DateTime.now();
     return ParkedVehicle(
       id: QRCode(''),
       title: '',
       licensePlate: '',
       color: VehicleColor.black,
-      checkIn: now,
-      checkOut: now,
+      checkIn: DateTime.now(),
+      checkOut: null,
       type: VehicleType.car,
       observations: '',
       ownerData: OwnerData.empty(),
@@ -49,7 +48,10 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
     );
   }
 
-  Duration getElapsedTime() => DateTime.now().difference(checkIn);
+  Duration getElapsedTime() => checkOut == null ? DateTime.now().difference(checkIn) : checkOut.difference(checkIn);
 
-  double calculateAmountToPay(double pricePerHour) => getElapsedTime().inHours * pricePerHour;
+  double calculateAmountToPay(double pricePerHour) {
+    final elapsedTime = getElapsedTime().inHours;
+    return elapsedTime < 1 ? pricePerHour : elapsedTime * pricePerHour;
+  }
 }

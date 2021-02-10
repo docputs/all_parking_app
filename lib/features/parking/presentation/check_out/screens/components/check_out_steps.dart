@@ -1,7 +1,7 @@
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/res/theme.dart';
+import 'package:all_parking/widgets/default_card.dart';
 import 'package:flutter/material.dart';
 
 class CheckOutSteps extends StatelessWidget {
@@ -42,13 +42,9 @@ class CheckOutSteps extends StatelessWidget {
   }
 
   Widget _buildCheckCard({@required IconData icon, @required Color color}) {
-    return Card(
-      elevation: 10,
-      shape: RoundedRectangleBorder(borderRadius: Constants.defaultBorderRadius),
-      child: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Icon(icon, color: color, size: 30),
-      ),
+    return DefaultCard(
+      padding: const EdgeInsets.all(30),
+      child: Icon(icon, color: color, size: 30),
     );
   }
 

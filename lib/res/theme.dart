@@ -21,8 +21,13 @@ ThemeData buildThemeData() {
     accentColor: AppColors.accentColor,
     errorColor: AppColors.errorColor,
     scaffoldBackgroundColor: AppColors.backgroundColor,
-    dividerTheme: DividerThemeData(color: AppColors.textColor),
     shadowColor: AppColors.shadowColor,
+    dividerColor: AppColors.textColor,
+    colorScheme: ColorScheme.light().copyWith(
+      primary: AppColors.primaryColor,
+      secondary: AppColors.accentColor,
+      onSecondary: Colors.white,
+    ),
     // textTheme: GoogleFonts.latoTextTheme(),
   );
 }

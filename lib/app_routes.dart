@@ -9,6 +9,7 @@ import 'package:all_parking/features/parking/presentation/home/screens/home_scre
 import 'package:all_parking/features/parking/presentation/manage_parking_lots/screens/manage_parking_lots_screen.dart';
 import 'package:all_parking/features/parking/presentation/parked_vehicles/screens/parked_vehicle_details_screen.dart';
 import 'package:all_parking/features/parking/presentation/parked_vehicles/screens/parked_vehicles_screen.dart';
+import 'package:all_parking/features/parking/presentation/reports/screens/reports_screen.dart';
 import 'package:all_parking/features/parking/presentation/select_parking_lot/screens/select_parking_lot_screen.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,9 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
     case Constants.checkOutVehicleRoute:
       final vehicle = settings.arguments as ParkedVehicle;
       return MaterialPageRoute(builder: (context) => CheckOutScreen(vehicle));
+      break;
+    case Constants.reportsRoute:
+      return MaterialPageRoute(builder: (context) => const ReportsScreen());
       break;
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold(body: Center(child: Text('rota nao encontrada'))));

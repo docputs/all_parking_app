@@ -17,7 +17,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
     @required String licensePlate,
     @required VehicleColor color,
     @required DateTime checkIn,
-    @required DateTime checkOut,
+    @required @nullable DateTime checkOut,
     @required VehicleType type,
     @required String observations,
     @required bool isActive,

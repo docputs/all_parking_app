@@ -1,7 +1,11 @@
-import 'package:all_parking/features/parking/core/util/car_color_converter.dart';
+import 'package:all_parking/features/parking/core/util/vehicle_color_converter.dart';
 import 'package:all_parking/features/parking/core/util/vehicle_type_converter.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/features/parking/presentation/reports/screens/reports_screen.dart';
+import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
+import 'package:all_parking/utils/format_utils.dart';
+import 'package:all_parking/utils/pure_date.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -48,8 +52,9 @@ class Messages {
 
   //Home
   static const cardsLabel = 'Cartões';
-  static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.activeParkedVehicles().length} restantes';
-  static String usedCards(ParkingLot parkingLot) => '${parkingLot.activeParkedVehicles().length} de ${parkingLot.availableSpots} cartões usados';
+  static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.activeParkedVehicles().size} restantes';
+  static String usedCards(ParkingLot parkingLot) =>
+      '${parkingLot.activeParkedVehicles().size} de ${parkingLot.availableSpots} cartões usados';
   static const checkInVehicleLabel = 'CHECK-IN';
   static const checkOutVehicleLabel = 'CHECK-OUT';
   static const pressMoreToAddParkingLot = 'Toque em + para adicionar';
@@ -101,14 +106,34 @@ class Messages {
   static String parseDuration(Duration duration) => '${duration.inHours}h ${duration.inMinutes.remainder(60)}min';
 
   //CheckOut
-  static String formatCurrency(double value) => NumberFormat.currency(locale: 'pt-BR', symbol: 'R\$').format(value);
   static String elapsedTime(ParkedVehicle vehicle) => '${vehicle.getElapsedTime().inHours}h';
-  static String pricePerHourLabel(double price) => '${formatCurrency(price)} por hora';
+  static String pricePerHourLabel(double price) => '${FormatUtils.formatCurrency(price)} por hora';
   static Map<IconData, String> getDateAndTime(DateTime dateTime) {
     final date = parseDateTime(dateTime);
     return {
       Icons.access_time: date.split(' ')[1],
       Icons.calendar_today: date.split(' ')[0],
+    };
+  }
+
+  //Reports
+  static String selectedDateLabel(DateTime dateTime) {
+    final formattedDate = DateFormat.MMMMd().format(dateTime);
+    return PureDate.fromDateTime(dateTime).isToday ? 'Hoje, $formattedDate' : formattedDate;
+  }
+
+  static Map<String, Map<String, dynamic>> generateReportsInfo(ReportsViewModel viewModel) {
+    final todaysParkedVehicles = viewModel.parkedVehicles.fromToday();
+    final lastWeekParkedVehicles = viewModel.parkedVehicles.fromLastWeek();
+    return {
+      selectedDateLabel(DateTime.now()): {
+        'Veículos estacionados': todaysParkedVehicles.size,
+        'Total ganho': FormatUtils.formatCurrency(viewModel.calculateEarnings(todaysParkedVehicles)),
+      },
+      'Última semana': {
+        'Veículos estacionados': lastWeekParkedVehicles.size,
+        'Total ganho': FormatUtils.formatCurrency(viewModel.calculateEarnings(lastWeekParkedVehicles)),
+      },
     };
   }
 }

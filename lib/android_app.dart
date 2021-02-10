@@ -1,6 +1,7 @@
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'app_routes.dart';
@@ -20,6 +21,11 @@ class AndroidApp extends StatelessWidget {
       child: ChangeNotifierProvider(
         create: (context) => getIt<CurrentParkingLot>(),
         child: MaterialApp(
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: [const Locale('pt', 'BR')],
           debugShowCheckedModeBanner: false,
           title: 'All Parking',
           theme: buildThemeData(),

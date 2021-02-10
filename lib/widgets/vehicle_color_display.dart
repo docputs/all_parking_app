@@ -1,4 +1,4 @@
-import 'package:all_parking/features/parking/core/util/car_color_converter.dart';
+import 'package:all_parking/features/parking/core/util/vehicle_color_converter.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/theme.dart';

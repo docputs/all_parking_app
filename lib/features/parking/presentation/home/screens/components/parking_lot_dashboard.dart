@@ -72,7 +72,7 @@ class ParkingLotDashboard extends StatelessWidget {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => ParkedVehicleTile(parkingLot.activeParkedVehicles()[index]),
-      itemCount: parkingLot.activeParkedVehicles().length,
+      itemCount: parkingLot.activeParkedVehicles().size,
     );
   }
 }

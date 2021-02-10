@@ -42,12 +42,14 @@ abstract class ParkingLot implements _$ParkingLot {
       title: '',
       address: Address.empty(),
       availableSpots: 0,
-      pricePerHour: 10,
+      pricePerHour: 0,
       parkedVehicles: KtList.empty(),
     );
   }
 
   bool isEmpty() => !(parkedVehicles.any((vehicle) => vehicle.isActive));
 
-  List<ParkedVehicle> activeParkedVehicles() => parkedVehicles.filter((vehicle) => vehicle.isActive).asList();
+  KtList<ParkedVehicle> activeParkedVehicles() => parkedVehicles.filter((vehicle) => vehicle.isActive);
+
+  KtList<ParkedVehicle> inactiveParkedVehicles() => parkedVehicles.filter((vehicle) => !vehicle.isActive);
 }

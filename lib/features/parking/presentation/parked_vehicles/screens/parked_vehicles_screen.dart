@@ -19,7 +19,9 @@ class ParkedVehiclesScreen extends StatelessWidget {
         builder: (context, currentParkingLot, _) {
           return currentParkingLot.value.fold(
             () => const Center(child: Text('Nenhum estacionamento selecionado')),
-            (parkingLot) => parkingLot.isEmpty() ? const NoParkedVehicles() : ParkedVehiclesDashboard(parkingLot.activeParkedVehicles()),
+            (parkingLot) {
+              return parkingLot.isEmpty() ? const NoParkedVehicles() : ParkedVehiclesDashboard(parkingLot.activeParkedVehicles().asList());
+            },
           );
         },
       ),

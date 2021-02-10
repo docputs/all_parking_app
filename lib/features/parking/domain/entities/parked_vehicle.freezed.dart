@@ -165,7 +165,7 @@ class _$ParkedVehicleTearOff {
       @required String licensePlate,
       @required VehicleColor color,
       @required DateTime checkIn,
-      @required DateTime checkOut,
+      @required @nullable DateTime checkOut,
       @required VehicleType type,
       @required String observations,
       @required bool isActive,
@@ -196,6 +196,7 @@ mixin _$ParkedVehicle {
   String get licensePlate;
   VehicleColor get color;
   DateTime get checkIn;
+  @nullable
   DateTime get checkOut;
   VehicleType get type;
   String get observations;
@@ -217,7 +218,7 @@ abstract class $ParkedVehicleCopyWith<$Res> {
       String licensePlate,
       VehicleColor color,
       DateTime checkIn,
-      DateTime checkOut,
+      @nullable DateTime checkOut,
       VehicleType type,
       String observations,
       bool isActive,
@@ -302,7 +303,7 @@ abstract class _$ParkedVehicleCopyWith<$Res>
       String licensePlate,
       VehicleColor color,
       DateTime checkIn,
-      DateTime checkOut,
+      @nullable DateTime checkOut,
       VehicleType type,
       String observations,
       bool isActive,
@@ -366,7 +367,7 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
       @required this.licensePlate,
       @required this.color,
       @required this.checkIn,
-      @required this.checkOut,
+      @required @nullable this.checkOut,
       @required this.type,
       @required this.observations,
       @required this.isActive,
@@ -376,7 +377,6 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
         assert(licensePlate != null),
         assert(color != null),
         assert(checkIn != null),
-        assert(checkOut != null),
         assert(type != null),
         assert(observations != null),
         assert(isActive != null),
@@ -393,6 +393,7 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
   @override
   final DateTime checkIn;
   @override
+  @nullable
   final DateTime checkOut;
   @override
   final VehicleType type;
@@ -485,7 +486,7 @@ abstract class _ParkedVehicle extends ParkedVehicle {
       @required String licensePlate,
       @required VehicleColor color,
       @required DateTime checkIn,
-      @required DateTime checkOut,
+      @required @nullable DateTime checkOut,
       @required VehicleType type,
       @required String observations,
       @required bool isActive,
@@ -502,6 +503,7 @@ abstract class _ParkedVehicle extends ParkedVehicle {
   @override
   DateTime get checkIn;
   @override
+  @nullable
   DateTime get checkOut;
   @override
   VehicleType get type;
