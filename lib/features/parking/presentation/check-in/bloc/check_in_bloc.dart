@@ -1,20 +1,21 @@
 import 'dart:async';
 
-import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/core/util/qr_code_scanner.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/domain/usecases/check_in_vehicle.dart';
-import 'package:all_parking/utils/validators.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../utils/validators.dart';
+import '../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../../../core/errors/parking_failure.dart';
+import '../../../core/util/qr_code_scanner.dart';
+import '../../../domain/entities/parked_vehicle.dart';
+import '../../../domain/usecases/check_in_vehicle.dart';
+
+part 'check_in_bloc.freezed.dart';
 part 'check_in_event.dart';
 part 'check_in_state.dart';
-part 'check_in_bloc.freezed.dart';
 
 @injectable
 class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {

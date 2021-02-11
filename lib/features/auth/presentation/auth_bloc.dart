@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../domain/entities/user.dart';
 import '../domain/repositories/i_user_repository.dart';
 
 part 'auth_bloc.freezed.dart';

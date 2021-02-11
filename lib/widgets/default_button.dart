@@ -1,7 +1,7 @@
-import 'package:all_parking/res/constants.dart';
+import '../res/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'package:all_parking/res/theme.dart';
+import '../res/theme.dart';
 
 class DefaultButton extends StatelessWidget {
   final String text;

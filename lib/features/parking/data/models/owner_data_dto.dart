@@ -1,5 +1,6 @@
-import 'package:all_parking/features/parking/domain/entities/owner_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../domain/entities/owner_data.dart';
 
 part 'owner_data_dto.freezed.dart';
 part 'owner_data_dto.g.dart';

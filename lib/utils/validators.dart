@@ -1,8 +1,9 @@
-import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:dartz/dartz.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
+import 'package:dartz/dartz.dart';
+
+import '../features/auth/core/errors/auth_failure.dart';
+import '../features/parking/core/errors/parking_failure.dart';
+import '../res/constants.dart';
 
 class Validators {
   static Either<AuthFailure, String> validateEmailAddress(String input) {

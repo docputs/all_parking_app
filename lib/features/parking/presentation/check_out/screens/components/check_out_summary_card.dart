@@ -1,13 +1,14 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/utils/format_utils.dart';
-import 'package:all_parking/widgets/default_card.dart';
-import 'package:all_parking/widgets/default_text_button.dart';
-import 'package:all_parking/widgets/vehicle_color_display.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../utils/format_utils.dart';
+import '../../../../../../widgets/default_card.dart';
+import '../../../../../../widgets/default_text_button.dart';
+import '../../../../../../widgets/vehicle_color_display.dart';
+import '../../../../domain/entities/parked_vehicle.dart';
+import '../../../current_parking_lot.dart';
 
 class CheckOutSummaryCard extends StatelessWidget {
   final ParkedVehicle vehicle;
@@ -41,7 +42,7 @@ class CheckOutSummaryCard extends StatelessWidget {
           children: [
             Text(Messages.pricePerHourLabel(parkingLot.pricePerHour), style: const TextStyle(fontSize: 16)),
             DefaultTextButton(
-              text: 'ALTERAR',
+              text: Messages.checkOutChangePricePerHourButton,
               onPressed: () {},
             ),
           ],

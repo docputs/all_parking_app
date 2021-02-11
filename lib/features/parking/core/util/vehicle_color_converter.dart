@@ -1,5 +1,6 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:flutter/material.dart';
+
+import '../../domain/entities/parked_vehicle.dart';
 
 class VehicleColorConverter {
   static Color convert(VehicleColor color) {

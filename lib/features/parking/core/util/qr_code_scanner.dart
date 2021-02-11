@@ -1,4 +1,4 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
+import '../../domain/entities/parked_vehicle.dart';
 import 'package:dartz/dartz.dart';
 
 class QRCodeScanner {

@@ -1,4 +1,4 @@
-import 'package:all_parking/features/parking/domain/entities/owner_data.dart';
+import 'owner_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

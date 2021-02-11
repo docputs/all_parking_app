@@ -1,5 +1,6 @@
-import 'package:all_parking/res/theme.dart';
 import 'package:flutter/widgets.dart';
+
+import 'theme.dart';
 
 class Constants {
   static const splashRoute = '/';

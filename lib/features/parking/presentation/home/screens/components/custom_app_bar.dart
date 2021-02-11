@@ -1,9 +1,11 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/messages.dart';
+import '../../../../domain/entities/parking_lot.dart';
+import '../../../current_parking_lot.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({Key key}) : super(key: key);
@@ -13,7 +15,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return Consumer<CurrentParkingLot>(
       builder: (context, currentParkingLot, child) {
         return AppBar(
-          title: Text(currentParkingLot.value.fold(() => 'All Parking', (parkingLot) => parkingLot.title)),
+          title: Text(
+            currentParkingLot.value.fold(
+              () => Messages.defaultAppBarTitle,
+              (parkingLot) => parkingLot.title,
+            ),
+          ),
           actions: [
             IconButton(
               icon: Icon(currentParkingLot.isEmpty ? Icons.add : Icons.place),
@@ -33,7 +40,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         ? Navigator.of(context).pushNamed(Constants.addParkingLotRoute).then((value) {
             if (value != null) {
               final parkingLot = value as ParkingLot;
-              FlushbarHelper.createInformation(message: '${parkingLot.title} salvo com sucesso!').show(context);
+              FlushbarHelper.createInformation(message: Messages.snackBarSaveSuccess(parkingLot.title)).show(context);
             }
           })
         : Navigator.of(context).pushNamed(Constants.selectParkingLotRoute);

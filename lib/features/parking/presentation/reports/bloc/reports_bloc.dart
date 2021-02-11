@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../domain/entities/parking_lot.dart';
+import '../view_models/reports_view_model.dart';
 
 part 'reports_bloc.freezed.dart';
 part 'reports_event.dart';

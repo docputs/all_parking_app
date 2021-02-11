@@ -1,11 +1,12 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/domain/usecases/delete_parking_lot.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../core/errors/parking_failure.dart';
+import '../../../domain/entities/parking_lot.dart';
+import '../../../domain/usecases/delete_parking_lot.dart';
 
 part 'manage_parking_lots_bloc.freezed.dart';
 part 'manage_parking_lots_event.dart';

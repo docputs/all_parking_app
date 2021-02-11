@@ -1,11 +1,12 @@
-import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
-import 'package:all_parking/features/parking/presentation/check-in/screens/components/check_in_form.dart';
-import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
+import '../../../../../widgets/app_scaffold.dart';
+import '../bloc/check_in_bloc.dart';
+import 'components/check_in_form.dart';
 
 class CheckInScreen extends StatelessWidget {
   const CheckInScreen({Key key}) : super(key: key);
@@ -26,7 +27,7 @@ class CheckInScreen extends StatelessWidget {
           );
         },
         child: AppScaffold(
-          title: 'Entrada de veículo',
+          title: Messages.checkInScreenTiele,
           body: const CheckInForm(),
         ),
       ),

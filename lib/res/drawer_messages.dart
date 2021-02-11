@@ -1,6 +1,7 @@
-import 'package:all_parking/features/parking/presentation/home/screens/components/drawer_list_tile.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../features/parking/presentation/home/screens/components/drawer_list_tile.dart';
+import 'constants.dart';
 
 class DrawerMessages {
   static final items = [

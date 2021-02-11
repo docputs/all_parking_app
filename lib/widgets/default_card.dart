@@ -1,5 +1,6 @@
-import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../res/constants.dart';
 
 class DefaultCard extends StatelessWidget {
   final Widget child;

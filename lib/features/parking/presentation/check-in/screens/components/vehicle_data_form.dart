@@ -1,11 +1,13 @@
-import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
-import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
-import 'package:all_parking/features/parking/presentation/check-in/screens/components/vehicle_color_dropdown_field.dart';
-import 'package:all_parking/features/parking/presentation/check-in/screens/components/vehicle_type_dropdown_field.dart';
-import 'package:all_parking/utils/validators.dart';
-import 'package:all_parking/widgets/parking_lot_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../utils/validators.dart';
+import '../../../../../../widgets/parking_lot_text_form_field.dart';
+import '../../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../../bloc/check_in_bloc.dart';
+import 'vehicle_color_dropdown_field.dart';
+import 'vehicle_type_dropdown_field.dart';
 
 class VehicleDataForm extends StatelessWidget {
   const VehicleDataForm({Key key}) : super(key: key);
@@ -35,7 +37,7 @@ class VehicleDataForm extends StatelessWidget {
     return BlocBuilder<CheckInBloc, CheckInState>(
       buildWhen: (p, c) => p.vehicle.title != c.vehicle.title || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
-        labelText: 'Marca/modelo',
+        labelText: Messages.checkInVehicleBrandLabel,
         state: state as ValidationFormState,
         validationEither: Validators.validateVehicleLabel,
         onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedLabel(value)),
@@ -64,7 +66,7 @@ class VehicleDataForm extends StatelessWidget {
     return BlocBuilder<CheckInBloc, CheckInState>(
       buildWhen: (p, c) => p.vehicle.licensePlate != c.vehicle.licensePlate || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
-        labelText: 'Placa',
+        labelText: Messages.checkInVehicleLicensePlateLabel,
         state: state as ValidationFormState,
         validationEither: Validators.validateLicensePlate,
         onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedLicensePlate(value)),
@@ -84,7 +86,7 @@ class VehicleDataForm extends StatelessWidget {
     return BlocBuilder<CheckInBloc, CheckInState>(
       buildWhen: (p, c) => p.vehicle.observations != c.vehicle.observations || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
-        labelText: 'Observação',
+        labelText: Messages.checkInVehicleObservationsLabel,
         state: state as ValidationFormState,
         validationEither: Validators.validateObservations,
         onChanged: (value) => context.read<CheckInBloc>().add(CheckInEvent.changedObservations(value)),

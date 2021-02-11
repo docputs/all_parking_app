@@ -1,7 +1,8 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/utils/pure_date.dart';
 import 'package:kt_dart/kt.dart';
+
+import '../../../../../utils/pure_date.dart';
+import '../../../domain/entities/parked_vehicle.dart';
+import '../../../domain/entities/parking_lot.dart';
 
 class ReportsViewModel {
   final double pricePerHour;

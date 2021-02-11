@@ -1,11 +1,13 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_alert_dialog.dart';
-import 'package:all_parking/widgets/default_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_alert_dialog.dart';
+import '../../../../../../widgets/default_list_tile.dart';
+import '../../../../domain/entities/parking_lot.dart';
+import '../../bloc/manage_parking_lots_bloc.dart';
 
 class ManageParkingLotTile extends StatelessWidget {
   final ParkingLot parkingLot;
@@ -46,10 +48,10 @@ class ManageParkingLotTile extends StatelessWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => DefaultAlertDialog(
-        title: 'Tem certeza?',
-        message: 'Deseja remover ${parkingLot.title} da sua lista de estacionamentos?',
-        rightButtonText: 'REMOVER',
-        leftButtonText: 'VOLTAR',
+        title: Messages.manageParkingLotsDeleteDialogTitle,
+        message: Messages.manageParkingLotsDeleteDialogContent(parkingLot.title),
+        rightButtonText: Messages.manageParkingLotsDeleteDialogRightButton,
+        leftButtonText: Messages.manageParkingLotsDeleteDialogLeftButton,
         useWarningButton: true,
       ),
     );

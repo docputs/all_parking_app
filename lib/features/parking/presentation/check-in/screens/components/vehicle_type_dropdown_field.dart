@@ -1,10 +1,11 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_dropdown_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_dropdown_field.dart';
+import '../../../../domain/entities/parked_vehicle.dart';
+import '../../bloc/check_in_bloc.dart';
 
 class VehicleTypeDropdownField extends StatelessWidget {
   final VehicleType value;

@@ -1,5 +1,5 @@
-import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../features/auth/core/errors/auth_failure.dart';
+import '../features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 

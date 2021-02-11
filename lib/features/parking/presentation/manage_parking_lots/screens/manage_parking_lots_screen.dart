@@ -1,14 +1,15 @@
-import 'package:all_parking/features/parking/presentation/home/screens/components/default_drawer.dart';
-import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
-import 'package:all_parking/features/parking/presentation/manage_parking_lots/screens/components/parking_lot_list.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/widgets/app_scaffold.dart';
-import 'package:all_parking/widgets/no_parking_lots_found.dart';
-import 'package:all_parking/widgets/parking_lot_watcher_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../res/constants.dart';
+import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
+import '../../../../../widgets/app_scaffold.dart';
+import '../../../../../widgets/no_parking_lots_found.dart';
+import '../../../../../widgets/parking_lot_watcher_builder.dart';
+import '../../home/screens/components/default_drawer.dart';
+import '../bloc/manage_parking_lots_bloc.dart';
+import 'components/parking_lot_list.dart';
 
 class ManageParkingLotsScreen extends StatelessWidget {
   const ManageParkingLotsScreen({Key key}) : super(key: key);
@@ -35,7 +36,7 @@ class ManageParkingLotsScreen extends StatelessWidget {
 
   AppBar _buildCustomAppBar(BuildContext context) {
     return AppBar(
-      title: Text('Gerenciar estacionamentos'),
+      title: Text(Messages.manageParkingLotsScreenTitle),
       actions: [
         IconButton(
           icon: Icon(Icons.add),

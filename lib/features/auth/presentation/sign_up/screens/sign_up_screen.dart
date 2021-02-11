@@ -1,8 +1,8 @@
-import 'package:all_parking/res/constants.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../res/constants.dart';
 import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';

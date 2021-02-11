@@ -1,16 +1,18 @@
-import 'package:all_parking/features/parking/core/util/vehicle_color_converter.dart';
-import 'package:all_parking/features/parking/core/util/vehicle_type_converter.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/reports/screens/reports_screen.dart';
-import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
-import 'package:all_parking/utils/format_utils.dart';
-import 'package:all_parking/utils/pure_date.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../features/parking/core/util/vehicle_color_converter.dart';
+import '../features/parking/core/util/vehicle_type_converter.dart';
+import '../features/parking/domain/entities/parked_vehicle.dart';
+import '../features/parking/domain/entities/parking_lot.dart';
+import '../features/parking/presentation/reports/view_models/reports_view_model.dart';
+import '../utils/format_utils.dart';
+import '../utils/pure_date.dart';
+
 class Messages {
+  const Messages._();
+
   //AuthFailure
   static const emailBadlyFormatted = 'E-mail inválido';
   static const emptyField = 'Campo obrigatório';
@@ -25,7 +27,7 @@ class Messages {
   static const notAuthenticated = 'Usuário não autenticado';
   static const displayNameTooLong = 'Excedeu o limite de caracteres';
   static const passwordsDontMatch = 'Senhas não conferem';
-  static const noCurrentParkingLot = 'Nenhum estacionamento foi selecionado';
+  static const noCurrentParkingLot = 'Nenhum estacionamento selecionado';
 
   //ParkingFailure
   static const invalidParkingLotTitle = 'Nome inválido';
@@ -50,8 +52,10 @@ class Messages {
   static const signUpConfirmPasswordLabel = 'Confirme sua senha';
   static const signUpCreateAccountButton = 'CRIAR CONTA';
 
-  //Home
+  //HomeScreen
+  static const defaultAppBarTitle = 'All Parking';
   static const cardsLabel = 'Cartões';
+  static const parkedVehiclesLabel = 'Veículos estacionados';
   static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.activeParkedVehicles().size} restantes';
   static String usedCards(ParkingLot parkingLot) =>
       '${parkingLot.activeParkedVehicles().size} de ${parkingLot.availableSpots} cartões usados';
@@ -60,18 +64,50 @@ class Messages {
   static const pressMoreToAddParkingLot = 'Toque em + para adicionar';
   static const noParkingLotsFound = 'Nenhum estacionamento encontrado';
   static const noParkedVehicles = 'NENHUM VEÍCULO ESTACIONADO';
+  static String snackBarSaveSuccess(String title) => '$title salvo com sucesso!';
+  static const logoutLabel = 'Sair da conta';
+  static const moreButtonLabel = 'VER MAIS';
 
   //AddParkingLotScreen
   static const editParkingLotTitle = 'Editar estacionamento';
   static const addParkingLotTitle = 'Adicionar estacionamento';
   static const addParkingLotSubmitButton = 'SALVAR';
+  static const addParkingLotGeneralData = 'Dados gerais';
+  static const addParkingLotAddress = 'Endereço do local';
+  static const addParkingLotTitleLabel = 'Nome do estacionamento';
+  static const addParkingLotCepLabel = 'CEP';
+  static const addParkingLotStreetLabel = 'Logradouro';
+  static const addParkingLotCityLabel = 'Cidade';
+  static const addParkingLotUfLabel = 'Estado';
+  static const addParkingLotSpotsLabel = 'Número de vagas';
+  static const addParkingLotPricePerHourLabel = 'Valor por hora';
 
-  //Check-In
+  //CheckInScreen
+  static const checkInScreenTiele = 'Entrada de veículo';
+  static const checkInVehicleDataLabel = 'Dados do veículo';
+  static const checkInCustomerDataLabel = 'Dados do cliente (opcional)';
+  static const checkInConfirmDialogTitle = 'Confirme os dados do veículo';
+  static const checkInConfirmDialogRightButton = 'CONTINUAR';
+  static const checkInConfirmDialogLeftButton = 'ALTERAR';
+  static const checkInOwnerNameLabel = 'Nome';
+  static const checkInOwnerPhoneLabel = 'Celular';
+  static const checkInOwnerCpfLabel = 'CPF';
+  static const checkInVehicleBrandLabel = 'Marca/modelo';
+  static const checkInVehicleLicensePlateLabel = 'Placa';
+  static const checkInVehicleObservationsLabel = 'Observações';
+  static String checkInConfirmDialogContent(ParkedVehicle vehicle) =>
+      '${vehicle.title}, ${vehicle.licensePlate}, ${VehicleColorConverter.translate(vehicle.color)}';
   static String vehicleColorDropdownItem(VehicleColor color) => VehicleColorConverter.translate(color);
   static String vehicleTypeDropdownItem(VehicleType type) => VehicleTypeConverter.translate(type);
   static const checkInVehicleSubmitButton = 'ESCANEAR QR CODE';
 
+  //ParkedVehiclesScreen
+  static const parkedVehiclesScreenTitle = 'Veículos estacionados';
+  static const noCurrentParkingLotText = 'Nenhum estacionamento selecionado';
+  static const parkedVehiclesAllVehiclesLabel = 'Todos os veículos';
+
   //VehicleDetailsScreen
+  static const vehicleDetailsScreenTitle = 'Detalhes do veículo';
   static Map<String, Map<String, String>> generateVehicleInfoMap(ParkedVehicle vehicle) {
     return {
       'Informações gerais': {
@@ -105,7 +141,14 @@ class Messages {
   static String _twoDigits(int n) => n.toString().padLeft(2, '0');
   static String parseDuration(Duration duration) => '${duration.inHours}h ${duration.inMinutes.remainder(60)}min';
 
-  //CheckOut
+  //CheckOutScreen
+  static const checkOutScreenTitle = 'Saída de veículo';
+  static const checkOutSummaryHeader = 'Resumo';
+  static const checkOutObservationsHeader = 'Observações';
+  static const checkOutMoreDetailsHeader = 'Mais detalhes';
+  static const checkOutSubmitButton = 'CONFIRMAR SAÍDA';
+  static const checkOutNoObservations = 'Nenhuma observação';
+  static const checkOutChangePricePerHourButton = 'ALTERAR';
   static String elapsedTime(ParkedVehicle vehicle) => '${vehicle.getElapsedTime().inHours}h';
   static String pricePerHourLabel(double price) => '${FormatUtils.formatCurrency(price)} por hora';
   static Map<IconData, String> getDateAndTime(DateTime dateTime) {
@@ -116,7 +159,11 @@ class Messages {
     };
   }
 
-  //Reports
+  //ReportsScreen
+  static const reportsScreenTitle = 'Relatórios';
+  static const reportsParkedVehiclesHeader = 'Veículos estacionados';
+  static const reportsNoAvailableData = 'Sem dados para exibir';
+  static String reportsInfoTileTrailingText(dynamic value) => '$value';
   static String selectedDateLabel(DateTime dateTime) {
     final formattedDate = DateFormat.MMMMd().format(dateTime);
     return PureDate.fromDateTime(dateTime).isToday ? 'Hoje, $formattedDate' : formattedDate;
@@ -136,4 +183,17 @@ class Messages {
       },
     };
   }
+
+  //ManageParkingLots
+  static const manageParkingLotsScreenTitle = 'Gerenciar estacionamentos';
+  static const manageParkingLotsDeleteDialogTitle = 'Tem certeza?';
+  static const manageParkingLotsDeleteDialogRightButton = 'REMOVER';
+  static const manageParkingLotsDeleteDialogLeftButton = 'VOLTAR';
+  static const manageParkingLotsYourParkingLotsLabel = 'Seus estacionamentos';
+  static String manageParkingLotsDeleteDialogContent(String title) => 'Deseja remover $title da sua lista de estacionamentos?';
+
+  //SelectParkingLotScreen
+  static const selectParkingLotScreenTitle = 'Selecionar estacionamento';
+  static const selectParkingLotYourParkingLotsHeader = 'Seus estacionamentos';
+  static String selectParkingLotInfoTileSubtitle(Address address) => '${address.street} | ${address.cep}';
 }

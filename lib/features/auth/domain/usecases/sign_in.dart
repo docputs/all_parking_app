@@ -1,8 +1,8 @@
-import 'package:all_parking/utils/validators.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../utils/validators.dart';
 import '../../core/errors/auth_failure.dart';
 import '../../data/models/sign_in_model.dart';
 import '../repositories/i_user_repository.dart';

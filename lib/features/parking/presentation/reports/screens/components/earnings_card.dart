@@ -1,8 +1,9 @@
-import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/utils/format_utils.dart';
-import 'package:all_parking/widgets/default_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../res/theme.dart';
+import '../../../../../../utils/format_utils.dart';
+import '../../../../../../widgets/default_card.dart';
+import '../../view_models/reports_view_model.dart';
 
 class EarningsCard extends StatelessWidget {
   final ReportsViewModel viewModel;

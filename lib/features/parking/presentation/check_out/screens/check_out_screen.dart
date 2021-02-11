@@ -1,12 +1,13 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/presentation/check_out/bloc/check_out_bloc.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../res/constants.dart';
+import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
+import '../../../../../widgets/app_scaffold.dart';
+import '../../../domain/entities/parked_vehicle.dart';
+import '../bloc/check_out_bloc.dart';
 import 'components/check_out_body.dart';
 
 class CheckOutScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class CheckOutScreen extends StatelessWidget {
           );
         },
         child: AppScaffold(
-          title: 'Saída de veículo',
+          title: Messages.checkOutScreenTitle,
           body: CheckOutBody(vehicle: vehicle),
         ),
       ),

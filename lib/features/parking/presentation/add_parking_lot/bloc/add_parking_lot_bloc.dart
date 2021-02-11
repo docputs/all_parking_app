@@ -1,20 +1,20 @@
 import 'dart:async';
 
-import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/domain/usecases/add_parking_lot.dart';
-import 'package:all_parking/features/parking/domain/usecases/edit_parking_lot.dart';
-import 'package:all_parking/service_locator.dart';
-import 'package:all_parking/utils/cep_service.dart';
-import 'package:all_parking/utils/input_converter.dart';
-import 'package:all_parking/utils/validators.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../service_locator.dart';
+import '../../../../../utils/cep_service.dart';
+import '../../../../../utils/input_converter.dart';
+import '../../../../../utils/validators.dart';
+import '../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../../../core/errors/parking_failure.dart';
+import '../../../domain/entities/parking_lot.dart';
+import '../../../domain/usecases/add_parking_lot.dart';
+import '../../../domain/usecases/edit_parking_lot.dart';
 import '../../current_parking_lot.dart';
 
 part 'add_parking_lot_bloc.freezed.dart';

@@ -1,4 +1,3 @@
-import 'package:all_parking/features/parking/data/models/parking_lot_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -10,6 +9,7 @@ import '../../core/util/firebase_helpers.dart';
 import '../../domain/entities/manager.dart';
 import '../../domain/entities/parking_lot.dart';
 import '../../domain/repositories/i_parking_lot_repository.dart';
+import '../models/parking_lot_dto.dart';
 
 @LazySingleton(as: IParkingLotRepository)
 class ParkingLotRepository implements IParkingLotRepository {

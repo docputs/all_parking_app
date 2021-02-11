@@ -1,7 +1,8 @@
-import 'package:all_parking/res/assets.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
 import 'package:flutter/material.dart';
+
+import '../res/assets.dart';
+import '../res/messages.dart';
+import '../res/theme.dart';
 
 class NoParkingLotsFound extends StatelessWidget {
   const NoParkingLotsFound({Key key}) : super(key: key);

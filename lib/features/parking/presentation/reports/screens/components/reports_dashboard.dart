@@ -1,13 +1,14 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/presentation/reports/bloc/reports_bloc.dart';
-import 'package:all_parking/features/parking/presentation/reports/components/earnings_card.dart';
-import 'package:all_parking/features/parking/presentation/reports/components/vehicle_report_tile.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_section_title.dart';
+import '../../../../domain/entities/parked_vehicle.dart';
+import '../../bloc/reports_bloc.dart';
+import 'earnings_card.dart';
+import 'vehicle_report_tile.dart';
 
 class ReportsDashboard extends StatelessWidget {
   const ReportsDashboard({Key key}) : super(key: key);
@@ -19,7 +20,7 @@ class ReportsDashboard extends StatelessWidget {
         _buildDateHeader(),
         _buildEarningsCard(),
         const SizedBox(height: 40),
-        const DefaultSectionTitle('Veículos estacionados'),
+        const DefaultSectionTitle(Messages.reportsParkedVehiclesHeader),
         _buildVehicleList(),
       ],
     );
@@ -52,7 +53,7 @@ class ReportsDashboard extends StatelessWidget {
   Widget _buildNoDataToShow() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 60),
-      child: Text('Sem dados para exibir', style: const TextStyle(color: AppColors.textColor)),
+      child: Text(Messages.reportsNoAvailableData, style: const TextStyle(color: AppColors.textColor)),
     );
   }
 

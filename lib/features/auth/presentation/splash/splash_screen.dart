@@ -1,8 +1,8 @@
-import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../res/constants.dart';
+import '../../../parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import '../auth_bloc.dart';
 
 class SplashScreen extends StatelessWidget {

@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
+
+import '../features/parking/domain/entities/parking_lot.dart';
 
 part 'cep_service.freezed.dart';
 part 'cep_service.g.dart';

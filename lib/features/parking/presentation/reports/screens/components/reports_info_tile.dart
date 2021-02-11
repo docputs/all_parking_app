@@ -1,5 +1,7 @@
-import 'package:all_parking/res/theme.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
 
 class ReportsInfoTile extends StatelessWidget {
   final MapEntry<String, dynamic> info;
@@ -11,7 +13,7 @@ class ReportsInfoTile extends StatelessWidget {
     return ListTile(
       contentPadding: const EdgeInsets.all(0),
       title: Text(info.key, style: const TextStyle(color: AppColors.textColor)),
-      trailing: Text('${info.value}', style: const TextStyle(fontSize: 16)),
+      trailing: Text(Messages.reportsInfoTileTrailingText(info.value), style: const TextStyle(fontSize: 16)),
     );
   }
 }

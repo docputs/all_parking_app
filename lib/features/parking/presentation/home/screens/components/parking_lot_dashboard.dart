@@ -1,14 +1,14 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/res/assets.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_section_title.dart';
-import 'package:all_parking/widgets/default_text_button.dart';
-import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../../../../../res/assets.dart';
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_section_title.dart';
+import '../../../../../../widgets/default_text_button.dart';
+import '../../../../../../widgets/parked_vehicle_tile.dart';
+import '../../../../domain/entities/parking_lot.dart';
 import 'cards_display.dart';
 
 class ParkingLotDashboard extends StatelessWidget {
@@ -22,7 +22,7 @@ class ParkingLotDashboard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const SizedBox(height: 20),
-        const DefaultSectionTitle('Cartões'),
+        const DefaultSectionTitle(Messages.cardsLabel),
         CardsDisplay(parkingLot),
         const SizedBox(height: 60),
         _buildParkedVehicleHeader(context),
@@ -34,11 +34,11 @@ class ParkingLotDashboard extends StatelessWidget {
   Widget _buildParkedVehicleHeader(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: const DefaultSectionTitle('Veículos estacionados')),
+        Expanded(child: const DefaultSectionTitle(Messages.parkedVehiclesLabel)),
         Padding(
           padding: const EdgeInsets.only(bottom: 7),
           child: DefaultTextButton(
-            text: 'VER MAIS',
+            text: Messages.moreButtonLabel,
             onPressed: () => Navigator.of(context).pushNamed(Constants.parkedVehiclesRoute),
           ),
         ),

@@ -1,9 +1,10 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/home/screens/components/gauge_painter.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_card.dart';
+import '../../../../domain/entities/parking_lot.dart';
+import 'gauge_painter.dart';
 
 class CardsDisplay extends StatelessWidget {
   final ParkingLot parkingLot;

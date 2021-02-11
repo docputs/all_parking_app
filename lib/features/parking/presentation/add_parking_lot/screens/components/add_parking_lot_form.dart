@@ -1,13 +1,14 @@
-import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
-import 'package:all_parking/features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/utils/validators.dart';
-import 'package:all_parking/widgets/default_button.dart';
-import 'package:all_parking/widgets/default_section_title.dart';
-import 'package:all_parking/widgets/parking_lot_text_form_field.dart';
-import 'package:all_parking/widgets/static_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../utils/validators.dart';
+import '../../../../../../widgets/default_button.dart';
+import '../../../../../../widgets/default_section_title.dart';
+import '../../../../../../widgets/parking_lot_text_form_field.dart';
+import '../../../../../../widgets/static_text_form_field.dart';
+import '../../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../../bloc/add_parking_lot_bloc.dart';
 
 class AddParkingLotForm extends StatefulWidget {
   const AddParkingLotForm({Key key}) : super(key: key);
@@ -35,11 +36,11 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const DefaultSectionTitle('Dados gerais'),
+        const DefaultSectionTitle(Messages.addParkingLotGeneralData),
         _buildTitleField(),
         _buildSpotsAndPriceFields(),
         const SizedBox(height: 40),
-        const DefaultSectionTitle('Endereço do local'),
+        const DefaultSectionTitle(Messages.addParkingLotAddress),
         _buildCepField(),
         _buildAddressField(),
         _buildCityAndStateField(),
@@ -56,7 +57,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
       buildWhen: (p, c) => p.parkingLot.title != c.parkingLot.title || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) {
         return ParkingLotTextFormField(
-          labelText: 'Nome do estacionamento',
+          labelText: Messages.addParkingLotTitleLabel,
           state: state as ValidationFormState,
           onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedTitle(value)),
           validationEither: Validators.validateParkingLotTitle,
@@ -73,7 +74,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
       buildWhen: (p, c) => p.parkingLot.address.cep != c.parkingLot.address.cep || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) {
         return ParkingLotTextFormField(
-          labelText: 'CEP',
+          labelText: Messages.addParkingLotCepLabel,
           state: state as ValidationFormState,
           onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedCep(value)),
           validationEither: Validators.validateCep,
@@ -90,7 +91,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
       builder: (context, state) {
         return StaticTextFormField(
           key: ValueKey(state.parkingLot.address),
-          labelText: 'Logradouro',
+          labelText: Messages.addParkingLotStreetLabel,
           value: state.parkingLot.address.street,
         );
       },
@@ -107,7 +108,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
               flex: 3,
               child: StaticTextFormField(
                 key: ValueKey(state.parkingLot.address),
-                labelText: 'Cidade',
+                labelText: Messages.addParkingLotCityLabel,
                 value: state.parkingLot.address.city,
               ),
             ),
@@ -115,7 +116,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
             Expanded(
               child: StaticTextFormField(
                 key: ValueKey(state.parkingLot.address),
-                labelText: 'Estado',
+                labelText: Messages.addParkingLotUfLabel,
                 value: state.parkingLot.address.uf.toUpperCase(),
               ),
             ),
@@ -141,7 +142,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
       listener: (context, state) => _spotsController.text = state.parkingLot.availableSpots.toString(),
       buildWhen: (p, c) => p.parkingLot.availableSpots != c.parkingLot.availableSpots || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
-        labelText: 'Número de vagas',
+        labelText: Messages.addParkingLotSpotsLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedAvailableSpots(value)),
         validationEither: Validators.validateAvailableSpotsField,
@@ -157,7 +158,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
       listener: (context, state) => _priceController.text = state.parkingLot.pricePerHour.toString(),
       buildWhen: (p, c) => p.parkingLot.pricePerHour != c.parkingLot.pricePerHour || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
-        labelText: 'Valor por hora',
+        labelText: Messages.addParkingLotPricePerHourLabel,
         state: state as ValidationFormState,
         onChanged: (value) => context.read<AddParkingLotBloc>().add(AddParkingLotEvent.changedPricePerHour(value)),
         validationEither: Validators.validatePricePerHour,

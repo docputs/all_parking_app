@@ -1,10 +1,11 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
-import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../res/messages.dart';
+import '../../../../../../widgets/default_section_title.dart';
+import '../../../../domain/entities/parking_lot.dart';
+import '../../bloc/manage_parking_lots_bloc.dart';
 import 'manage_parking_lot_tile.dart';
 
 class ParkingLotList extends StatelessWidget {
@@ -24,7 +25,7 @@ class ParkingLotList extends StatelessWidget {
       },
       child: Column(
         children: [
-          const DefaultSectionTitle('Seus estacionamentos'),
+          const DefaultSectionTitle(Messages.manageParkingLotsYourParkingLotsLabel),
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) => ManageParkingLotTile(parkingLots[index]),

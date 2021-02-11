@@ -1,5 +1,6 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../domain/entities/parking_lot.dart';
 
 part 'address_dto.freezed.dart';
 part 'address_dto.g.dart';

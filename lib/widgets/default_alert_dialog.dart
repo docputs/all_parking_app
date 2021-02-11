@@ -1,6 +1,7 @@
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/theme.dart';
 import 'package:flutter/material.dart';
+
+import '../res/constants.dart';
+import '../res/theme.dart';
 
 class DefaultAlertDialog extends StatelessWidget {
   final String title;

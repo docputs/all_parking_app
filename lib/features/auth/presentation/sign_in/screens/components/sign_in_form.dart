@@ -1,9 +1,8 @@
-import 'package:all_parking/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../res/messages.dart';
-import '../../../../../../service_locator.dart';
+import '../../../../../../utils/validators.dart';
 import '../../../../../../widgets/default_button.dart';
 import '../../bloc/sign_in_bloc.dart';
 import 'create_account_text.dart';

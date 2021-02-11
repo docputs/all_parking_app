@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:all_parking/res/theme.dart';
+import '../../../../../../res/theme.dart';
 import 'package:flutter/material.dart';
 
 class GaugePainter extends CustomPainter {

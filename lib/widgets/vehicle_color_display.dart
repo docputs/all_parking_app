@@ -1,8 +1,9 @@
-import 'package:all_parking/features/parking/core/util/vehicle_color_converter.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/theme.dart';
 import 'package:flutter/material.dart';
+
+import '../features/parking/core/util/vehicle_color_converter.dart';
+import '../features/parking/domain/entities/parked_vehicle.dart';
+import '../res/constants.dart';
+import '../res/theme.dart';
 
 class VehicleColorDisplay extends StatelessWidget {
   final VehicleColor color;

@@ -1,4 +1,4 @@
-import 'package:all_parking/widgets/default_card.dart';
+import 'default_card.dart';
 import 'package:flutter/material.dart';
 
 class DefaultDropdownField<T> extends StatelessWidget {

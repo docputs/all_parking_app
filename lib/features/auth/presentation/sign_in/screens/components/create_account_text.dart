@@ -1,4 +1,4 @@
-import 'package:all_parking/res/constants.dart';
+import '../../../../../../res/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 

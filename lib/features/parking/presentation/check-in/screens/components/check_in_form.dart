@@ -1,13 +1,13 @@
-import 'package:all_parking/features/parking/core/util/vehicle_color_converter.dart';
-import 'package:all_parking/features/parking/presentation/check-in/bloc/check_in_bloc.dart';
-import 'package:all_parking/features/parking/presentation/check-in/screens/components/owner_data_form.dart';
-import 'package:all_parking/features/parking/presentation/check-in/screens/components/vehicle_data_form.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/widgets/default_alert_dialog.dart';
-import 'package:all_parking/widgets/default_button.dart';
-import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../widgets/default_alert_dialog.dart';
+import '../../../../../../widgets/default_button.dart';
+import '../../../../../../widgets/default_section_title.dart';
+import '../../bloc/check_in_bloc.dart';
+import 'owner_data_form.dart';
+import 'vehicle_data_form.dart';
 
 class CheckInForm extends StatelessWidget {
   const CheckInForm({Key key}) : super(key: key);
@@ -16,10 +16,10 @@ class CheckInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const DefaultSectionTitle('Dados do veículo'),
+        const DefaultSectionTitle(Messages.checkInVehicleDataLabel),
         const VehicleDataForm(),
         const SizedBox(height: 40),
-        const DefaultSectionTitle('Dados do cliente (opcional)'),
+        const DefaultSectionTitle(Messages.checkInCustomerDataLabel),
         const OwnerDataForm(),
         const SizedBox(height: 40),
         _buildSubmitOrLoadingButton(context),
@@ -41,15 +41,14 @@ class CheckInForm extends StatelessWidget {
 
   Future<bool> _showConfirmDialog(BuildContext context) {
     final vehicle = context.read<CheckInBloc>().state.vehicle;
-    final translatedColor = VehicleColorConverter.translate(vehicle.color);
     return showDialog<bool>(
       context: context,
       barrierDismissible: false,
       builder: (context) => DefaultAlertDialog(
-        title: 'Confirme os dados do veículo',
-        message: '${vehicle.title}, ${vehicle.licensePlate}, $translatedColor',
-        rightButtonText: 'CONTINUAR',
-        leftButtonText: 'ALTERAR',
+        title: Messages.checkInConfirmDialogTitle,
+        message: Messages.checkInConfirmDialogContent(vehicle),
+        rightButtonText: Messages.checkInConfirmDialogRightButton,
+        leftButtonText: Messages.checkInConfirmDialogLeftButton,
       ),
     );
   }

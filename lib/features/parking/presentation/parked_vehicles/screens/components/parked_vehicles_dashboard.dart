@@ -1,7 +1,9 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/widgets/default_section_title.dart';
-import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../widgets/default_section_title.dart';
+import '../../../../../../widgets/parked_vehicle_tile.dart';
+import '../../../../domain/entities/parked_vehicle.dart';
 
 class ParkedVehiclesDashboard extends StatelessWidget {
   final List<ParkedVehicle> parkedVehicles;
@@ -12,7 +14,7 @@ class ParkedVehiclesDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const DefaultSectionTitle('Todos os veículos'),
+        const DefaultSectionTitle(Messages.parkedVehiclesAllVehiclesLabel),
         Expanded(
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),

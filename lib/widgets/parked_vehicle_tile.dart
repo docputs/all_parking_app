@@ -1,6 +1,6 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/widgets/vehicle_color_display.dart';
+import '../features/parking/domain/entities/parked_vehicle.dart';
+import '../res/constants.dart';
+import 'vehicle_color_display.dart';
 import 'package:flutter/material.dart';
 
 import 'default_list_tile.dart';

@@ -1,10 +1,11 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/presentation/parked_vehicles/components/vehicle_info_item.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/widgets/app_scaffold.dart';
-import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../res/constants.dart';
+import '../../../../../res/messages.dart';
+import '../../../../../widgets/app_scaffold.dart';
+import '../../../../../widgets/default_section_title.dart';
+import '../../../domain/entities/parked_vehicle.dart';
+import 'components/vehicle_info_item.dart';
 
 class ParkedVehicleDetailsScreen extends StatelessWidget {
   final ParkedVehicle vehicle;
@@ -21,7 +22,7 @@ class ParkedVehicleDetailsScreen extends StatelessWidget {
           onPressed: () => Navigator.of(context).pushNamed(Constants.checkOutVehicleRoute, arguments: vehicle),
         ),
       ],
-      title: 'Detalhes do veículo',
+      title: Messages.vehicleDetailsScreenTitle,
       body: Column(
         children: Messages.generateVehicleInfoMap(vehicle).entries.map((e) {
           return Column(

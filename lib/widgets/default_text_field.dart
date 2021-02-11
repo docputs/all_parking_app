@@ -1,7 +1,8 @@
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/utils/mask_text_input_formatter.dart';
 import 'package:flutter/material.dart';
+
+import '../res/constants.dart';
+import '../res/theme.dart';
+import '../utils/mask_text_input_formatter.dart';
 
 class DefaultTextField extends StatefulWidget {
   final String labelText;

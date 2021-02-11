@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/domain/usecases/check_out_vehicle.dart';
+import '../../../core/errors/parking_failure.dart';
+import '../../../domain/entities/parked_vehicle.dart';
+import '../../../domain/usecases/check_out_vehicle.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

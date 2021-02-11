@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/kt.dart';
 
 import '../../domain/entities/parking_lot.dart';
 import 'address_dto.dart';
-import 'package:kt_dart/kt.dart';
 import 'parked_vehicle_dto.dart';
 
 part 'parking_lot_dto.freezed.dart';

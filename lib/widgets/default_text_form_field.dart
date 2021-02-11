@@ -1,8 +1,7 @@
-import 'package:all_parking/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:all_parking/widgets/default_text_field.dart';
+import 'default_text_field.dart';
 
 abstract class ValidatorState {
   bool get showErrorMessages;
@@ -37,16 +36,5 @@ class DefaultTextFormField<A extends Cubit<ValidatorState>, B> extends Stateless
         );
       },
     );
-  }
-}
-
-class FormField {
-  final String value;
-  final Validators validator;
-
-  const FormField(this.value, this.validator);
-
-  String runValidation() {
-
   }
 }

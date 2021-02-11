@@ -1,5 +1,6 @@
-import 'package:all_parking/res/messages.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../../res/messages.dart';
 
 part 'auth_failure.freezed.dart';
 

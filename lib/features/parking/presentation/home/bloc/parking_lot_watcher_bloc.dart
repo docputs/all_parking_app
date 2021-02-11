@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/domain/usecases/watch_all_parking_lots.dart';
-import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,6 +9,8 @@ import 'package:kt_dart/kt.dart';
 import '../../../../../service_locator.dart';
 import '../../../core/errors/parking_failure.dart';
 import '../../../domain/entities/parking_lot.dart';
+import '../../../domain/usecases/watch_all_parking_lots.dart';
+import '../../current_parking_lot.dart';
 
 part 'parking_lot_watcher_bloc.freezed.dart';
 part 'parking_lot_watcher_event.dart';

@@ -1,10 +1,11 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/utils/format_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../utils/format_utils.dart';
+import '../../../../domain/entities/parked_vehicle.dart';
+import '../../../current_parking_lot.dart';
 
 class VehicleReportTile extends StatelessWidget {
   final ParkedVehicle vehicle;
@@ -35,7 +36,6 @@ class VehicleReportTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
       decoration: BoxDecoration(
-        // color: AppColors.accentLighterColor,
         border: Border.all(width: 1, color: AppColors.primaryColor),
         borderRadius: Constants.defaultBorderRadius,
       ),

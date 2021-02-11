@@ -1,7 +1,7 @@
-import 'package:all_parking/features/parking/data/models/owner_data_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/parked_vehicle.dart';
+import 'owner_data_dto.dart';
 
 part 'parked_vehicle_dto.freezed.dart';
 part 'parked_vehicle_dto.g.dart';
