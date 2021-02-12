@@ -1,4 +1,4 @@
-import 'package:all_parking/features/parking/presentation/home/screens/components/default_drawer.dart';
+import 'package:all_parking/widgets/default_drawer.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:flutter/material.dart';
 

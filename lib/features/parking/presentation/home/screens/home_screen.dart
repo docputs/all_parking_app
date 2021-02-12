@@ -14,7 +14,7 @@ import '../../../../../widgets/parking_lot_watcher_builder.dart';
 import '../../../../auth/presentation/auth_bloc.dart';
 import '../../current_parking_lot.dart';
 import 'components/custom_app_bar.dart';
-import 'components/default_drawer.dart';
+import '../../../../../widgets/default_drawer.dart';
 import 'components/parking_lot_dashboard.dart';
 
 class HomeScreen extends StatelessWidget {

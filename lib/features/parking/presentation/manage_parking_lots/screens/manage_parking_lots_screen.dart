@@ -8,7 +8,7 @@ import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../../../widgets/no_parking_lots_found.dart';
 import '../../../../../widgets/parking_lot_watcher_builder.dart';
-import '../../home/screens/components/default_drawer.dart';
+import '../../../../../widgets/default_drawer.dart';
 import '../bloc/manage_parking_lots_bloc.dart';
 import 'components/parking_lot_list.dart';
 

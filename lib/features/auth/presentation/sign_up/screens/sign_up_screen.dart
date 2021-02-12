@@ -6,7 +6,6 @@ import '../../../../../res/constants.dart';
 import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
-import '../../auth_bloc.dart';
 import '../bloc/sign_up_bloc.dart';
 import 'components/sign_up_form.dart';
 
@@ -24,10 +23,7 @@ class SignUpScreen extends StatelessWidget {
             () {},
             (either) => either.fold(
               (f) => FlushbarHelper.createError(message: f.message).show(context),
-              (_) {
-                Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
-                context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());
-              },
+              (_) => Navigator.of(context).pushReplacementNamed(Constants.splashRoute),
             ),
           );
         },

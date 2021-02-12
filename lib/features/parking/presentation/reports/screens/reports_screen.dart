@@ -8,7 +8,7 @@ import '../../../../../widgets/app_scaffold.dart';
 import '../../../../../widgets/no_current_parking_lot_info.dart';
 import '../../../domain/entities/parking_lot.dart';
 import '../../current_parking_lot.dart';
-import '../../home/screens/components/default_drawer.dart';
+import '../../../../../widgets/default_drawer.dart';
 import '../bloc/reports_bloc.dart';
 import 'components/no_reports_data.dart';
 import 'components/reports_dashboard.dart';

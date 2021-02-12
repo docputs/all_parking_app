@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../res/drawer_messages.dart';
-import '../../../../../../res/messages.dart';
-import '../../../../../../res/theme.dart';
-import '../../../../../auth/presentation/auth_bloc.dart';
-import 'drawer_list_tile.dart';
+import '../res/drawer_messages.dart';
+import '../res/messages.dart';
+import '../res/theme.dart';
+import '../features/auth/presentation/auth_bloc.dart';
+import '../features/parking/presentation/home/screens/components/drawer_list_tile.dart';
 
 class DefaultDrawer extends StatelessWidget {
   const DefaultDrawer({Key key}) : super(key: key);
