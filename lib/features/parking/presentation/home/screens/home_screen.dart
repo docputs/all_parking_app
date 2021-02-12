@@ -29,15 +29,11 @@ class HomeScreen extends StatelessWidget {
           orElse: () {},
         );
       },
-      child: ParkingLotWatcherBuilder(
-        useScaffold: true,
-        onError: (f) => Center(child: Text(f.message)),
-        onSuccess: (_) => AppScaffold(
-          customAppBar: CustomAppBar(),
-          drawer: const DefaultDrawer(),
-          body: _buildBody(),
-          floatingActionButton: _buildCustomFAB(context),
-        ),
+      child: AppScaffold(
+        customAppBar: CustomAppBar(),
+        drawer: const DefaultDrawer(),
+        body: _buildBody(),
+        floatingActionButton: _buildCustomFAB(context),
       ),
     );
   }
@@ -72,13 +68,15 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    return Consumer<CurrentParkingLot>(
-      builder: (context, currentParkingLot, _) {
-        return currentParkingLot.value.fold(
-          () => const NoParkingLotsFound(),
-          (parkingLot) => ParkingLotDashboard(parkingLot),
-        );
-      },
+    return ParkingLotWatcherBuilder(
+      onSuccess: (_) => Consumer<CurrentParkingLot>(
+        builder: (context, currentParkingLot, _) {
+          return currentParkingLot.value.fold(
+            () => const NoParkingLotsFound(),
+            (parkingLot) => ParkingLotDashboard(parkingLot),
+          );
+        },
+      ),
     );
   }
 }

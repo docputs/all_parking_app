@@ -27,7 +27,7 @@ class SignInScreen extends StatelessWidget {
             (either) => either.fold(
               (f) => FlushbarHelper.createError(message: f.message).show(context),
               (_) {
-                Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
+                Navigator.of(context).pushReplacementNamed(Constants.splashRoute);
                 context.read<AuthBloc>().add(const AuthEvent.authCheckRequested());
               },
             ),

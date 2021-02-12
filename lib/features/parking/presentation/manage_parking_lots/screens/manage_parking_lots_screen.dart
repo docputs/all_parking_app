@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/presentation/home/screens/components/watcher_failure_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +31,6 @@ class ManageParkingLotsScreen extends StatelessWidget {
   Widget _buildBody() {
     return ParkingLotWatcherBuilder(
       onSuccess: (parkingLots) => parkingLots.isEmpty() ? const NoParkingLotsFound() : ParkingLotList(parkingLots.asList()),
-      onError: (f) => Text(f.message),
     );
   }
 
