@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../features/parking/presentation/home/screens/components/drawer_list_tile.dart';
+import '../widgets/drawer_list_tile.dart';
 import 'constants.dart';
 
 class DrawerMessages {

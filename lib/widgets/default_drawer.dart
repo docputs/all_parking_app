@@ -5,7 +5,7 @@ import '../res/drawer_messages.dart';
 import '../res/messages.dart';
 import '../res/theme.dart';
 import '../features/auth/presentation/auth_bloc.dart';
-import '../features/parking/presentation/home/screens/components/drawer_list_tile.dart';
+import 'drawer_list_tile.dart';
 
 class DefaultDrawer extends StatelessWidget {
   const DefaultDrawer({Key key}) : super(key: key);
@@ -39,24 +39,28 @@ class DefaultDrawer extends StatelessWidget {
   Widget _buildDrawerHeader() {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          color: AppColors.primaryColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                state.maybeWhen(orElse: () => '', authenticated: (user) => user.displayName),
-                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
+        return state.maybeWhen(
+          orElse: () => const SizedBox(),
+          authenticated: (user) {
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              color: AppColors.primaryColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    user.displayName,
+                    style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
+                  ),
+                  Text(
+                    Messages.userType(user.type),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                ],
               ),
-              Text(
-                //TODO: implement user type identification
-                'Administrador',
-                style: const TextStyle(color: Colors.white, fontSize: 12),
-              ),
-            ],
-          ),
+            );
+          },
         );
       },
     );
