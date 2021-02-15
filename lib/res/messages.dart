@@ -1,3 +1,4 @@
+import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -12,6 +13,9 @@ import '../utils/pure_date.dart';
 
 class Messages {
   const Messages._();
+
+  //General
+  static String userType(UserType type) => type == UserType.manager ? 'Administrador' : 'Funcionário';
 
   //AuthFailure
   static const emailBadlyFormatted = 'E-mail inválido';

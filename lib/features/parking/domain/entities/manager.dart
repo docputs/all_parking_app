@@ -15,7 +15,7 @@ class Manager extends User {
     @required this.email,
     @required this.parkingLots,
     @required this.employees,
-  }) : super(id: id, displayName: displayName);
+  }) : super(id: id, displayName: displayName, type: UserType.manager);
 
   bool get hasEmployees => employees.isNotEmpty();
 

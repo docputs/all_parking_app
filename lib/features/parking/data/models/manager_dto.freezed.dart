@@ -22,13 +22,15 @@ class _$ManagerDTOTearOff {
       @required String displayName,
       @required String email,
       @required List<String> parkingLots,
-      @required List<EmployeeDTO> employees}) {
+      @required List<EmployeeDTO> employees,
+      @required UserType type}) {
     return _ManagerDTO(
       id: id,
       displayName: displayName,
       email: email,
       parkingLots: parkingLots,
       employees: employees,
+      type: type,
     );
   }
 
@@ -50,6 +52,7 @@ mixin _$ManagerDTO {
   String get email;
   List<String> get parkingLots;
   List<EmployeeDTO> get employees;
+  UserType get type;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -66,7 +69,8 @@ abstract class $ManagerDTOCopyWith<$Res> {
       String displayName,
       String email,
       List<String> parkingLots,
-      List<EmployeeDTO> employees});
+      List<EmployeeDTO> employees,
+      UserType type});
 }
 
 /// @nodoc
@@ -84,6 +88,7 @@ class _$ManagerDTOCopyWithImpl<$Res> implements $ManagerDTOCopyWith<$Res> {
     Object email = freezed,
     Object parkingLots = freezed,
     Object employees = freezed,
+    Object type = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -96,6 +101,7 @@ class _$ManagerDTOCopyWithImpl<$Res> implements $ManagerDTOCopyWith<$Res> {
       employees: employees == freezed
           ? _value.employees
           : employees as List<EmployeeDTO>,
+      type: type == freezed ? _value.type : type as UserType,
     ));
   }
 }
@@ -111,7 +117,8 @@ abstract class _$ManagerDTOCopyWith<$Res> implements $ManagerDTOCopyWith<$Res> {
       String displayName,
       String email,
       List<String> parkingLots,
-      List<EmployeeDTO> employees});
+      List<EmployeeDTO> employees,
+      UserType type});
 }
 
 /// @nodoc
@@ -131,6 +138,7 @@ class __$ManagerDTOCopyWithImpl<$Res> extends _$ManagerDTOCopyWithImpl<$Res>
     Object email = freezed,
     Object parkingLots = freezed,
     Object employees = freezed,
+    Object type = freezed,
   }) {
     return _then(_ManagerDTO(
       id: id == freezed ? _value.id : id as String,
@@ -143,6 +151,7 @@ class __$ManagerDTOCopyWithImpl<$Res> extends _$ManagerDTOCopyWithImpl<$Res>
       employees: employees == freezed
           ? _value.employees
           : employees as List<EmployeeDTO>,
+      type: type == freezed ? _value.type : type as UserType,
     ));
   }
 }
@@ -156,11 +165,13 @@ class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
       @required this.displayName,
       @required this.email,
       @required this.parkingLots,
-      @required this.employees})
+      @required this.employees,
+      @required this.type})
       : assert(displayName != null),
         assert(email != null),
         assert(parkingLots != null),
         assert(employees != null),
+        assert(type != null),
         super._();
 
   factory _$_ManagerDTO.fromJson(Map<String, dynamic> json) =>
@@ -177,10 +188,12 @@ class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
   final List<String> parkingLots;
   @override
   final List<EmployeeDTO> employees;
+  @override
+  final UserType type;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ManagerDTO(id: $id, displayName: $displayName, email: $email, parkingLots: $parkingLots, employees: $employees)';
+    return 'ManagerDTO(id: $id, displayName: $displayName, email: $email, parkingLots: $parkingLots, employees: $employees, type: $type)';
   }
 
   @override
@@ -192,7 +205,8 @@ class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('displayName', displayName))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('parkingLots', parkingLots))
-      ..add(DiagnosticsProperty('employees', employees));
+      ..add(DiagnosticsProperty('employees', employees))
+      ..add(DiagnosticsProperty('type', type));
   }
 
   @override
@@ -211,7 +225,9 @@ class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
                     .equals(other.parkingLots, parkingLots)) &&
             (identical(other.employees, employees) ||
                 const DeepCollectionEquality()
-                    .equals(other.employees, employees)));
+                    .equals(other.employees, employees)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)));
   }
 
   @override
@@ -221,7 +237,8 @@ class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(parkingLots) ^
-      const DeepCollectionEquality().hash(employees);
+      const DeepCollectionEquality().hash(employees) ^
+      const DeepCollectionEquality().hash(type);
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +258,8 @@ abstract class _ManagerDTO extends ManagerDTO {
       @required String displayName,
       @required String email,
       @required List<String> parkingLots,
-      @required List<EmployeeDTO> employees}) = _$_ManagerDTO;
+      @required List<EmployeeDTO> employees,
+      @required UserType type}) = _$_ManagerDTO;
 
   factory _ManagerDTO.fromJson(Map<String, dynamic> json) =
       _$_ManagerDTO.fromJson;
@@ -257,6 +275,8 @@ abstract class _ManagerDTO extends ManagerDTO {
   List<String> get parkingLots;
   @override
   List<EmployeeDTO> get employees;
+  @override
+  UserType get type;
   @override
   @JsonKey(ignore: true)
   _$ManagerDTOCopyWith<_ManagerDTO> get copyWith;

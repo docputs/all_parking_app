@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'employee_dto.dart';
+part of 'user_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-EmployeeDTO _$EmployeeDTOFromJson(Map<String, dynamic> json) {
-  return _EmployeeDTO.fromJson(json);
+UserDTO _$UserDTOFromJson(Map<String, dynamic> json) {
+  return _UserDTO.fromJson(json);
 }
 
 /// @nodoc
-class _$EmployeeDTOTearOff {
-  const _$EmployeeDTOTearOff();
+class _$UserDTOTearOff {
+  const _$UserDTOTearOff();
 
 // ignore: unused_element
-  _EmployeeDTO call(
+  _UserDTO call(
       {@JsonKey(ignore: true) String id,
       @required String displayName,
       @required UserType type}) {
-    return _EmployeeDTO(
+    return _UserDTO(
       id: id,
       displayName: displayName,
       type: type,
@@ -29,17 +29,17 @@ class _$EmployeeDTOTearOff {
   }
 
 // ignore: unused_element
-  EmployeeDTO fromJson(Map<String, Object> json) {
-    return EmployeeDTO.fromJson(json);
+  UserDTO fromJson(Map<String, Object> json) {
+    return UserDTO.fromJson(json);
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $EmployeeDTO = _$EmployeeDTOTearOff();
+const $UserDTO = _$UserDTOTearOff();
 
 /// @nodoc
-mixin _$EmployeeDTO {
+mixin _$UserDTO {
   @JsonKey(ignore: true)
   String get id;
   String get displayName;
@@ -47,25 +47,24 @@ mixin _$EmployeeDTO {
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
-  $EmployeeDTOCopyWith<EmployeeDTO> get copyWith;
+  $UserDTOCopyWith<UserDTO> get copyWith;
 }
 
 /// @nodoc
-abstract class $EmployeeDTOCopyWith<$Res> {
-  factory $EmployeeDTOCopyWith(
-          EmployeeDTO value, $Res Function(EmployeeDTO) then) =
-      _$EmployeeDTOCopyWithImpl<$Res>;
+abstract class $UserDTOCopyWith<$Res> {
+  factory $UserDTOCopyWith(UserDTO value, $Res Function(UserDTO) then) =
+      _$UserDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true) String id, String displayName, UserType type});
 }
 
 /// @nodoc
-class _$EmployeeDTOCopyWithImpl<$Res> implements $EmployeeDTOCopyWith<$Res> {
-  _$EmployeeDTOCopyWithImpl(this._value, this._then);
+class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
+  _$UserDTOCopyWithImpl(this._value, this._then);
 
-  final EmployeeDTO _value;
+  final UserDTO _value;
   // ignore: unused_field
-  final $Res Function(EmployeeDTO) _then;
+  final $Res Function(UserDTO) _then;
 
   @override
   $Res call({
@@ -83,25 +82,22 @@ class _$EmployeeDTOCopyWithImpl<$Res> implements $EmployeeDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EmployeeDTOCopyWith<$Res>
-    implements $EmployeeDTOCopyWith<$Res> {
-  factory _$EmployeeDTOCopyWith(
-          _EmployeeDTO value, $Res Function(_EmployeeDTO) then) =
-      __$EmployeeDTOCopyWithImpl<$Res>;
+abstract class _$UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
+  factory _$UserDTOCopyWith(_UserDTO value, $Res Function(_UserDTO) then) =
+      __$UserDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String id, String displayName, UserType type});
 }
 
 /// @nodoc
-class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
-    implements _$EmployeeDTOCopyWith<$Res> {
-  __$EmployeeDTOCopyWithImpl(
-      _EmployeeDTO _value, $Res Function(_EmployeeDTO) _then)
-      : super(_value, (v) => _then(v as _EmployeeDTO));
+class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
+    implements _$UserDTOCopyWith<$Res> {
+  __$UserDTOCopyWithImpl(_UserDTO _value, $Res Function(_UserDTO) _then)
+      : super(_value, (v) => _then(v as _UserDTO));
 
   @override
-  _EmployeeDTO get _value => super._value as _EmployeeDTO;
+  _UserDTO get _value => super._value as _UserDTO;
 
   @override
   $Res call({
@@ -109,7 +105,7 @@ class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
     Object displayName = freezed,
     Object type = freezed,
   }) {
-    return _then(_EmployeeDTO(
+    return _then(_UserDTO(
       id: id == freezed ? _value.id : id as String,
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
@@ -121,8 +117,8 @@ class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_EmployeeDTO extends _EmployeeDTO {
-  const _$_EmployeeDTO(
+class _$_UserDTO extends _UserDTO {
+  const _$_UserDTO(
       {@JsonKey(ignore: true) this.id,
       @required this.displayName,
       @required this.type})
@@ -130,8 +126,8 @@ class _$_EmployeeDTO extends _EmployeeDTO {
         assert(type != null),
         super._();
 
-  factory _$_EmployeeDTO.fromJson(Map<String, dynamic> json) =>
-      _$_$_EmployeeDTOFromJson(json);
+  factory _$_UserDTO.fromJson(Map<String, dynamic> json) =>
+      _$_$_UserDTOFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -143,13 +139,13 @@ class _$_EmployeeDTO extends _EmployeeDTO {
 
   @override
   String toString() {
-    return 'EmployeeDTO(id: $id, displayName: $displayName, type: $type)';
+    return 'UserDTO(id: $id, displayName: $displayName, type: $type)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _EmployeeDTO &&
+        (other is _UserDTO &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.displayName, displayName) ||
@@ -168,24 +164,23 @@ class _$_EmployeeDTO extends _EmployeeDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$EmployeeDTOCopyWith<_EmployeeDTO> get copyWith =>
-      __$EmployeeDTOCopyWithImpl<_EmployeeDTO>(this, _$identity);
+  _$UserDTOCopyWith<_UserDTO> get copyWith =>
+      __$UserDTOCopyWithImpl<_UserDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_EmployeeDTOToJson(this);
+    return _$_$_UserDTOToJson(this);
   }
 }
 
-abstract class _EmployeeDTO extends EmployeeDTO {
-  const _EmployeeDTO._() : super._();
-  const factory _EmployeeDTO(
+abstract class _UserDTO extends UserDTO {
+  const _UserDTO._() : super._();
+  const factory _UserDTO(
       {@JsonKey(ignore: true) String id,
       @required String displayName,
-      @required UserType type}) = _$_EmployeeDTO;
+      @required UserType type}) = _$_UserDTO;
 
-  factory _EmployeeDTO.fromJson(Map<String, dynamic> json) =
-      _$_EmployeeDTO.fromJson;
+  factory _UserDTO.fromJson(Map<String, dynamic> json) = _$_UserDTO.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -196,5 +191,5 @@ abstract class _EmployeeDTO extends EmployeeDTO {
   UserType get type;
   @override
   @JsonKey(ignore: true)
-  _$EmployeeDTOCopyWith<_EmployeeDTO> get copyWith;
+  _$UserDTOCopyWith<_UserDTO> get copyWith;
 }

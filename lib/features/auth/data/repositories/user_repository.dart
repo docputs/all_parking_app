@@ -1,3 +1,4 @@
+import 'package:all_parking/features/auth/core/util/firestore_user_mapper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
@@ -25,7 +26,7 @@ class UserRepository implements IUserRepository {
       await credential.user.updateProfile(displayName: registerModel.firstName);
 
       final managerDTO = ManagerDTO.fromFirebaseUser(_firebaseAuth.currentUser);
-      await _firestore.collection('managers').doc(credential.user.uid).set(managerDTO.toJson());
+      await _firestore.collection('users').doc(credential.user.uid).set(managerDTO.toJson());
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
@@ -49,8 +50,16 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<Option<User>> getCurrentUser() async {
-    final user = _firebaseAuth.currentUser;
-    return optionOf(user?.toDomain());
+    try {
+      final user = _firebaseAuth.currentUser;
+      final doc = await _firestore.collection('users').doc(user.uid).get();
+      return optionOf(FirestoreUserConverter.convert(doc));
+    } on FirebaseException catch (e) {
+      print(e);
+      return none();
+    } catch (e) {
+      return none();
+    }
   }
 
   @override

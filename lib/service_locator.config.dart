@@ -54,7 +54,7 @@ GetIt $initGetIt(
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
   gh.lazySingleton<IManagerRepository>(
-      () => ManagerRepository(get<FirebaseFirestore>()));
+      () => ManagerRepository(get<FirebaseFirestore>(), get<FirebaseAuth>()));
   gh.lazySingleton<IParkingLotRepository>(
       () => ParkingLotRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IUserRepository>(

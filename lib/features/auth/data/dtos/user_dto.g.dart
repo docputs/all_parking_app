@@ -1,31 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'manager_dto.dart';
+part of 'user_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ManagerDTO _$_$_ManagerDTOFromJson(Map<String, dynamic> json) {
-  return _$_ManagerDTO(
+_$_UserDTO _$_$_UserDTOFromJson(Map<String, dynamic> json) {
+  return _$_UserDTO(
     displayName: json['displayName'] as String,
-    email: json['email'] as String,
-    parkingLots:
-        (json['parkingLots'] as List)?.map((e) => e as String)?.toList(),
-    employees: (json['employees'] as List)
-        ?.map((e) =>
-            e == null ? null : EmployeeDTO.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     type: _$enumDecodeNullable(_$UserTypeEnumMap, json['type']),
   );
 }
 
-Map<String, dynamic> _$_$_ManagerDTOToJson(_$_ManagerDTO instance) =>
+Map<String, dynamic> _$_$_UserDTOToJson(_$_UserDTO instance) =>
     <String, dynamic>{
       'displayName': instance.displayName,
-      'email': instance.email,
-      'parkingLots': instance.parkingLots,
-      'employees': instance.employees?.map((e) => e?.toJson())?.toList(),
       'type': _$UserTypeEnumMap[instance.type],
     };
 

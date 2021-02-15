@@ -6,5 +6,5 @@ class Employee extends User {
   const Employee({
     @required String id,
     @required String displayName,
-  }) : super(id: id, displayName: displayName);
+  }) : super(id: id, displayName: displayName, type: UserType.employee);
 }
