@@ -31,9 +31,9 @@ import 'features/parking/data/repositories/parking_lot_repository.dart';
 import 'features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import 'service_locator.dart';
 import 'features/parking/presentation/reports/bloc/reports_bloc.dart';
-import 'features/auth/domain/usecases/sign_in.dart';
+import 'features/auth/domain/usecases/sign_in_manager.dart';
 import 'features/auth/presentation/sign_in/bloc/sign_in_bloc.dart';
-import 'features/auth/domain/usecases/sign_up.dart';
+import 'features/auth/domain/usecases/sign_up_manager.dart';
 import 'features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'features/auth/data/repositories/user_repository.dart';
 import 'features/parking/domain/usecases/watch_all_parking_lots.dart';
@@ -60,10 +60,10 @@ GetIt $initGetIt(
   gh.lazySingleton<IUserRepository>(
       () => UserRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
   gh.factory<ReportsBloc>(() => ReportsBloc());
-  gh.lazySingleton<SignIn>(() => SignIn(get<IUserRepository>()));
-  gh.factory<SignInBloc>(() => SignInBloc(get<SignIn>()));
-  gh.lazySingleton<SignUp>(() => SignUp(get<IUserRepository>()));
-  gh.factory<SignUpBloc>(() => SignUpBloc(get<SignUp>()));
+  gh.lazySingleton<SignInManager>(() => SignInManager(get<IUserRepository>()));
+  gh.factory<SignInBloc>(() => SignInBloc(get<SignInManager>()));
+  gh.lazySingleton<SignUpManager>(() => SignUpManager(get<IUserRepository>()));
+  gh.factory<SignUpBloc>(() => SignUpBloc(get<SignUpManager>()));
   gh.lazySingleton<WatchAllParkingLots>(() => WatchAllParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<WatchParkingLot>(() =>

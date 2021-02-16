@@ -8,10 +8,10 @@ import '../../data/models/register_model.dart';
 import '../repositories/i_user_repository.dart';
 
 @lazySingleton
-class SignUp {
+class SignUpManager {
   final IUserRepository _userRepository;
 
-  const SignUp(this._userRepository) : assert(_userRepository != null);
+  const SignUpManager(this._userRepository) : assert(_userRepository != null);
 
   Future<Either<AuthFailure, Unit>> call({
     @required String firstName,

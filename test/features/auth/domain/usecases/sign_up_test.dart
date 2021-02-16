@@ -1,7 +1,7 @@
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
 import 'package:all_parking/features/auth/data/models/register_model.dart';
 import 'package:all_parking/features/auth/domain/repositories/i_user_repository.dart';
-import 'package:all_parking/features/auth/domain/usecases/sign_up.dart';
+import 'package:all_parking/features/auth/domain/usecases/sign_up_manager.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -10,11 +10,11 @@ class MockUserRepository extends Mock implements IUserRepository {}
 
 void main() {
   MockUserRepository mockUserRepository;
-  SignUp usecase;
+  SignUpManager usecase;
 
   setUp(() {
     mockUserRepository = MockUserRepository();
-    usecase = SignUp(mockUserRepository);
+    usecase = SignUpManager(mockUserRepository);
   });
 
   final firstName = 'John';

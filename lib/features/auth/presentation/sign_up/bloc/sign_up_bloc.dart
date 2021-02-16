@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../utils/validators.dart';
 import '../../../core/errors/auth_failure.dart';
-import '../../../domain/usecases/sign_up.dart';
+import '../../../domain/usecases/sign_up_manager.dart';
 
 part 'sign_up_bloc.freezed.dart';
 part 'sign_up_event.dart';
@@ -15,7 +15,7 @@ part 'sign_up_state.dart';
 
 @injectable
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
-  final SignUp _signUp;
+  final SignUpManager _signUp;
 
   SignUpBloc(this._signUp) : super(SignUpState.initial());
 

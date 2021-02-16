@@ -89,4 +89,10 @@ class UserRepository implements IUserRepository {
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
   }
+
+  @override
+  Future<Either<AuthFailure, Unit>> addEmployee(String phoneNumber) {
+    // TODO: implement addEmployee
+    throw UnimplementedError();
+  }
 }

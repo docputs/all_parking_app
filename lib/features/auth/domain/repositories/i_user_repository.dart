@@ -12,4 +12,5 @@ abstract class IUserRepository {
   Stream<Option<User>> onAuthStatusChanged();
   Future<Option<User>> getCurrentUser();
   Future<Either<AuthFailure, Unit>> deleteAccount();
+  Future<Either<AuthFailure, Unit>> addEmployee(String phoneNumber);
 }

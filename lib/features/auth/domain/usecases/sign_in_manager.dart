@@ -8,10 +8,10 @@ import '../../data/models/sign_in_model.dart';
 import '../repositories/i_user_repository.dart';
 
 @lazySingleton
-class SignIn {
+class SignInManager {
   final IUserRepository _userRepository;
 
-  const SignIn(this._userRepository) : assert(_userRepository != null);
+  const SignInManager(this._userRepository) : assert(_userRepository != null);
 
   Future<Either<AuthFailure, Unit>> call({@required String email, @required String password}) {
     final emailEither = Validators.validateEmailAddress(email);
