@@ -109,6 +109,13 @@ class Validators {
       return left(ParkingFailure.invalidField());
   }
 
+  static Either<AuthFailure, String> validatePhoneNumber(String input) {
+    if (Constants.phoneNumberRegex.hasMatch(input))
+      return right(input);
+    else
+      return left(AuthFailure.invalidField());
+  }
+
   static bool isValidPassword(String input) => input.isNotEmpty;
 
   static bool isPasswordMatch(String input, String password) => input == password;
