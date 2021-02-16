@@ -17,6 +17,13 @@ class CurrentParkingLot extends ValueNotifier<Option<ParkingLot>> {
   }
 
   bool get isEmpty => this.value.fold(() => true, (_) => false);
+
+  Widget buildWidget({
+    @required Widget Function(ParkingLot) onSuccess,
+    Widget onFailure,
+  }) {
+    return this.value.fold(() => onFailure ?? const SizedBox(), onSuccess);
+  }
 }
 
 class ParkingLotException implements Exception {

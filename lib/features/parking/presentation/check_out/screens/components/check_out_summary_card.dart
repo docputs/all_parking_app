@@ -41,7 +41,7 @@ class CheckOutSummaryCard extends StatelessWidget {
       buildWhen: (p, c) => p.overridenPricePerHour != c.overridenPricePerHour,
       builder: (context, state) {
         return CurrentParkingLotBuilder(
-          onSuccess: (parkingLot) => Row(
+          builder: (parkingLot) => Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -63,7 +63,7 @@ class CheckOutSummaryCard extends StatelessWidget {
     return BlocBuilder<CheckOutBloc, CheckOutState>(
       buildWhen: (p, c) => p.overridenPricePerHour != c.overridenPricePerHour,
       builder: (context, state) => CurrentParkingLotBuilder(
-        onSuccess: (parkingLot) => Row(
+        builder: (parkingLot) => Row(
           children: [
             Text(
               FormatUtils.formatCurrency(vehicle.calculateAmountToPay(state.overridenPricePerHour ?? parkingLot.pricePerHour)),
