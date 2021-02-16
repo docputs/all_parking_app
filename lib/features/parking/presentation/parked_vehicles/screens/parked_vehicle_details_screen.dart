@@ -23,17 +23,21 @@ class ParkedVehicleDetailsScreen extends StatelessWidget {
         ),
       ],
       title: Messages.vehicleDetailsScreenTitle,
-      body: Column(
-        children: Messages.generateVehicleInfoMap(vehicle).entries.map((e) {
-          return Column(
-            children: [
-              DefaultSectionTitle(e.key),
-              ...e.value.entries.map((e) => VehicleInfoItem(e)).toList(),
-              const SizedBox(height: 40),
-            ],
-          );
-        }).toList(),
-      ),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    return Column(
+      children: Messages.generateVehicleInfoMap(vehicle).entries.map((e) {
+        return Column(
+          children: [
+            DefaultSectionTitle(e.key),
+            ...e.value.entries.map((e) => VehicleInfoItem(e)).toList(),
+            const SizedBox(height: 40),
+          ],
+        );
+      }).toList(),
     );
   }
 }

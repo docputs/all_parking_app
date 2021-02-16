@@ -113,6 +113,11 @@ class Messages {
   //VehicleDetailsScreen
   static const vehicleDetailsScreenTitle = 'Detalhes do veículo';
   static Map<String, Map<String, String>> generateVehicleInfoMap(ParkedVehicle vehicle) {
+    String checkCustomerInfo(String value) {
+      if (value == null || value.isEmpty) return notProvided;
+      return value;
+    }
+
     return {
       'Informações gerais': {
         'Marca/modelo': vehicle.title,
@@ -125,9 +130,9 @@ class Messages {
         'Tempo decorrido': parseDuration(vehicle.getElapsedTime()),
       },
       'Dados do cliente': {
-        'Nome': vehicle.ownerData?.name ?? notProvided,
-        'Celular': vehicle.ownerData?.phoneNumber ?? notProvided,
-        'CPF': vehicle.ownerData?.cpf ?? notProvided,
+        'Nome': checkCustomerInfo(vehicle.ownerData?.name),
+        'Celular': checkCustomerInfo(vehicle.ownerData?.phoneNumber),
+        'CPF': checkCustomerInfo(vehicle.ownerData?.cpf),
       },
     };
   }
