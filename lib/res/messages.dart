@@ -153,6 +153,10 @@ class Messages {
   static const checkOutSubmitButton = 'CONFIRMAR SAÍDA';
   static const checkOutNoObservations = 'Nenhuma observação';
   static const checkOutChangePricePerHourButton = 'ALTERAR';
+  static const checkOutNewPriceDialogTitle = 'Alterar valor por hora';
+  static const checkOutNewPriceDialogDescription = 'Digite o valor por hora apenas para este veículo';
+  static const checkOutNewPriceDialogRightButton = 'CONFIRMAR';
+  static const checkOutNewPriceDialogLeftButton = 'CANCELAR';
   static String elapsedTime(ParkedVehicle vehicle) => '${vehicle.getElapsedTime().inHours}h';
   static String pricePerHourLabel(double price) => '${FormatUtils.formatCurrency(price)} por hora';
   static Map<IconData, String> getDateAndTime(DateTime dateTime) {

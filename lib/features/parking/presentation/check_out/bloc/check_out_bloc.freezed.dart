@@ -14,6 +14,13 @@ class _$CheckOutEventTearOff {
   const _$CheckOutEventTearOff();
 
 // ignore: unused_element
+  _ChangedPricePerHour changedPricePerHour(String input) {
+    return _ChangedPricePerHour(
+      input,
+    );
+  }
+
+// ignore: unused_element
   _Submitted submitted(ParkedVehicle vehicle) {
     return _Submitted(
       vehicle,
@@ -27,29 +34,28 @@ const $CheckOutEvent = _$CheckOutEventTearOff();
 
 /// @nodoc
 mixin _$CheckOutEvent {
-  ParkedVehicle get vehicle;
-
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult changedPricePerHour(String input),
     @required TResult submitted(ParkedVehicle vehicle),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult changedPricePerHour(String input),
     TResult submitted(ParkedVehicle vehicle),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult changedPricePerHour(_ChangedPricePerHour value),
     @required TResult submitted(_Submitted value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult changedPricePerHour(_ChangedPricePerHour value),
     TResult submitted(_Submitted value),
     @required TResult orElse(),
   });
-
-  @JsonKey(ignore: true)
-  $CheckOutEventCopyWith<CheckOutEvent> get copyWith;
 }
 
 /// @nodoc
@@ -57,9 +63,6 @@ abstract class $CheckOutEventCopyWith<$Res> {
   factory $CheckOutEventCopyWith(
           CheckOutEvent value, $Res Function(CheckOutEvent) then) =
       _$CheckOutEventCopyWithImpl<$Res>;
-  $Res call({ParkedVehicle vehicle});
-
-  $ParkedVehicleCopyWith<$Res> get vehicle;
 }
 
 /// @nodoc
@@ -70,37 +73,133 @@ class _$CheckOutEventCopyWithImpl<$Res>
   final CheckOutEvent _value;
   // ignore: unused_field
   final $Res Function(CheckOutEvent) _then;
+}
+
+/// @nodoc
+abstract class _$ChangedPricePerHourCopyWith<$Res> {
+  factory _$ChangedPricePerHourCopyWith(_ChangedPricePerHour value,
+          $Res Function(_ChangedPricePerHour) then) =
+      __$ChangedPricePerHourCopyWithImpl<$Res>;
+  $Res call({String input});
+}
+
+/// @nodoc
+class __$ChangedPricePerHourCopyWithImpl<$Res>
+    extends _$CheckOutEventCopyWithImpl<$Res>
+    implements _$ChangedPricePerHourCopyWith<$Res> {
+  __$ChangedPricePerHourCopyWithImpl(
+      _ChangedPricePerHour _value, $Res Function(_ChangedPricePerHour) _then)
+      : super(_value, (v) => _then(v as _ChangedPricePerHour));
+
+  @override
+  _ChangedPricePerHour get _value => super._value as _ChangedPricePerHour;
 
   @override
   $Res call({
-    Object vehicle = freezed,
+    Object input = freezed,
   }) {
-    return _then(_value.copyWith(
-      vehicle: vehicle == freezed ? _value.vehicle : vehicle as ParkedVehicle,
+    return _then(_ChangedPricePerHour(
+      input == freezed ? _value.input : input as String,
     ));
-  }
-
-  @override
-  $ParkedVehicleCopyWith<$Res> get vehicle {
-    if (_value.vehicle == null) {
-      return null;
-    }
-    return $ParkedVehicleCopyWith<$Res>(_value.vehicle, (value) {
-      return _then(_value.copyWith(vehicle: value));
-    });
   }
 }
 
 /// @nodoc
-abstract class _$SubmittedCopyWith<$Res>
-    implements $CheckOutEventCopyWith<$Res> {
+class _$_ChangedPricePerHour implements _ChangedPricePerHour {
+  const _$_ChangedPricePerHour(this.input) : assert(input != null);
+
+  @override
+  final String input;
+
+  @override
+  String toString() {
+    return 'CheckOutEvent.changedPricePerHour(input: $input)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangedPricePerHour &&
+            (identical(other.input, input) ||
+                const DeepCollectionEquality().equals(other.input, input)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangedPricePerHourCopyWith<_ChangedPricePerHour> get copyWith =>
+      __$ChangedPricePerHourCopyWithImpl<_ChangedPricePerHour>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult changedPricePerHour(String input),
+    @required TResult submitted(ParkedVehicle vehicle),
+  }) {
+    assert(changedPricePerHour != null);
+    assert(submitted != null);
+    return changedPricePerHour(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult changedPricePerHour(String input),
+    TResult submitted(ParkedVehicle vehicle),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changedPricePerHour != null) {
+      return changedPricePerHour(input);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult changedPricePerHour(_ChangedPricePerHour value),
+    @required TResult submitted(_Submitted value),
+  }) {
+    assert(changedPricePerHour != null);
+    assert(submitted != null);
+    return changedPricePerHour(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult changedPricePerHour(_ChangedPricePerHour value),
+    TResult submitted(_Submitted value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changedPricePerHour != null) {
+      return changedPricePerHour(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangedPricePerHour implements CheckOutEvent {
+  const factory _ChangedPricePerHour(String input) = _$_ChangedPricePerHour;
+
+  String get input;
+  @JsonKey(ignore: true)
+  _$ChangedPricePerHourCopyWith<_ChangedPricePerHour> get copyWith;
+}
+
+/// @nodoc
+abstract class _$SubmittedCopyWith<$Res> {
   factory _$SubmittedCopyWith(
           _Submitted value, $Res Function(_Submitted) then) =
       __$SubmittedCopyWithImpl<$Res>;
-  @override
   $Res call({ParkedVehicle vehicle});
 
-  @override
   $ParkedVehicleCopyWith<$Res> get vehicle;
 }
 
@@ -120,6 +219,16 @@ class __$SubmittedCopyWithImpl<$Res> extends _$CheckOutEventCopyWithImpl<$Res>
     return _then(_Submitted(
       vehicle == freezed ? _value.vehicle : vehicle as ParkedVehicle,
     ));
+  }
+
+  @override
+  $ParkedVehicleCopyWith<$Res> get vehicle {
+    if (_value.vehicle == null) {
+      return null;
+    }
+    return $ParkedVehicleCopyWith<$Res>(_value.vehicle, (value) {
+      return _then(_value.copyWith(vehicle: value));
+    });
   }
 }
 
@@ -155,8 +264,10 @@ class _$_Submitted implements _Submitted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult changedPricePerHour(String input),
     @required TResult submitted(ParkedVehicle vehicle),
   }) {
+    assert(changedPricePerHour != null);
     assert(submitted != null);
     return submitted(vehicle);
   }
@@ -164,6 +275,7 @@ class _$_Submitted implements _Submitted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult changedPricePerHour(String input),
     TResult submitted(ParkedVehicle vehicle),
     @required TResult orElse(),
   }) {
@@ -177,8 +289,10 @@ class _$_Submitted implements _Submitted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult changedPricePerHour(_ChangedPricePerHour value),
     @required TResult submitted(_Submitted value),
   }) {
+    assert(changedPricePerHour != null);
     assert(submitted != null);
     return submitted(this);
   }
@@ -186,6 +300,7 @@ class _$_Submitted implements _Submitted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult changedPricePerHour(_ChangedPricePerHour value),
     TResult submitted(_Submitted value),
     @required TResult orElse(),
   }) {
@@ -200,9 +315,7 @@ class _$_Submitted implements _Submitted {
 abstract class _Submitted implements CheckOutEvent {
   const factory _Submitted(ParkedVehicle vehicle) = _$_Submitted;
 
-  @override
   ParkedVehicle get vehicle;
-  @override
   @JsonKey(ignore: true)
   _$SubmittedCopyWith<_Submitted> get copyWith;
 }
@@ -212,24 +325,18 @@ class _$CheckOutStateTearOff {
   const _$CheckOutStateTearOff();
 
 // ignore: unused_element
-  _Initial initial() {
-    return const _Initial();
-  }
-
-// ignore: unused_element
-  _Loading loading() {
-    return const _Loading();
-  }
-
-// ignore: unused_element
-  _Success success() {
-    return const _Success();
-  }
-
-// ignore: unused_element
-  _Error error(ParkingFailure failure) {
-    return _Error(
-      failure,
+  _CheckOutState call(
+      {@required
+      @nullable
+          double overridenPricePerHour,
+      @required
+          bool isSubmitting,
+      @required
+          Option<Either<ParkingFailure, Unit>> submitFailureOrSuccessOption}) {
+    return _CheckOutState(
+      overridenPricePerHour: overridenPricePerHour,
+      isSubmitting: isSubmitting,
+      submitFailureOrSuccessOption: submitFailureOrSuccessOption,
     );
   }
 }
@@ -240,36 +347,13 @@ const $CheckOutState = _$CheckOutStateTearOff();
 
 /// @nodoc
 mixin _$CheckOutState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(),
-    @required TResult error(ParkingFailure failure),
-  });
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(),
-    TResult error(ParkingFailure failure),
-    @required TResult orElse(),
-  });
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-  });
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
-  });
+  @nullable
+  double get overridenPricePerHour;
+  bool get isSubmitting;
+  Option<Either<ParkingFailure, Unit>> get submitFailureOrSuccessOption;
+
+  @JsonKey(ignore: true)
+  $CheckOutStateCopyWith<CheckOutState> get copyWith;
 }
 
 /// @nodoc
@@ -277,6 +361,10 @@ abstract class $CheckOutStateCopyWith<$Res> {
   factory $CheckOutStateCopyWith(
           CheckOutState value, $Res Function(CheckOutState) then) =
       _$CheckOutStateCopyWithImpl<$Res>;
+  $Res call(
+      {@nullable double overridenPricePerHour,
+      bool isSubmitting,
+      Option<Either<ParkingFailure, Unit>> submitFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -287,442 +375,142 @@ class _$CheckOutStateCopyWithImpl<$Res>
   final CheckOutState _value;
   // ignore: unused_field
   final $Res Function(CheckOutState) _then;
-}
-
-/// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$CheckOutStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
-
-  @override
-  _Initial get _value => super._value as _Initial;
-}
-
-/// @nodoc
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'CheckOutState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(),
-    @required TResult error(ParkingFailure failure),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(),
-    TResult error(ParkingFailure failure),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements CheckOutState {
-  const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$CheckOutStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
-
-  @override
-  _Loading get _value => super._value as _Loading;
-}
-
-/// @nodoc
-class _$_Loading implements _Loading {
-  const _$_Loading();
-
-  @override
-  String toString() {
-    return 'CheckOutState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(),
-    @required TResult error(ParkingFailure failure),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(),
-    TResult error(ParkingFailure failure),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements CheckOutState {
-  const factory _Loading() = _$_Loading;
-}
-
-/// @nodoc
-abstract class _$SuccessCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
-      __$SuccessCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$CheckOutStateCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
-      : super(_value, (v) => _then(v as _Success));
-
-  @override
-  _Success get _value => super._value as _Success;
-}
-
-/// @nodoc
-class _$_Success implements _Success {
-  const _$_Success();
-
-  @override
-  String toString() {
-    return 'CheckOutState.success()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Success);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(),
-    @required TResult error(ParkingFailure failure),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return success();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(),
-    TResult error(ParkingFailure failure),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (success != null) {
-      return success();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success implements CheckOutState {
-  const factory _Success() = _$_Success;
-}
-
-/// @nodoc
-abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
-      __$ErrorCopyWithImpl<$Res>;
-  $Res call({ParkingFailure failure});
-
-  $ParkingFailureCopyWith<$Res> get failure;
-}
-
-/// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$CheckOutStateCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
-      : super(_value, (v) => _then(v as _Error));
-
-  @override
-  _Error get _value => super._value as _Error;
 
   @override
   $Res call({
-    Object failure = freezed,
+    Object overridenPricePerHour = freezed,
+    Object isSubmitting = freezed,
+    Object submitFailureOrSuccessOption = freezed,
   }) {
-    return _then(_Error(
-      failure == freezed ? _value.failure : failure as ParkingFailure,
+    return _then(_value.copyWith(
+      overridenPricePerHour: overridenPricePerHour == freezed
+          ? _value.overridenPricePerHour
+          : overridenPricePerHour as double,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      submitFailureOrSuccessOption: submitFailureOrSuccessOption == freezed
+          ? _value.submitFailureOrSuccessOption
+          : submitFailureOrSuccessOption
+              as Option<Either<ParkingFailure, Unit>>,
     ));
-  }
-
-  @override
-  $ParkingFailureCopyWith<$Res> get failure {
-    if (_value.failure == null) {
-      return null;
-    }
-    return $ParkingFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
   }
 }
 
 /// @nodoc
-class _$_Error implements _Error {
-  const _$_Error(this.failure) : assert(failure != null);
+abstract class _$CheckOutStateCopyWith<$Res>
+    implements $CheckOutStateCopyWith<$Res> {
+  factory _$CheckOutStateCopyWith(
+          _CheckOutState value, $Res Function(_CheckOutState) then) =
+      __$CheckOutStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@nullable double overridenPricePerHour,
+      bool isSubmitting,
+      Option<Either<ParkingFailure, Unit>> submitFailureOrSuccessOption});
+}
+
+/// @nodoc
+class __$CheckOutStateCopyWithImpl<$Res>
+    extends _$CheckOutStateCopyWithImpl<$Res>
+    implements _$CheckOutStateCopyWith<$Res> {
+  __$CheckOutStateCopyWithImpl(
+      _CheckOutState _value, $Res Function(_CheckOutState) _then)
+      : super(_value, (v) => _then(v as _CheckOutState));
 
   @override
-  final ParkingFailure failure;
+  _CheckOutState get _value => super._value as _CheckOutState;
+
+  @override
+  $Res call({
+    Object overridenPricePerHour = freezed,
+    Object isSubmitting = freezed,
+    Object submitFailureOrSuccessOption = freezed,
+  }) {
+    return _then(_CheckOutState(
+      overridenPricePerHour: overridenPricePerHour == freezed
+          ? _value.overridenPricePerHour
+          : overridenPricePerHour as double,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      submitFailureOrSuccessOption: submitFailureOrSuccessOption == freezed
+          ? _value.submitFailureOrSuccessOption
+          : submitFailureOrSuccessOption
+              as Option<Either<ParkingFailure, Unit>>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_CheckOutState implements _CheckOutState {
+  const _$_CheckOutState(
+      {@required @nullable this.overridenPricePerHour,
+      @required this.isSubmitting,
+      @required this.submitFailureOrSuccessOption})
+      : assert(isSubmitting != null),
+        assert(submitFailureOrSuccessOption != null);
+
+  @override
+  @nullable
+  final double overridenPricePerHour;
+  @override
+  final bool isSubmitting;
+  @override
+  final Option<Either<ParkingFailure, Unit>> submitFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'CheckOutState.error(failure: $failure)';
+    return 'CheckOutState(overridenPricePerHour: $overridenPricePerHour, isSubmitting: $isSubmitting, submitFailureOrSuccessOption: $submitFailureOrSuccessOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Error &&
-            (identical(other.failure, failure) ||
-                const DeepCollectionEquality().equals(other.failure, failure)));
+        (other is _CheckOutState &&
+            (identical(other.overridenPricePerHour, overridenPricePerHour) ||
+                const DeepCollectionEquality().equals(
+                    other.overridenPricePerHour, overridenPricePerHour)) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.submitFailureOrSuccessOption,
+                    submitFailureOrSuccessOption) ||
+                const DeepCollectionEquality().equals(
+                    other.submitFailureOrSuccessOption,
+                    submitFailureOrSuccessOption)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(overridenPricePerHour) ^
+      const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(submitFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(),
-    @required TResult error(ParkingFailure failure),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return error(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(),
-    TResult error(ParkingFailure failure),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (error != null) {
-      return error(failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-  }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+  _$CheckOutStateCopyWith<_CheckOutState> get copyWith =>
+      __$CheckOutStateCopyWithImpl<_CheckOutState>(this, _$identity);
 }
 
-abstract class _Error implements CheckOutState {
-  const factory _Error(ParkingFailure failure) = _$_Error;
+abstract class _CheckOutState implements CheckOutState {
+  const factory _CheckOutState(
+      {@required
+      @nullable
+          double overridenPricePerHour,
+      @required
+          bool isSubmitting,
+      @required
+          Option<Either<ParkingFailure, Unit>>
+              submitFailureOrSuccessOption}) = _$_CheckOutState;
 
-  ParkingFailure get failure;
+  @override
+  @nullable
+  double get overridenPricePerHour;
+  @override
+  bool get isSubmitting;
+  @override
+  Option<Either<ParkingFailure, Unit>> get submitFailureOrSuccessOption;
+  @override
   @JsonKey(ignore: true)
-  _$ErrorCopyWith<_Error> get copyWith;
+  _$CheckOutStateCopyWith<_CheckOutState> get copyWith;
 }

@@ -31,6 +31,7 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
     @required String observations,
     @required bool isActive,
     OwnerData ownerData,
+    double overridenPricePerHour,
   }) = _ParkedVehicle;
 
   factory ParkedVehicle.empty() {
@@ -52,6 +53,7 @@ abstract class ParkedVehicle implements _$ParkedVehicle {
 
   double calculateAmountToPay(double pricePerHour) {
     final elapsedTime = getElapsedTime().inHours;
-    return elapsedTime < 1 ? pricePerHour : elapsedTime * pricePerHour;
+    final finalPrice = overridenPricePerHour ?? pricePerHour;
+    return elapsedTime < 1 ? finalPrice : elapsedTime * finalPrice;
   }
 }

@@ -18,7 +18,7 @@ class CheckOutVehicle {
     return _currentParkingLot.value.fold(
       () async => left(ParkingFailure.noCurrentParkingLot()),
       (parkingLot) {
-        final newParkedVehicles = parkingLot.parkedVehicles.map((element) => element == vehicle ? _assignCheckOut(element) : element);
+        final newParkedVehicles = parkingLot.parkedVehicles.map((element) => element.id == vehicle.id ? _assignCheckOut(vehicle) : element);
         final newParkingLot = parkingLot.copyWith(parkedVehicles: newParkedVehicles);
         return _parkingLotRepository.update(newParkingLot);
       },

@@ -169,7 +169,8 @@ class _$ParkedVehicleTearOff {
       @required VehicleType type,
       @required String observations,
       @required bool isActive,
-      OwnerData ownerData}) {
+      OwnerData ownerData,
+      double overridenPricePerHour}) {
     return _ParkedVehicle(
       id: id,
       title: title,
@@ -181,6 +182,7 @@ class _$ParkedVehicleTearOff {
       observations: observations,
       isActive: isActive,
       ownerData: ownerData,
+      overridenPricePerHour: overridenPricePerHour,
     );
   }
 }
@@ -202,6 +204,7 @@ mixin _$ParkedVehicle {
   String get observations;
   bool get isActive;
   OwnerData get ownerData;
+  double get overridenPricePerHour;
 
   @JsonKey(ignore: true)
   $ParkedVehicleCopyWith<ParkedVehicle> get copyWith;
@@ -222,7 +225,8 @@ abstract class $ParkedVehicleCopyWith<$Res> {
       VehicleType type,
       String observations,
       bool isActive,
-      OwnerData ownerData});
+      OwnerData ownerData,
+      double overridenPricePerHour});
 
   $QRCodeCopyWith<$Res> get id;
   $OwnerDataCopyWith<$Res> get ownerData;
@@ -249,6 +253,7 @@ class _$ParkedVehicleCopyWithImpl<$Res>
     Object observations = freezed,
     Object isActive = freezed,
     Object ownerData = freezed,
+    Object overridenPricePerHour = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as QRCode,
@@ -266,6 +271,9 @@ class _$ParkedVehicleCopyWithImpl<$Res>
       isActive: isActive == freezed ? _value.isActive : isActive as bool,
       ownerData:
           ownerData == freezed ? _value.ownerData : ownerData as OwnerData,
+      overridenPricePerHour: overridenPricePerHour == freezed
+          ? _value.overridenPricePerHour
+          : overridenPricePerHour as double,
     ));
   }
 
@@ -307,7 +315,8 @@ abstract class _$ParkedVehicleCopyWith<$Res>
       VehicleType type,
       String observations,
       bool isActive,
-      OwnerData ownerData});
+      OwnerData ownerData,
+      double overridenPricePerHour});
 
   @override
   $QRCodeCopyWith<$Res> get id;
@@ -338,6 +347,7 @@ class __$ParkedVehicleCopyWithImpl<$Res>
     Object observations = freezed,
     Object isActive = freezed,
     Object ownerData = freezed,
+    Object overridenPricePerHour = freezed,
   }) {
     return _then(_ParkedVehicle(
       id: id == freezed ? _value.id : id as QRCode,
@@ -355,6 +365,9 @@ class __$ParkedVehicleCopyWithImpl<$Res>
       isActive: isActive == freezed ? _value.isActive : isActive as bool,
       ownerData:
           ownerData == freezed ? _value.ownerData : ownerData as OwnerData,
+      overridenPricePerHour: overridenPricePerHour == freezed
+          ? _value.overridenPricePerHour
+          : overridenPricePerHour as double,
     ));
   }
 }
@@ -371,7 +384,8 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
       @required this.type,
       @required this.observations,
       @required this.isActive,
-      this.ownerData})
+      this.ownerData,
+      this.overridenPricePerHour})
       : assert(id != null),
         assert(title != null),
         assert(licensePlate != null),
@@ -403,10 +417,12 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
   final bool isActive;
   @override
   final OwnerData ownerData;
+  @override
+  final double overridenPricePerHour;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ParkedVehicle(id: $id, title: $title, licensePlate: $licensePlate, color: $color, checkIn: $checkIn, checkOut: $checkOut, type: $type, observations: $observations, isActive: $isActive, ownerData: $ownerData)';
+    return 'ParkedVehicle(id: $id, title: $title, licensePlate: $licensePlate, color: $color, checkIn: $checkIn, checkOut: $checkOut, type: $type, observations: $observations, isActive: $isActive, ownerData: $ownerData, overridenPricePerHour: $overridenPricePerHour)';
   }
 
   @override
@@ -423,7 +439,9 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('observations', observations))
       ..add(DiagnosticsProperty('isActive', isActive))
-      ..add(DiagnosticsProperty('ownerData', ownerData));
+      ..add(DiagnosticsProperty('ownerData', ownerData))
+      ..add(
+          DiagnosticsProperty('overridenPricePerHour', overridenPricePerHour));
   }
 
   @override
@@ -455,7 +473,10 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
                     .equals(other.isActive, isActive)) &&
             (identical(other.ownerData, ownerData) ||
                 const DeepCollectionEquality()
-                    .equals(other.ownerData, ownerData)));
+                    .equals(other.ownerData, ownerData)) &&
+            (identical(other.overridenPricePerHour, overridenPricePerHour) ||
+                const DeepCollectionEquality().equals(
+                    other.overridenPricePerHour, overridenPricePerHour)));
   }
 
   @override
@@ -470,7 +491,8 @@ class _$_ParkedVehicle extends _ParkedVehicle with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(observations) ^
       const DeepCollectionEquality().hash(isActive) ^
-      const DeepCollectionEquality().hash(ownerData);
+      const DeepCollectionEquality().hash(ownerData) ^
+      const DeepCollectionEquality().hash(overridenPricePerHour);
 
   @JsonKey(ignore: true)
   @override
@@ -490,7 +512,8 @@ abstract class _ParkedVehicle extends ParkedVehicle {
       @required VehicleType type,
       @required String observations,
       @required bool isActive,
-      OwnerData ownerData}) = _$_ParkedVehicle;
+      OwnerData ownerData,
+      double overridenPricePerHour}) = _$_ParkedVehicle;
 
   @override
   QRCode get id;
@@ -513,6 +536,8 @@ abstract class _ParkedVehicle extends ParkedVehicle {
   bool get isActive;
   @override
   OwnerData get ownerData;
+  @override
+  double get overridenPricePerHour;
   @override
   @JsonKey(ignore: true)
   _$ParkedVehicleCopyWith<_ParkedVehicle> get copyWith;

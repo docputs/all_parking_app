@@ -20,11 +20,14 @@ class CheckOutScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<CheckOutBloc>(),
       child: BlocListener<CheckOutBloc, CheckOutState>(
+        listenWhen: (p, c) => p.submitFailureOrSuccessOption != c.submitFailureOrSuccessOption,
         listener: (context, state) {
-          state.maybeWhen(
-            orElse: () {},
-            error: (f) => FlushbarHelper.createError(message: f.message).show(context),
-            success: () => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
+          state.submitFailureOrSuccessOption.fold(
+            () => null,
+            (failureOrSuccess) => failureOrSuccess.fold(
+              (f) => FlushbarHelper.createError(message: f.message).show(context),
+              (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
+            ),
           );
         },
         child: AppScaffold(

@@ -11,9 +11,9 @@ import 'check_out_steps.dart';
 import 'check_out_summary_card.dart';
 
 class CheckOutBody extends StatelessWidget {
-  const CheckOutBody({Key key, @required this.vehicle}) : super(key: key);
-
   final ParkedVehicle vehicle;
+
+  const CheckOutBody({Key key, @required this.vehicle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +35,14 @@ class CheckOutBody extends StatelessWidget {
 
   Widget _buildLoadingOrSubmitButton(BuildContext context) {
     return BlocBuilder<CheckOutBloc, CheckOutState>(
+      buildWhen: (p, c) => p.isSubmitting != c.isSubmitting,
       builder: (context, state) {
-        return state.maybeMap(
-          orElse: () {
-            return DefaultButton(
-              text: Messages.checkOutSubmitButton,
-              onPressed: () => context.read<CheckOutBloc>().add(CheckOutEvent.submitted(vehicle)),
-            );
-          },
-          loading: (_) => const CircularProgressIndicator(),
-        );
+        return state.isSubmitting
+            ? const CircularProgressIndicator()
+            : DefaultButton(
+                text: Messages.checkOutSubmitButton,
+                onPressed: () => context.read<CheckOutBloc>().add(CheckOutEvent.submitted(vehicle)),
+              );
       },
     );
   }

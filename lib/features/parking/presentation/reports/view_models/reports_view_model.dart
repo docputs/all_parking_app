@@ -14,7 +14,7 @@ class ReportsViewModel {
 
   double calculateEarnings(KtList<ParkedVehicle> vehicles) {
     if (vehicles.isEmpty()) return 0.0;
-    final amountToPayList = vehicles.map((vehicle) => vehicle.calculateAmountToPay(pricePerHour));
+    final amountToPayList = vehicles.map((vehicle) => vehicle.calculateAmountToPay(vehicle.overridenPricePerHour ?? pricePerHour));
     return amountToPayList.reduce((acc, amount) => acc + amount);
   }
 

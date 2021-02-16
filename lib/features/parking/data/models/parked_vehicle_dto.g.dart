@@ -26,6 +26,7 @@ _$_ParkedVehicleDTO _$_$_ParkedVehicleDTOFromJson(Map<String, dynamic> json) {
     ownerData: json['ownerData'] == null
         ? null
         : OwnerDataDTO.fromJson(json['ownerData'] as Map<String, dynamic>),
+    overridenPricePerHour: (json['overridenPricePerHour'] as num)?.toDouble(),
   );
 }
 
@@ -49,6 +50,7 @@ Map<String, dynamic> _$_$_ParkedVehicleDTOToJson(_$_ParkedVehicleDTO instance) {
   }
 
   writeNotNull('ownerData', instance.ownerData?.toJson());
+  val['overridenPricePerHour'] = instance.overridenPricePerHour;
   return val;
 }
 

@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:all_parking/utils/input_converter.dart';
+import 'package:dartz/dartz.dart';
+
 import '../../../core/errors/parking_failure.dart';
 import '../../../domain/entities/parked_vehicle.dart';
 import '../../../domain/usecases/check_out_vehicle.dart';
@@ -15,17 +18,35 @@ part 'check_out_bloc.freezed.dart';
 class CheckOutBloc extends Bloc<CheckOutEvent, CheckOutState> {
   final CheckOutVehicle _checkOutVehicle;
 
-  CheckOutBloc(this._checkOutVehicle) : super(_Initial());
+  CheckOutBloc(this._checkOutVehicle) : super(CheckOutState.initial());
 
   @override
   Stream<CheckOutState> mapEventToState(CheckOutEvent event) async* {
     yield* event.when(
+      changedPricePerHour: (input) async* {
+        final parsedInputOption = InputConverter.stringToDouble(input);
+        yield parsedInputOption.fold(
+          () => state,
+          (input) => state.copyWith(
+            overridenPricePerHour: input,
+            submitFailureOrSuccessOption: none(),
+          ),
+        );
+      },
       submitted: (vehicle) async* {
-        yield CheckOutState.loading();
-        final failureOrSuccess = await _checkOutVehicle(vehicle);
-        yield failureOrSuccess.fold(
-          (f) => CheckOutState.error(f),
-          (_) => const CheckOutState.success(),
+        yield state.copyWith(
+          isSubmitting: true,
+          submitFailureOrSuccessOption: none(),
+        );
+
+        var newVehicle = vehicle;
+        if (state.overridenPricePerHour != null) newVehicle = vehicle.copyWith(overridenPricePerHour: state.overridenPricePerHour);
+
+        final failureOrSuccess = await _checkOutVehicle(newVehicle);
+
+        yield state.copyWith(
+          isSubmitting: false,
+          submitFailureOrSuccessOption: optionOf(failureOrSuccess),
         );
       },
     );

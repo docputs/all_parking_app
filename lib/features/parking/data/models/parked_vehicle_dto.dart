@@ -22,6 +22,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
     @required String observations,
     @required bool isActive,
     @JsonKey(includeIfNull: false) OwnerDataDTO ownerData,
+    double overridenPricePerHour,
   }) = _ParkedVehicleDTO;
 
   factory ParkedVehicleDTO.fromDomain(ParkedVehicle model) => ParkedVehicleDTO(
@@ -35,6 +36,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
         observations: model.observations,
         isActive: model.isActive,
         ownerData: OwnerDataDTO.fromDomain(model.ownerData),
+        overridenPricePerHour: model.overridenPricePerHour,
       );
 
   ParkedVehicle toDomain() => ParkedVehicle(
@@ -48,6 +50,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
         type: type,
         isActive: isActive,
         ownerData: ownerData?.toDomain(),
+        overridenPricePerHour: overridenPricePerHour,
       );
 
   factory ParkedVehicleDTO.fromJson(Map<String, dynamic> json) => _$ParkedVehicleDTOFromJson(json);
