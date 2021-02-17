@@ -13,6 +13,8 @@ class User {
     this.type,
   });
 
+  bool get isManager => type == UserType.manager;
+
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;

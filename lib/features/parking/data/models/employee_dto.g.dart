@@ -9,6 +9,7 @@ part of 'employee_dto.dart';
 _$_EmployeeDTO _$_$_EmployeeDTOFromJson(Map<String, dynamic> json) {
   return _$_EmployeeDTO(
     displayName: json['displayName'] as String,
+    parkingLotId: json['parkingLotId'] as String,
     type: _$enumDecodeNullable(_$UserTypeEnumMap, json['type']),
   );
 }
@@ -16,6 +17,7 @@ _$_EmployeeDTO _$_$_EmployeeDTOFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_EmployeeDTOToJson(_$_EmployeeDTO instance) =>
     <String, dynamic>{
       'displayName': instance.displayName,
+      'parkingLotId': instance.parkingLotId,
       'type': _$UserTypeEnumMap[instance.type],
     };
 

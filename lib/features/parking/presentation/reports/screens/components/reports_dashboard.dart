@@ -53,7 +53,7 @@ class ReportsDashboard extends StatelessWidget {
   Widget _buildNoDataToShow() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 60),
-      child: Text(Messages.reportsNoAvailableData, style: const TextStyle(color: AppColors.textColor)),
+      child: Text(Messages.noDataToShow, style: const TextStyle(color: AppColors.textColor)),
     );
   }
 

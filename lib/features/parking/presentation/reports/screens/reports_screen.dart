@@ -9,7 +9,7 @@ import '../../../../../widgets/default_drawer.dart';
 import '../../../../../widgets/no_current_parking_lot_info.dart';
 import '../../../domain/entities/parking_lot.dart';
 import '../bloc/reports_bloc.dart';
-import 'components/no_reports_data.dart';
+import '../../../../../widgets/no_data_to_show.dart';
 import 'components/reports_dashboard.dart';
 
 class ReportsScreen extends StatelessWidget {
@@ -26,7 +26,7 @@ class ReportsScreen extends StatelessWidget {
 
   Widget _buildBody() {
     return CurrentParkingLotBuilder(
-      builder: (parkingLot) => parkingLot.parkedVehicles.isEmpty() ? const NoReportsData() : _buildReportsDashboard(parkingLot),
+      builder: (parkingLot) => parkingLot.parkedVehicles.isEmpty() ? const NoDataToShow() : _buildReportsDashboard(parkingLot),
       noParkingLotWidget: const NoCurrentParkingLotInfo(),
     );
   }

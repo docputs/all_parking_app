@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../core/errors/auth_failure.dart';
@@ -12,5 +13,6 @@ abstract class IUserRepository {
   Stream<Option<User>> onAuthStatusChanged();
   Future<Option<User>> getCurrentUser();
   Future<Either<AuthFailure, Unit>> deleteAccount();
-  Future<Either<AuthFailure, Unit>> addEmployee(String phoneNumber);
+  Future<Either<AuthFailure, Unit>> addEmployee(Employee employee);
+  Future<Either<AuthFailure, Unit>> signInEmployee(String token);
 }

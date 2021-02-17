@@ -1,3 +1,5 @@
+import 'package:all_parking/features/parking/presentation/manage_employees/screens/add_employee_screen.dart';
+import 'package:all_parking/features/parking/presentation/manage_employees/screens/manage_employees_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -60,6 +62,12 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       break;
     case Constants.reportsRoute:
       return MaterialPageRoute(builder: (context) => const ReportsScreen());
+      break;
+    case Constants.manageEmployeesRoute:
+      return MaterialPageRoute(builder: (context) => const ManageEmployeesScreen());
+      break;
+    case Constants.addEmployeeRoute:
+      return MaterialPageRoute(builder: (context) => const AddEmployeeScreen());
       break;
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold(body: Center(child: Text('rota nao encontrada'))));

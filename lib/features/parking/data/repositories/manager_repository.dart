@@ -24,10 +24,10 @@ class ManagerRepository implements IManagerRepository {
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
-      return left(const ManagerFailure.serverFailure());
+      return left(ManagerFailure.serverFailure());
     } catch (e) {
       print(e);
-      return left(const ManagerFailure.unknownFailure());
+      return left(ManagerFailure.unknownFailure());
     }
   }
 
@@ -38,10 +38,10 @@ class ManagerRepository implements IManagerRepository {
       return right(ManagerDTO.fromFirestore(managerDoc).toDomain());
     } on FirebaseException catch (e) {
       print(e);
-      return left(const ManagerFailure.serverFailure());
+      return left(ManagerFailure.serverFailure());
     } catch (e) {
       print(e);
-      return left(const ManagerFailure.unknownFailure());
+      return left(ManagerFailure.unknownFailure());
     }
   }
 }

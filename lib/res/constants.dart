@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'theme.dart';
 
 class Constants {
+  const Constants._();
+
   static const splashRoute = '/';
   static const homeRoute = '/home';
   static const signInRoute = '/signIn';
@@ -11,6 +13,7 @@ class Constants {
   static const addParkingLotRoute = '/home/add-parking-lot';
   static const selectParkingLotRoute = '/home/select-parking-lot';
   static const manageEmployeesRoute = '/home/manage-employees';
+  static const addEmployeeRoute = '/home/manage-employees/add-employee';
   static const reportsRoute = '/home/reports';
   static const manageParkingLotsRoute = '/home/manage-parking-lots';
   static const editInformationRoute = '/home/edit-information';

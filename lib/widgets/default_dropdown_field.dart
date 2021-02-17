@@ -5,12 +5,14 @@ class DefaultDropdownField<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final void Function(T) onChanged;
   final T value;
+  final String placeholderText;
 
   const DefaultDropdownField(
     this.items, {
     Key key,
     @required this.onChanged,
     @required this.value,
+    this.placeholderText = '',
   }) : super(key: key);
 
   @override
@@ -26,6 +28,7 @@ class DefaultDropdownField<T> extends StatelessWidget {
         value: value,
         onChanged: onChanged,
         dropdownColor: Colors.white,
+        hint: Text(placeholderText),
       ),
     );
   }

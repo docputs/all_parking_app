@@ -20,10 +20,12 @@ class _$EmployeeDTOTearOff {
   _EmployeeDTO call(
       {@JsonKey(ignore: true) String id,
       @required String displayName,
+      @required String parkingLotId,
       @required UserType type}) {
     return _EmployeeDTO(
       id: id,
       displayName: displayName,
+      parkingLotId: parkingLotId,
       type: type,
     );
   }
@@ -43,6 +45,7 @@ mixin _$EmployeeDTO {
   @JsonKey(ignore: true)
   String get id;
   String get displayName;
+  String get parkingLotId;
   UserType get type;
 
   Map<String, dynamic> toJson();
@@ -56,7 +59,10 @@ abstract class $EmployeeDTOCopyWith<$Res> {
           EmployeeDTO value, $Res Function(EmployeeDTO) then) =
       _$EmployeeDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String id, String displayName, UserType type});
+      {@JsonKey(ignore: true) String id,
+      String displayName,
+      String parkingLotId,
+      UserType type});
 }
 
 /// @nodoc
@@ -71,12 +77,16 @@ class _$EmployeeDTOCopyWithImpl<$Res> implements $EmployeeDTOCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object displayName = freezed,
+    Object parkingLotId = freezed,
     Object type = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
+      parkingLotId: parkingLotId == freezed
+          ? _value.parkingLotId
+          : parkingLotId as String,
       type: type == freezed ? _value.type : type as UserType,
     ));
   }
@@ -90,7 +100,10 @@ abstract class _$EmployeeDTOCopyWith<$Res>
       __$EmployeeDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String id, String displayName, UserType type});
+      {@JsonKey(ignore: true) String id,
+      String displayName,
+      String parkingLotId,
+      UserType type});
 }
 
 /// @nodoc
@@ -107,12 +120,16 @@ class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object displayName = freezed,
+    Object parkingLotId = freezed,
     Object type = freezed,
   }) {
     return _then(_EmployeeDTO(
       id: id == freezed ? _value.id : id as String,
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
+      parkingLotId: parkingLotId == freezed
+          ? _value.parkingLotId
+          : parkingLotId as String,
       type: type == freezed ? _value.type : type as UserType,
     ));
   }
@@ -125,8 +142,10 @@ class _$_EmployeeDTO extends _EmployeeDTO {
   const _$_EmployeeDTO(
       {@JsonKey(ignore: true) this.id,
       @required this.displayName,
+      @required this.parkingLotId,
       @required this.type})
       : assert(displayName != null),
+        assert(parkingLotId != null),
         assert(type != null),
         super._();
 
@@ -139,11 +158,13 @@ class _$_EmployeeDTO extends _EmployeeDTO {
   @override
   final String displayName;
   @override
+  final String parkingLotId;
+  @override
   final UserType type;
 
   @override
   String toString() {
-    return 'EmployeeDTO(id: $id, displayName: $displayName, type: $type)';
+    return 'EmployeeDTO(id: $id, displayName: $displayName, parkingLotId: $parkingLotId, type: $type)';
   }
 
   @override
@@ -155,6 +176,9 @@ class _$_EmployeeDTO extends _EmployeeDTO {
             (identical(other.displayName, displayName) ||
                 const DeepCollectionEquality()
                     .equals(other.displayName, displayName)) &&
+            (identical(other.parkingLotId, parkingLotId) ||
+                const DeepCollectionEquality()
+                    .equals(other.parkingLotId, parkingLotId)) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)));
   }
@@ -164,6 +188,7 @@ class _$_EmployeeDTO extends _EmployeeDTO {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
+      const DeepCollectionEquality().hash(parkingLotId) ^
       const DeepCollectionEquality().hash(type);
 
   @JsonKey(ignore: true)
@@ -182,6 +207,7 @@ abstract class _EmployeeDTO extends EmployeeDTO {
   const factory _EmployeeDTO(
       {@JsonKey(ignore: true) String id,
       @required String displayName,
+      @required String parkingLotId,
       @required UserType type}) = _$_EmployeeDTO;
 
   factory _EmployeeDTO.fromJson(Map<String, dynamic> json) =
@@ -192,6 +218,8 @@ abstract class _EmployeeDTO extends EmployeeDTO {
   String get id;
   @override
   String get displayName;
+  @override
+  String get parkingLotId;
   @override
   UserType get type;
   @override

@@ -16,6 +16,7 @@ class Messages {
 
   //General
   static String userType(UserType type) => type == UserType.manager ? 'Administrador' : 'Funcionário';
+  static const noDataToShow = 'Sem dados para exibir';
 
   //AuthFailure
   static const emailBadlyFormatted = 'E-mail inválido';
@@ -175,7 +176,6 @@ class Messages {
   //ReportsScreen
   static const reportsScreenTitle = 'Relatórios';
   static const reportsParkedVehiclesHeader = 'Veículos estacionados';
-  static const reportsNoAvailableData = 'Sem dados para exibir';
   static String reportsInfoTileTrailingText(dynamic value) => '$value';
   static String selectedDateLabel(DateTime dateTime) {
     final formattedDate = DateFormat.MMMMd().format(dateTime);
@@ -209,4 +209,12 @@ class Messages {
   static const selectParkingLotScreenTitle = 'Selecionar estacionamento';
   static const selectParkingLotYourParkingLotsHeader = 'Seus estacionamentos';
   static String selectParkingLotInfoTileSubtitle(Address address) => '${address.street} | ${address.cep}';
+
+  //ManageEmployeesScreen
+  static const manageEmployeesScreenTitle = 'Meus funcionários';
+
+  //AddEmployeeScreen
+  static const addEmployeeScreenTitle = 'Cadastrar funcionário';
+  static const addEmployeeSubmitButton = 'SALVAR';
+  static const addEmployeeNameFieldLabel = 'Nome';
 }
