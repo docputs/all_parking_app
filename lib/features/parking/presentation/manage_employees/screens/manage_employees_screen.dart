@@ -63,6 +63,7 @@ class ManageEmployeesScreen extends StatelessWidget {
         const DefaultSectionTitle(Messages.manageEmployeesHeader),
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => EmployeeListTile(manager.employees[index]),
             itemCount: manager.employees.size,
           ),

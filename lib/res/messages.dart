@@ -219,6 +219,7 @@ class Messages {
       'Deseja remover ${employee.displayName} da sua lista de funcionários?';
   static const manageEmployeesConfirmDialogRightButton = 'REMOVER';
   static const manageEmployeesConfirmDialogLeftButton = 'VOLTAR';
+  static const manageEmployeesTokenCopied = 'Token de funcionário copiado!';
 
   //AddEmployeeScreen
   static const addEmployeeScreenTitle = 'Cadastrar funcionário';
