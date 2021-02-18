@@ -60,6 +60,7 @@ class EmployeeForm extends StatelessWidget {
         validationEither: Validators.validateCpf,
         onChanged: (value) => context.read<AddEmployeeBloc>().add(AddEmployeeEvent.changedCpf(value)),
         mask: Constants.cpfMask,
+        keyboardType: TextInputType.number,
       ),
     );
   }
@@ -73,6 +74,7 @@ class EmployeeForm extends StatelessWidget {
         validationEither: Validators.validatePhoneNumber,
         onChanged: (value) => context.read<AddEmployeeBloc>().add(AddEmployeeEvent.changedPhoneNumber(value)),
         mask: Constants.phoneNumberMask,
+        keyboardType: TextInputType.phone,
       ),
     );
   }

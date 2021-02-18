@@ -1,3 +1,4 @@
+import 'package:all_parking/widgets/default_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -47,13 +48,7 @@ class ParkingLotDashboard extends StatelessWidget {
   }
 
   Widget _buildEmptyWarning(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [Constants.defaultBoxShadow],
-        borderRadius: Constants.defaultBorderRadius,
-      ),
+    return DefaultCard(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

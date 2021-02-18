@@ -27,6 +27,7 @@ class ParkingLotDropdownField extends StatelessWidget {
         onChanged: (value) => context.read<AddEmployeeBloc>().add(AddEmployeeEvent.changedParkingLot(value)),
         value: parkingLots.find((parkingLot) => parkingLot.id == associatedParkingLot.id),
         placeholderText: 'Estacionamento',
+        isExpanded: true,
       ),
     );
   }

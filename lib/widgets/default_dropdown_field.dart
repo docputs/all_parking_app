@@ -6,6 +6,7 @@ class DefaultDropdownField<T> extends StatelessWidget {
   final void Function(T) onChanged;
   final T value;
   final String placeholderText;
+  final bool isExpanded;
 
   const DefaultDropdownField(
     this.items, {
@@ -13,6 +14,7 @@ class DefaultDropdownField<T> extends StatelessWidget {
     @required this.onChanged,
     @required this.value,
     this.placeholderText = '',
+    this.isExpanded = false,
   }) : super(key: key);
 
   @override
@@ -29,6 +31,7 @@ class DefaultDropdownField<T> extends StatelessWidget {
         onChanged: onChanged,
         dropdownColor: Colors.white,
         hint: Text(placeholderText),
+        isExpanded: isExpanded,
       ),
     );
   }
