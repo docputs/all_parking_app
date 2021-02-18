@@ -10,6 +10,8 @@ _$_EmployeeDTO _$_$_EmployeeDTOFromJson(Map<String, dynamic> json) {
   return _$_EmployeeDTO(
     displayName: json['displayName'] as String,
     parkingLotId: json['parkingLotId'] as String,
+    phoneNumber: json['phoneNumber'] as String,
+    cpf: json['cpf'] as String,
     type: _$enumDecodeNullable(_$UserTypeEnumMap, json['type']),
   );
 }
@@ -18,6 +20,8 @@ Map<String, dynamic> _$_$_EmployeeDTOToJson(_$_EmployeeDTO instance) =>
     <String, dynamic>{
       'displayName': instance.displayName,
       'parkingLotId': instance.parkingLotId,
+      'phoneNumber': instance.phoneNumber,
+      'cpf': instance.cpf,
       'type': _$UserTypeEnumMap[instance.type],
     };
 

@@ -15,6 +15,8 @@ abstract class EmployeeDTO implements _$EmployeeDTO {
     @JsonKey(ignore: true) String id,
     @required String displayName,
     @required String parkingLotId,
+    @required String phoneNumber,
+    @required String cpf,
     @required UserType type,
   }) = _EmployeeDTO;
 
@@ -25,9 +27,17 @@ abstract class EmployeeDTO implements _$EmployeeDTO {
         displayName: model.displayName,
         type: model.type,
         parkingLotId: model.parkingLotId,
+        phoneNumber: model.phoneNumber,
+        cpf: model.cpf,
       );
 
   factory EmployeeDTO.fromFirestore(DocumentSnapshot doc) => EmployeeDTO.fromJson(doc.data()).copyWith(id: doc.id);
 
-  Employee toDomain() => Employee(id: id, displayName: displayName, parkingLotId: parkingLotId);
+  Employee toDomain() => Employee(
+        id: id,
+        displayName: displayName,
+        parkingLotId: parkingLotId,
+        cpf: cpf,
+        phoneNumber: phoneNumber,
+      );
 }

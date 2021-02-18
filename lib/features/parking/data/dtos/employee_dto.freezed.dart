@@ -21,11 +21,15 @@ class _$EmployeeDTOTearOff {
       {@JsonKey(ignore: true) String id,
       @required String displayName,
       @required String parkingLotId,
+      @required String phoneNumber,
+      @required String cpf,
       @required UserType type}) {
     return _EmployeeDTO(
       id: id,
       displayName: displayName,
       parkingLotId: parkingLotId,
+      phoneNumber: phoneNumber,
+      cpf: cpf,
       type: type,
     );
   }
@@ -46,6 +50,8 @@ mixin _$EmployeeDTO {
   String get id;
   String get displayName;
   String get parkingLotId;
+  String get phoneNumber;
+  String get cpf;
   UserType get type;
 
   Map<String, dynamic> toJson();
@@ -62,6 +68,8 @@ abstract class $EmployeeDTOCopyWith<$Res> {
       {@JsonKey(ignore: true) String id,
       String displayName,
       String parkingLotId,
+      String phoneNumber,
+      String cpf,
       UserType type});
 }
 
@@ -78,6 +86,8 @@ class _$EmployeeDTOCopyWithImpl<$Res> implements $EmployeeDTOCopyWith<$Res> {
     Object id = freezed,
     Object displayName = freezed,
     Object parkingLotId = freezed,
+    Object phoneNumber = freezed,
+    Object cpf = freezed,
     Object type = freezed,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +97,9 @@ class _$EmployeeDTOCopyWithImpl<$Res> implements $EmployeeDTOCopyWith<$Res> {
       parkingLotId: parkingLotId == freezed
           ? _value.parkingLotId
           : parkingLotId as String,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      cpf: cpf == freezed ? _value.cpf : cpf as String,
       type: type == freezed ? _value.type : type as UserType,
     ));
   }
@@ -103,6 +116,8 @@ abstract class _$EmployeeDTOCopyWith<$Res>
       {@JsonKey(ignore: true) String id,
       String displayName,
       String parkingLotId,
+      String phoneNumber,
+      String cpf,
       UserType type});
 }
 
@@ -121,6 +136,8 @@ class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
     Object id = freezed,
     Object displayName = freezed,
     Object parkingLotId = freezed,
+    Object phoneNumber = freezed,
+    Object cpf = freezed,
     Object type = freezed,
   }) {
     return _then(_EmployeeDTO(
@@ -130,6 +147,9 @@ class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
       parkingLotId: parkingLotId == freezed
           ? _value.parkingLotId
           : parkingLotId as String,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      cpf: cpf == freezed ? _value.cpf : cpf as String,
       type: type == freezed ? _value.type : type as UserType,
     ));
   }
@@ -143,9 +163,13 @@ class _$_EmployeeDTO extends _EmployeeDTO {
       {@JsonKey(ignore: true) this.id,
       @required this.displayName,
       @required this.parkingLotId,
+      @required this.phoneNumber,
+      @required this.cpf,
       @required this.type})
       : assert(displayName != null),
         assert(parkingLotId != null),
+        assert(phoneNumber != null),
+        assert(cpf != null),
         assert(type != null),
         super._();
 
@@ -160,11 +184,15 @@ class _$_EmployeeDTO extends _EmployeeDTO {
   @override
   final String parkingLotId;
   @override
+  final String phoneNumber;
+  @override
+  final String cpf;
+  @override
   final UserType type;
 
   @override
   String toString() {
-    return 'EmployeeDTO(id: $id, displayName: $displayName, parkingLotId: $parkingLotId, type: $type)';
+    return 'EmployeeDTO(id: $id, displayName: $displayName, parkingLotId: $parkingLotId, phoneNumber: $phoneNumber, cpf: $cpf, type: $type)';
   }
 
   @override
@@ -179,6 +207,11 @@ class _$_EmployeeDTO extends _EmployeeDTO {
             (identical(other.parkingLotId, parkingLotId) ||
                 const DeepCollectionEquality()
                     .equals(other.parkingLotId, parkingLotId)) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.phoneNumber, phoneNumber)) &&
+            (identical(other.cpf, cpf) ||
+                const DeepCollectionEquality().equals(other.cpf, cpf)) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)));
   }
@@ -189,6 +222,8 @@ class _$_EmployeeDTO extends _EmployeeDTO {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(parkingLotId) ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
+      const DeepCollectionEquality().hash(cpf) ^
       const DeepCollectionEquality().hash(type);
 
   @JsonKey(ignore: true)
@@ -208,6 +243,8 @@ abstract class _EmployeeDTO extends EmployeeDTO {
       {@JsonKey(ignore: true) String id,
       @required String displayName,
       @required String parkingLotId,
+      @required String phoneNumber,
+      @required String cpf,
       @required UserType type}) = _$_EmployeeDTO;
 
   factory _EmployeeDTO.fromJson(Map<String, dynamic> json) =
@@ -220,6 +257,10 @@ abstract class _EmployeeDTO extends EmployeeDTO {
   String get displayName;
   @override
   String get parkingLotId;
+  @override
+  String get phoneNumber;
+  @override
+  String get cpf;
   @override
   UserType get type;
   @override
