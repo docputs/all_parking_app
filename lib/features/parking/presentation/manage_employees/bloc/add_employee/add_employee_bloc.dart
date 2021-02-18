@@ -24,6 +24,8 @@ class AddEmployeeBloc extends Bloc<AddEmployeeEvent, AddEmployeeState> {
   Stream<AddEmployeeState> mapEventToState(AddEmployeeEvent event) async* {
     yield* event.when(
       changedName: _mapChangedName,
+      changedCpf: _mapChangedCpf,
+      changedPhoneNumber: _mapChangedPhoneNumber,
       changedParkingLot: _mapChangedParkingLot,
       submitted: _mapSubmitted,
     );
@@ -36,9 +38,25 @@ class AddEmployeeBloc extends Bloc<AddEmployeeEvent, AddEmployeeState> {
     );
   }
 
+  Stream<AddEmployeeState> _mapChangedCpf(String input) async* {
+    yield state.copyWith(
+      employee: state.employee.copyWith(cpf: input),
+      saveFailureOrSuccessOption: none(),
+    );
+  }
+
+  Stream<AddEmployeeState> _mapChangedPhoneNumber(String input) async* {
+    yield state.copyWith(
+      employee: state.employee.copyWith(phoneNumber: input),
+      saveFailureOrSuccessOption: none(),
+    );
+  }
+
   Stream<AddEmployeeState> _mapChangedParkingLot(ParkingLot parkingLot) async* {
     yield state.copyWith(
-      employee: state.employee.copyWith(parkingLotId: parkingLot.id),
+      employee: state.employee.copyWith(
+        parkingLot: state.employee.parkingLot.copyWith(id: parkingLot.id, title: parkingLot.title),
+      ),
       saveFailureOrSuccessOption: none(),
     );
   }
@@ -51,12 +69,12 @@ class AddEmployeeBloc extends Bloc<AddEmployeeEvent, AddEmployeeState> {
       saveFailureOrSuccessOption: none(),
     );
 
-    if (state.employee.parkingLotId.isNotEmpty && state.employee.displayName.isNotEmpty)
-      failureOrSuccess = await _signUpEmployee(state.employee);
+    if (state.employee.isValid()) failureOrSuccess = await _signUpEmployee(state.employee);
 
     yield state.copyWith(
       isSubmitting: false,
       saveFailureOrSuccessOption: optionOf(failureOrSuccess),
+      showErrorMessages: true,
     );
   }
 }

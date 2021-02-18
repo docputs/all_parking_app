@@ -21,6 +21,20 @@ class _$AddEmployeeEventTearOff {
   }
 
 // ignore: unused_element
+  _ChangedCpf changedCpf(String input) {
+    return _ChangedCpf(
+      input,
+    );
+  }
+
+// ignore: unused_element
+  _ChangedPhoneNumber changedPhoneNumber(String input) {
+    return _ChangedPhoneNumber(
+      input,
+    );
+  }
+
+// ignore: unused_element
   _ChangedParkingLot changedParkingLot(ParkingLot parkingLot) {
     return _ChangedParkingLot(
       parkingLot,
@@ -42,12 +56,16 @@ mixin _$AddEmployeeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult changedName(String input),
+    @required TResult changedCpf(String input),
+    @required TResult changedPhoneNumber(String input),
     @required TResult changedParkingLot(ParkingLot parkingLot),
     @required TResult submitted(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult changedName(String input),
+    TResult changedCpf(String input),
+    TResult changedPhoneNumber(String input),
     TResult changedParkingLot(ParkingLot parkingLot),
     TResult submitted(),
     @required TResult orElse(),
@@ -55,12 +73,16 @@ mixin _$AddEmployeeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult changedName(_ChangedName value),
+    @required TResult changedCpf(_ChangedCpf value),
+    @required TResult changedPhoneNumber(_ChangedPhoneNumber value),
     @required TResult changedParkingLot(_ChangedParkingLot value),
     @required TResult submitted(_Submitted value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult changedName(_ChangedName value),
+    TResult changedCpf(_ChangedCpf value),
+    TResult changedPhoneNumber(_ChangedPhoneNumber value),
     TResult changedParkingLot(_ChangedParkingLot value),
     TResult submitted(_Submitted value),
     @required TResult orElse(),
@@ -146,10 +168,14 @@ class _$_ChangedName implements _ChangedName {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult changedName(String input),
+    @required TResult changedCpf(String input),
+    @required TResult changedPhoneNumber(String input),
     @required TResult changedParkingLot(ParkingLot parkingLot),
     @required TResult submitted(),
   }) {
     assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
     assert(changedParkingLot != null);
     assert(submitted != null);
     return changedName(input);
@@ -159,6 +185,8 @@ class _$_ChangedName implements _ChangedName {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult changedName(String input),
+    TResult changedCpf(String input),
+    TResult changedPhoneNumber(String input),
     TResult changedParkingLot(ParkingLot parkingLot),
     TResult submitted(),
     @required TResult orElse(),
@@ -174,10 +202,14 @@ class _$_ChangedName implements _ChangedName {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult changedName(_ChangedName value),
+    @required TResult changedCpf(_ChangedCpf value),
+    @required TResult changedPhoneNumber(_ChangedPhoneNumber value),
     @required TResult changedParkingLot(_ChangedParkingLot value),
     @required TResult submitted(_Submitted value),
   }) {
     assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
     assert(changedParkingLot != null);
     assert(submitted != null);
     return changedName(this);
@@ -187,6 +219,8 @@ class _$_ChangedName implements _ChangedName {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult changedName(_ChangedName value),
+    TResult changedCpf(_ChangedCpf value),
+    TResult changedPhoneNumber(_ChangedPhoneNumber value),
     TResult changedParkingLot(_ChangedParkingLot value),
     TResult submitted(_Submitted value),
     @required TResult orElse(),
@@ -205,6 +239,276 @@ abstract class _ChangedName implements AddEmployeeEvent {
   String get input;
   @JsonKey(ignore: true)
   _$ChangedNameCopyWith<_ChangedName> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ChangedCpfCopyWith<$Res> {
+  factory _$ChangedCpfCopyWith(
+          _ChangedCpf value, $Res Function(_ChangedCpf) then) =
+      __$ChangedCpfCopyWithImpl<$Res>;
+  $Res call({String input});
+}
+
+/// @nodoc
+class __$ChangedCpfCopyWithImpl<$Res>
+    extends _$AddEmployeeEventCopyWithImpl<$Res>
+    implements _$ChangedCpfCopyWith<$Res> {
+  __$ChangedCpfCopyWithImpl(
+      _ChangedCpf _value, $Res Function(_ChangedCpf) _then)
+      : super(_value, (v) => _then(v as _ChangedCpf));
+
+  @override
+  _ChangedCpf get _value => super._value as _ChangedCpf;
+
+  @override
+  $Res call({
+    Object input = freezed,
+  }) {
+    return _then(_ChangedCpf(
+      input == freezed ? _value.input : input as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ChangedCpf implements _ChangedCpf {
+  const _$_ChangedCpf(this.input) : assert(input != null);
+
+  @override
+  final String input;
+
+  @override
+  String toString() {
+    return 'AddEmployeeEvent.changedCpf(input: $input)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangedCpf &&
+            (identical(other.input, input) ||
+                const DeepCollectionEquality().equals(other.input, input)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangedCpfCopyWith<_ChangedCpf> get copyWith =>
+      __$ChangedCpfCopyWithImpl<_ChangedCpf>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult changedName(String input),
+    @required TResult changedCpf(String input),
+    @required TResult changedPhoneNumber(String input),
+    @required TResult changedParkingLot(ParkingLot parkingLot),
+    @required TResult submitted(),
+  }) {
+    assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
+    assert(changedParkingLot != null);
+    assert(submitted != null);
+    return changedCpf(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult changedName(String input),
+    TResult changedCpf(String input),
+    TResult changedPhoneNumber(String input),
+    TResult changedParkingLot(ParkingLot parkingLot),
+    TResult submitted(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changedCpf != null) {
+      return changedCpf(input);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult changedName(_ChangedName value),
+    @required TResult changedCpf(_ChangedCpf value),
+    @required TResult changedPhoneNumber(_ChangedPhoneNumber value),
+    @required TResult changedParkingLot(_ChangedParkingLot value),
+    @required TResult submitted(_Submitted value),
+  }) {
+    assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
+    assert(changedParkingLot != null);
+    assert(submitted != null);
+    return changedCpf(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult changedName(_ChangedName value),
+    TResult changedCpf(_ChangedCpf value),
+    TResult changedPhoneNumber(_ChangedPhoneNumber value),
+    TResult changedParkingLot(_ChangedParkingLot value),
+    TResult submitted(_Submitted value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changedCpf != null) {
+      return changedCpf(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangedCpf implements AddEmployeeEvent {
+  const factory _ChangedCpf(String input) = _$_ChangedCpf;
+
+  String get input;
+  @JsonKey(ignore: true)
+  _$ChangedCpfCopyWith<_ChangedCpf> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ChangedPhoneNumberCopyWith<$Res> {
+  factory _$ChangedPhoneNumberCopyWith(
+          _ChangedPhoneNumber value, $Res Function(_ChangedPhoneNumber) then) =
+      __$ChangedPhoneNumberCopyWithImpl<$Res>;
+  $Res call({String input});
+}
+
+/// @nodoc
+class __$ChangedPhoneNumberCopyWithImpl<$Res>
+    extends _$AddEmployeeEventCopyWithImpl<$Res>
+    implements _$ChangedPhoneNumberCopyWith<$Res> {
+  __$ChangedPhoneNumberCopyWithImpl(
+      _ChangedPhoneNumber _value, $Res Function(_ChangedPhoneNumber) _then)
+      : super(_value, (v) => _then(v as _ChangedPhoneNumber));
+
+  @override
+  _ChangedPhoneNumber get _value => super._value as _ChangedPhoneNumber;
+
+  @override
+  $Res call({
+    Object input = freezed,
+  }) {
+    return _then(_ChangedPhoneNumber(
+      input == freezed ? _value.input : input as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ChangedPhoneNumber implements _ChangedPhoneNumber {
+  const _$_ChangedPhoneNumber(this.input) : assert(input != null);
+
+  @override
+  final String input;
+
+  @override
+  String toString() {
+    return 'AddEmployeeEvent.changedPhoneNumber(input: $input)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ChangedPhoneNumber &&
+            (identical(other.input, input) ||
+                const DeepCollectionEquality().equals(other.input, input)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangedPhoneNumberCopyWith<_ChangedPhoneNumber> get copyWith =>
+      __$ChangedPhoneNumberCopyWithImpl<_ChangedPhoneNumber>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult changedName(String input),
+    @required TResult changedCpf(String input),
+    @required TResult changedPhoneNumber(String input),
+    @required TResult changedParkingLot(ParkingLot parkingLot),
+    @required TResult submitted(),
+  }) {
+    assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
+    assert(changedParkingLot != null);
+    assert(submitted != null);
+    return changedPhoneNumber(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult changedName(String input),
+    TResult changedCpf(String input),
+    TResult changedPhoneNumber(String input),
+    TResult changedParkingLot(ParkingLot parkingLot),
+    TResult submitted(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changedPhoneNumber != null) {
+      return changedPhoneNumber(input);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult changedName(_ChangedName value),
+    @required TResult changedCpf(_ChangedCpf value),
+    @required TResult changedPhoneNumber(_ChangedPhoneNumber value),
+    @required TResult changedParkingLot(_ChangedParkingLot value),
+    @required TResult submitted(_Submitted value),
+  }) {
+    assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
+    assert(changedParkingLot != null);
+    assert(submitted != null);
+    return changedPhoneNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult changedName(_ChangedName value),
+    TResult changedCpf(_ChangedCpf value),
+    TResult changedPhoneNumber(_ChangedPhoneNumber value),
+    TResult changedParkingLot(_ChangedParkingLot value),
+    TResult submitted(_Submitted value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changedPhoneNumber != null) {
+      return changedPhoneNumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangedPhoneNumber implements AddEmployeeEvent {
+  const factory _ChangedPhoneNumber(String input) = _$_ChangedPhoneNumber;
+
+  String get input;
+  @JsonKey(ignore: true)
+  _$ChangedPhoneNumberCopyWith<_ChangedPhoneNumber> get copyWith;
 }
 
 /// @nodoc
@@ -282,10 +586,14 @@ class _$_ChangedParkingLot implements _ChangedParkingLot {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult changedName(String input),
+    @required TResult changedCpf(String input),
+    @required TResult changedPhoneNumber(String input),
     @required TResult changedParkingLot(ParkingLot parkingLot),
     @required TResult submitted(),
   }) {
     assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
     assert(changedParkingLot != null);
     assert(submitted != null);
     return changedParkingLot(parkingLot);
@@ -295,6 +603,8 @@ class _$_ChangedParkingLot implements _ChangedParkingLot {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult changedName(String input),
+    TResult changedCpf(String input),
+    TResult changedPhoneNumber(String input),
     TResult changedParkingLot(ParkingLot parkingLot),
     TResult submitted(),
     @required TResult orElse(),
@@ -310,10 +620,14 @@ class _$_ChangedParkingLot implements _ChangedParkingLot {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult changedName(_ChangedName value),
+    @required TResult changedCpf(_ChangedCpf value),
+    @required TResult changedPhoneNumber(_ChangedPhoneNumber value),
     @required TResult changedParkingLot(_ChangedParkingLot value),
     @required TResult submitted(_Submitted value),
   }) {
     assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
     assert(changedParkingLot != null);
     assert(submitted != null);
     return changedParkingLot(this);
@@ -323,6 +637,8 @@ class _$_ChangedParkingLot implements _ChangedParkingLot {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult changedName(_ChangedName value),
+    TResult changedCpf(_ChangedCpf value),
+    TResult changedPhoneNumber(_ChangedPhoneNumber value),
     TResult changedParkingLot(_ChangedParkingLot value),
     TResult submitted(_Submitted value),
     @required TResult orElse(),
@@ -383,10 +699,14 @@ class _$_Submitted implements _Submitted {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult changedName(String input),
+    @required TResult changedCpf(String input),
+    @required TResult changedPhoneNumber(String input),
     @required TResult changedParkingLot(ParkingLot parkingLot),
     @required TResult submitted(),
   }) {
     assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
     assert(changedParkingLot != null);
     assert(submitted != null);
     return submitted();
@@ -396,6 +716,8 @@ class _$_Submitted implements _Submitted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult changedName(String input),
+    TResult changedCpf(String input),
+    TResult changedPhoneNumber(String input),
     TResult changedParkingLot(ParkingLot parkingLot),
     TResult submitted(),
     @required TResult orElse(),
@@ -411,10 +733,14 @@ class _$_Submitted implements _Submitted {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult changedName(_ChangedName value),
+    @required TResult changedCpf(_ChangedCpf value),
+    @required TResult changedPhoneNumber(_ChangedPhoneNumber value),
     @required TResult changedParkingLot(_ChangedParkingLot value),
     @required TResult submitted(_Submitted value),
   }) {
     assert(changedName != null);
+    assert(changedCpf != null);
+    assert(changedPhoneNumber != null);
     assert(changedParkingLot != null);
     assert(submitted != null);
     return submitted(this);
@@ -424,6 +750,8 @@ class _$_Submitted implements _Submitted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult changedName(_ChangedName value),
+    TResult changedCpf(_ChangedCpf value),
+    TResult changedPhoneNumber(_ChangedPhoneNumber value),
     TResult changedParkingLot(_ChangedParkingLot value),
     TResult submitted(_Submitted value),
     @required TResult orElse(),

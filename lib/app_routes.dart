@@ -67,7 +67,7 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const ManageEmployeesScreen());
       break;
     case Constants.addEmployeeRoute:
-      return MaterialPageRoute(builder: (context) => const AddEmployeeScreen());
+      return MaterialPageRoute<bool>(builder: (context) => const AddEmployeeScreen());
       break;
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold(body: Center(child: Text('rota nao encontrada'))));

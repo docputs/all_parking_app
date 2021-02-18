@@ -1,4 +1,5 @@
 import 'package:all_parking/features/auth/domain/entities/user.dart';
+import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -211,10 +212,20 @@ class Messages {
   static String selectParkingLotInfoTileSubtitle(Address address) => '${address.street} | ${address.cep}';
 
   //ManageEmployeesScreen
-  static const manageEmployeesScreenTitle = 'Meus funcionários';
+  static const manageEmployeesScreenTitle = 'Gerenciar funcionários';
+  static const manageEmployeesHeader = 'Seus funcionários';
+  static const manageEmployeesConfirmDialogTitle = 'Remover funcionário';
+  static String manageEmployeesConfirmDialogMessage(Employee employee) =>
+      'Deseja remover ${employee.displayName} da sua lista de funcionários?';
+  static const manageEmployeesConfirmDialogRightButton = 'REMOVER';
+  static const manageEmployeesConfirmDialogLeftButton = 'VOLTAR';
 
   //AddEmployeeScreen
   static const addEmployeeScreenTitle = 'Cadastrar funcionário';
+  static const addEmployeeGeneralInfoHeader = 'Dados gerais';
+  static const addEmployeeAssociatedParkingLotHeader = 'Estacionamento associado';
   static const addEmployeeSubmitButton = 'SALVAR';
   static const addEmployeeNameFieldLabel = 'Nome';
+  static const addEmployeeCpfLabel = 'CPF';
+  static const addEmployeePhoneNumberLabel = 'Celular';
 }

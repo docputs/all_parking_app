@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/data/dtos/manager_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,7 +7,6 @@ import 'package:injectable/injectable.dart';
 import '../../core/errors/manager_failure.dart';
 import '../../domain/entities/manager.dart';
 import '../../domain/repositories/i_manager_repository.dart';
-import '../models/manager_dto.dart';
 
 @LazySingleton(as: IManagerRepository)
 class ManagerRepository implements IManagerRepository {

@@ -1,13 +1,12 @@
 import 'package:all_parking/features/auth/core/util/firestore_user_mapper.dart';
-import 'package:all_parking/features/parking/data/models/employee_dto.dart';
+import 'package:all_parking/features/parking/data/dtos/employee_dto.dart';
+import 'package:all_parking/features/parking/data/dtos/manager_dto.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
-import 'package:all_parking/features/parking/domain/entities/manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
 
-import '../../../parking/data/models/manager_dto.dart';
 import '../../core/errors/auth_failure.dart';
 import '../../core/util/firebase_user_mapper.dart';
 import '../../domain/entities/user.dart';

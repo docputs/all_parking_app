@@ -14,8 +14,15 @@ class _$ManageEmployeesEventTearOff {
   const _$ManageEmployeesEventTearOff();
 
 // ignore: unused_element
-  _Started started() {
-    return const _Started();
+  _FetchRequested fetchRequested() {
+    return const _FetchRequested();
+  }
+
+// ignore: unused_element
+  _Deleted deleted(Employee employee) {
+    return _Deleted(
+      employee,
+    );
   }
 }
 
@@ -27,20 +34,24 @@ const $ManageEmployeesEvent = _$ManageEmployeesEventTearOff();
 mixin _$ManageEmployeesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
+    @required TResult fetchRequested(),
+    @required TResult deleted(Employee employee),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
+    TResult fetchRequested(),
+    TResult deleted(Employee employee),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
+    @required TResult fetchRequested(_FetchRequested value),
+    @required TResult deleted(_Deleted value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
+    TResult fetchRequested(_FetchRequested value),
+    TResult deleted(_Deleted value),
     @required TResult orElse(),
   });
 }
@@ -63,34 +74,36 @@ class _$ManageEmployeesEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
+abstract class _$FetchRequestedCopyWith<$Res> {
+  factory _$FetchRequestedCopyWith(
+          _FetchRequested value, $Res Function(_FetchRequested) then) =
+      __$FetchRequestedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res>
+class __$FetchRequestedCopyWithImpl<$Res>
     extends _$ManageEmployeesEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+    implements _$FetchRequestedCopyWith<$Res> {
+  __$FetchRequestedCopyWithImpl(
+      _FetchRequested _value, $Res Function(_FetchRequested) _then)
+      : super(_value, (v) => _then(v as _FetchRequested));
 
   @override
-  _Started get _value => super._value as _Started;
+  _FetchRequested get _value => super._value as _FetchRequested;
 }
 
 /// @nodoc
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_FetchRequested implements _FetchRequested {
+  const _$_FetchRequested();
 
   @override
   String toString() {
-    return 'ManageEmployeesEvent.started()';
+    return 'ManageEmployeesEvent.fetchRequested()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) || (other is _FetchRequested);
   }
 
   @override
@@ -99,21 +112,24 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult started(),
+    @required TResult fetchRequested(),
+    @required TResult deleted(Employee employee),
   }) {
-    assert(started != null);
-    return started();
+    assert(fetchRequested != null);
+    assert(deleted != null);
+    return fetchRequested();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(),
+    TResult fetchRequested(),
+    TResult deleted(Employee employee),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (started != null) {
-      return started();
+    if (fetchRequested != null) {
+      return fetchRequested();
     }
     return orElse();
   }
@@ -121,28 +137,147 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult started(_Started value),
+    @required TResult fetchRequested(_FetchRequested value),
+    @required TResult deleted(_Deleted value),
   }) {
-    assert(started != null);
-    return started(this);
+    assert(fetchRequested != null);
+    assert(deleted != null);
+    return fetchRequested(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult started(_Started value),
+    TResult fetchRequested(_FetchRequested value),
+    TResult deleted(_Deleted value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (started != null) {
-      return started(this);
+    if (fetchRequested != null) {
+      return fetchRequested(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ManageEmployeesEvent {
-  const factory _Started() = _$_Started;
+abstract class _FetchRequested implements ManageEmployeesEvent {
+  const factory _FetchRequested() = _$_FetchRequested;
+}
+
+/// @nodoc
+abstract class _$DeletedCopyWith<$Res> {
+  factory _$DeletedCopyWith(_Deleted value, $Res Function(_Deleted) then) =
+      __$DeletedCopyWithImpl<$Res>;
+  $Res call({Employee employee});
+}
+
+/// @nodoc
+class __$DeletedCopyWithImpl<$Res>
+    extends _$ManageEmployeesEventCopyWithImpl<$Res>
+    implements _$DeletedCopyWith<$Res> {
+  __$DeletedCopyWithImpl(_Deleted _value, $Res Function(_Deleted) _then)
+      : super(_value, (v) => _then(v as _Deleted));
+
+  @override
+  _Deleted get _value => super._value as _Deleted;
+
+  @override
+  $Res call({
+    Object employee = freezed,
+  }) {
+    return _then(_Deleted(
+      employee == freezed ? _value.employee : employee as Employee,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_Deleted implements _Deleted {
+  const _$_Deleted(this.employee) : assert(employee != null);
+
+  @override
+  final Employee employee;
+
+  @override
+  String toString() {
+    return 'ManageEmployeesEvent.deleted(employee: $employee)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Deleted &&
+            (identical(other.employee, employee) ||
+                const DeepCollectionEquality()
+                    .equals(other.employee, employee)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(employee);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeletedCopyWith<_Deleted> get copyWith =>
+      __$DeletedCopyWithImpl<_Deleted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult fetchRequested(),
+    @required TResult deleted(Employee employee),
+  }) {
+    assert(fetchRequested != null);
+    assert(deleted != null);
+    return deleted(employee);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult fetchRequested(),
+    TResult deleted(Employee employee),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleted != null) {
+      return deleted(employee);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult fetchRequested(_FetchRequested value),
+    @required TResult deleted(_Deleted value),
+  }) {
+    assert(fetchRequested != null);
+    assert(deleted != null);
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult fetchRequested(_FetchRequested value),
+    TResult deleted(_Deleted value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Deleted implements ManageEmployeesEvent {
+  const factory _Deleted(Employee employee) = _$_Deleted;
+
+  Employee get employee;
+  @JsonKey(ignore: true)
+  _$DeletedCopyWith<_Deleted> get copyWith;
 }
 
 /// @nodoc

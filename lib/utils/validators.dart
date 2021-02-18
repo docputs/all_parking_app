@@ -6,6 +6,15 @@ import '../features/parking/core/errors/parking_failure.dart';
 import '../res/constants.dart';
 
 class Validators {
+  const Validators._();
+
+  static Either<ParkingFailure, String> validateRequiredField(String input) {
+    if (input.isNotEmpty && input != null)
+      return right(input);
+    else
+      return left(ParkingFailure.emptyField());
+  }
+
   static Either<AuthFailure, String> validateEmailAddress(String input) {
     if (Constants.emailRegex.hasMatch(input)) {
       return right(input);
@@ -103,40 +112,46 @@ class Validators {
   }
 
   static Either<ParkingFailure, String> validateCpf(String input) {
-    if (CPF.isValid(input) || input.isEmpty)
+    if (CPF.isValid(input))
+      return right(input);
+    else if (input.isEmpty)
+      return left(ParkingFailure.emptyField());
+    else
+      return left(ParkingFailure.invalidField());
+  }
+
+  static Either<ParkingFailure, String> validatePhoneNumber(String input) {
+    if (Constants.phoneNumberRegex.hasMatch(input))
       return right(input);
     else
       return left(ParkingFailure.invalidField());
   }
 
-  static Either<AuthFailure, String> validatePhoneNumber(String input) {
-    if (Constants.phoneNumberRegex.hasMatch(input))
-      return right(input);
-    else
-      return left(AuthFailure.invalidField());
-  }
+  static bool eitherTrueOrFalse(Either either) => either.fold((l) => false, (r) => true);
 
   static bool isValidPassword(String input) => input.isNotEmpty;
 
   static bool isPasswordMatch(String input, String password) => input == password;
 
-  static bool isValidEmail(String input) => validateEmailAddress(input).fold((_) => false, (_) => true);
+  static bool isValidEmail(String input) => eitherTrueOrFalse(validateEmailAddress(input));
 
-  static bool isValidDisplayName(String input) => validateDisplayName(input).fold((_) => false, (_) => true);
+  static bool isValidDisplayName(String input) => eitherTrueOrFalse(validateDisplayName(input));
 
-  static bool isValidParkingLotTitle(String input) => validateParkingLotTitle(input).fold((_) => false, (_) => true);
+  static bool isValidParkingLotTitle(String input) => eitherTrueOrFalse(validateParkingLotTitle(input));
 
-  static bool isValidAvailableSpots(String input) => validateAvailableSpotsField(input).fold((_) => false, (_) => true);
+  static bool isValidAvailableSpots(String input) => eitherTrueOrFalse(validateAvailableSpotsField(input));
 
-  static bool isValidPricePerHour(String input) => validatePricePerHour(input).fold((_) => false, (_) => true);
+  static bool isValidPricePerHour(String input) => eitherTrueOrFalse(validatePricePerHour(input));
 
-  static bool isValidCep(String input) => validateCep(input).fold((_) => false, (_) => true);
+  static bool isValidCep(String input) => eitherTrueOrFalse(validateCep(input));
 
-  static bool isValidCpf(String input) => validateCpf(input).fold((_) => false, (_) => true);
+  static bool isValidCpf(String input) => eitherTrueOrFalse(validateCpf(input));
 
-  static bool isValidObservations(String input) => validateObservations(input).fold((_) => false, (_) => true);
+  static bool isValidObservations(String input) => eitherTrueOrFalse(validateObservations(input));
 
-  static bool isValidLicensePlate(String input) => validateLicensePlate(input).fold((_) => false, (_) => true);
+  static bool isValidLicensePlate(String input) => eitherTrueOrFalse(validateLicensePlate(input));
 
-  static bool isValidVehicleLabel(String input) => validateVehicleLabel(input).fold((_) => false, (_) => true);
+  static bool isValidVehicleLabel(String input) => eitherTrueOrFalse(validateVehicleLabel(input));
+
+  static bool isValidPhoneNumber(String input) => eitherTrueOrFalse(validatePhoneNumber(input));
 }

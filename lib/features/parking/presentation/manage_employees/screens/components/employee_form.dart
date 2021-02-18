@@ -1,8 +1,11 @@
 import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/screens/components/parking_lot_dropdown_field.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/messages.dart';
+import 'package:all_parking/utils/validators.dart';
 import 'package:all_parking/widgets/default_button.dart';
+import 'package:all_parking/widgets/default_section_title.dart';
 import 'package:all_parking/widgets/parking_lot_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +17,11 @@ class EmployeeForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const DefaultSectionTitle(Messages.addEmployeeGeneralInfoHeader),
         _buildDisplayNameField(),
-        const SizedBox(height: 10),
+        _buildCpfAndPhoneNumberFields(),
+        const SizedBox(height: 40),
+        const DefaultSectionTitle(Messages.addEmployeeAssociatedParkingLotHeader),
         _buildParkingLotField(),
         const SizedBox(height: 40),
         _buildSubmitButton(),
@@ -25,19 +31,56 @@ class EmployeeForm extends StatelessWidget {
 
   Widget _buildDisplayNameField() {
     return BlocBuilder<AddEmployeeBloc, AddEmployeeState>(
-      buildWhen: (p, c) => p.employee.displayName != c.employee.displayName,
+      buildWhen: (p, c) => p.employee.displayName != c.employee.displayName || p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) => ParkingLotTextFormField(
         labelText: Messages.addEmployeeNameFieldLabel,
         state: state as ValidationFormState,
+        validationEither: Validators.validateRequiredField,
         onChanged: (value) => context.read<AddEmployeeBloc>().add(AddEmployeeEvent.changedName(value)),
+      ),
+    );
+  }
+
+  Widget _buildCpfAndPhoneNumberFields() {
+    return Row(
+      children: [
+        Expanded(child: _buildCpfField()),
+        const SizedBox(width: 20),
+        Expanded(child: _buildPhoneNumberField()),
+      ],
+    );
+  }
+
+  Widget _buildCpfField() {
+    return BlocBuilder<AddEmployeeBloc, AddEmployeeState>(
+      buildWhen: (p, c) => p.employee.cpf != c.employee.cpf || p.showErrorMessages != c.showErrorMessages,
+      builder: (context, state) => ParkingLotTextFormField(
+        labelText: Messages.addEmployeeCpfLabel,
+        state: state as ValidationFormState,
+        validationEither: Validators.validateCpf,
+        onChanged: (value) => context.read<AddEmployeeBloc>().add(AddEmployeeEvent.changedCpf(value)),
+        mask: Constants.cpfMask,
+      ),
+    );
+  }
+
+  Widget _buildPhoneNumberField() {
+    return BlocBuilder<AddEmployeeBloc, AddEmployeeState>(
+      buildWhen: (p, c) => p.employee.phoneNumber != c.employee.phoneNumber || p.showErrorMessages != c.showErrorMessages,
+      builder: (context, state) => ParkingLotTextFormField(
+        labelText: Messages.addEmployeePhoneNumberLabel,
+        state: state as ValidationFormState,
+        validationEither: Validators.validatePhoneNumber,
+        onChanged: (value) => context.read<AddEmployeeBloc>().add(AddEmployeeEvent.changedPhoneNumber(value)),
+        mask: Constants.phoneNumberMask,
       ),
     );
   }
 
   Widget _buildParkingLotField() {
     return BlocBuilder<AddEmployeeBloc, AddEmployeeState>(
-      buildWhen: (p, c) => p.employee.parkingLotId != c.employee.parkingLotId,
-      builder: (context, state) => ParkingLotDropdownField(state.employee.parkingLotId),
+      buildWhen: (p, c) => p.employee.parkingLot != c.employee.parkingLot || p.showErrorMessages != c.showErrorMessages,
+      builder: (context, state) => ParkingLotDropdownField(state.employee.parkingLot),
     );
   }
 

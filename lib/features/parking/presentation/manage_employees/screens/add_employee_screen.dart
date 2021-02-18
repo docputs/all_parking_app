@@ -1,4 +1,5 @@
 import 'package:all_parking/features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
+import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/service_locator.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flushbar/flushbar_helper.dart';
@@ -20,11 +21,11 @@ class AddEmployeeScreen extends StatelessWidget {
           () => null,
           (either) => either.fold(
             (f) => FlushbarHelper.createError(message: f.message).show(context),
-            (_) => Navigator.of(context).pop(),
+            (_) => Navigator.of(context).pop(true),
           ),
         ),
         child: AppScaffold(
-          title: 'Cadastrar funcionário',
+          title: Messages.addEmployeeScreenTitle,
           body: const EmployeeForm(),
         ),
       ),

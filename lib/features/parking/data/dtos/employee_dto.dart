@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/employee.dart';
+import 'associated_parking_lot_dto.dart';
 
 part 'employee_dto.freezed.dart';
 part 'employee_dto.g.dart';
@@ -11,10 +12,11 @@ part 'employee_dto.g.dart';
 abstract class EmployeeDTO implements _$EmployeeDTO {
   const EmployeeDTO._();
 
+  @JsonSerializable(explicitToJson: true)
   const factory EmployeeDTO({
     @JsonKey(ignore: true) String id,
     @required String displayName,
-    @required String parkingLotId,
+    @required AssociatedParkingLotDTO parkingLot,
     @required String phoneNumber,
     @required String cpf,
     @required UserType type,
@@ -26,7 +28,7 @@ abstract class EmployeeDTO implements _$EmployeeDTO {
         id: model.id,
         displayName: model.displayName,
         type: model.type,
-        parkingLotId: model.parkingLotId,
+        parkingLot: AssociatedParkingLotDTO.fromDomain(model.parkingLot),
         phoneNumber: model.phoneNumber,
         cpf: model.cpf,
       );
@@ -36,7 +38,7 @@ abstract class EmployeeDTO implements _$EmployeeDTO {
   Employee toDomain() => Employee(
         id: id,
         displayName: displayName,
-        parkingLotId: parkingLotId,
+        parkingLot: parkingLot.toDomain(),
         cpf: cpf,
         phoneNumber: phoneNumber,
       );
