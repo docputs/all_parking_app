@@ -50,7 +50,7 @@ mixin _$ManagerDTO {
   String get id;
   String get displayName;
   String get email;
-  List<String> get parkingLots;
+  List<String> get parkingLots; //TODO: map<employeeDTO>
   List<EmployeeDTO> get employees;
   UserType get type;
 
@@ -186,7 +186,7 @@ class _$_ManagerDTO extends _ManagerDTO with DiagnosticableTreeMixin {
   final String email;
   @override
   final List<String> parkingLots;
-  @override
+  @override //TODO: map<employeeDTO>
   final List<EmployeeDTO> employees;
   @override
   final UserType type;
@@ -273,7 +273,7 @@ abstract class _ManagerDTO extends ManagerDTO {
   String get email;
   @override
   List<String> get parkingLots;
-  @override
+  @override //TODO: map<employeeDTO>
   List<EmployeeDTO> get employees;
   @override
   UserType get type;

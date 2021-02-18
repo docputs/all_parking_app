@@ -1,10 +1,10 @@
+import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/data/dtos/manager_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../core/errors/manager_failure.dart';
 import '../../domain/entities/manager.dart';
 import '../../domain/repositories/i_manager_repository.dart';
 
@@ -16,7 +16,7 @@ class ManagerRepository implements IManagerRepository {
   const ManagerRepository(this._firestore, this._firebaseAuth) : assert(_firestore != null, _firebaseAuth != null);
 
   @override
-  Future<Either<ManagerFailure, Unit>> update(Manager manager) async {
+  Future<Either<ParkingFailure, Unit>> update(Manager manager) async {
     try {
       final managerDTO = ManagerDTO.fromDomain(manager);
       final managerDoc = await _firestore.collection('users').doc(manager.id);
@@ -24,24 +24,24 @@ class ManagerRepository implements IManagerRepository {
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
-      return left(ManagerFailure.serverFailure());
+      return left(ParkingFailure.serverFailure());
     } catch (e) {
       print(e);
-      return left(ManagerFailure.unknownFailure());
+      return left(ParkingFailure.unknownFailure());
     }
   }
 
-  Future<Either<ManagerFailure, Manager>> read() async {
+  Future<Either<ParkingFailure, Manager>> read() async {
     try {
       final user = _firebaseAuth.currentUser;
       final managerDoc = await _firestore.collection('users').doc(user.uid).get();
       return right(ManagerDTO.fromFirestore(managerDoc).toDomain());
     } on FirebaseException catch (e) {
       print(e);
-      return left(ManagerFailure.serverFailure());
+      return left(ParkingFailure.serverFailure());
     } catch (e) {
       print(e);
-      return left(ManagerFailure.unknownFailure());
+      return left(ParkingFailure.unknownFailure());
     }
   }
 }

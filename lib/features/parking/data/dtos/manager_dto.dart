@@ -21,6 +21,7 @@ abstract class ManagerDTO implements _$ManagerDTO {
     @required String displayName,
     @required String email,
     @required List<String> parkingLots,
+    //TODO: map<employeeDTO>
     @required List<EmployeeDTO> employees,
     @required UserType type,
   }) = _ManagerDTO;

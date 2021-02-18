@@ -18,7 +18,7 @@ class _$EmployeeDTOTearOff {
 
 // ignore: unused_element
   _EmployeeDTO call(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: false) String id,
       @required String displayName,
       @required AssociatedParkingLotDTO parkingLot,
       @required String phoneNumber,
@@ -46,7 +46,7 @@ const $EmployeeDTO = _$EmployeeDTOTearOff();
 
 /// @nodoc
 mixin _$EmployeeDTO {
-  @JsonKey(ignore: true)
+  @JsonKey(ignore: false)
   String get id;
   String get displayName;
   AssociatedParkingLotDTO get parkingLot;
@@ -65,7 +65,7 @@ abstract class $EmployeeDTOCopyWith<$Res> {
           EmployeeDTO value, $Res Function(EmployeeDTO) then) =
       _$EmployeeDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: false) String id,
       String displayName,
       AssociatedParkingLotDTO parkingLot,
       String phoneNumber,
@@ -125,7 +125,7 @@ abstract class _$EmployeeDTOCopyWith<$Res>
       __$EmployeeDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: false) String id,
       String displayName,
       AssociatedParkingLotDTO parkingLot,
       String phoneNumber,
@@ -175,7 +175,7 @@ class __$EmployeeDTOCopyWithImpl<$Res> extends _$EmployeeDTOCopyWithImpl<$Res>
 /// @nodoc
 class _$_EmployeeDTO extends _EmployeeDTO {
   const _$_EmployeeDTO(
-      {@JsonKey(ignore: true) this.id,
+      {@JsonKey(ignore: false) this.id,
       @required this.displayName,
       @required this.parkingLot,
       @required this.phoneNumber,
@@ -192,7 +192,7 @@ class _$_EmployeeDTO extends _EmployeeDTO {
       _$_$_EmployeeDTOFromJson(json);
 
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(ignore: false)
   final String id;
   @override
   final String displayName;
@@ -255,7 +255,7 @@ class _$_EmployeeDTO extends _EmployeeDTO {
 abstract class _EmployeeDTO extends EmployeeDTO {
   const _EmployeeDTO._() : super._();
   const factory _EmployeeDTO(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: false) String id,
       @required String displayName,
       @required AssociatedParkingLotDTO parkingLot,
       @required String phoneNumber,
@@ -266,7 +266,7 @@ abstract class _EmployeeDTO extends EmployeeDTO {
       _$_EmployeeDTO.fromJson;
 
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(ignore: false)
   String get id;
   @override
   String get displayName;

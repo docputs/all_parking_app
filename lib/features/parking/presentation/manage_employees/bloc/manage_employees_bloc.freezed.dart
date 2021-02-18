@@ -302,7 +302,7 @@ class _$ManageEmployeesStateTearOff {
   }
 
 // ignore: unused_element
-  _Error error(ManagerFailure failure) {
+  _Error error(ParkingFailure failure) {
     return _Error(
       failure,
     );
@@ -320,14 +320,14 @@ mixin _$ManageEmployeesState {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(Manager manager),
-    @required TResult error(ManagerFailure failure),
+    @required TResult error(ParkingFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
     TResult success(Manager manager),
-    TResult error(ManagerFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -404,7 +404,7 @@ class _$_Initial implements _Initial {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(Manager manager),
-    @required TResult error(ManagerFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -419,7 +419,7 @@ class _$_Initial implements _Initial {
     TResult initial(),
     TResult loading(),
     TResult success(Manager manager),
-    TResult error(ManagerFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -505,7 +505,7 @@ class _$_Loading implements _Loading {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(Manager manager),
-    @required TResult error(ManagerFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -520,7 +520,7 @@ class _$_Loading implements _Loading {
     TResult initial(),
     TResult loading(),
     TResult success(Manager manager),
-    TResult error(ManagerFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -628,7 +628,7 @@ class _$_Success implements _Success {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(Manager manager),
-    @required TResult error(ManagerFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -643,7 +643,7 @@ class _$_Success implements _Success {
     TResult initial(),
     TResult loading(),
     TResult success(Manager manager),
-    TResult error(ManagerFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -697,9 +697,9 @@ abstract class _Success implements ManageEmployeesState {
 abstract class _$ErrorCopyWith<$Res> {
   factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
       __$ErrorCopyWithImpl<$Res>;
-  $Res call({ManagerFailure failure});
+  $Res call({ParkingFailure failure});
 
-  $ManagerFailureCopyWith<$Res> get failure;
+  $ParkingFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -717,16 +717,16 @@ class __$ErrorCopyWithImpl<$Res>
     Object failure = freezed,
   }) {
     return _then(_Error(
-      failure == freezed ? _value.failure : failure as ManagerFailure,
+      failure == freezed ? _value.failure : failure as ParkingFailure,
     ));
   }
 
   @override
-  $ManagerFailureCopyWith<$Res> get failure {
+  $ParkingFailureCopyWith<$Res> get failure {
     if (_value.failure == null) {
       return null;
     }
-    return $ManagerFailureCopyWith<$Res>(_value.failure, (value) {
+    return $ParkingFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -737,7 +737,7 @@ class _$_Error implements _Error {
   const _$_Error(this.failure) : assert(failure != null);
 
   @override
-  final ManagerFailure failure;
+  final ParkingFailure failure;
 
   @override
   String toString() {
@@ -767,7 +767,7 @@ class _$_Error implements _Error {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(Manager manager),
-    @required TResult error(ManagerFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -782,7 +782,7 @@ class _$_Error implements _Error {
     TResult initial(),
     TResult loading(),
     TResult success(Manager manager),
-    TResult error(ManagerFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -825,9 +825,9 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements ManageEmployeesState {
-  const factory _Error(ManagerFailure failure) = _$_Error;
+  const factory _Error(ParkingFailure failure) = _$_Error;
 
-  ManagerFailure get failure;
+  ParkingFailure get failure;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith;
 }

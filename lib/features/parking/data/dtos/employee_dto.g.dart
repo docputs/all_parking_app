@@ -8,6 +8,7 @@ part of 'employee_dto.dart';
 
 _$_EmployeeDTO _$_$_EmployeeDTOFromJson(Map<String, dynamic> json) {
   return _$_EmployeeDTO(
+    id: json['id'] as String,
     displayName: json['displayName'] as String,
     parkingLot: json['parkingLot'] == null
         ? null
@@ -21,6 +22,7 @@ _$_EmployeeDTO _$_$_EmployeeDTOFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_EmployeeDTOToJson(_$_EmployeeDTO instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'displayName': instance.displayName,
       'parkingLot': instance.parkingLot?.toJson(),
       'phoneNumber': instance.phoneNumber,

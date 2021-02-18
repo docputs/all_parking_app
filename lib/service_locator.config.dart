@@ -19,10 +19,14 @@ import 'features/parking/domain/usecases/check_in_vehicle.dart';
 import 'features/parking/presentation/check_out/bloc/check_out_bloc.dart';
 import 'features/parking/domain/usecases/check_out_vehicle.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
+import 'features/parking/domain/usecases/delete_employee.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
 import 'features/parking/domain/usecases/edit_parking_lot.dart';
+import 'features/parking/data/repositories/employee_repository.dart';
+import 'features/parking/domain/usecases/fetch_current_manager.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
+import 'features/parking/domain/repositories/i_employee_repository.dart';
 import 'features/parking/domain/repositories/i_manager_repository.dart';
 import 'features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'features/auth/domain/repositories/i_user_repository.dart';
@@ -57,14 +61,14 @@ GetIt $initGetIt(
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
+  gh.lazySingleton<IEmployeeRepository>(
+      () => EmployeeRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IManagerRepository>(
       () => ManagerRepository(get<FirebaseFirestore>(), get<FirebaseAuth>()));
   gh.lazySingleton<IParkingLotRepository>(
       () => ParkingLotRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IUserRepository>(
       () => UserRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
-  gh.factory<ManageEmployeesBloc>(
-      () => ManageEmployeesBloc(get<IManagerRepository>()));
   gh.factory<ReportsBloc>(() => ReportsBloc());
   gh.lazySingleton<SignInEmployee>(() => SignInEmployee());
   gh.lazySingleton<SignInManager>(() => SignInManager(get<IUserRepository>()));
@@ -83,14 +87,20 @@ GetIt $initGetIt(
       CheckInVehicle(get<IParkingLotRepository>(), get<CurrentParkingLot>()));
   gh.lazySingleton<CheckOutVehicle>(() =>
       CheckOutVehicle(get<IParkingLotRepository>(), get<CurrentParkingLot>()));
+  gh.lazySingleton<DeleteEmployee>(() =>
+      DeleteEmployee(get<IManagerRepository>(), get<IEmployeeRepository>()));
   gh.lazySingleton<DeleteParkingLot>(() => DeleteParkingLot(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<EditParkingLot>(
       () => EditParkingLot(get<IParkingLotRepository>()));
+  gh.lazySingleton<FetchCurrentManager>(
+      () => FetchCurrentManager(get<IManagerRepository>()));
   gh.lazySingleton<FetchParkingLots>(() => FetchParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<GetCurrentUser>(
       () => GetCurrentUser(get<IUserRepository>()));
+  gh.factory<ManageEmployeesBloc>(() =>
+      ManageEmployeesBloc(get<DeleteEmployee>(), get<FetchCurrentManager>()));
   gh.factory<ManageParkingLotsBloc>(
       () => ManageParkingLotsBloc(get<DeleteParkingLot>()));
   gh.factory<ParkingLotWatcherBloc>(

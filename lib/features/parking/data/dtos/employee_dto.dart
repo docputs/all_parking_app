@@ -14,7 +14,7 @@ abstract class EmployeeDTO implements _$EmployeeDTO {
 
   @JsonSerializable(explicitToJson: true)
   const factory EmployeeDTO({
-    @JsonKey(ignore: true) String id,
+    @JsonKey(ignore: false) String id,
     @required String displayName,
     @required AssociatedParkingLotDTO parkingLot,
     @required String phoneNumber,
