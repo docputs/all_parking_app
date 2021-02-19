@@ -2,7 +2,7 @@ import 'package:all_parking/utils/validators.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('validateCep', () {
+  group('validateCep |', () {
     test('should return cep String when cep is valid', () {
       final ceps = ['04159-001', '12345-678', '00000-000'];
 
@@ -20,7 +20,7 @@ void main() {
     });
   });
 
-  group('validateLicensePlate', () {
+  group('validateLicensePlate |', () {
     test('should return license plate when it is valid', () {
       final plates = ['GAF1246', 'DMB3456', 'ABC1234', 'XYZ0000'];
 
@@ -38,7 +38,7 @@ void main() {
     });
   });
 
-  group('validatePhoneNumber', () {
+  group('validatePhoneNumber |', () {
     test('should return phone number when it is valid', () {
       final phoneNumbers = [
         '(11) 95320-8668',
@@ -63,6 +63,40 @@ void main() {
       ];
 
       final result = phoneNumbers.every((element) => Validators.validatePhoneNumber(element).isLeft());
+
+      expect(result, true);
+    });
+  });
+
+  group('validateCpf |', () {
+    test('should return CPF when it is valid and not required', () {
+      final cpfs = ['123.456.789-09', '477.209.578-06'];
+
+      final result = cpfs.every((element) => Validators.validateCpf(element, false).isRight());
+
+      expect(result, true);
+    });
+
+    test('should return CPF when it is valid required', () {
+      final cpfs = ['123.456.789-09', '477.209.578-06'];
+
+      final result = cpfs.every((element) => Validators.validateCpf(element, true).isRight());
+
+      expect(result, true);
+    });
+
+    test('should return Failure when CPF is invalid and not required', () {
+      final cpfs = ['123.123.123-12', '22.22.22.11', '999.999.999-99', '123.456.789.00'];
+
+      final result = cpfs.every((element) => Validators.validateCpf(element, false).isLeft());
+
+      expect(result, true);
+    });
+
+    test('should return Failure when CPF is empty required', () {
+      final cpf = '';
+
+      final result = Validators.validateCpf(cpf, true).isLeft();
 
       expect(result, true);
     });

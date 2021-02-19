@@ -57,7 +57,7 @@ class EmployeeForm extends StatelessWidget {
       builder: (context, state) => ParkingLotTextFormField(
         labelText: Messages.addEmployeeCpfLabel,
         state: state as ValidationFormState,
-        validationEither: Validators.validateCpf,
+        validationEither: (value) => Validators.validateCpf(value, true),
         onChanged: (value) => context.read<AddEmployeeBloc>().add(AddEmployeeEvent.changedCpf(value)),
         mask: Constants.cpfMask,
         keyboardType: TextInputType.number,

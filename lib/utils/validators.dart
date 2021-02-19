@@ -111,10 +111,10 @@ class Validators {
       return left(ParkingFailure.invalidField());
   }
 
-  static Either<ParkingFailure, String> validateCpf(String input) {
-    if (CPF.isValid(input))
+  static Either<ParkingFailure, String> validateCpf(String input, [bool isRequired = false]) {
+    if (CPF.isValid(input) || (!isRequired && input.isEmpty))
       return right(input);
-    else if (input.isEmpty)
+    else if (input.isEmpty && isRequired)
       return left(ParkingFailure.emptyField());
     else
       return left(ParkingFailure.invalidField());
