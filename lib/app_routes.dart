@@ -3,9 +3,9 @@ import 'package:all_parking/features/parking/presentation/manage_employees/scree
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'features/auth/presentation/sign_in/screens/sign_in_screen.dart';
-import 'features/auth/presentation/sign_up/screens/sign_up_screen.dart';
-import 'features/splash/presentation/splash_screen.dart';
+import 'features/auth/presentation/employee/sign_in/screens/sign_in_employee_screen.dart';
+import 'features/auth/presentation/manager/sign_in/screens/sign_in_screen.dart';
+import 'features/auth/presentation/manager/sign_up/screens/sign_up_screen.dart';
 import 'features/parking/domain/entities/parked_vehicle.dart';
 import 'features/parking/domain/entities/parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/screens/add_parking_lot_screen.dart';
@@ -17,6 +17,7 @@ import 'features/parking/presentation/parked_vehicles/screens/parked_vehicle_det
 import 'features/parking/presentation/parked_vehicles/screens/parked_vehicles_screen.dart';
 import 'features/parking/presentation/reports/screens/reports_screen.dart';
 import 'features/parking/presentation/select_parking_lot/screens/select_parking_lot_screen.dart';
+import 'features/splash/presentation/splash_screen.dart';
 import 'res/constants.dart';
 
 Route<dynamic> generateRoutes(RouteSettings settings) {
@@ -29,6 +30,9 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       break;
     case Constants.signInManagerRoute:
       return MaterialPageRoute(builder: (context) => const SignInScreen());
+      break;
+    case Constants.signInEmployeeRoute:
+      return MaterialPageRoute(builder: (context) => const SignInEmployeeScreen());
       break;
     case Constants.signUpManagerRoute:
       return MaterialPageRoute(builder: (context) => const SignUpScreen());

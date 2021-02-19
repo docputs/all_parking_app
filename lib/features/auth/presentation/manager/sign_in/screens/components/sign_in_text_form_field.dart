@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../widgets/default_text_field.dart';
-import '../../../../core/errors/auth_failure.dart';
+import '../../../../../../../widgets/default_text_field.dart';
+import '../../../../../core/errors/auth_failure.dart';
 import '../../bloc/sign_in_bloc.dart';
 
 class SignInTextFormField extends StatelessWidget {

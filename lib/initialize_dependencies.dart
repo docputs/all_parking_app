@@ -7,6 +7,6 @@ import 'service_locator.dart';
 Future<void> initializeDependencies() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  configureDependencies();
+  await configureDependencies();
   Intl.defaultLocale = 'pt_BR';
 }

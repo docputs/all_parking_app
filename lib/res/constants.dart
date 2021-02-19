@@ -5,6 +5,8 @@ import 'theme.dart';
 class Constants {
   const Constants._();
 
+  static const employeeKey = 'employee-token';
+
   static const splashRoute = '/';
   static const homeRoute = '/home';
   static const signInManagerRoute = '/sign-in-manager';

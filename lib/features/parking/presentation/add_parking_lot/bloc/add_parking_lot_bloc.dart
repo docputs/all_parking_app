@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:all_parking/widgets/validation_form_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import '../../../../../service_locator.dart';
 import '../../../../../utils/cep_service.dart';
 import '../../../../../utils/input_converter.dart';
 import '../../../../../utils/validators.dart';
-import '../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import '../../../core/errors/parking_failure.dart';
 import '../../../domain/entities/parking_lot.dart';
 import '../../../domain/usecases/add_parking_lot.dart';

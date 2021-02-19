@@ -1,10 +1,10 @@
+import 'package:all_parking/widgets/validation_form_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../res/messages.dart';
 import '../../../../../../utils/validators.dart';
 import '../../../../../../widgets/parking_lot_text_form_field.dart';
-import '../../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import '../../bloc/check_in_bloc.dart';
 import 'vehicle_color_dropdown_field.dart';
 import 'vehicle_type_dropdown_field.dart';

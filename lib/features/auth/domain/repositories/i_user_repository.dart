@@ -8,7 +8,6 @@ import '../entities/user.dart';
 abstract class IUserRepository {
   Future<Either<AuthFailure, Unit>> createAccount(RegisterModel registerModel);
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(SignInModel signInModel);
-  Future<Either<AuthFailure, Unit>> signInWithToken(String token);
   Future<Either<AuthFailure, Unit>> deleteAccount();
   Stream<Option<User>> onAuthStatusChanged();
   Future<Option<User>> getCurrentUser();

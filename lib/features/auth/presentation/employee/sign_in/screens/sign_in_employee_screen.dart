@@ -8,9 +8,6 @@ class SignInEmployeeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       title: 'Acesse sua conta',
-      body: Center(
-        child: Text('employee'),
-      ),
     );
   }
 }

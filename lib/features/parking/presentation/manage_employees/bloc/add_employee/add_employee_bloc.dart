@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:all_parking/features/auth/domain/usecases/sign_up_employee.dart';
-import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/widgets/validation_form_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

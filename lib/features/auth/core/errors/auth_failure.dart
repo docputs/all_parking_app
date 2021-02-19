@@ -9,6 +9,7 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure(String message) = _AuthFailure;
 
   factory AuthFailure.emptyField() => const AuthFailure(Messages.emptyField);
+  factory AuthFailure.autoSignInFailed() => const AuthFailure(Messages.autoSignInFailed);
   factory AuthFailure.invalidField() => const AuthFailure(Messages.invalidField);
   factory AuthFailure.displayNameTooLong() => const AuthFailure(Messages.displayNameTooLong);
   factory AuthFailure.emailAlreadyInUse() => const AuthFailure(Messages.emailAlreadyInUse);

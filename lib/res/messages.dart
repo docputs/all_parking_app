@@ -34,6 +34,7 @@ class Messages {
   static const displayNameTooLong = 'Excedeu o limite de caracteres';
   static const passwordsDontMatch = 'Senhas não conferem';
   static const noCurrentParkingLot = 'Nenhum estacionamento selecionado';
+  static const autoSignInFailed = 'Falhou ao autenticar';
 
   //ParkingFailure
   static const invalidParkingLotTitle = 'Nome inválido';

@@ -1,3 +1,4 @@
+import 'package:all_parking/widgets/validation_form_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,7 +6,6 @@ import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
 import '../../../../../../utils/validators.dart';
 import '../../../../../../widgets/parking_lot_text_form_field.dart';
-import '../../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import '../../bloc/check_in_bloc.dart';
 
 class OwnerDataForm extends StatelessWidget {

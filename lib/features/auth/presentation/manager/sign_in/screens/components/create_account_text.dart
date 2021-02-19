@@ -1,8 +1,8 @@
-import '../../../../../../res/constants.dart';
+import '../../../../../../../res/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../res/theme.dart';
+import '../../../../../../../res/theme.dart';
 
 class CreateAccountText extends StatefulWidget {
   const CreateAccountText({Key key}) : super(key: key);

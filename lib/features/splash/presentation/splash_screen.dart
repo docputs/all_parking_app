@@ -1,4 +1,4 @@
-import 'package:all_parking/features/splash/presentation/bloc/splash_bloc.dart';
+import 'package:all_parking/features/splash/presentation/splash_bloc/splash_bloc.dart';
 import 'package:all_parking/features/splash/presentation/splash_employee_screen.dart';
 import 'package:all_parking/features/splash/presentation/splash_manager_screen.dart';
 import 'package:flutter/material.dart';

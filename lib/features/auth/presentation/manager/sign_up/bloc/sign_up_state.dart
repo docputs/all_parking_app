@@ -25,7 +25,3 @@ abstract class SignUpState with _$SignUpState {
         signUpSuccessOrFailureOption: none(),
       );
 }
-
-abstract class ValidationFormState {
-  bool get showErrorMessages;
-}

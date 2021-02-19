@@ -2,10 +2,10 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../res/constants.dart';
-import '../../../../../res/messages.dart';
-import '../../../../../service_locator.dart';
-import '../../../../../widgets/app_scaffold.dart';
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/messages.dart';
+import '../../../../../../service_locator.dart';
+import '../../../../../../widgets/app_scaffold.dart';
 import '../bloc/sign_up_bloc.dart';
 import 'components/sign_up_form.dart';
 

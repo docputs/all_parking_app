@@ -89,19 +89,4 @@ class UserRepository implements IUserRepository {
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
   }
-
-  @override
-  Future<Either<AuthFailure, Unit>> signInWithToken(String token) async {
-    try {
-      final doc = await _firestore.collection('users').doc(token).get();
-      if (doc.exists) return right(unit);
-      return left(AuthFailure.serverFailure());
-    } on FirebaseException catch (e) {
-      print(e);
-      return left(AuthFailure.serverFailure());
-    } catch (e) {
-      print(e);
-      return left(AuthFailure.unknownFailure());
-    }
-  }
 }
