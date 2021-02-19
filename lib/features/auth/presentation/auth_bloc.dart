@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../domain/entities/user.dart';
-import '../domain/repositories/i_user_repository.dart';
+import '../domain/repositories/i_manager_auth_repository.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -13,7 +13,7 @@ part 'auth_state.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final IUserRepository _userRepository;
+  final IManagerAuthRepository _userRepository;
 
   AuthBloc(this._userRepository) : super(AuthState.initializing());
 

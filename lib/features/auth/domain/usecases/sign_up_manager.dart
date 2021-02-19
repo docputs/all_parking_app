@@ -5,11 +5,11 @@ import 'package:injectable/injectable.dart';
 import '../../../../utils/validators.dart';
 import '../../core/errors/auth_failure.dart';
 import '../../data/models/register_model.dart';
-import '../repositories/i_user_repository.dart';
+import '../repositories/i_manager_auth_repository.dart';
 
 @lazySingleton
 class SignUpManager {
-  final IUserRepository _userRepository;
+  final IManagerAuthRepository _userRepository;
 
   const SignUpManager(this._userRepository) : assert(_userRepository != null);
 

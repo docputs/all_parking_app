@@ -8,12 +8,12 @@ import 'package:injectable/injectable.dart';
 import '../../core/errors/auth_failure.dart';
 import '../../core/util/firebase_user_mapper.dart';
 import '../../domain/entities/user.dart';
-import '../../domain/repositories/i_user_repository.dart';
+import '../../domain/repositories/i_manager_auth_repository.dart';
 import '../models/register_model.dart';
 import '../models/sign_in_model.dart';
 
-@LazySingleton(as: IUserRepository)
-class UserRepository implements IUserRepository {
+@LazySingleton(as: IManagerAuthRepository)
+class UserRepository implements IManagerAuthRepository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
 

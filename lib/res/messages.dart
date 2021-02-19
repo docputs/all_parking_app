@@ -20,6 +20,7 @@ class Messages {
   static const noDataToShow = 'Sem dados para exibir';
 
   //AuthFailure
+  static const employeeNotFound = 'Funcionário não encontrado';
   static const emailBadlyFormatted = 'E-mail inválido';
   static const emptyField = 'Campo obrigatório';
   static const invalidField = 'Campo inválido';
@@ -58,6 +59,11 @@ class Messages {
   static const signUpPasswordLabel = 'Senha';
   static const signUpConfirmPasswordLabel = 'Confirme sua senha';
   static const signUpCreateAccountButton = 'CRIAR CONTA';
+
+  //SignInEmployeeScreen
+  static const signInEmployeeTokenLabel = 'Código';
+  static const signInEmployeeInsertTokenInstruction = 'Insira o seu código de funcionário abaixo';
+  static const signInEmployeeSubmitButton = 'ENTRAR';
 
   //HomeScreen
   static const defaultAppBarTitle = 'All Parking';

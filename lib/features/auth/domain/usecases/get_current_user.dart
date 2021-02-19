@@ -3,11 +3,11 @@ import 'package:injectable/injectable.dart';
 
 import '../../core/errors/auth_failure.dart';
 import '../entities/user.dart';
-import '../repositories/i_user_repository.dart';
+import '../repositories/i_manager_auth_repository.dart';
 
 @lazySingleton
 class GetCurrentUser {
-  final IUserRepository _repository;
+  final IManagerAuthRepository _repository;
 
   const GetCurrentUser(this._repository) : assert(_repository != null);
 

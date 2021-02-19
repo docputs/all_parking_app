@@ -25,12 +25,19 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
     return optionOf(employeeToken);
   }
 
+  Future<void> _persistToken(String token) {
+    return _sharedPreferences.setString(Constants.employeeKey, token);
+  }
+
   @override
   Future<Either<AuthFailure, Unit>> signInWithToken(String token) async {
     try {
       final doc = await _firestore.collection('users').doc(token).get();
-      if (doc.exists) return right(unit);
-      return left(AuthFailure.serverFailure());
+      if (doc.exists) {
+        await _persistToken(token);
+        return right(unit);
+      }
+      return left(AuthFailure.employeeNotFound());
     } on FirebaseException catch (e) {
       print(e);
       return left(AuthFailure.serverFailure());
