@@ -43,6 +43,7 @@ import 'features/auth/domain/usecases/sign_in_manager.dart';
 import 'features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'features/auth/domain/usecases/sign_up_employee.dart';
 import 'features/auth/domain/usecases/sign_up_manager.dart';
+import 'features/splash/presentation/bloc/splash_bloc.dart';
 import 'features/auth/data/repositories/user_repository.dart';
 import 'features/parking/domain/usecases/watch_all_parking_lots.dart';
 import 'features/parking/domain/usecases/watch_parking_lot.dart';
@@ -72,14 +73,12 @@ GetIt $initGetIt(
   gh.factory<ReportsBloc>(() => ReportsBloc());
   gh.lazySingleton<SignInEmployee>(() => SignInEmployee());
   gh.lazySingleton<SignInManager>(() => SignInManager(get<IUserRepository>()));
-  gh.lazySingleton<SignUpEmployee>(
-      () => SignUpEmployee(get<IUserRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<SignUpManager>(() => SignUpManager(get<IUserRepository>()));
+  gh.factory<SplashBloc>(() => SplashBloc());
   gh.lazySingleton<WatchAllParkingLots>(() => WatchAllParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<WatchParkingLot>(() =>
       WatchParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
-  gh.factory<AddEmployeeBloc>(() => AddEmployeeBloc(get<SignUpEmployee>()));
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IUserRepository>()));
@@ -107,6 +106,12 @@ GetIt $initGetIt(
       () => ParkingLotWatcherBloc(get<WatchAllParkingLots>()));
   gh.factory<SignInBloc>(() => SignInBloc(get<SignInManager>()));
   gh.factory<SignUpBloc>(() => SignUpBloc(get<SignUpManager>()));
+  gh.lazySingleton<SignUpEmployee>(() => SignUpEmployee(
+        get<FetchCurrentManager>(),
+        get<IEmployeeRepository>(),
+        get<IManagerRepository>(),
+      ));
+  gh.factory<AddEmployeeBloc>(() => AddEmployeeBloc(get<SignUpEmployee>()));
   gh.factory<AddParkingLotBloc>(
       () => AddParkingLotBloc(get<AddParkingLot>(), get<EditParkingLot>()));
   gh.factory<CheckInBloc>(() => CheckInBloc(get<CheckInVehicle>()));

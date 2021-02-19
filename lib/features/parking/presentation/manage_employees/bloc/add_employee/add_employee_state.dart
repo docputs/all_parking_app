@@ -6,7 +6,7 @@ abstract class AddEmployeeState with _$AddEmployeeState {
   const factory AddEmployeeState({
     @required Employee employee,
     @required bool isSubmitting,
-    @required Option<Either<AuthFailure, Unit>> saveFailureOrSuccessOption,
+    @required Option<Either<ParkingFailure, Unit>> saveFailureOrSuccessOption,
     @required bool showErrorMessages,
   }) = _AddEmployeeState;
 

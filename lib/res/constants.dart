@@ -7,8 +7,9 @@ class Constants {
 
   static const splashRoute = '/';
   static const homeRoute = '/home';
-  static const signInRoute = '/signIn';
-  static const signUpRoute = '/signUp';
+  static const signInManagerRoute = '/sign-in-manager';
+  static const signUpManagerRoute = '/sign-up-manager';
+  static const signInEmployeeRoute = '/sign-in-employee';
 
   static const addParkingLotRoute = '/home/add-parking-lot';
   static const selectParkingLotRoute = '/home/select-parking-lot';

@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 
 import 'features/auth/presentation/sign_in/screens/sign_in_screen.dart';
 import 'features/auth/presentation/sign_up/screens/sign_up_screen.dart';
-import 'features/auth/presentation/splash/splash_screen.dart';
+import 'features/splash/presentation/splash_screen.dart';
 import 'features/parking/domain/entities/parked_vehicle.dart';
 import 'features/parking/domain/entities/parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/screens/add_parking_lot_screen.dart';
@@ -27,10 +27,10 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
     case Constants.homeRoute:
       return MaterialPageRoute(builder: (context) => const HomeScreen());
       break;
-    case Constants.signInRoute:
+    case Constants.signInManagerRoute:
       return MaterialPageRoute(builder: (context) => const SignInScreen());
       break;
-    case Constants.signUpRoute:
+    case Constants.signUpManagerRoute:
       return MaterialPageRoute(builder: (context) => const SignUpScreen());
       break;
     case Constants.addParkingLotRoute:

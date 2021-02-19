@@ -1,18 +1,17 @@
+import 'package:all_parking/features/auth/presentation/auth_bloc.dart';
+import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../res/constants.dart';
-import '../../../parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
-import '../auth_bloc.dart';
-
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key key}) : super(key: key);
+class SplashManagerScreen extends StatefulWidget {
+  const SplashManagerScreen({Key key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashManagerScreenState createState() => _SplashManagerScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashManagerScreenState extends State<SplashManagerScreen> {
   @override
   void initState() {
     super.initState();
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context.read<ParkingLotWatcherBloc>().add(const ParkingLotWatcherEvent.watchStarted());
             return Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
           },
-          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
+          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInManagerRoute),
         );
       },
       child: const Scaffold(body: Center(child: CircularProgressIndicator())),

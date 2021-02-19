@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
 import 'package:all_parking/features/auth/domain/usecases/sign_up_employee.dart';
 import 'package:all_parking/features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:bloc/bloc.dart';
@@ -62,7 +62,7 @@ class AddEmployeeBloc extends Bloc<AddEmployeeEvent, AddEmployeeState> {
   }
 
   Stream<AddEmployeeState> _mapSubmitted() async* {
-    Either<AuthFailure, Unit> failureOrSuccess;
+    Either<ParkingFailure, Unit> failureOrSuccess;
 
     yield state.copyWith(
       isSubmitting: true,

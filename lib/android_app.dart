@@ -1,3 +1,4 @@
+import 'package:all_parking/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -27,7 +28,7 @@ class AndroidApp extends StatelessWidget {
           ],
           supportedLocales: [const Locale('pt', 'BR')],
           debugShowCheckedModeBanner: false,
-          title: 'All Parking',
+          title: AppConfig.title,
           theme: buildThemeData(),
           onGenerateRoute: generateRoutes,
         ),

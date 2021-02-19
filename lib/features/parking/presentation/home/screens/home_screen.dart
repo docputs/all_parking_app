@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.maybeWhen(
-          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
+          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInManagerRoute),
           orElse: () {},
         );
       },

@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/data/dtos/employee_dto.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/repositories/i_employee_repository.dart';
@@ -12,9 +13,18 @@ class EmployeeRepository implements IEmployeeRepository {
   const EmployeeRepository(this._firestore) : assert(_firestore != null);
 
   @override
-  Future<Either<ParkingFailure, Unit>> create(Employee employee) {
-    // TODO: implement create
-    throw UnimplementedError();
+  Future<Either<ParkingFailure, Unit>> create(Employee employee) async {
+    try {
+      final employeeDTO = EmployeeDTO.fromDomain(employee);
+      await _firestore.collection('users').doc(employee.id).set(employeeDTO.toJson());
+      return right(unit);
+    } on FirebaseException catch (e) {
+      print(e);
+      return left(ParkingFailure.serverFailure());
+    } catch (e) {
+      print(e);
+      return left(ParkingFailure.unknownFailure());
+    }
   }
 
   @override

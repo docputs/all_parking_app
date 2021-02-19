@@ -16,21 +16,7 @@ class DefaultDrawer extends StatelessWidget {
       child: Column(
         children: [
           Expanded(child: _buildDrawerHeader()),
-          Expanded(
-            flex: 3,
-            child: Column(
-              children: [
-                ...DrawerMessages.items.map((item) => DrawerListTile(item)).toList(),
-                DrawerListTile(
-                  DrawerItem(
-                    Messages.logoutLabel,
-                    icon: Icons.logout,
-                    customOnTap: () => context.read<AuthBloc>().add(const AuthEvent.signedOut()),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          Expanded(flex: 3, child: _buildDrawerItems(context)),
         ],
       ),
     );
@@ -63,6 +49,21 @@ class DefaultDrawer extends StatelessWidget {
           },
         );
       },
+    );
+  }
+
+  Widget _buildDrawerItems(BuildContext context) {
+    return Column(
+      children: [
+        ...DrawerMessages.items.map((item) => DrawerListTile(item)).toList(),
+        DrawerListTile(
+          DrawerItem(
+            Messages.logoutLabel,
+            icon: Icons.logout,
+            customOnTap: () => context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -23,7 +23,7 @@ void main() {
     final token = '1824ea40-6663-11eb-8bd0-8745b8b6d82f';
     await mockFirestore.collection('users').doc(employeeId).set({});
 
-    final result = await repository.signInEmployee(token);
+    final result = await repository.signInWithToken(token);
 
     expect(result, Right(unit));
   });

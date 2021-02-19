@@ -1,7 +1,5 @@
 import 'package:all_parking/features/auth/core/util/firestore_user_mapper.dart';
-import 'package:all_parking/features/parking/data/dtos/employee_dto.dart';
 import 'package:all_parking/features/parking/data/dtos/manager_dto.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
@@ -93,22 +91,7 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> addEmployee(Employee employee) async {
-    try {
-      final employeeDTO = EmployeeDTO.fromDomain(employee);
-      await _firestore.collection('users').doc(employee.id).set(employeeDTO.toJson());
-      return right(unit);
-    } on FirebaseException catch (e) {
-      print(e);
-      return left(AuthFailure.serverFailure());
-    } catch (e) {
-      print(e);
-      return left(AuthFailure.unknownFailure());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> signInEmployee(String token) async {
+  Future<Either<AuthFailure, Unit>> signInWithToken(String token) async {
     try {
       final doc = await _firestore.collection('users').doc(token).get();
       if (doc.exists) return right(unit);

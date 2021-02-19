@@ -776,7 +776,7 @@ class _$AddEmployeeStateTearOff {
   _AddEmployeeState call(
       {@required Employee employee,
       @required bool isSubmitting,
-      @required Option<Either<AuthFailure, Unit>> saveFailureOrSuccessOption,
+      @required Option<Either<ParkingFailure, Unit>> saveFailureOrSuccessOption,
       @required bool showErrorMessages}) {
     return _AddEmployeeState(
       employee: employee,
@@ -795,7 +795,7 @@ const $AddEmployeeState = _$AddEmployeeStateTearOff();
 mixin _$AddEmployeeState {
   Employee get employee;
   bool get isSubmitting;
-  Option<Either<AuthFailure, Unit>> get saveFailureOrSuccessOption;
+  Option<Either<ParkingFailure, Unit>> get saveFailureOrSuccessOption;
   bool get showErrorMessages;
 
   @JsonKey(ignore: true)
@@ -810,7 +810,7 @@ abstract class $AddEmployeeStateCopyWith<$Res> {
   $Res call(
       {Employee employee,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> saveFailureOrSuccessOption,
+      Option<Either<ParkingFailure, Unit>> saveFailureOrSuccessOption,
       bool showErrorMessages});
 }
 
@@ -836,7 +836,7 @@ class _$AddEmployeeStateCopyWithImpl<$Res>
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
-          : saveFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : saveFailureOrSuccessOption as Option<Either<ParkingFailure, Unit>>,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -854,7 +854,7 @@ abstract class _$AddEmployeeStateCopyWith<$Res>
   $Res call(
       {Employee employee,
       bool isSubmitting,
-      Option<Either<AuthFailure, Unit>> saveFailureOrSuccessOption,
+      Option<Either<ParkingFailure, Unit>> saveFailureOrSuccessOption,
       bool showErrorMessages});
 }
 
@@ -882,7 +882,7 @@ class __$AddEmployeeStateCopyWithImpl<$Res>
           isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
-          : saveFailureOrSuccessOption as Option<Either<AuthFailure, Unit>>,
+          : saveFailureOrSuccessOption as Option<Either<ParkingFailure, Unit>>,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -909,7 +909,7 @@ class _$_AddEmployeeState implements _AddEmployeeState {
   @override
   final bool isSubmitting;
   @override
-  final Option<Either<AuthFailure, Unit>> saveFailureOrSuccessOption;
+  final Option<Either<ParkingFailure, Unit>> saveFailureOrSuccessOption;
   @override
   final bool showErrorMessages;
 
@@ -957,7 +957,7 @@ abstract class _AddEmployeeState
   const factory _AddEmployeeState(
       {@required Employee employee,
       @required bool isSubmitting,
-      @required Option<Either<AuthFailure, Unit>> saveFailureOrSuccessOption,
+      @required Option<Either<ParkingFailure, Unit>> saveFailureOrSuccessOption,
       @required bool showErrorMessages}) = _$_AddEmployeeState;
 
   @override
@@ -965,7 +965,7 @@ abstract class _AddEmployeeState
   @override
   bool get isSubmitting;
   @override
-  Option<Either<AuthFailure, Unit>> get saveFailureOrSuccessOption;
+  Option<Either<ParkingFailure, Unit>> get saveFailureOrSuccessOption;
   @override
   bool get showErrorMessages;
   @override

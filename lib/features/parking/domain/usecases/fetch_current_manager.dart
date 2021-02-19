@@ -10,7 +10,7 @@ class FetchCurrentManager {
 
   const FetchCurrentManager(this._managerRepository) : assert(_managerRepository != null);
 
-  Future<Either<ParkingFailure, Manager>> call()  {
-   return _managerRepository.read();
+  Future<Either<ParkingFailure, Manager>> call() {
+    return _managerRepository.read();
   }
 }
