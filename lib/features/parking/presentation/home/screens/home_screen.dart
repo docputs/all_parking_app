@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +17,19 @@ import '../../../../auth/presentation/auth_bloc.dart';
 import 'components/custom_app_bar.dart';
 import 'components/parking_lot_dashboard.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ParkingLotWatcherBloc>().add(const ParkingLotWatcherEvent.watchStarted());
+  }
 
   @override
   Widget build(BuildContext context) {

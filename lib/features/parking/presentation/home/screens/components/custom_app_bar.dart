@@ -1,3 +1,4 @@
+import 'package:all_parking/app_config.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,12 +22,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               (parkingLot) => parkingLot.title,
             ),
           ),
-          actions: [
-            IconButton(
-              icon: Icon(currentParkingLot.isEmpty ? Icons.add : Icons.place),
-              onPressed: () => _calculateAppBarNavigation(context, currentParkingLot),
-            ),
-          ],
+          actions: _calculateActionsFromUserType(currentParkingLot, context),
         );
       },
     );
@@ -44,5 +40,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             }
           })
         : Navigator.of(context).pushNamed(Constants.selectParkingLotRoute);
+  }
+
+  List<Widget> _calculateActionsFromUserType(CurrentParkingLot currentParkingLot, BuildContext context) {
+    return AppConfig.isManager
+        ? [
+            IconButton(
+              icon: Icon(currentParkingLot.isEmpty ? Icons.add : Icons.place),
+              onPressed: () => _calculateAppBarNavigation(context, currentParkingLot),
+            ),
+          ]
+        : null;
   }
 }

@@ -86,8 +86,6 @@ Future<GetIt> $initGetIt(
   gh.factory<SplashBloc>(() => SplashBloc());
   gh.lazySingleton<WatchAllParkingLots>(() => WatchAllParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
-  gh.lazySingleton<WatchParkingLot>(() =>
-      WatchParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IManagerAuthRepository>()));
@@ -111,8 +109,6 @@ Future<GetIt> $initGetIt(
       ManageEmployeesBloc(get<DeleteEmployee>(), get<FetchCurrentManager>()));
   gh.factory<ManageParkingLotsBloc>(
       () => ManageParkingLotsBloc(get<DeleteParkingLot>()));
-  gh.factory<ParkingLotWatcherBloc>(
-      () => ParkingLotWatcherBloc(get<WatchAllParkingLots>()));
   gh.factory<SignInBloc>(() => SignInBloc(get<SignInManager>()));
   gh.lazySingleton<SignInEmployee>(
       () => SignInEmployee(get<IEmployeeAuthRepository>()));
@@ -124,6 +120,8 @@ Future<GetIt> $initGetIt(
         get<IEmployeeRepository>(),
         get<IManagerRepository>(),
       ));
+  gh.lazySingleton<WatchParkingLot>(() => WatchParkingLot(
+      get<IParkingLotRepository>(), get<IEmployeeAuthRepository>()));
   gh.factory<AddEmployeeBloc>(() => AddEmployeeBloc(get<SignUpEmployee>()));
   gh.factory<AddParkingLotBloc>(
       () => AddParkingLotBloc(get<AddParkingLot>(), get<EditParkingLot>()));
@@ -135,6 +133,8 @@ Future<GetIt> $initGetIt(
       get<IEmployeeAuthRepository>(), get<AutoSignInEmployee>()));
   gh.lazySingleton<GetCurrentUser>(() => GetCurrentUser(
       get<IManagerAuthRepository>(), get<IEmployeeAuthRepository>()));
+  gh.factory<ParkingLotWatcherBloc>(() => ParkingLotWatcherBloc(
+      get<WatchAllParkingLots>(), get<WatchParkingLot>()));
   return get;
 }
 

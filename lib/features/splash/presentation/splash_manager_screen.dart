@@ -24,10 +24,7 @@ class _SplashManagerScreenState extends State<SplashManagerScreen> {
       listener: (context, state) {
         state.when(
           initializing: () => null,
-          authenticated: (_) {
-            context.read<ParkingLotWatcherBloc>().add(const ParkingLotWatcherEvent.watchStarted());
-            return Navigator.of(context).pushReplacementNamed(Constants.homeRoute);
-          },
+          authenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
           unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInManagerRoute),
         );
       },
