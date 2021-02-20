@@ -1,5 +1,7 @@
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
+import 'package:all_parking/features/auth/core/errors/not_authenticated_exception.dart';
 import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
+import 'package:all_parking/features/parking/data/dtos/employee_dto.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
@@ -15,8 +17,20 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
   const EmployeeAuthRepository(this._sharedPreferences, this._firestore);
 
   @override
-  Future<Option<Employee>> getCurrentEmployee() {
-    throw UnimplementedError();
+  Future<Option<Employee>> getCurrentEmployee() async {
+    try {
+      final tokenOption = await getPersistentToken();
+      final token = tokenOption.getOrElse(() => throw NotAuthenticatedException());
+      final doc = await _firestore.collection('users').doc(token).get();
+      final employeeDTO = EmployeeDTO.fromFirestore(doc);
+      return optionOf(employeeDTO.toDomain());
+    } on FirebaseException catch (e) {
+      print(e);
+      return none();
+    } catch (e) {
+      print(e);
+      return none();
+    }
   }
 
   @override

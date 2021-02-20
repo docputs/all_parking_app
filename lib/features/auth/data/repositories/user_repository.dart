@@ -1,5 +1,5 @@
-import 'package:all_parking/features/auth/core/util/firestore_user_mapper.dart';
 import 'package:all_parking/features/parking/data/dtos/manager_dto.dart';
+import 'package:all_parking/features/parking/domain/entities/manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
@@ -13,11 +13,11 @@ import '../models/register_model.dart';
 import '../models/sign_in_model.dart';
 
 @LazySingleton(as: IManagerAuthRepository)
-class UserRepository implements IManagerAuthRepository {
+class ManagerAuthRepository implements IManagerAuthRepository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
 
-  const UserRepository(this._firebaseAuth, this._firestore) : assert(_firebaseAuth != null, _firestore != null);
+  const ManagerAuthRepository(this._firebaseAuth, this._firestore) : assert(_firebaseAuth != null, _firestore != null);
 
   @override
   Future<Either<AuthFailure, Unit>> createAccount(RegisterModel registerModel) async {
@@ -49,11 +49,12 @@ class UserRepository implements IManagerAuthRepository {
   }
 
   @override
-  Future<Option<User>> getCurrentUser() async {
+  Future<Option<Manager>> getCurrentManager() async {
     try {
       final user = _firebaseAuth.currentUser;
       final doc = await _firestore.collection('users').doc(user.uid).get();
-      return optionOf(FirestoreUserConverter.convert(doc));
+      final manager = ManagerDTO.fromFirestore(doc).toDomain();
+      return optionOf(manager);
     } on FirebaseException catch (e) {
       print(e);
       return none();

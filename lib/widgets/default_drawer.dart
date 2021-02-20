@@ -1,3 +1,5 @@
+import 'package:all_parking/app_config.dart';
+import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,32 +25,10 @@ class DefaultDrawer extends StatelessWidget {
   }
 
   Widget _buildDrawerHeader() {
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
-        return state.maybeWhen(
-          orElse: () => const SizedBox(),
-          authenticated: (user) {
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-              color: AppColors.primaryColor,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    user.displayName,
-                    style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
-                  ),
-                  Text(
-                    Messages.userType(user.type),
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      },
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      color: AppColors.primaryColor,
+      child: const DisplayNameAndUserType(),
     );
   }
 
@@ -62,6 +42,50 @@ class DefaultDrawer extends StatelessWidget {
             icon: Icons.logout,
             customOnTap: () => context.read<AuthBloc>().add(const AuthEvent.signedOut()),
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class DisplayNameAndUserType extends StatelessWidget {
+  const DisplayNameAndUserType({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppConfig.isManager ? _blocBuilderWhenManager() : _blocBuilderWhenEmployee();
+  }
+
+  Widget _blocBuilderWhenManager() {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        final manager = state.maybeWhen(orElse: () => null, authenticated: (manager) => manager);
+        return _buildColumn(displayName: manager.displayName);
+      },
+    );
+  }
+
+  Widget _blocBuilderWhenEmployee() {
+    return BlocBuilder<EmployeeAuthBloc, EmployeeAuthState>(
+      builder: (context, state) {
+        final employee = state.maybeWhen(orElse: () => null, authenticated: (employee) => employee);
+        return _buildColumn(displayName: employee.displayName);
+      },
+    );
+  }
+
+  Widget _buildColumn({@required String displayName}) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          displayName,
+          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 22),
+        ),
+        Text(
+          Messages.signedInUserType(),
+          style: const TextStyle(color: Colors.white, fontSize: 12),
         ),
       ],
     );

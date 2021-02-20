@@ -37,6 +37,7 @@ import 'features/parking/domain/repositories/i_manager_repository.dart';
 import 'features/parking/domain/repositories/i_parking_lot_repository.dart';
 import 'features/parking/presentation/manage_employees/bloc/manage_employees_bloc.dart';
 import 'features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
+import 'features/auth/data/repositories/user_repository.dart';
 import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
 import 'features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
@@ -50,7 +51,6 @@ import 'features/auth/presentation/manager/sign_up/bloc/sign_up_bloc.dart';
 import 'features/auth/domain/usecases/sign_up_employee.dart';
 import 'features/auth/domain/usecases/sign_up_manager.dart';
 import 'features/splash/presentation/splash_bloc/splash_bloc.dart';
-import 'features/auth/data/repositories/user_repository.dart';
 import 'features/parking/domain/usecases/watch_all_parking_lots.dart';
 import 'features/parking/domain/usecases/watch_parking_lot.dart';
 
@@ -70,8 +70,8 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
   gh.lazySingleton<IEmployeeRepository>(
       () => EmployeeRepository(get<FirebaseFirestore>()));
-  gh.lazySingleton<IManagerAuthRepository>(
-      () => UserRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
+  gh.lazySingleton<IManagerAuthRepository>(() =>
+      ManagerAuthRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
   gh.lazySingleton<IManagerRepository>(
       () => ManagerRepository(get<FirebaseFirestore>(), get<FirebaseAuth>()));
   gh.lazySingleton<IParkingLotRepository>(
@@ -105,8 +105,6 @@ Future<GetIt> $initGetIt(
       () => FetchCurrentManager(get<IManagerRepository>()));
   gh.lazySingleton<FetchParkingLots>(() => FetchParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
-  gh.lazySingleton<GetCurrentUser>(
-      () => GetCurrentUser(get<IManagerAuthRepository>()));
   gh.lazySingleton<IEmployeeAuthRepository>(() => EmployeeAuthRepository(
       get<SharedPreferences>(), get<FirebaseFirestore>()));
   gh.factory<ManageEmployeesBloc>(() =>
@@ -135,6 +133,8 @@ Future<GetIt> $initGetIt(
   gh.factory<CheckOutBloc>(() => CheckOutBloc(get<CheckOutVehicle>()));
   gh.factory<EmployeeAuthBloc>(() => EmployeeAuthBloc(
       get<IEmployeeAuthRepository>(), get<AutoSignInEmployee>()));
+  gh.lazySingleton<GetCurrentUser>(() => GetCurrentUser(
+      get<IManagerAuthRepository>(), get<IEmployeeAuthRepository>()));
   return get;
 }
 

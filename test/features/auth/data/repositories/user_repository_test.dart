@@ -10,11 +10,11 @@ class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 void main() {
   MockFirestoreInstance mockFirestore;
   MockFirebaseAuth mockFirebaseAuth;
-  UserRepository repository;
+  ManagerAuthRepository repository;
 
   setUp(() {
     mockFirestore = MockFirestoreInstance();
     mockFirebaseAuth = MockFirebaseAuth();
-    repository = UserRepository(mockFirebaseAuth, mockFirestore);
+    repository = ManagerAuthRepository(mockFirebaseAuth, mockFirestore);
   });
 }

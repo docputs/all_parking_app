@@ -1,4 +1,5 @@
 import 'package:all_parking/app_config.dart';
+import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -17,6 +18,7 @@ class AndroidApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<AuthBloc>()),
+        BlocProvider(create: (context) => getIt<EmployeeAuthBloc>()),
         BlocProvider(create: (context) => getIt<ParkingLotWatcherBloc>()),
       ],
       child: ChangeNotifierProvider(

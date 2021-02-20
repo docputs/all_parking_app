@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'package:all_parking/features/auth/domain/usecases/auto_sign_in_employee.dart';
+import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -29,7 +30,7 @@ class EmployeeAuthBloc extends Bloc<EmployeeAuthEvent, EmployeeAuthState> {
     final employeeOption = await _authRepository.getCurrentEmployee();
     yield employeeOption.fold(
       () => const EmployeeAuthState.unauthenticated(),
-      (_) => const EmployeeAuthState.authenticated(),
+      (employee) => EmployeeAuthState.authenticated(employee),
     );
   }
 
@@ -37,7 +38,10 @@ class EmployeeAuthBloc extends Bloc<EmployeeAuthEvent, EmployeeAuthState> {
     final signInEither = await _autoSignInEmployee();
     yield signInEither.fold(
       (_) => const EmployeeAuthState.unauthenticated(),
-      (_) => const EmployeeAuthState.authenticated(),
+      (_) {
+        add(const EmployeeAuthEvent.authCheckRequested());
+        return state;
+      },
     );
   }
 }

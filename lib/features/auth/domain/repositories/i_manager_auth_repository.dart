@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/domain/entities/manager.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../core/errors/auth_failure.dart';
@@ -10,6 +11,6 @@ abstract class IManagerAuthRepository {
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(SignInModel signInModel);
   Future<Either<AuthFailure, Unit>> deleteAccount();
   Stream<Option<User>> onAuthStatusChanged();
-  Future<Option<User>> getCurrentUser();
+  Future<Option<Manager>> getCurrentManager();
   Future<void> signOut();
 }

@@ -1,3 +1,4 @@
+import 'package:all_parking/app_config.dart';
 import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,6 +17,7 @@ class Messages {
   const Messages._();
 
   //General
+  static String signedInUserType() => AppConfig.isManager ? 'Administrador' : 'Funcionário';
   static String userType(UserType type) => type == UserType.manager ? 'Administrador' : 'Funcionário';
   static const noDataToShow = 'Sem dados para exibir';
 

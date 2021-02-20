@@ -3,23 +3,29 @@ import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../service_locator.dart';
-
-class SplashEmployeeScreen extends StatelessWidget {
+class SplashEmployeeScreen extends StatefulWidget {
   const SplashEmployeeScreen({Key key}) : super(key: key);
 
   @override
+  _SplashEmployeeScreenState createState() => _SplashEmployeeScreenState();
+}
+
+class _SplashEmployeeScreenState extends State<SplashEmployeeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<EmployeeAuthBloc>().add(const EmployeeAuthEvent.tryAutoSignIn());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<EmployeeAuthBloc>()..add(const EmployeeAuthEvent.tryAutoSignIn()),
-      child: BlocListener<EmployeeAuthBloc, EmployeeAuthState>(
-        listener: (context, state) => state.when(
-          initial: () => null,
-          authenticated: () => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
-          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInEmployeeRoute),
-        ),
-        child: const Scaffold(body: Center(child: CircularProgressIndicator())),
+    return BlocListener<EmployeeAuthBloc, EmployeeAuthState>(
+      listener: (context, state) => state.when(
+        initial: () => null,
+        authenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
+        unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInEmployeeRoute),
       ),
+      child: const Scaffold(body: Center(child: CircularProgressIndicator())),
     );
   }
 }
