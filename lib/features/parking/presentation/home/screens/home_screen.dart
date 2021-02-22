@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:all_parking/app_config.dart';
+import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
 import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:flutter/material.dart';
@@ -33,20 +35,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        state.maybeWhen(
-          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInManagerRoute),
-          orElse: () {},
-        );
-      },
-      child: AppScaffold(
-        customAppBar: CustomAppBar(),
-        drawer: const DefaultDrawer(),
-        body: _buildBody(),
-        floatingActionButton: _buildCustomFAB(context),
-      ),
+    final child = AppScaffold(
+      customAppBar: CustomAppBar(),
+      drawer: const DefaultDrawer(),
+      body: _buildBody(),
+      floatingActionButton: _buildCustomFAB(context),
     );
+
+    return AppConfig.isManager
+        ? BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) => state.maybeWhen(
+              unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInManagerRoute),
+              orElse: () => null,
+            ),
+            child: child,
+          )
+        : BlocListener<EmployeeAuthBloc, EmployeeAuthState>(
+            listener: (context, state) => state.maybeWhen(
+              unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInEmployeeRoute),
+              orElse: () => null,
+            ),
+            child: child,
+          );
   }
 
   SpeedDial _buildCustomFAB(BuildContext context) {

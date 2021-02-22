@@ -40,7 +40,9 @@ class DefaultDrawer extends StatelessWidget {
           DrawerItem(
             Messages.logoutLabel,
             icon: Icons.logout,
-            customOnTap: () => context.read<AuthBloc>().add(const AuthEvent.signedOut()),
+            customOnTap: () => AppConfig.isManager
+                ? context.read<AuthBloc>().add(const AuthEvent.signedOut())
+                : context.read<EmployeeAuthBloc>().add(const EmployeeAuthEvent.signedOut()),
           ),
         ),
       ],
@@ -58,19 +60,19 @@ class DisplayNameAndUserType extends StatelessWidget {
 
   Widget _blocBuilderWhenManager() {
     return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
-        final manager = state.maybeWhen(orElse: () => null, authenticated: (manager) => manager);
-        return _buildColumn(displayName: manager.displayName);
-      },
+      builder: (context, state) => state.maybeWhen(
+        orElse: () => _buildColumn(displayName: ''),
+        authenticated: (manager) => _buildColumn(displayName: manager.displayName),
+      ),
     );
   }
 
   Widget _blocBuilderWhenEmployee() {
     return BlocBuilder<EmployeeAuthBloc, EmployeeAuthState>(
-      builder: (context, state) {
-        final employee = state.maybeWhen(orElse: () => null, authenticated: (employee) => employee);
-        return _buildColumn(displayName: employee.displayName);
-      },
+      builder: (context, state) => state.maybeWhen(
+        orElse: () => _buildColumn(displayName: ''),
+        authenticated: (employee) => _buildColumn(displayName: employee.displayName),
+      ),
     );
   }
 

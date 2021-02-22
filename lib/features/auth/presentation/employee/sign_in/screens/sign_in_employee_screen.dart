@@ -1,5 +1,6 @@
 import 'package:all_parking/features/auth/presentation/employee/sign_in/bloc/sign_in_employee_bloc.dart';
 import 'package:all_parking/res/constants.dart';
+import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,12 @@ class SignInEmployeeScreen extends StatelessWidget {
             () => null,
             (either) => either.fold(
               (f) => FlushbarHelper.createError(message: f.message).show(context),
-              (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
+              (_) => Navigator.of(context).pushReplacementNamed(Constants.splashRoute),
             ),
           );
         },
         child: AppScaffold(
-          title: 'Acesse sua conta',
+          title: Messages.signInEmployeeScreenTitle,
           body: const SignInForm(),
         ),
       ),

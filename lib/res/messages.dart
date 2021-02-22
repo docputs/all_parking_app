@@ -48,8 +48,8 @@ class Messages {
   static const invalidCep = 'CEP inválido';
   static const exceededParkingLots = 'Limite de estacionamentos atingido';
 
-  //SignIn
-  static const signInScreenTitle = 'Acesse sua conta';
+  //SignInManagerScreen
+  static const signInManagerScreenTitle = 'Acesse sua conta';
   static const emailFieldLabel = 'E-mail';
   static const signInButton = 'ENTRAR';
   static const passwordFieldLabel = 'Senha';
@@ -64,6 +64,7 @@ class Messages {
   static const signUpCreateAccountButton = 'CRIAR CONTA';
 
   //SignInEmployeeScreen
+  static const signInEmployeeScreenTitle = 'Acesse sua conta';
   static const signInEmployeeTokenLabel = 'Código';
   static const signInEmployeeInsertTokenInstruction = 'Insira o seu código de funcionário abaixo';
   static const signInEmployeeSubmitButton = 'ENTRAR';

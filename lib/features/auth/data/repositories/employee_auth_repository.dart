@@ -54,8 +54,13 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<Either<AuthFailure, Unit>> signOut() async {
+    try {
+      await _localDataSource.deleteToken();
+      return right(unit);
+    } catch (e) {
+      print(e);
+      return left(AuthFailure.unknownFailure());
+    }
   }
 }

@@ -22,6 +22,11 @@ class _$EmployeeAuthEventTearOff {
   _TryAutoSignIn tryAutoSignIn() {
     return const _TryAutoSignIn();
   }
+
+// ignore: unused_element
+  _SignedOut signedOut() {
+    return const _SignedOut();
+  }
 }
 
 /// @nodoc
@@ -34,22 +39,26 @@ mixin _$EmployeeAuthEvent {
   TResult when<TResult extends Object>({
     @required TResult authCheckRequested(),
     @required TResult tryAutoSignIn(),
+    @required TResult signedOut(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult authCheckRequested(),
     TResult tryAutoSignIn(),
+    TResult signedOut(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult authCheckRequested(_AuthCheckRequested value),
     @required TResult tryAutoSignIn(_TryAutoSignIn value),
+    @required TResult signedOut(_SignedOut value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult authCheckRequested(_AuthCheckRequested value),
     TResult tryAutoSignIn(_TryAutoSignIn value),
+    TResult signedOut(_SignedOut value),
     @required TResult orElse(),
   });
 }
@@ -112,9 +121,11 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   TResult when<TResult extends Object>({
     @required TResult authCheckRequested(),
     @required TResult tryAutoSignIn(),
+    @required TResult signedOut(),
   }) {
     assert(authCheckRequested != null);
     assert(tryAutoSignIn != null);
+    assert(signedOut != null);
     return authCheckRequested();
   }
 
@@ -123,6 +134,7 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   TResult maybeWhen<TResult extends Object>({
     TResult authCheckRequested(),
     TResult tryAutoSignIn(),
+    TResult signedOut(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -137,9 +149,11 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   TResult map<TResult extends Object>({
     @required TResult authCheckRequested(_AuthCheckRequested value),
     @required TResult tryAutoSignIn(_TryAutoSignIn value),
+    @required TResult signedOut(_SignedOut value),
   }) {
     assert(authCheckRequested != null);
     assert(tryAutoSignIn != null);
+    assert(signedOut != null);
     return authCheckRequested(this);
   }
 
@@ -148,6 +162,7 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
   TResult maybeMap<TResult extends Object>({
     TResult authCheckRequested(_AuthCheckRequested value),
     TResult tryAutoSignIn(_TryAutoSignIn value),
+    TResult signedOut(_SignedOut value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -203,9 +218,11 @@ class _$_TryAutoSignIn implements _TryAutoSignIn {
   TResult when<TResult extends Object>({
     @required TResult authCheckRequested(),
     @required TResult tryAutoSignIn(),
+    @required TResult signedOut(),
   }) {
     assert(authCheckRequested != null);
     assert(tryAutoSignIn != null);
+    assert(signedOut != null);
     return tryAutoSignIn();
   }
 
@@ -214,6 +231,7 @@ class _$_TryAutoSignIn implements _TryAutoSignIn {
   TResult maybeWhen<TResult extends Object>({
     TResult authCheckRequested(),
     TResult tryAutoSignIn(),
+    TResult signedOut(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -228,9 +246,11 @@ class _$_TryAutoSignIn implements _TryAutoSignIn {
   TResult map<TResult extends Object>({
     @required TResult authCheckRequested(_AuthCheckRequested value),
     @required TResult tryAutoSignIn(_TryAutoSignIn value),
+    @required TResult signedOut(_SignedOut value),
   }) {
     assert(authCheckRequested != null);
     assert(tryAutoSignIn != null);
+    assert(signedOut != null);
     return tryAutoSignIn(this);
   }
 
@@ -239,6 +259,7 @@ class _$_TryAutoSignIn implements _TryAutoSignIn {
   TResult maybeMap<TResult extends Object>({
     TResult authCheckRequested(_AuthCheckRequested value),
     TResult tryAutoSignIn(_TryAutoSignIn value),
+    TResult signedOut(_SignedOut value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -251,6 +272,102 @@ class _$_TryAutoSignIn implements _TryAutoSignIn {
 
 abstract class _TryAutoSignIn implements EmployeeAuthEvent {
   const factory _TryAutoSignIn() = _$_TryAutoSignIn;
+}
+
+/// @nodoc
+abstract class _$SignedOutCopyWith<$Res> {
+  factory _$SignedOutCopyWith(
+          _SignedOut value, $Res Function(_SignedOut) then) =
+      __$SignedOutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SignedOutCopyWithImpl<$Res>
+    extends _$EmployeeAuthEventCopyWithImpl<$Res>
+    implements _$SignedOutCopyWith<$Res> {
+  __$SignedOutCopyWithImpl(_SignedOut _value, $Res Function(_SignedOut) _then)
+      : super(_value, (v) => _then(v as _SignedOut));
+
+  @override
+  _SignedOut get _value => super._value as _SignedOut;
+}
+
+/// @nodoc
+class _$_SignedOut implements _SignedOut {
+  const _$_SignedOut();
+
+  @override
+  String toString() {
+    return 'EmployeeAuthEvent.signedOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _SignedOut);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult authCheckRequested(),
+    @required TResult tryAutoSignIn(),
+    @required TResult signedOut(),
+  }) {
+    assert(authCheckRequested != null);
+    assert(tryAutoSignIn != null);
+    assert(signedOut != null);
+    return signedOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult authCheckRequested(),
+    TResult tryAutoSignIn(),
+    TResult signedOut(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (signedOut != null) {
+      return signedOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult authCheckRequested(_AuthCheckRequested value),
+    @required TResult tryAutoSignIn(_TryAutoSignIn value),
+    @required TResult signedOut(_SignedOut value),
+  }) {
+    assert(authCheckRequested != null);
+    assert(tryAutoSignIn != null);
+    assert(signedOut != null);
+    return signedOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult authCheckRequested(_AuthCheckRequested value),
+    TResult tryAutoSignIn(_TryAutoSignIn value),
+    TResult signedOut(_SignedOut value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (signedOut != null) {
+      return signedOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignedOut implements EmployeeAuthEvent {
+  const factory _SignedOut() = _$_SignedOut;
 }
 
 /// @nodoc

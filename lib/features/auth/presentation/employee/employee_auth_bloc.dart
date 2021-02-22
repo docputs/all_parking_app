@@ -23,6 +23,7 @@ class EmployeeAuthBloc extends Bloc<EmployeeAuthEvent, EmployeeAuthState> {
     yield* event.when(
       authCheckRequested: _mapAuthCheckRequested,
       tryAutoSignIn: _mapTryAutoSignIn,
+      signedOut: _mapSignedOut,
     );
   }
 
@@ -42,6 +43,14 @@ class EmployeeAuthBloc extends Bloc<EmployeeAuthEvent, EmployeeAuthState> {
         add(const EmployeeAuthEvent.authCheckRequested());
         return state;
       },
+    );
+  }
+
+  Stream<EmployeeAuthState> _mapSignedOut() async* {
+    final employeeOption = await _authRepository.signOut();
+    yield employeeOption.fold(
+      (f) => state,
+      (_) => const EmployeeAuthState.unauthenticated(),
     );
   }
 }

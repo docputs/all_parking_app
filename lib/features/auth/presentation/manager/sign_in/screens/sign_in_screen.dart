@@ -18,7 +18,7 @@ class SignInScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<SignInBloc>(),
       child: AppScaffold(
-        title: Messages.signInScreenTitle,
+        title: Messages.signInManagerScreenTitle,
         body: BlocListener<SignInBloc, SignInState>(
           listenWhen: (p, c) => p.authFailureOrSuccessOption != c.authFailureOrSuccessOption,
           listener: (context, state) => state.authFailureOrSuccessOption.fold(
