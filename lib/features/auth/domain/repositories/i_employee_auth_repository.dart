@@ -6,5 +6,4 @@ abstract class IEmployeeAuthRepository {
   Future<Either<AuthFailure, Unit>> signInWithToken(String token);
   Future<Either<AuthFailure, Unit>> signOut();
   Future<Option<Employee>> getCurrentEmployee();
-  Future<Option<String>> getPersistentToken();
 }

@@ -1,4 +1,5 @@
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
+import 'package:all_parking/features/auth/data/datasources/i_local_data_source.dart';
 import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -6,11 +7,12 @@ import 'package:injectable/injectable.dart';
 @lazySingleton
 class AutoSignInEmployee {
   final IEmployeeAuthRepository _authRepository;
+  final ILocalDataSource _localDataSource;
 
-  const AutoSignInEmployee(this._authRepository);
+  const AutoSignInEmployee(this._authRepository, this._localDataSource);
 
   Future<Either<AuthFailure, Unit>> call() async {
-    final tokenOption = await _authRepository.getPersistentToken();
+    final tokenOption = await _localDataSource.getToken();
     return tokenOption.fold(
       () => left(AuthFailure.autoSignInFailed()),
       _performAuthentication,
