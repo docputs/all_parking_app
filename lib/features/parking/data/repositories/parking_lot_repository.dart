@@ -21,7 +21,7 @@ class ParkingLotRepository implements IParkingLotRepository {
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot) async {
     try {
       final parkingLotDTO = ParkingLotDTO.fromDomain(parkingLot);
-      await _firestore.parkingLotsCollection.doc(parkingLotDTO.id).set(parkingLotDTO.toJson());
+      await _firestore.parkingLotCollection.doc(parkingLotDTO.id).set(parkingLotDTO.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
@@ -35,7 +35,7 @@ class ParkingLotRepository implements IParkingLotRepository {
   @override
   Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot) async {
     try {
-      await _firestore.parkingLotsCollection.doc(parkingLot.id).delete();
+      await _firestore.parkingLotCollection.doc(parkingLot.id).delete();
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
@@ -50,7 +50,7 @@ class ParkingLotRepository implements IParkingLotRepository {
   Future<Either<ParkingFailure, Unit>> update(ParkingLot parkingLot) async {
     try {
       final parkingLotDTO = ParkingLotDTO.fromDomain(parkingLot);
-      await _firestore.parkingLotsCollection.doc(parkingLotDTO.id).update(parkingLotDTO.toJson());
+      await _firestore.parkingLotCollection.doc(parkingLotDTO.id).update(parkingLotDTO.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
@@ -65,7 +65,7 @@ class ParkingLotRepository implements IParkingLotRepository {
   Future<Either<ParkingFailure, List<ParkingLot>>> fetchAll(Manager manager) async {
     try {
       if (manager.parkingLots.isEmpty()) return right(List.empty());
-      final snapshot = await _firestore.parkingLotsCollection.where(FieldPath.documentId, whereIn: manager.parkingLots.asList()).get();
+      final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: manager.parkingLots.asList()).get();
       return right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toList());
     } on FirebaseException catch (e) {
       print(e);
@@ -78,7 +78,7 @@ class ParkingLotRepository implements IParkingLotRepository {
 
   @override
   Stream<Either<ParkingFailure, ParkingLot>> watchById(String id) {
-    return _firestore.parkingLotsCollection.doc(id).snapshots().map((doc) {
+    return _firestore.parkingLotCollection.doc(id).snapshots().map((doc) {
       if (doc.exists) return right(ParkingLotDTO.fromFirestore(doc).toDomain());
       return left(ParkingFailure.parkingLotNotFound());
     })
@@ -94,7 +94,7 @@ class ParkingLotRepository implements IParkingLotRepository {
     if (parkingLots.isEmpty)
       yield right(KtList.empty());
     else
-      yield* _firestore.parkingLotsCollection
+      yield* _firestore.parkingLotCollection
           .where(FieldPath.documentId, whereIn: parkingLots)
           .snapshots()
           .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList()))

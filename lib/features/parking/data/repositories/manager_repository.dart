@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../domain/entities/manager.dart';
 import '../../domain/repositories/i_manager_repository.dart';
+import '../../core/util/firebase_helpers.dart';
 
 @LazySingleton(as: IManagerRepository)
 class ManagerRepository implements IManagerRepository {
@@ -19,7 +20,7 @@ class ManagerRepository implements IManagerRepository {
   Future<Either<ParkingFailure, Unit>> update(Manager manager) async {
     try {
       final managerDTO = ManagerDTO.fromDomain(manager);
-      final managerDoc = await _firestore.collection('users').doc(manager.id);
+      final managerDoc = await _firestore.managerCollection.doc(manager.id);
       await managerDoc.set(managerDTO.toJson(), SetOptions(merge: true));
       return right(unit);
     } on FirebaseException catch (e) {
@@ -34,7 +35,7 @@ class ManagerRepository implements IManagerRepository {
   Future<Either<ParkingFailure, Manager>> read() async {
     try {
       final user = _firebaseAuth.currentUser;
-      final managerDoc = await _firestore.collection('users').doc(user.uid).get();
+      final managerDoc = await _firestore.managerCollection.doc(user.uid).get();
       return right(ManagerDTO.fromFirestore(managerDoc).toDomain());
     } on FirebaseException catch (e) {
       print(e);

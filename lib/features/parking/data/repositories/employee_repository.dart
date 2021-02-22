@@ -5,6 +5,7 @@ import 'package:all_parking/features/parking/domain/repositories/i_employee_repo
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import '../../core/util/firebase_helpers.dart';
 
 @LazySingleton(as: IEmployeeRepository)
 class EmployeeRepository implements IEmployeeRepository {
@@ -16,7 +17,7 @@ class EmployeeRepository implements IEmployeeRepository {
   Future<Either<ParkingFailure, Unit>> create(Employee employee) async {
     try {
       final employeeDTO = EmployeeDTO.fromDomain(employee);
-      await _firestore.collection('users').doc(employee.id).set(employeeDTO.toJson());
+      await _firestore.employeeCollection.doc(employee.id).set(employeeDTO.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
@@ -42,7 +43,7 @@ class EmployeeRepository implements IEmployeeRepository {
   @override
   Future<Either<ParkingFailure, Unit>> delete(Employee employee) async {
     try {
-      await _firestore.collection('users').doc(employee.id).delete();
+      await _firestore.employeeCollection.doc(employee.id).delete();
       return right(unit);
     } on FirebaseException catch (e) {
       print(e);
