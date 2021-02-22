@@ -1,4 +1,4 @@
-import 'package:all_parking/features/auth/data/repositories/user_repository.dart';
+import 'package:all_parking/features/auth/data/repositories/manager_auth_repository.dart';
 import 'package:cloud_firestore_mocks/cloud_firestore_mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../domain/entities/manager.dart';
 import '../../domain/repositories/i_manager_repository.dart';
-import '../../core/util/firebase_helpers.dart';
+import '../../../../utils/firebase_helpers.dart';
 
 @LazySingleton(as: IManagerRepository)
 class ManagerRepository implements IManagerRepository {

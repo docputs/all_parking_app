@@ -11,6 +11,7 @@ import '../../domain/entities/user.dart';
 import '../../domain/repositories/i_manager_auth_repository.dart';
 import '../models/register_model.dart';
 import '../models/sign_in_model.dart';
+import '../../../../utils/firebase_helpers.dart';
 
 @LazySingleton(as: IManagerAuthRepository)
 class ManagerAuthRepository implements IManagerAuthRepository {
@@ -26,7 +27,7 @@ class ManagerAuthRepository implements IManagerAuthRepository {
       await credential.user.updateProfile(displayName: registerModel.firstName);
 
       final managerDTO = ManagerDTO.fromFirebaseUser(_firebaseAuth.currentUser);
-      await _firestore.collection('users').doc(credential.user.uid).set(managerDTO.toJson());
+      await _firestore.managerCollection.doc(credential.user.uid).set(managerDTO.toJson());
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-email') {
@@ -52,7 +53,7 @@ class ManagerAuthRepository implements IManagerAuthRepository {
   Future<Option<Manager>> getCurrentManager() async {
     try {
       final user = _firebaseAuth.currentUser;
-      final doc = await _firestore.collection('users').doc(user.uid).get();
+      final doc = await _firestore.managerCollection.doc(user.uid).get();
       final manager = ManagerDTO.fromFirestore(doc).toDomain();
       return optionOf(manager);
     } on FirebaseException catch (e) {
@@ -87,7 +88,5 @@ class ManagerAuthRepository implements IManagerAuthRepository {
   }
 
   @override
-  Future<void> signOut() async {
-    await _firebaseAuth.signOut();
-  }
+  Future<void> signOut() => _firebaseAuth.signOut();
 }

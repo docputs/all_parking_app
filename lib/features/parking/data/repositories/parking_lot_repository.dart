@@ -6,7 +6,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../core/errors/parking_failure.dart';
-import '../../core/util/firebase_helpers.dart';
+import '../../../../utils/firebase_helpers.dart';
 import '../../domain/entities/manager.dart';
 import '../../domain/entities/parking_lot.dart';
 import '../../domain/repositories/i_parking_lot_repository.dart';

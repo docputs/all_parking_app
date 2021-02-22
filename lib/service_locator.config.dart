@@ -32,12 +32,14 @@ import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
 import 'features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'features/parking/domain/repositories/i_employee_repository.dart';
+import 'features/auth/data/datasources/i_local_data_source.dart';
 import 'features/auth/domain/repositories/i_manager_auth_repository.dart';
 import 'features/parking/domain/repositories/i_manager_repository.dart';
 import 'features/parking/domain/repositories/i_parking_lot_repository.dart';
+import 'features/auth/data/datasources/local_data_source.dart';
 import 'features/parking/presentation/manage_employees/bloc/manage_employees_bloc.dart';
 import 'features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
-import 'features/auth/data/repositories/user_repository.dart';
+import 'features/auth/data/repositories/manager_auth_repository.dart';
 import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
 import 'features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
@@ -106,32 +108,34 @@ Future<GetIt> $initGetIt(
       () => FetchCurrentManager(get<IManagerRepository>()));
   gh.lazySingleton<FetchParkingLots>(() => FetchParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
-  gh.lazySingleton<IEmployeeAuthRepository>(() => EmployeeAuthRepository(
-      get<SharedPreferences>(), get<FirebaseFirestore>()));
+  gh.lazySingleton<ILocalDataSource>(
+      () => LocalDataSource(get<SharedPreferences>()));
   gh.factory<ManageEmployeesBloc>(() =>
       ManageEmployeesBloc(get<DeleteEmployee>(), get<FetchCurrentManager>()));
   gh.factory<ManageParkingLotsBloc>(
       () => ManageParkingLotsBloc(get<DeleteParkingLot>()));
   gh.factory<SignInBloc>(() => SignInBloc(get<SignInManager>()));
-  gh.lazySingleton<SignInEmployee>(
-      () => SignInEmployee(get<IEmployeeAuthRepository>()));
-  gh.factory<SignInEmployeeBloc>(
-      () => SignInEmployeeBloc(get<SignInEmployee>()));
   gh.factory<SignUpBloc>(() => SignUpBloc(get<SignUpManager>()));
   gh.lazySingleton<SignUpEmployee>(() => SignUpEmployee(
         get<FetchCurrentManager>(),
         get<IEmployeeRepository>(),
         get<IManagerRepository>(),
       ));
-  gh.lazySingleton<WatchParkingLot>(() => WatchParkingLot(
-      get<IParkingLotRepository>(), get<IEmployeeAuthRepository>()));
   gh.factory<AddEmployeeBloc>(() => AddEmployeeBloc(get<SignUpEmployee>()));
   gh.factory<AddParkingLotBloc>(
       () => AddParkingLotBloc(get<AddParkingLot>(), get<EditParkingLot>()));
-  gh.lazySingleton<AutoSignInEmployee>(
-      () => AutoSignInEmployee(get<IEmployeeAuthRepository>()));
   gh.factory<CheckInBloc>(() => CheckInBloc(get<CheckInVehicle>()));
   gh.factory<CheckOutBloc>(() => CheckOutBloc(get<CheckOutVehicle>()));
+  gh.lazySingleton<IEmployeeAuthRepository>(() => EmployeeAuthRepository(
+      get<ILocalDataSource>(), get<FirebaseFirestore>()));
+  gh.lazySingleton<SignInEmployee>(
+      () => SignInEmployee(get<IEmployeeAuthRepository>()));
+  gh.factory<SignInEmployeeBloc>(
+      () => SignInEmployeeBloc(get<SignInEmployee>()));
+  gh.lazySingleton<WatchParkingLot>(() => WatchParkingLot(
+      get<IParkingLotRepository>(), get<IEmployeeAuthRepository>()));
+  gh.lazySingleton<AutoSignInEmployee>(() => AutoSignInEmployee(
+      get<IEmployeeAuthRepository>(), get<ILocalDataSource>()));
   gh.factory<EmployeeAuthBloc>(() => EmployeeAuthBloc(
       get<IEmployeeAuthRepository>(), get<AutoSignInEmployee>()));
   gh.lazySingleton<GetCurrentUser>(() => GetCurrentUser(

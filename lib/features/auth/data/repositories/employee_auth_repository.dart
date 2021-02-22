@@ -1,7 +1,7 @@
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
 import 'package:all_parking/features/auth/data/datasources/i_local_data_source.dart';
 import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
-import 'package:all_parking/features/parking/core/util/firebase_helpers.dart';
+import 'package:all_parking/utils/firebase_helpers.dart';
 import 'package:all_parking/features/parking/data/dtos/employee_dto.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

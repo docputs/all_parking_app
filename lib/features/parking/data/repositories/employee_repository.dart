@@ -5,7 +5,7 @@ import 'package:all_parking/features/parking/domain/repositories/i_employee_repo
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import '../../core/util/firebase_helpers.dart';
+import '../../../../utils/firebase_helpers.dart';
 
 @LazySingleton(as: IEmployeeRepository)
 class EmployeeRepository implements IEmployeeRepository {
