@@ -23,6 +23,7 @@ class Messages {
 
   //AuthFailure
   static const employeeNotFound = 'Funcionário não encontrado';
+  static const parkingLotNotFound = 'Estacionamento não encontrado';
   static const emailBadlyFormatted = 'E-mail inválido';
   static const emptyField = 'Campo obrigatório';
   static const invalidField = 'Campo inválido';

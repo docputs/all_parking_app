@@ -96,7 +96,10 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<DeleteEmployee>(() =>
       DeleteEmployee(get<IManagerRepository>(), get<IEmployeeRepository>()));
   gh.lazySingleton<DeleteParkingLot>(() => DeleteParkingLot(
-      get<IParkingLotRepository>(), get<IManagerRepository>()));
+        get<IParkingLotRepository>(),
+        get<IManagerRepository>(),
+        get<IEmployeeRepository>(),
+      ));
   gh.lazySingleton<EditParkingLot>(
       () => EditParkingLot(get<IParkingLotRepository>()));
   gh.lazySingleton<FetchCurrentManager>(

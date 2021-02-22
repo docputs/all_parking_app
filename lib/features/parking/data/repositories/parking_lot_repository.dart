@@ -78,14 +78,14 @@ class ParkingLotRepository implements IParkingLotRepository {
 
   @override
   Stream<Either<ParkingFailure, ParkingLot>> watchById(String id) {
-    return _firestore.parkingLotsCollection
-        .where(FieldPath.documentId, isEqualTo: id)
-        .snapshots()
-        .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).first))
-          ..onErrorReturnWith((error) {
-            print(error);
-            return left(ParkingFailure.serverFailure());
-          });
+    return _firestore.parkingLotsCollection.doc(id).snapshots().map((doc) {
+      if (doc.exists) return right(ParkingLotDTO.fromFirestore(doc).toDomain());
+      return left(ParkingFailure.parkingLotNotFound());
+    })
+      ..onErrorReturnWith((error) {
+        print(error);
+        return left(ParkingFailure.serverFailure());
+      });
   }
 
   @override
