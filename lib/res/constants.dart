@@ -26,7 +26,7 @@ class Constants {
   static const checkInVehicleRoute = '/home/check-in';
   static const checkOutVehicleRoute = '/home/check-out';
 
-  static final cepRegex = RegExp(r"^\d{5}-\d{3}$");
+  static final cepRegex = RegExp(r"^[0-9]{5}-[0-9]{3}$");
   static final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   static final licensePlateRegex = RegExp(r"^[A-Z]{3}[0-9][0-9A-Z][0-9]{2}$");
   static final phoneNumberRegex = RegExp(r"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}-[0-9]{4}$");

@@ -16,6 +16,7 @@ import 'features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.
 import 'app_navigator.dart';
 import 'features/auth/presentation/auth_bloc.dart';
 import 'features/auth/domain/usecases/auto_sign_in_employee.dart';
+import 'utils/cep_service.dart';
 import 'features/parking/presentation/check-in/bloc/check_in_bloc.dart';
 import 'features/parking/domain/usecases/check_in_vehicle.dart';
 import 'features/parking/presentation/check_out/bloc/check_out_bloc.dart';
@@ -67,6 +68,7 @@ Future<GetIt> $initGetIt(
   final gh = GetItHelper(get, environment, environmentFilter);
   final registerModule = _$RegisterModule();
   gh.lazySingleton<AppNavigator>(() => AppNavigator());
+  gh.lazySingleton<CepService>(() => CepService());
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
@@ -122,8 +124,11 @@ Future<GetIt> $initGetIt(
         get<IManagerRepository>(),
       ));
   gh.factory<AddEmployeeBloc>(() => AddEmployeeBloc(get<SignUpEmployee>()));
-  gh.factory<AddParkingLotBloc>(
-      () => AddParkingLotBloc(get<AddParkingLot>(), get<EditParkingLot>()));
+  gh.factory<AddParkingLotBloc>(() => AddParkingLotBloc(
+        get<AddParkingLot>(),
+        get<EditParkingLot>(),
+        get<CepService>(),
+      ));
   gh.factory<CheckInBloc>(() => CheckInBloc(get<CheckInVehicle>()));
   gh.factory<CheckOutBloc>(() => CheckOutBloc(get<CheckOutVehicle>()));
   gh.lazySingleton<IEmployeeAuthRepository>(() => EmployeeAuthRepository(

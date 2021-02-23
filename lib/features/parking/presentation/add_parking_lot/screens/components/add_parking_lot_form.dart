@@ -1,3 +1,4 @@
+import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/widgets/validation_form_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -80,6 +81,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
           validationEither: Validators.validateCep,
           keyboardType: TextInputType.number,
           controller: _cepController,
+          mask: Constants.cepMask,
         );
       },
     );

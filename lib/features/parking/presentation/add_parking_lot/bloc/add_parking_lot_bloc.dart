@@ -25,8 +25,9 @@ part 'add_parking_lot_state.dart';
 class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
   final AddParkingLot _addParkingLot;
   final EditParkingLot _editParkingLot;
+  final CepService _cepService;
 
-  AddParkingLotBloc(this._addParkingLot, this._editParkingLot) : super(AddParkingLotState.initial());
+  AddParkingLotBloc(this._addParkingLot, this._editParkingLot, this._cepService) : super(AddParkingLotState.initial());
 
   final _currentParkingLot = getIt<CurrentParkingLot>();
 
@@ -52,10 +53,10 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
         );
       },
       changedCep: (e) async* {
-        if (e.input.length == 8) {
-          final cepResponse = await CepService.getCep(e.input);
+        if (e.input.length == 9) {
+          final cepResponse = await _cepService.getCep(e.input);
           if (cepResponse == null) return;
-          final newAddress = CepService.convertFromCepResponse(cepResponse);
+          final newAddress = _cepService.convertFromCepResponse(cepResponse);
           yield state.copyWith(
             parkingLot: state.parkingLot.copyWith(address: newAddress),
             saveFailureOrSuccessOption: none(),
