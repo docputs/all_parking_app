@@ -18,12 +18,20 @@ class _$ParkingLotDTOTearOff {
 
 // ignore: unused_element
   _ParkingLotDTO call(
-      {@JsonKey(ignore: true) String id,
-      @required String title,
-      @required AddressDTO address,
-      @required int availableSpots,
-      @required double pricePerHour,
-      @required List<ParkedVehicleDTO> parkedVehicles}) {
+      {@JsonKey(ignore: true)
+          String id,
+      @required
+          String title,
+      @required
+          AddressDTO address,
+      @required
+          int availableSpots,
+      @required
+          double pricePerHour,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<ParkedVehicleDTO> parkedVehicles}) {
     return _ParkingLotDTO(
       id: id,
       title: title,
@@ -52,6 +60,8 @@ mixin _$ParkingLotDTO {
   AddressDTO get address;
   int get availableSpots;
   double get pricePerHour;
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<ParkedVehicleDTO> get parkedVehicles;
 
   Map<String, dynamic> toJson();
@@ -65,12 +75,15 @@ abstract class $ParkingLotDTOCopyWith<$Res> {
           ParkingLotDTO value, $Res Function(ParkingLotDTO) then) =
       _$ParkingLotDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: true)
+          String id,
       String title,
       AddressDTO address,
       int availableSpots,
       double pricePerHour,
-      List<ParkedVehicleDTO> parkedVehicles});
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<ParkedVehicleDTO> parkedVehicles});
 
   $AddressDTOCopyWith<$Res> get address;
 }
@@ -128,12 +141,15 @@ abstract class _$ParkingLotDTOCopyWith<$Res>
       __$ParkingLotDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String id,
+      {@JsonKey(ignore: true)
+          String id,
       String title,
       AddressDTO address,
       int availableSpots,
       double pricePerHour,
-      List<ParkedVehicleDTO> parkedVehicles});
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<ParkedVehicleDTO> parkedVehicles});
 
   @override
   $AddressDTOCopyWith<$Res> get address;
@@ -186,12 +202,11 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
       @required this.address,
       @required this.availableSpots,
       @required this.pricePerHour,
-      @required this.parkedVehicles})
+      @required @JsonKey(includeIfNull: false) @nullable this.parkedVehicles})
       : assert(title != null),
         assert(address != null),
         assert(availableSpots != null),
         assert(pricePerHour != null),
-        assert(parkedVehicles != null),
         super._();
 
   factory _$_ParkingLotDTO.fromJson(Map<String, dynamic> json) =>
@@ -209,6 +224,8 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
   @override
   final double pricePerHour;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final List<ParkedVehicleDTO> parkedVehicles;
 
   @override
@@ -275,12 +292,20 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
 abstract class _ParkingLotDTO extends ParkingLotDTO {
   const _ParkingLotDTO._() : super._();
   const factory _ParkingLotDTO(
-      {@JsonKey(ignore: true) String id,
-      @required String title,
-      @required AddressDTO address,
-      @required int availableSpots,
-      @required double pricePerHour,
-      @required List<ParkedVehicleDTO> parkedVehicles}) = _$_ParkingLotDTO;
+      {@JsonKey(ignore: true)
+          String id,
+      @required
+          String title,
+      @required
+          AddressDTO address,
+      @required
+          int availableSpots,
+      @required
+          double pricePerHour,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<ParkedVehicleDTO> parkedVehicles}) = _$_ParkingLotDTO;
 
   factory _ParkingLotDTO.fromJson(Map<String, dynamic> json) =
       _$_ParkingLotDTO.fromJson;
@@ -297,6 +322,8 @@ abstract class _ParkingLotDTO extends ParkingLotDTO {
   @override
   double get pricePerHour;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<ParkedVehicleDTO> get parkedVehicles;
   @override
   @JsonKey(ignore: true)

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kt_dart/kt.dart';
+import 'package:kt_dart/kt.dart' as kt;
 
 import '../../domain/entities/parking_lot.dart';
 import 'address_dto.dart';
@@ -21,7 +21,7 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
     @required AddressDTO address,
     @required int availableSpots,
     @required double pricePerHour,
-    @required List<ParkedVehicleDTO> parkedVehicles,
+    @JsonKey(includeIfNull: false) @required @nullable List<ParkedVehicleDTO> parkedVehicles,
   }) = _ParkingLotDTO;
 
   factory ParkingLotDTO.fromDomain(ParkingLot model) => ParkingLotDTO(

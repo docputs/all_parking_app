@@ -12,4 +12,8 @@ extension FirebaseFirestoreX on FirebaseFirestore {
   CollectionReference get employeeCollection {
     return this.collection('employees');
   }
+
+  CollectionReference parkedVehiclesCollection(String parkingLotId) {
+    return this.collection('parking_lots/$parkingLotId/parked_vehicles');
+  }
 }

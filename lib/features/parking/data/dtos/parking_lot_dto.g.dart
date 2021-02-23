@@ -22,12 +22,21 @@ _$_ParkingLotDTO _$_$_ParkingLotDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_ParkingLotDTOToJson(_$_ParkingLotDTO instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'address': instance.address?.toJson(),
-      'availableSpots': instance.availableSpots,
-      'pricePerHour': instance.pricePerHour,
-      'parkedVehicles':
-          instance.parkedVehicles?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$_$_ParkingLotDTOToJson(_$_ParkingLotDTO instance) {
+  final val = <String, dynamic>{
+    'title': instance.title,
+    'address': instance.address?.toJson(),
+    'availableSpots': instance.availableSpots,
+    'pricePerHour': instance.pricePerHour,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('parkedVehicles',
+      instance.parkedVehicles?.map((e) => e?.toJson())?.toList());
+  return val;
+}
