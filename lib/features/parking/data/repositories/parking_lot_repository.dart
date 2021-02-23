@@ -1,6 +1,9 @@
+import 'package:all_parking/features/parking/data/dtos/parked_vehicle_dto.dart';
 import 'package:all_parking/features/parking/data/dtos/parking_lot_dto.dart';
+import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:rxdart/rxdart.dart';
@@ -17,48 +20,54 @@ class ParkingLotRepository implements IParkingLotRepository {
 
   const ParkingLotRepository(this._firestore) : assert(_firestore != null);
 
-  @override
-  Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot) async {
+  Future<Either<ParkingFailure, Unit>> _handleExceptions(Future<void> Function() function) async {
     try {
+      await function();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      print(e);
+      return left(ParkingFailure.serverFailure());
+    } catch (e) {
+      print(e);
+      return left(ParkingFailure.unknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot) {
+    return _handleExceptions(() async {
       final parkingLotDTO = ParkingLotDTO.fromDomain(parkingLot);
       await _firestore.parkingLotCollection.doc(parkingLotDTO.id).set(parkingLotDTO.toJson());
-      return right(unit);
-    } on FirebaseException catch (e) {
-      print(e);
-      return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      print(e);
-      return left(ParkingFailure.unknownFailure());
-    }
+    });
   }
 
   @override
-  Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot) async {
-    try {
-      await _firestore.parkingLotCollection.doc(parkingLot.id).delete();
-      return right(unit);
-    } on FirebaseException catch (e) {
-      print(e);
-      return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      print(e);
-      return left(ParkingFailure.unknownFailure());
-    }
+  Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot) {
+    return _handleExceptions(() async => await _firestore.parkingLotCollection.doc(parkingLot.id).delete());
   }
 
   @override
-  Future<Either<ParkingFailure, Unit>> update(ParkingLot parkingLot) async {
-    try {
+  Future<Either<ParkingFailure, Unit>> update(ParkingLot parkingLot) {
+    return _handleExceptions(() async {
       final parkingLotDTO = ParkingLotDTO.fromDomain(parkingLot);
       await _firestore.parkingLotCollection.doc(parkingLotDTO.id).update(parkingLotDTO.toJson());
-      return right(unit);
-    } on FirebaseException catch (e) {
-      print(e);
-      return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      print(e);
-      return left(ParkingFailure.unknownFailure());
-    }
+    });
+  }
+
+  @override
+  Future<Either<ParkingFailure, Unit>> checkInVehicle(ParkedVehicle vehicle, {@required ParkingLot parkingLot}) {
+    return _handleExceptions(() async {
+      final vehicleDTO = ParkedVehicleDTO.fromDomain(vehicle);
+      await _firestore.parkedVehiclesCollection(parkingLot.id).doc(vehicle.id.value).set(vehicleDTO.toJson());
+    });
+  }
+
+  @override
+  Future<Either<ParkingFailure, Unit>> checkOutVehicle(ParkedVehicle vehicle, {@required ParkingLot parkingLot}) {
+    return _handleExceptions(() async {
+      final assignedCheckOut = {'checkOut': DateTime.now(), 'isActive': false};
+      await _firestore.parkedVehiclesCollection(parkingLot.id).doc(vehicle.id.value).update(assignedCheckOut);
+    });
   }
 
   @override
