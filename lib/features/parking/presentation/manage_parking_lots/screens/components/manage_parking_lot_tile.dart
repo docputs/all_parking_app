@@ -1,13 +1,12 @@
+import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
-import '../../../../../../res/theme.dart';
 import '../../../../../../widgets/default_alert_dialog.dart';
 import '../../../../../../widgets/default_list_tile.dart';
 import '../../../../domain/entities/parking_lot.dart';
-import '../../bloc/manage_parking_lots_bloc.dart';
 
 class ManageParkingLotTile extends StatelessWidget {
   final ParkingLot parkingLot;
@@ -16,34 +15,29 @@ class ManageParkingLotTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: ValueKey(parkingLot.id),
-      direction: DismissDirection.endToStart,
-      onDismissed: (_) => context.read<ManageParkingLotsBloc>().add(ManageParkingLotsEvent.deleted(parkingLot)),
-      confirmDismiss: (_) => _showDismissDialog(context),
-      background: Container(
-        padding: const EdgeInsets.all(16),
-        color: AppColors.errorColor,
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: Icon(
-            Icons.delete,
-            color: Colors.white,
-          ),
-        ),
-      ),
-      child: DefaultListTile(
-        title: parkingLot.title,
-        subtitle: parkingLot.address.street,
-        trailing: IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () => Navigator.of(context).pushNamed(Constants.editParkingLotRoute, arguments: parkingLot),
-        ),
-      ),
+    return DefaultListTile(
+      title: parkingLot.title,
+      subtitle: parkingLot.address.street,
+      actions: _buildActions(context),
     );
   }
 
-  Future<bool> _showDismissDialog(BuildContext context) {
+  List<IconButton> _buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.edit),
+        onPressed: () => Navigator.of(context).pushNamed(Constants.editParkingLotRoute, arguments: parkingLot),
+      ),
+      IconButton(
+        icon: Icon(Icons.delete),
+        onPressed: () => _showConfirmDialog(context).then((value) {
+          if (value != null && value) context.read<ManageParkingLotsBloc>().add(ManageParkingLotsEvent.deleted(parkingLot));
+        }),
+      ),
+    ];
+  }
+
+  Future<bool> _showConfirmDialog(BuildContext context) {
     return showDialog<bool>(
       context: context,
       barrierDismissible: false,

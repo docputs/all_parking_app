@@ -7,12 +7,12 @@ import 'package:kt_dart/collection.dart';
 import '../features/parking/core/errors/parking_failure.dart';
 import '../features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
 
-class ParkingLotWatcherBuilder extends StatefulWidget {
+class VehiclesWatcherBuilder extends StatefulWidget {
   final Widget Function(KtList<ParkedVehicle> vehicles) onSuccess;
   final Widget Function(ParkingFailure f) onError;
   final bool useScaffold;
 
-  const ParkingLotWatcherBuilder({
+  const VehiclesWatcherBuilder({
     Key key,
     @required this.onSuccess,
     this.onError,
@@ -20,10 +20,10 @@ class ParkingLotWatcherBuilder extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ParkingLotWatcherBuilderState createState() => _ParkingLotWatcherBuilderState();
+  _VehiclesWatcherBuilderState createState() => _VehiclesWatcherBuilderState();
 }
 
-class _ParkingLotWatcherBuilderState extends State<ParkingLotWatcherBuilder> {
+class _VehiclesWatcherBuilderState extends State<VehiclesWatcherBuilder> {
   Widget initialWidget;
   Widget loadingWidget;
 

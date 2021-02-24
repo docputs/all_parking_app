@@ -1,7 +1,7 @@
 import 'package:all_parking/features/parking/domain/entities/associated_parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
 import 'package:all_parking/widgets/default_dropdown_field.dart';
-import 'package:all_parking/widgets/parking_lot_watcher_builder.dart';
+import 'package:all_parking/widgets/vehicles_watcher_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
@@ -13,7 +13,7 @@ class ParkingLotDropdownField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ParkingLotWatcherBuilder(
+    return VehiclesWatcherBuilder(
       onSuccess: (parkingLots) => DefaultDropdownField(
         parkingLots
             .map(

@@ -12,7 +12,7 @@ import '../../../../../res/constants.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../../../widgets/default_drawer.dart';
 import '../../../../../widgets/no_parking_lots_found.dart';
-import '../../../../../widgets/parking_lot_watcher_builder.dart';
+import '../../../../../widgets/vehicles_watcher_builder.dart';
 import '../../../../auth/presentation/auth_bloc.dart';
 import 'components/custom_app_bar.dart';
 import 'components/parking_lot_dashboard.dart';
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBody() {
-    return ParkingLotWatcherBuilder(
+    return VehiclesWatcherBuilder(
       onSuccess: (_) => CurrentParkingLotBuilder(
         builder: (parkingLot) => ParkingLotDashboard(parkingLot),
         noParkingLotWidget: const NoParkingLotsFound(),
