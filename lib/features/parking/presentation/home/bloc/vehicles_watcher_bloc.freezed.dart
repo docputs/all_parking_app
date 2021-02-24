@@ -14,15 +14,17 @@ class _$VehiclesWatcherEventTearOff {
   const _$VehiclesWatcherEventTearOff();
 
 // ignore: unused_element
-  _WatchStarted watchStarted(ParkingLot parkingLot) {
+  _WatchStarted watchStarted(
+      {@required ParkingLot parkingLot, @required VehicleListType listType}) {
     return _WatchStarted(
-      parkingLot,
+      parkingLot: parkingLot,
+      listType: listType,
     );
   }
 
 // ignore: unused_element
   _UpdateReceived updateReceived(
-      Either<ParkingFailure, KtList<ParkedVehicle>> either) {
+      Either<ParkingFailure, ParkedVehiclesList> either) {
     return _UpdateReceived(
       either,
     );
@@ -37,16 +39,16 @@ const $VehiclesWatcherEvent = _$VehiclesWatcherEventTearOff();
 mixin _$VehiclesWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchStarted(ParkingLot parkingLot),
+    @required
+        TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
     @required
         TResult updateReceived(
-            Either<ParkingFailure, KtList<ParkedVehicle>> either),
+            Either<ParkingFailure, ParkedVehiclesList> either),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(ParkingLot parkingLot),
-    TResult updateReceived(
-        Either<ParkingFailure, KtList<ParkedVehicle>> either),
+    TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    TResult updateReceived(Either<ParkingFailure, ParkedVehiclesList> either),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -84,7 +86,7 @@ abstract class _$WatchStartedCopyWith<$Res> {
   factory _$WatchStartedCopyWith(
           _WatchStarted value, $Res Function(_WatchStarted) then) =
       __$WatchStartedCopyWithImpl<$Res>;
-  $Res call({ParkingLot parkingLot});
+  $Res call({ParkingLot parkingLot, VehicleListType listType});
 
   $ParkingLotCopyWith<$Res> get parkingLot;
 }
@@ -103,9 +105,13 @@ class __$WatchStartedCopyWithImpl<$Res>
   @override
   $Res call({
     Object parkingLot = freezed,
+    Object listType = freezed,
   }) {
     return _then(_WatchStarted(
-      parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
+      parkingLot:
+          parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
+      listType:
+          listType == freezed ? _value.listType : listType as VehicleListType,
     ));
   }
 
@@ -122,14 +128,18 @@ class __$WatchStartedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_WatchStarted implements _WatchStarted {
-  const _$_WatchStarted(this.parkingLot) : assert(parkingLot != null);
+  const _$_WatchStarted({@required this.parkingLot, @required this.listType})
+      : assert(parkingLot != null),
+        assert(listType != null);
 
   @override
   final ParkingLot parkingLot;
+  @override
+  final VehicleListType listType;
 
   @override
   String toString() {
-    return 'VehiclesWatcherEvent.watchStarted(parkingLot: $parkingLot)';
+    return 'VehiclesWatcherEvent.watchStarted(parkingLot: $parkingLot, listType: $listType)';
   }
 
   @override
@@ -138,12 +148,17 @@ class _$_WatchStarted implements _WatchStarted {
         (other is _WatchStarted &&
             (identical(other.parkingLot, parkingLot) ||
                 const DeepCollectionEquality()
-                    .equals(other.parkingLot, parkingLot)));
+                    .equals(other.parkingLot, parkingLot)) &&
+            (identical(other.listType, listType) ||
+                const DeepCollectionEquality()
+                    .equals(other.listType, listType)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(parkingLot);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(parkingLot) ^
+      const DeepCollectionEquality().hash(listType);
 
   @JsonKey(ignore: true)
   @override
@@ -153,27 +168,27 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchStarted(ParkingLot parkingLot),
+    @required
+        TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
     @required
         TResult updateReceived(
-            Either<ParkingFailure, KtList<ParkedVehicle>> either),
+            Either<ParkingFailure, ParkedVehiclesList> either),
   }) {
     assert(watchStarted != null);
     assert(updateReceived != null);
-    return watchStarted(parkingLot);
+    return watchStarted(parkingLot, listType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(ParkingLot parkingLot),
-    TResult updateReceived(
-        Either<ParkingFailure, KtList<ParkedVehicle>> either),
+    TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    TResult updateReceived(Either<ParkingFailure, ParkedVehiclesList> either),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (watchStarted != null) {
-      return watchStarted(parkingLot);
+      return watchStarted(parkingLot, listType);
     }
     return orElse();
   }
@@ -205,9 +220,12 @@ class _$_WatchStarted implements _WatchStarted {
 }
 
 abstract class _WatchStarted implements VehiclesWatcherEvent {
-  const factory _WatchStarted(ParkingLot parkingLot) = _$_WatchStarted;
+  const factory _WatchStarted(
+      {@required ParkingLot parkingLot,
+      @required VehicleListType listType}) = _$_WatchStarted;
 
   ParkingLot get parkingLot;
+  VehicleListType get listType;
   @JsonKey(ignore: true)
   _$WatchStartedCopyWith<_WatchStarted> get copyWith;
 }
@@ -217,7 +235,7 @@ abstract class _$UpdateReceivedCopyWith<$Res> {
   factory _$UpdateReceivedCopyWith(
           _UpdateReceived value, $Res Function(_UpdateReceived) then) =
       __$UpdateReceivedCopyWithImpl<$Res>;
-  $Res call({Either<ParkingFailure, KtList<ParkedVehicle>> either});
+  $Res call({Either<ParkingFailure, ParkedVehiclesList> either});
 }
 
 /// @nodoc
@@ -238,7 +256,7 @@ class __$UpdateReceivedCopyWithImpl<$Res>
     return _then(_UpdateReceived(
       either == freezed
           ? _value.either
-          : either as Either<ParkingFailure, KtList<ParkedVehicle>>,
+          : either as Either<ParkingFailure, ParkedVehiclesList>,
     ));
   }
 }
@@ -248,7 +266,7 @@ class _$_UpdateReceived implements _UpdateReceived {
   const _$_UpdateReceived(this.either) : assert(either != null);
 
   @override
-  final Either<ParkingFailure, KtList<ParkedVehicle>> either;
+  final Either<ParkingFailure, ParkedVehiclesList> either;
 
   @override
   String toString() {
@@ -275,10 +293,11 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchStarted(ParkingLot parkingLot),
+    @required
+        TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
     @required
         TResult updateReceived(
-            Either<ParkingFailure, KtList<ParkedVehicle>> either),
+            Either<ParkingFailure, ParkedVehiclesList> either),
   }) {
     assert(watchStarted != null);
     assert(updateReceived != null);
@@ -288,9 +307,8 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(ParkingLot parkingLot),
-    TResult updateReceived(
-        Either<ParkingFailure, KtList<ParkedVehicle>> either),
+    TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    TResult updateReceived(Either<ParkingFailure, ParkedVehiclesList> either),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -328,9 +346,9 @@ class _$_UpdateReceived implements _UpdateReceived {
 
 abstract class _UpdateReceived implements VehiclesWatcherEvent {
   const factory _UpdateReceived(
-      Either<ParkingFailure, KtList<ParkedVehicle>> either) = _$_UpdateReceived;
+      Either<ParkingFailure, ParkedVehiclesList> either) = _$_UpdateReceived;
 
-  Either<ParkingFailure, KtList<ParkedVehicle>> get either;
+  Either<ParkingFailure, ParkedVehiclesList> get either;
   @JsonKey(ignore: true)
   _$UpdateReceivedCopyWith<_UpdateReceived> get copyWith;
 }
@@ -350,7 +368,7 @@ class _$VehiclesWatcherStateTearOff {
   }
 
 // ignore: unused_element
-  _Success success(KtList<ParkedVehicle> vehicles) {
+  _Success success(ParkedVehiclesList vehicles) {
     return _Success(
       vehicles,
     );
@@ -374,14 +392,14 @@ mixin _$VehiclesWatcherState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(KtList<ParkedVehicle> vehicles),
+    @required TResult success(ParkedVehiclesList vehicles),
     @required TResult error(ParkingFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(KtList<ParkedVehicle> vehicles),
+    TResult success(ParkedVehiclesList vehicles),
     TResult error(ParkingFailure failure),
     @required TResult orElse(),
   });
@@ -458,7 +476,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(KtList<ParkedVehicle> vehicles),
+    @required TResult success(ParkedVehiclesList vehicles),
     @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
@@ -473,7 +491,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(KtList<ParkedVehicle> vehicles),
+    TResult success(ParkedVehiclesList vehicles),
     TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
@@ -559,7 +577,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(KtList<ParkedVehicle> vehicles),
+    @required TResult success(ParkedVehiclesList vehicles),
     @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
@@ -574,7 +592,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(KtList<ParkedVehicle> vehicles),
+    TResult success(ParkedVehiclesList vehicles),
     TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
@@ -625,7 +643,7 @@ abstract class _Loading implements VehiclesWatcherState {
 abstract class _$SuccessCopyWith<$Res> {
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
       __$SuccessCopyWithImpl<$Res>;
-  $Res call({KtList<ParkedVehicle> vehicles});
+  $Res call({ParkedVehiclesList vehicles});
 }
 
 /// @nodoc
@@ -643,7 +661,7 @@ class __$SuccessCopyWithImpl<$Res>
     Object vehicles = freezed,
   }) {
     return _then(_Success(
-      vehicles == freezed ? _value.vehicles : vehicles as KtList<ParkedVehicle>,
+      vehicles == freezed ? _value.vehicles : vehicles as ParkedVehiclesList,
     ));
   }
 }
@@ -653,7 +671,7 @@ class _$_Success implements _Success {
   const _$_Success(this.vehicles) : assert(vehicles != null);
 
   @override
-  final KtList<ParkedVehicle> vehicles;
+  final ParkedVehiclesList vehicles;
 
   @override
   String toString() {
@@ -683,7 +701,7 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(KtList<ParkedVehicle> vehicles),
+    @required TResult success(ParkedVehiclesList vehicles),
     @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
@@ -698,7 +716,7 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(KtList<ParkedVehicle> vehicles),
+    TResult success(ParkedVehiclesList vehicles),
     TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
@@ -742,9 +760,9 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements VehiclesWatcherState {
-  const factory _Success(KtList<ParkedVehicle> vehicles) = _$_Success;
+  const factory _Success(ParkedVehiclesList vehicles) = _$_Success;
 
-  KtList<ParkedVehicle> get vehicles;
+  ParkedVehiclesList get vehicles;
   @JsonKey(ignore: true)
   _$SuccessCopyWith<_Success> get copyWith;
 }
@@ -822,7 +840,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(KtList<ParkedVehicle> vehicles),
+    @required TResult success(ParkedVehiclesList vehicles),
     @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
@@ -837,7 +855,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(KtList<ParkedVehicle> vehicles),
+    TResult success(ParkedVehiclesList vehicles),
     TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {

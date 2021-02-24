@@ -18,27 +18,17 @@ class _$ParkingLotDTOTearOff {
 
 // ignore: unused_element
   _ParkingLotDTO call(
-      {@JsonKey(ignore: true)
-          String id,
-      @required
-          String title,
-      @required
-          AddressDTO address,
-      @required
-          int availableSpots,
-      @required
-          double pricePerHour,
-      @required
-      @JsonKey(includeIfNull: false)
-      @nullable
-          List<ParkedVehicleDTO> parkedVehicles}) {
+      {@JsonKey(ignore: true) String id,
+      @required String title,
+      @required AddressDTO address,
+      @required int availableSpots,
+      @required double pricePerHour}) {
     return _ParkingLotDTO(
       id: id,
       title: title,
       address: address,
       availableSpots: availableSpots,
       pricePerHour: pricePerHour,
-      parkedVehicles: parkedVehicles,
     );
   }
 
@@ -60,9 +50,6 @@ mixin _$ParkingLotDTO {
   AddressDTO get address;
   int get availableSpots;
   double get pricePerHour;
-  @JsonKey(includeIfNull: false)
-  @nullable
-  List<ParkedVehicleDTO> get parkedVehicles;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -75,15 +62,11 @@ abstract class $ParkingLotDTOCopyWith<$Res> {
           ParkingLotDTO value, $Res Function(ParkingLotDTO) then) =
       _$ParkingLotDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true)
-          String id,
+      {@JsonKey(ignore: true) String id,
       String title,
       AddressDTO address,
       int availableSpots,
-      double pricePerHour,
-      @JsonKey(includeIfNull: false)
-      @nullable
-          List<ParkedVehicleDTO> parkedVehicles});
+      double pricePerHour});
 
   $AddressDTOCopyWith<$Res> get address;
 }
@@ -104,7 +87,6 @@ class _$ParkingLotDTOCopyWithImpl<$Res>
     Object address = freezed,
     Object availableSpots = freezed,
     Object pricePerHour = freezed,
-    Object parkedVehicles = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -116,9 +98,6 @@ class _$ParkingLotDTOCopyWithImpl<$Res>
       pricePerHour: pricePerHour == freezed
           ? _value.pricePerHour
           : pricePerHour as double,
-      parkedVehicles: parkedVehicles == freezed
-          ? _value.parkedVehicles
-          : parkedVehicles as List<ParkedVehicleDTO>,
     ));
   }
 
@@ -141,15 +120,11 @@ abstract class _$ParkingLotDTOCopyWith<$Res>
       __$ParkingLotDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true)
-          String id,
+      {@JsonKey(ignore: true) String id,
       String title,
       AddressDTO address,
       int availableSpots,
-      double pricePerHour,
-      @JsonKey(includeIfNull: false)
-      @nullable
-          List<ParkedVehicleDTO> parkedVehicles});
+      double pricePerHour});
 
   @override
   $AddressDTOCopyWith<$Res> get address;
@@ -173,7 +148,6 @@ class __$ParkingLotDTOCopyWithImpl<$Res>
     Object address = freezed,
     Object availableSpots = freezed,
     Object pricePerHour = freezed,
-    Object parkedVehicles = freezed,
   }) {
     return _then(_ParkingLotDTO(
       id: id == freezed ? _value.id : id as String,
@@ -185,9 +159,6 @@ class __$ParkingLotDTOCopyWithImpl<$Res>
       pricePerHour: pricePerHour == freezed
           ? _value.pricePerHour
           : pricePerHour as double,
-      parkedVehicles: parkedVehicles == freezed
-          ? _value.parkedVehicles
-          : parkedVehicles as List<ParkedVehicleDTO>,
     ));
   }
 }
@@ -201,8 +172,7 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
       @required this.title,
       @required this.address,
       @required this.availableSpots,
-      @required this.pricePerHour,
-      @required @JsonKey(includeIfNull: false) @nullable this.parkedVehicles})
+      @required this.pricePerHour})
       : assert(title != null),
         assert(address != null),
         assert(availableSpots != null),
@@ -223,14 +193,10 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
   final int availableSpots;
   @override
   final double pricePerHour;
-  @override
-  @JsonKey(includeIfNull: false)
-  @nullable
-  final List<ParkedVehicleDTO> parkedVehicles;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ParkingLotDTO(id: $id, title: $title, address: $address, availableSpots: $availableSpots, pricePerHour: $pricePerHour, parkedVehicles: $parkedVehicles)';
+    return 'ParkingLotDTO(id: $id, title: $title, address: $address, availableSpots: $availableSpots, pricePerHour: $pricePerHour)';
   }
 
   @override
@@ -242,8 +208,7 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('address', address))
       ..add(DiagnosticsProperty('availableSpots', availableSpots))
-      ..add(DiagnosticsProperty('pricePerHour', pricePerHour))
-      ..add(DiagnosticsProperty('parkedVehicles', parkedVehicles));
+      ..add(DiagnosticsProperty('pricePerHour', pricePerHour));
   }
 
   @override
@@ -262,10 +227,7 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
                     .equals(other.availableSpots, availableSpots)) &&
             (identical(other.pricePerHour, pricePerHour) ||
                 const DeepCollectionEquality()
-                    .equals(other.pricePerHour, pricePerHour)) &&
-            (identical(other.parkedVehicles, parkedVehicles) ||
-                const DeepCollectionEquality()
-                    .equals(other.parkedVehicles, parkedVehicles)));
+                    .equals(other.pricePerHour, pricePerHour)));
   }
 
   @override
@@ -275,8 +237,7 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(address) ^
       const DeepCollectionEquality().hash(availableSpots) ^
-      const DeepCollectionEquality().hash(pricePerHour) ^
-      const DeepCollectionEquality().hash(parkedVehicles);
+      const DeepCollectionEquality().hash(pricePerHour);
 
   @JsonKey(ignore: true)
   @override
@@ -292,20 +253,11 @@ class _$_ParkingLotDTO extends _ParkingLotDTO with DiagnosticableTreeMixin {
 abstract class _ParkingLotDTO extends ParkingLotDTO {
   const _ParkingLotDTO._() : super._();
   const factory _ParkingLotDTO(
-      {@JsonKey(ignore: true)
-          String id,
-      @required
-          String title,
-      @required
-          AddressDTO address,
-      @required
-          int availableSpots,
-      @required
-          double pricePerHour,
-      @required
-      @JsonKey(includeIfNull: false)
-      @nullable
-          List<ParkedVehicleDTO> parkedVehicles}) = _$_ParkingLotDTO;
+      {@JsonKey(ignore: true) String id,
+      @required String title,
+      @required AddressDTO address,
+      @required int availableSpots,
+      @required double pricePerHour}) = _$_ParkingLotDTO;
 
   factory _ParkingLotDTO.fromJson(Map<String, dynamic> json) =
       _$_ParkingLotDTO.fromJson;
@@ -321,10 +273,6 @@ abstract class _ParkingLotDTO extends ParkingLotDTO {
   int get availableSpots;
   @override
   double get pricePerHour;
-  @override
-  @JsonKey(includeIfNull: false)
-  @nullable
-  List<ParkedVehicleDTO> get parkedVehicles;
   @override
   @JsonKey(ignore: true)
   _$ParkingLotDTOCopyWith<_ParkingLotDTO> get copyWith;

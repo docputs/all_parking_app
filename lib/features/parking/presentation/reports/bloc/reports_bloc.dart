@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kt_dart/collection.dart';
 
 import '../../../domain/entities/parking_lot.dart';
 import '../view_models/reports_view_model.dart';
@@ -18,10 +20,10 @@ class ReportsBloc extends Bloc<ReportsEvent, ReportsState> {
   @override
   Stream<ReportsState> mapEventToState(ReportsEvent event) async* {
     yield* event.when(
-      initialized: (parkingLot) async* {
+      initialized: (parkingLot, vehicles) async* {
         yield _ReportsState(
           selectedDate: DateTime.now(),
-          viewModel: ReportsViewModel(parkingLot),
+          viewModel: ReportsViewModel(parkingLot: parkingLot, vehicles: vehicles),
         );
       },
       dateSelected: (dateTime) async* {

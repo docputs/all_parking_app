@@ -55,7 +55,7 @@ import 'features/auth/domain/usecases/sign_up_employee.dart';
 import 'features/auth/domain/usecases/sign_up_manager.dart';
 import 'features/splash/presentation/splash_bloc/splash_bloc.dart';
 import 'features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
-import 'features/parking/domain/usecases/watch_parked_vehicles.dart';
+import 'features/parking/domain/usecases/watch_active_vehicles.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -88,8 +88,8 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<SignUpManager>(
       () => SignUpManager(get<IManagerAuthRepository>()));
   gh.factory<SplashBloc>(() => SplashBloc());
-  gh.lazySingleton<WatchParkedVehicles>(
-      () => WatchParkedVehicles(get<IParkingLotRepository>()));
+  gh.lazySingleton<WatchActiveVehicles>(
+      () => WatchActiveVehicles(get<IParkingLotRepository>()));
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IManagerAuthRepository>()));
@@ -126,7 +126,7 @@ Future<GetIt> $initGetIt(
         get<IManagerRepository>(),
       ));
   gh.factory<VehiclesWatcherBloc>(
-      () => VehiclesWatcherBloc(get<WatchParkedVehicles>()));
+      () => VehiclesWatcherBloc(get<WatchActiveVehicles>()));
   gh.factory<AddEmployeeBloc>(() => AddEmployeeBloc(get<SignUpEmployee>()));
   gh.factory<AddParkingLotBloc>(() => AddParkingLotBloc(
         get<AddParkingLot>(),

@@ -1,14 +1,13 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/watcher_failure_widget.dart';
+import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kt_dart/collection.dart';
 
 import '../features/parking/core/errors/parking_failure.dart';
 import '../features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
 
 class VehiclesWatcherBuilder extends StatefulWidget {
-  final Widget Function(KtList<ParkedVehicle> vehicles) onSuccess;
+  final Widget Function(ParkedVehiclesList vehicles) onSuccess;
   final Widget Function(ParkingFailure f) onError;
   final bool useScaffold;
 

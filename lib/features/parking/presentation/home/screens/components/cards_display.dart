@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../res/messages.dart';
@@ -8,8 +9,9 @@ import 'gauge_painter.dart';
 
 class CardsDisplay extends StatelessWidget {
   final ParkingLot parkingLot;
+  final ActiveParkedVehicles activeVehicles;
 
-  const CardsDisplay(this.parkingLot, {Key key}) : super(key: key);
+  const CardsDisplay(this.parkingLot, this.activeVehicles, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class CardsDisplay extends StatelessWidget {
         children: [
           Expanded(
             child: CustomPaint(
-              painter: GaugePainter(ocuppied: parkingLot.activeParkedVehicles().size, totalAmount: parkingLot.availableSpots),
+              painter: GaugePainter(ocuppied: activeVehicles.value.size, totalAmount: parkingLot.availableSpots),
               child: const SizedBox(width: 100, height: 100),
             ),
           ),
@@ -30,12 +32,12 @@ class CardsDisplay extends StatelessWidget {
               children: [
                 FittedBox(
                   child: Text(
-                    Messages.remainingCards(parkingLot),
+                    Messages.remainingCards(parkingLot, activeVehicles),
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                   ),
                 ),
                 Text(
-                  Messages.usedCards(parkingLot),
+                  Messages.usedCards(parkingLot, activeVehicles),
                   style: const TextStyle(color: AppColors.textColor, fontSize: 12),
                 ),
               ],

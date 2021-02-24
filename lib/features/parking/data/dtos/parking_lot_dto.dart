@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kt_dart/kt.dart' as kt;
 
 import '../../domain/entities/parking_lot.dart';
 import 'address_dto.dart';
-import 'parked_vehicle_dto.dart';
 
 part 'parking_lot_dto.freezed.dart';
 part 'parking_lot_dto.g.dart';
@@ -21,7 +19,6 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
     @required AddressDTO address,
     @required int availableSpots,
     @required double pricePerHour,
-    @JsonKey(includeIfNull: false) @required @nullable List<ParkedVehicleDTO> parkedVehicles,
   }) = _ParkingLotDTO;
 
   factory ParkingLotDTO.fromDomain(ParkingLot model) => ParkingLotDTO(
@@ -30,7 +27,6 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
         address: AddressDTO.fromDomain(model.address),
         availableSpots: model.availableSpots,
         pricePerHour: model.pricePerHour,
-        parkedVehicles: model.parkedVehicles.map((vehicle) => ParkedVehicleDTO.fromDomain(vehicle)).asList(),
       );
 
   ParkingLot toDomain() => ParkingLot(
@@ -38,7 +34,6 @@ abstract class ParkingLotDTO implements _$ParkingLotDTO {
         title: title,
         address: address.toDomain(),
         availableSpots: availableSpots,
-        parkedVehicles: parkedVehicles.map((vehicle) => vehicle.toDomain()).toImmutableList(),
         pricePerHour: pricePerHour,
       );
 

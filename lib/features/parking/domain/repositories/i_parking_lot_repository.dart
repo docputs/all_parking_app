@@ -1,4 +1,6 @@
+import 'package:all_parking/features/parking/data/models/order_by.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
+import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kt_dart/kt.dart';
@@ -10,11 +12,11 @@ import '../entities/parking_lot.dart';
 abstract class IParkingLotRepository {
   Future<Either<ParkingFailure, KtList<ParkingLot>>> fetchParkingLots(Manager manager);
   Stream<Either<ParkingFailure, ParkingLot>> watchById(ParkingLot parkingLot);
-  Stream<Either<ParkingFailure, KtList<ParkedVehicle>>> watchAllVehicles(ParkingLot parkingLot);
+  Stream<Either<ParkingFailure, ParkedVehiclesList>> watchActiveVehicles(ParkingLot parkingLot, [OrderBy orderBy]);
+  Stream<Either<ParkingFailure, ParkedVehiclesList>> watchInactiveVehicles(ParkingLot parkingLot, [OrderBy orderBy]);
   Future<Either<ParkingFailure, Unit>> create(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> update(ParkingLot parkingLot);
   Future<Either<ParkingFailure, Unit>> checkInVehicle(ParkedVehicle vehicle, {@required ParkingLot parkingLot});
   Future<Either<ParkingFailure, Unit>> checkOutVehicle(ParkedVehicle vehicle, {@required ParkingLot parkingLot});
-
 }

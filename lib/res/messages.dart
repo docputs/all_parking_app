@@ -1,9 +1,11 @@
 import 'package:all_parking/app_config.dart';
 import 'package:all_parking/features/auth/domain/entities/user.dart';
+import 'package:all_parking/features/parking/domain/entities/address.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:kt_dart/collection.dart';
 
 import '../features/parking/core/util/vehicle_color_converter.dart';
 import '../features/parking/core/util/vehicle_type_converter.dart';
@@ -73,9 +75,10 @@ class Messages {
   static const defaultAppBarTitle = 'All Parking';
   static const cardsLabel = 'Cartões';
   static const parkedVehiclesLabel = 'Veículos estacionados';
-  static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.activeParkedVehicles().size} restantes';
-  static String usedCards(ParkingLot parkingLot) =>
-      '${parkingLot.activeParkedVehicles().size} de ${parkingLot.availableSpots} cartões usados';
+  static String remainingCards(ParkingLot parkingLot, ActiveParkedVehicles vehicles) =>
+      '${parkingLot.availableSpots - vehicles.value.size} restantes';
+  static String usedCards(ParkingLot parkingLot, ActiveParkedVehicles vehicles) =>
+      '${vehicles.value.size} de ${parkingLot.availableSpots} cartões usados';
   static const checkInVehicleLabel = 'CHECK-IN';
   static const checkOutVehicleLabel = 'CHECK-OUT';
   static const pressMoreToAddParkingLot = 'Toque em + para adicionar';

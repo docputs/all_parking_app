@@ -8,8 +8,8 @@ class ReportsViewModel {
   final double pricePerHour;
   final InactiveParkedVehicles parkedVehicles;
 
-  ReportsViewModel(ParkingLot parkingLot)
-      : parkedVehicles = InactiveParkedVehicles(parkingLot.parkedVehicles),
+  ReportsViewModel({KtList<ParkedVehicle> vehicles, ParkingLot parkingLot})
+      : parkedVehicles = InactiveParkedVehicles(vehicles),
         pricePerHour = parkingLot.pricePerHour;
 
   double calculateEarnings(KtList<ParkedVehicle> vehicles) {
@@ -28,21 +28,27 @@ class ReportsViewModel {
 abstract class ParkedVehiclesList {
   KtList<ParkedVehicle> get value;
 
+  const ParkedVehiclesList();
+
   KtList<ParkedVehicle> sortByCheckOut([bool descending = true]) {
     return descending ? value.sortedByDescending((vehicle) => vehicle.checkOut) : value.sortedBy((vehicle) => vehicle.checkOut);
   }
+
+  bool get isEmpty => value.isEmpty();
 }
 
 class ActiveParkedVehicles extends ParkedVehiclesList {
-  final KtList<ParkedVehicle> value;
+  final KtList<ParkedVehicle> _value;
+  KtList<ParkedVehicle> get value => _value;
 
-  ActiveParkedVehicles(KtList<ParkedVehicle> list) : value = list.filter((vehicle) => vehicle.isActive);
+  const ActiveParkedVehicles(this._value);
 }
 
 class InactiveParkedVehicles extends ParkedVehiclesList {
-  final KtList<ParkedVehicle> value;
+  final KtList<ParkedVehicle> _value;
+  KtList<ParkedVehicle> get value => _value;
 
-  InactiveParkedVehicles(KtList<ParkedVehicle> list) : value = list.filter((vehicle) => !vehicle.isActive);
+  const InactiveParkedVehicles(this._value);
 
   KtList<ParkedVehicle> _parkedVehiclesInDuration(Duration duration) {
     final now = DateTime.now();
@@ -51,7 +57,7 @@ class InactiveParkedVehicles extends ParkedVehiclesList {
     return sortedParkedVehicles.takeWhile((vehicle) => vehicle.checkOut.isAfter(before));
   }
 
-  KtList<ParkedVehicle> _parkedVehiclesByDate(DateTime dateTime) => value.filter((vehicle) {
+  KtList<ParkedVehicle> _parkedVehiclesByDate(DateTime dateTime) => _value.filter((vehicle) {
         return PureDate.fromDateTime(vehicle.checkOut) == PureDate.fromDateTime(dateTime);
       });
 

@@ -1,16 +1,17 @@
-import 'package:all_parking/widgets/default_card.dart';
+import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
+import 'package:all_parking/widgets/parked_vehicle_tile.dart';
+import 'package:all_parking/widgets/vehicles_watcher_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:kt_dart/collection.dart';
 
-import '../../../../../../res/assets.dart';
 import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
-import '../../../../../../res/theme.dart';
 import '../../../../../../widgets/default_section_title.dart';
 import '../../../../../../widgets/default_text_button.dart';
-import '../../../../../../widgets/parked_vehicle_tile.dart';
 import '../../../../domain/entities/parking_lot.dart';
 import 'cards_display.dart';
+import 'empty_warning.dart';
 
 class ParkingLotDashboard extends StatelessWidget {
   final ParkingLot parkingLot;
@@ -24,11 +25,17 @@ class ParkingLotDashboard extends StatelessWidget {
       children: [
         const SizedBox(height: 20),
         const DefaultSectionTitle(Messages.cardsLabel),
-        CardsDisplay(parkingLot),
+        _buildCardsDisplay(),
         const SizedBox(height: 60),
         _buildParkedVehicleHeader(context),
-        parkingLot.isEmpty() ? _buildEmptyWarning(context) : _buildParkedVehicleList(),
+        _buildVehiclesList(),
       ],
+    );
+  }
+
+  Widget _buildCardsDisplay() {
+    return VehiclesWatcherBuilder(
+      onSuccess: (activeVehicles) => CardsDisplay(parkingLot, activeVehicles),
     );
   }
 
@@ -47,28 +54,18 @@ class ParkingLotDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildEmptyWarning(BuildContext context) {
-    return DefaultCard(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(height: 20),
-          Image.asset(Assets.noData, width: MediaQuery.of(context).size.width / 2),
-          const SizedBox(height: 10),
-          const Text(Messages.noParkedVehicles, style: TextStyle(color: AppColors.textColor)),
-          const SizedBox(height: 20),
-        ],
-      ),
+  Widget _buildVehiclesList() {
+    return VehiclesWatcherBuilder(
+      onSuccess: (vehicles) => vehicles.isEmpty ? const EmptyWarning() : _buildParkedVehicleList(vehicles.value),
     );
   }
 
-  Widget _buildParkedVehicleList() {
-    final parkedVehicles = parkingLot.activeParkedVehicles();
+  Widget _buildParkedVehicleList(KtList<ParkedVehicle> vehicles) {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) => ParkedVehicleTile(parkedVehicles[index]),
-      itemCount: parkedVehicles.size <= 5 ? parkedVehicles.size : 5,
+      itemBuilder: (context, index) => ParkedVehicleTile(vehicles[index]),
+      itemCount: vehicles.size <= 5 ? vehicles.size : 5,
     );
   }
 }

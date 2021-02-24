@@ -20,7 +20,9 @@ class ParkingLotInfoTile extends StatelessWidget {
       subtitle: Messages.selectParkingLotInfoTileSubtitle(parkingLot.address),
       onTap: () {
         context.read<CurrentParkingLot>().setValue(parkingLot);
-        context.read<VehiclesWatcherBloc>().add(VehiclesWatcherEvent.watchStarted(parkingLot));
+        context
+            .read<VehiclesWatcherBloc>()
+            .add(VehiclesWatcherEvent.watchStarted(parkingLot: parkingLot, listType: VehicleListType.active));
         return Navigator.of(context).pop();
       },
     );

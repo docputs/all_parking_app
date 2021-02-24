@@ -2,6 +2,7 @@ import 'package:all_parking/features/parking/data/dtos/parked_vehicle_dto.dart';
 import 'package:all_parking/features/parking/data/dtos/parking_lot_dto.dart';
 import 'package:all_parking/features/parking/data/models/order_by.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
+import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
@@ -76,7 +77,8 @@ class ParkingLotRepository implements IParkingLotRepository {
     try {
       if (manager.parkingLots.isEmpty()) return right(KtList.empty());
       final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: manager.parkingLots.asList()).get();
-      return right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList());
+      final parkingLots = snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList();
+      return right(parkingLots);
     } on FirebaseException catch (e) {
       print(e);
       return left(ParkingFailure.serverFailure());
@@ -99,13 +101,31 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Stream<Either<ParkingFailure, KtList<ParkedVehicle>>> watchAllVehicles(ParkingLot parkingLot,
-      [OrderBy orderBy = const OrderBy('checkIn', descending: true)]) async* {
+  Stream<Either<ParkingFailure, ParkedVehiclesList>> watchActiveVehicles(ParkingLot parkingLot, [OrderBy orderBy]) {
+    return _getVehicleList(isActiveVehicles: true, parkingLot: parkingLot, orderBy: orderBy);
+  }
+
+  @override
+  Stream<Either<ParkingFailure, ParkedVehiclesList>> watchInactiveVehicles(ParkingLot parkingLot, [OrderBy orderBy]) {
+    return _getVehicleList(isActiveVehicles: false, orderBy: orderBy, parkingLot: parkingLot);
+  }
+
+  Stream<Either<ParkingFailure, ParkedVehiclesList>> _getVehicleList({
+    @required bool isActiveVehicles,
+    @required ParkingLot parkingLot,
+    OrderBy orderBy,
+  }) async* {
+    final order = orderBy ?? const OrderBy('checkIn', descending: true);
     yield* _firestore
         .parkedVehiclesCollection(parkingLot.id)
-        .orderBy(orderBy.field, descending: orderBy.descending)
+        .where('isActive', isEqualTo: isActiveVehicles)
+        .orderBy(order.field, descending: order.descending)
         .snapshots()
-        .map((snapshot) => right(snapshot.docs.map((doc) => ParkedVehicleDTO.fromJson(doc.data()).toDomain()).toImmutableList()))
+        .map((snapshot) {
+      final vehicleList = snapshot.docs.map((doc) => ParkedVehicleDTO.fromJson(doc.data()).toDomain()).toImmutableList();
+      final listEntity = isActiveVehicles ? ActiveParkedVehicles(vehicleList) : InactiveParkedVehicles(vehicleList);
+      return right(listEntity);
+    })
           ..onErrorReturnWith((error) {
             print(error);
             return left(ParkingFailure.serverFailure());
