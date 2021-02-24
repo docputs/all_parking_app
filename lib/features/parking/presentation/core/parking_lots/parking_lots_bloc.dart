@@ -31,11 +31,18 @@ class ParkingLotsBloc extends Bloc<ParkingLotsEvent, ParkingLotsState> {
     yield parkingLotsEither.fold(
       (f) => ParkingLotsState.error(f),
       (parkingLots) {
-        if (_currentParkingLot.value.isNone()) {
-          _currentParkingLot.setValue(parkingLots.first());
-        }
+        _updateCurrentParkingLot(parkingLots);
         return ParkingLotsState.success(parkingLots);
       },
     );
+  }
+
+  void _updateCurrentParkingLot(KtList<ParkingLot> parkingLots) {
+    final parkingLot = _currentParkingLot.value.getOrElse(() => null);
+    if (_currentParkingLot.value.isNone()) {
+      _currentParkingLot.setValue(parkingLots.first());
+    } else if (!parkingLots.contains(parkingLot)) {
+      _currentParkingLot.setValue(parkingLots.first());
+    }
   }
 }
