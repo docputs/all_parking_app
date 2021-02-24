@@ -1,4 +1,5 @@
 import 'package:all_parking/app_config.dart';
+import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CurrentParkingLot>(
-      builder: (context, currentParkingLot, child) {
+      builder: (context, currentParkingLot, _) {
         return AppBar(
           title: Text(
             currentParkingLot.value.fold(

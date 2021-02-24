@@ -1,18 +1,18 @@
+import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/watcher_failure_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/collection.dart';
 
 import '../features/parking/core/errors/parking_failure.dart';
-import '../features/parking/domain/entities/parking_lot.dart';
-import '../features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
+import '../features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
 
 class ParkingLotWatcherBuilder extends StatefulWidget {
-  final Widget Function(KtList<ParkingLot>) onSuccess;
-  final Widget Function(ParkingFailure) onError;
+  final Widget Function(KtList<ParkedVehicle> vehicles) onSuccess;
+  final Widget Function(ParkingFailure f) onError;
   final bool useScaffold;
 
-  ParkingLotWatcherBuilder({
+  const ParkingLotWatcherBuilder({
     Key key,
     @required this.onSuccess,
     this.onError,
@@ -41,7 +41,7 @@ class _ParkingLotWatcherBuilderState extends State<ParkingLotWatcherBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ParkingLotWatcherBloc, ParkingLotWatcherState>(
+    return BlocBuilder<VehiclesWatcherBloc, VehiclesWatcherState>(
       builder: (context, state) {
         return state.when(
           initial: () => initialWidget,

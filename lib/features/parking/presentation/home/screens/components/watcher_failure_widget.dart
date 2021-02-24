@@ -1,8 +1,5 @@
-import 'package:all_parking/widgets/default_drawer.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:flutter/material.dart';
-
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
+import 'package:flutter/material.dart';
 
 class WatcherFailureWidget extends StatelessWidget {
   final ParkingFailure failure;

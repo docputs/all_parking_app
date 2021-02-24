@@ -1,16 +1,14 @@
-import 'dart:ui';
-
 import 'package:all_parking/app_config.dart';
 import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
-import 'package:all_parking/features/parking/presentation/home/bloc/parking_lot_watcher_bloc.dart';
+import 'package:all_parking/features/parking/presentation/core/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
+import 'package:all_parking/features/parking/presentation/home/screens/components/custom_fab.dart';
 import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:kt_dart/kt.dart';
 
 import '../../../../../res/constants.dart';
-import '../../../../../res/messages.dart';
-import '../../../../../res/theme.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../../../widgets/default_drawer.dart';
 import '../../../../../widgets/no_parking_lots_found.dart';
@@ -30,16 +28,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<ParkingLotWatcherBloc>().add(const ParkingLotWatcherEvent.watchStarted());
+    context.read<ParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
   }
 
   @override
   Widget build(BuildContext context) {
-    final child = AppScaffold(
-      customAppBar: CustomAppBar(),
-      drawer: const DefaultDrawer(),
-      body: _buildBody(),
-      floatingActionButton: _buildCustomFAB(context),
+    final child = BlocListener<ParkingLotsBloc, ParkingLotsState>(
+      listener: (context, state) => state.maybeWhen(
+          orElse: () => null,
+          success: (parkingLots) => context.read<VehiclesWatcherBloc>().add(VehiclesWatcherEvent.watchStarted(parkingLots.first()))),
+      child: AppScaffold(
+        customAppBar: CustomAppBar(),
+        drawer: const DefaultDrawer(),
+        body: _buildBody(),
+        floatingActionButton: const CustomFAB(),
+      ),
     );
 
     return AppConfig.isManager
@@ -57,35 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: child,
           );
-  }
-
-  SpeedDial _buildCustomFAB(BuildContext context) {
-    return SpeedDial(
-      animatedIcon: AnimatedIcons.menu_close,
-      children: [
-        _buildFABMenuItem(
-          labelText: Messages.checkOutVehicleLabel,
-          icon: Icons.north_east,
-          color: AppColors.errorColor,
-        ),
-        _buildFABMenuItem(
-          labelText: Messages.checkInVehicleLabel,
-          icon: Icons.south_east,
-          color: AppColors.checkColor,
-          onTap: () => Navigator.of(context).pushNamed(Constants.checkInVehicleRoute),
-        ),
-      ],
-    );
-  }
-
-  SpeedDialChild _buildFABMenuItem({String labelText, Color color, IconData icon, void Function() onTap}) {
-    return SpeedDialChild(
-      label: labelText,
-      labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-      backgroundColor: color,
-      child: Icon(icon),
-      onTap: onTap,
-    );
   }
 
   Widget _buildBody() {

@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class ParkingLotInfoTile extends StatelessWidget {
       subtitle: Messages.selectParkingLotInfoTileSubtitle(parkingLot.address),
       onTap: () {
         context.read<CurrentParkingLot>().setValue(parkingLot);
+        context.read<VehiclesWatcherBloc>().add(VehiclesWatcherEvent.watchStarted(parkingLot));
         return Navigator.of(context).pop();
       },
     );

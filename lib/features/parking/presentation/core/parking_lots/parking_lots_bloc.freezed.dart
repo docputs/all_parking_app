@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'parking_lot_watcher_bloc.dart';
+part of 'parking_lots_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,103 +10,89 @@ part of 'parking_lot_watcher_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$ParkingLotWatcherEventTearOff {
-  const _$ParkingLotWatcherEventTearOff();
+class _$ParkingLotsEventTearOff {
+  const _$ParkingLotsEventTearOff();
 
 // ignore: unused_element
-  _WatchStarted watchStarted() {
-    return const _WatchStarted();
-  }
-
-// ignore: unused_element
-  _UpdateReceived updateReceived(
-      Either<ParkingFailure, KtList<ParkingLot>> either) {
-    return _UpdateReceived(
-      either,
-    );
+  _FetchRequested fetchRequested() {
+    return const _FetchRequested();
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $ParkingLotWatcherEvent = _$ParkingLotWatcherEventTearOff();
+const $ParkingLotsEvent = _$ParkingLotsEventTearOff();
 
 /// @nodoc
-mixin _$ParkingLotWatcherEvent {
+mixin _$ParkingLotsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchStarted(),
-    @required
-        TResult updateReceived(
-            Either<ParkingFailure, KtList<ParkingLot>> either),
+    @required TResult fetchRequested(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(),
-    TResult updateReceived(Either<ParkingFailure, KtList<ParkingLot>> either),
+    TResult fetchRequested(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult watchStarted(_WatchStarted value),
-    @required TResult updateReceived(_UpdateReceived value),
+    @required TResult fetchRequested(_FetchRequested value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult watchStarted(_WatchStarted value),
-    TResult updateReceived(_UpdateReceived value),
+    TResult fetchRequested(_FetchRequested value),
     @required TResult orElse(),
   });
 }
 
 /// @nodoc
-abstract class $ParkingLotWatcherEventCopyWith<$Res> {
-  factory $ParkingLotWatcherEventCopyWith(ParkingLotWatcherEvent value,
-          $Res Function(ParkingLotWatcherEvent) then) =
-      _$ParkingLotWatcherEventCopyWithImpl<$Res>;
+abstract class $ParkingLotsEventCopyWith<$Res> {
+  factory $ParkingLotsEventCopyWith(
+          ParkingLotsEvent value, $Res Function(ParkingLotsEvent) then) =
+      _$ParkingLotsEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ParkingLotWatcherEventCopyWithImpl<$Res>
-    implements $ParkingLotWatcherEventCopyWith<$Res> {
-  _$ParkingLotWatcherEventCopyWithImpl(this._value, this._then);
+class _$ParkingLotsEventCopyWithImpl<$Res>
+    implements $ParkingLotsEventCopyWith<$Res> {
+  _$ParkingLotsEventCopyWithImpl(this._value, this._then);
 
-  final ParkingLotWatcherEvent _value;
+  final ParkingLotsEvent _value;
   // ignore: unused_field
-  final $Res Function(ParkingLotWatcherEvent) _then;
+  final $Res Function(ParkingLotsEvent) _then;
 }
 
 /// @nodoc
-abstract class _$WatchStartedCopyWith<$Res> {
-  factory _$WatchStartedCopyWith(
-          _WatchStarted value, $Res Function(_WatchStarted) then) =
-      __$WatchStartedCopyWithImpl<$Res>;
+abstract class _$FetchRequestedCopyWith<$Res> {
+  factory _$FetchRequestedCopyWith(
+          _FetchRequested value, $Res Function(_FetchRequested) then) =
+      __$FetchRequestedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$WatchStartedCopyWithImpl<$Res>
-    extends _$ParkingLotWatcherEventCopyWithImpl<$Res>
-    implements _$WatchStartedCopyWith<$Res> {
-  __$WatchStartedCopyWithImpl(
-      _WatchStarted _value, $Res Function(_WatchStarted) _then)
-      : super(_value, (v) => _then(v as _WatchStarted));
+class __$FetchRequestedCopyWithImpl<$Res>
+    extends _$ParkingLotsEventCopyWithImpl<$Res>
+    implements _$FetchRequestedCopyWith<$Res> {
+  __$FetchRequestedCopyWithImpl(
+      _FetchRequested _value, $Res Function(_FetchRequested) _then)
+      : super(_value, (v) => _then(v as _FetchRequested));
 
   @override
-  _WatchStarted get _value => super._value as _WatchStarted;
+  _FetchRequested get _value => super._value as _FetchRequested;
 }
 
 /// @nodoc
-class _$_WatchStarted implements _WatchStarted {
-  const _$_WatchStarted();
+class _$_FetchRequested implements _FetchRequested {
+  const _$_FetchRequested();
 
   @override
   String toString() {
-    return 'ParkingLotWatcherEvent.watchStarted()';
+    return 'ParkingLotsEvent.fetchRequested()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _WatchStarted);
+    return identical(this, other) || (other is _FetchRequested);
   }
 
   @override
@@ -115,26 +101,21 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult watchStarted(),
-    @required
-        TResult updateReceived(
-            Either<ParkingFailure, KtList<ParkingLot>> either),
+    @required TResult fetchRequested(),
   }) {
-    assert(watchStarted != null);
-    assert(updateReceived != null);
-    return watchStarted();
+    assert(fetchRequested != null);
+    return fetchRequested();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(),
-    TResult updateReceived(Either<ParkingFailure, KtList<ParkingLot>> either),
+    TResult fetchRequested(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (watchStarted != null) {
-      return watchStarted();
+    if (fetchRequested != null) {
+      return fetchRequested();
     }
     return orElse();
   }
@@ -142,158 +123,33 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult watchStarted(_WatchStarted value),
-    @required TResult updateReceived(_UpdateReceived value),
+    @required TResult fetchRequested(_FetchRequested value),
   }) {
-    assert(watchStarted != null);
-    assert(updateReceived != null);
-    return watchStarted(this);
+    assert(fetchRequested != null);
+    return fetchRequested(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult watchStarted(_WatchStarted value),
-    TResult updateReceived(_UpdateReceived value),
+    TResult fetchRequested(_FetchRequested value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (watchStarted != null) {
-      return watchStarted(this);
+    if (fetchRequested != null) {
+      return fetchRequested(this);
     }
     return orElse();
   }
 }
 
-abstract class _WatchStarted implements ParkingLotWatcherEvent {
-  const factory _WatchStarted() = _$_WatchStarted;
+abstract class _FetchRequested implements ParkingLotsEvent {
+  const factory _FetchRequested() = _$_FetchRequested;
 }
 
 /// @nodoc
-abstract class _$UpdateReceivedCopyWith<$Res> {
-  factory _$UpdateReceivedCopyWith(
-          _UpdateReceived value, $Res Function(_UpdateReceived) then) =
-      __$UpdateReceivedCopyWithImpl<$Res>;
-  $Res call({Either<ParkingFailure, KtList<ParkingLot>> either});
-}
-
-/// @nodoc
-class __$UpdateReceivedCopyWithImpl<$Res>
-    extends _$ParkingLotWatcherEventCopyWithImpl<$Res>
-    implements _$UpdateReceivedCopyWith<$Res> {
-  __$UpdateReceivedCopyWithImpl(
-      _UpdateReceived _value, $Res Function(_UpdateReceived) _then)
-      : super(_value, (v) => _then(v as _UpdateReceived));
-
-  @override
-  _UpdateReceived get _value => super._value as _UpdateReceived;
-
-  @override
-  $Res call({
-    Object either = freezed,
-  }) {
-    return _then(_UpdateReceived(
-      either == freezed
-          ? _value.either
-          : either as Either<ParkingFailure, KtList<ParkingLot>>,
-    ));
-  }
-}
-
-/// @nodoc
-class _$_UpdateReceived implements _UpdateReceived {
-  const _$_UpdateReceived(this.either) : assert(either != null);
-
-  @override
-  final Either<ParkingFailure, KtList<ParkingLot>> either;
-
-  @override
-  String toString() {
-    return 'ParkingLotWatcherEvent.updateReceived(either: $either)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _UpdateReceived &&
-            (identical(other.either, either) ||
-                const DeepCollectionEquality().equals(other.either, either)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(either);
-
-  @JsonKey(ignore: true)
-  @override
-  _$UpdateReceivedCopyWith<_UpdateReceived> get copyWith =>
-      __$UpdateReceivedCopyWithImpl<_UpdateReceived>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult watchStarted(),
-    @required
-        TResult updateReceived(
-            Either<ParkingFailure, KtList<ParkingLot>> either),
-  }) {
-    assert(watchStarted != null);
-    assert(updateReceived != null);
-    return updateReceived(either);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(),
-    TResult updateReceived(Either<ParkingFailure, KtList<ParkingLot>> either),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (updateReceived != null) {
-      return updateReceived(either);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult watchStarted(_WatchStarted value),
-    @required TResult updateReceived(_UpdateReceived value),
-  }) {
-    assert(watchStarted != null);
-    assert(updateReceived != null);
-    return updateReceived(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult watchStarted(_WatchStarted value),
-    TResult updateReceived(_UpdateReceived value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (updateReceived != null) {
-      return updateReceived(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdateReceived implements ParkingLotWatcherEvent {
-  const factory _UpdateReceived(
-      Either<ParkingFailure, KtList<ParkingLot>> either) = _$_UpdateReceived;
-
-  Either<ParkingFailure, KtList<ParkingLot>> get either;
-  @JsonKey(ignore: true)
-  _$UpdateReceivedCopyWith<_UpdateReceived> get copyWith;
-}
-
-/// @nodoc
-class _$ParkingLotWatcherStateTearOff {
-  const _$ParkingLotWatcherStateTearOff();
+class _$ParkingLotsStateTearOff {
+  const _$ParkingLotsStateTearOff();
 
 // ignore: unused_element
   _Initial initial() {
@@ -322,10 +178,10 @@ class _$ParkingLotWatcherStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $ParkingLotWatcherState = _$ParkingLotWatcherStateTearOff();
+const $ParkingLotsState = _$ParkingLotsStateTearOff();
 
 /// @nodoc
-mixin _$ParkingLotWatcherState {
+mixin _$ParkingLotsState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
@@ -359,20 +215,20 @@ mixin _$ParkingLotWatcherState {
 }
 
 /// @nodoc
-abstract class $ParkingLotWatcherStateCopyWith<$Res> {
-  factory $ParkingLotWatcherStateCopyWith(ParkingLotWatcherState value,
-          $Res Function(ParkingLotWatcherState) then) =
-      _$ParkingLotWatcherStateCopyWithImpl<$Res>;
+abstract class $ParkingLotsStateCopyWith<$Res> {
+  factory $ParkingLotsStateCopyWith(
+          ParkingLotsState value, $Res Function(ParkingLotsState) then) =
+      _$ParkingLotsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ParkingLotWatcherStateCopyWithImpl<$Res>
-    implements $ParkingLotWatcherStateCopyWith<$Res> {
-  _$ParkingLotWatcherStateCopyWithImpl(this._value, this._then);
+class _$ParkingLotsStateCopyWithImpl<$Res>
+    implements $ParkingLotsStateCopyWith<$Res> {
+  _$ParkingLotsStateCopyWithImpl(this._value, this._then);
 
-  final ParkingLotWatcherState _value;
+  final ParkingLotsState _value;
   // ignore: unused_field
-  final $Res Function(ParkingLotWatcherState) _then;
+  final $Res Function(ParkingLotsState) _then;
 }
 
 /// @nodoc
@@ -382,8 +238,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res>
-    extends _$ParkingLotWatcherStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$ParkingLotsStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -398,7 +253,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'ParkingLotWatcherState.initial()';
+    return 'ParkingLotsState.initial()';
   }
 
   @override
@@ -472,7 +327,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ParkingLotWatcherState {
+abstract class _Initial implements ParkingLotsState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -483,8 +338,7 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res>
-    extends _$ParkingLotWatcherStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res> extends _$ParkingLotsStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -499,7 +353,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'ParkingLotWatcherState.loading()';
+    return 'ParkingLotsState.loading()';
   }
 
   @override
@@ -573,7 +427,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements ParkingLotWatcherState {
+abstract class _Loading implements ParkingLotsState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -585,8 +439,7 @@ abstract class _$SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res>
-    extends _$ParkingLotWatcherStateCopyWithImpl<$Res>
+class __$SuccessCopyWithImpl<$Res> extends _$ParkingLotsStateCopyWithImpl<$Res>
     implements _$SuccessCopyWith<$Res> {
   __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
       : super(_value, (v) => _then(v as _Success));
@@ -615,7 +468,7 @@ class _$_Success implements _Success {
 
   @override
   String toString() {
-    return 'ParkingLotWatcherState.success(parkingLots: $parkingLots)';
+    return 'ParkingLotsState.success(parkingLots: $parkingLots)';
   }
 
   @override
@@ -699,7 +552,7 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements ParkingLotWatcherState {
+abstract class _Success implements ParkingLotsState {
   const factory _Success(KtList<ParkingLot> parkingLots) = _$_Success;
 
   KtList<ParkingLot> get parkingLots;
@@ -717,8 +570,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res>
-    extends _$ParkingLotWatcherStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$ParkingLotsStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -755,7 +607,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'ParkingLotWatcherState.error(failure: $failure)';
+    return 'ParkingLotsState.error(failure: $failure)';
   }
 
   @override
@@ -838,7 +690,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements ParkingLotWatcherState {
+abstract class _Error implements ParkingLotsState {
   const factory _Error(ParkingFailure failure) = _$_Error;
 
   ParkingFailure get failure;

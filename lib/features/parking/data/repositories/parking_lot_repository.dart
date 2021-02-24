@@ -1,5 +1,6 @@
 import 'package:all_parking/features/parking/data/dtos/parked_vehicle_dto.dart';
 import 'package:all_parking/features/parking/data/dtos/parking_lot_dto.dart';
+import 'package:all_parking/features/parking/data/models/order_by.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
@@ -71,11 +72,11 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Future<Either<ParkingFailure, List<ParkingLot>>> fetchAll(Manager manager) async {
+  Future<Either<ParkingFailure, KtList<ParkingLot>>> fetchParkingLots(Manager manager) async {
     try {
-      if (manager.parkingLots.isEmpty()) return right(List.empty());
+      if (manager.parkingLots.isEmpty()) return right(KtList.empty());
       final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: manager.parkingLots.asList()).get();
-      return right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toList());
+      return right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList());
     } on FirebaseException catch (e) {
       print(e);
       return left(ParkingFailure.serverFailure());
@@ -86,8 +87,8 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Stream<Either<ParkingFailure, ParkingLot>> watchById(String id) {
-    return _firestore.parkingLotCollection.doc(id).snapshots().map((doc) {
+  Stream<Either<ParkingFailure, ParkingLot>> watchById(ParkingLot parkingLot) {
+    return _firestore.parkingLotCollection.doc(parkingLot.id).snapshots().map((doc) {
       if (doc.exists) return right(ParkingLotDTO.fromFirestore(doc).toDomain());
       return left(ParkingFailure.parkingLotNotFound());
     })
@@ -98,18 +99,16 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Stream<Either<ParkingFailure, KtList<ParkingLot>>> watchAll(Manager manager) async* {
-    final parkingLots = manager.parkingLots.asList();
-    if (parkingLots.isEmpty)
-      yield right(KtList.empty());
-    else
-      yield* _firestore.parkingLotCollection
-          .where(FieldPath.documentId, whereIn: parkingLots)
-          .snapshots()
-          .map((snapshot) => right(snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList()))
-            ..onErrorReturnWith((error) {
-              print('ERROR: $error');
-              return left(ParkingFailure.serverFailure());
-            });
+  Stream<Either<ParkingFailure, KtList<ParkedVehicle>>> watchAllVehicles(ParkingLot parkingLot,
+      [OrderBy orderBy = const OrderBy('checkIn', descending: true)]) async* {
+    yield* _firestore
+        .parkedVehiclesCollection(parkingLot.id)
+        .orderBy(orderBy.field, descending: orderBy.descending)
+        .snapshots()
+        .map((snapshot) => right(snapshot.docs.map((doc) => ParkedVehicleDTO.fromJson(doc.data()).toDomain()).toImmutableList()))
+          ..onErrorReturnWith((error) {
+            print(error);
+            return left(ParkingFailure.serverFailure());
+          });
   }
 }
