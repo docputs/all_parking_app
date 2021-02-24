@@ -19,13 +19,7 @@ class AddParkingLot {
     final parkingLotEither = await _parkingLotRepository.create(parkingLot);
     return parkingLotEither.fold(
       (f) => left(f),
-      (_) async {
-        final either = await caseParkingLotEitherSuccess(parkingLot);
-        return either.fold(
-          (f) => left(f),
-          (_) => right(unit),
-        );
-      },
+      (_) => caseParkingLotEitherSuccess(parkingLot),
     );
   }
 
@@ -36,11 +30,7 @@ class AddParkingLot {
       (manager) async {
         final newList = manager.parkingLots.plusElement(parkingLot.id);
         final newManager = manager.copyWith(parkingLots: newList);
-        final updateEither = await _managerRepository.update(newManager);
-        return updateEither.fold(
-          (f) => left(f),
-          (_) => right(unit),
-        );
+        return _managerRepository.update(newManager);
       },
     );
   }
