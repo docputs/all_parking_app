@@ -10,6 +10,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/parking/presentation/bloc/vehicles_watcher/active_vehicles/active_vehicles_watcher_bloc.dart';
 import 'features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
 import 'features/parking/domain/usecases/add_parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/bloc/add_parking_lot_bloc.dart';
@@ -37,13 +38,14 @@ import 'features/auth/data/datasources/i_local_data_source.dart';
 import 'features/auth/domain/repositories/i_manager_auth_repository.dart';
 import 'features/parking/domain/repositories/i_manager_repository.dart';
 import 'features/parking/domain/repositories/i_parking_lot_repository.dart';
+import 'features/parking/presentation/bloc/vehicles_watcher/inactive_vehicles/inactive_vehicles_watcher_bloc.dart';
 import 'features/auth/data/datasources/local_data_source.dart';
 import 'features/parking/presentation/manage_employees/bloc/manage_employees_bloc.dart';
 import 'features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
 import 'features/auth/data/repositories/manager_auth_repository.dart';
 import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
-import 'features/parking/presentation/core/parking_lots/parking_lots_bloc.dart';
+import 'features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
 import 'service_locator.dart';
 import 'features/parking/presentation/reports/bloc/reports_bloc.dart';
 import 'features/auth/presentation/manager/sign_in/bloc/sign_in_bloc.dart';
@@ -54,8 +56,8 @@ import 'features/auth/presentation/manager/sign_up/bloc/sign_up_bloc.dart';
 import 'features/auth/domain/usecases/sign_up_employee.dart';
 import 'features/auth/domain/usecases/sign_up_manager.dart';
 import 'features/splash/presentation/splash_bloc/splash_bloc.dart';
-import 'features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
 import 'features/parking/domain/usecases/watch_active_vehicles.dart';
+import 'features/parking/domain/usecases/watch_inactive_vehicles.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -90,6 +92,10 @@ Future<GetIt> $initGetIt(
   gh.factory<SplashBloc>(() => SplashBloc());
   gh.lazySingleton<WatchActiveVehicles>(
       () => WatchActiveVehicles(get<IParkingLotRepository>()));
+  gh.lazySingleton<WatchInactiveVehicles>(
+      () => WatchInactiveVehicles(get<IParkingLotRepository>()));
+  gh.factory<ActiveVehiclesWatcherBloc>(() => ActiveVehiclesWatcherBloc(
+      get<WatchActiveVehicles>(), get<CurrentParkingLot>()));
   gh.lazySingleton<AddParkingLot>(() =>
       AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.factory<AuthBloc>(() => AuthBloc(get<IManagerAuthRepository>()));
@@ -112,6 +118,8 @@ Future<GetIt> $initGetIt(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
   gh.lazySingleton<ILocalDataSource>(
       () => LocalDataSource(get<SharedPreferences>()));
+  gh.factory<InactiveVehiclesWatcherBloc>(() => InactiveVehiclesWatcherBloc(
+      get<WatchInactiveVehicles>(), get<CurrentParkingLot>()));
   gh.factory<ManageEmployeesBloc>(() =>
       ManageEmployeesBloc(get<DeleteEmployee>(), get<FetchCurrentManager>()));
   gh.factory<ManageParkingLotsBloc>(
@@ -125,8 +133,6 @@ Future<GetIt> $initGetIt(
         get<IEmployeeRepository>(),
         get<IManagerRepository>(),
       ));
-  gh.factory<VehiclesWatcherBloc>(
-      () => VehiclesWatcherBloc(get<WatchActiveVehicles>()));
   gh.factory<AddEmployeeBloc>(() => AddEmployeeBloc(get<SignUpEmployee>()));
   gh.factory<AddParkingLotBloc>(() => AddParkingLotBloc(
         get<AddParkingLot>(),

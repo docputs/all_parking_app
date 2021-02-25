@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
+import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

@@ -1,6 +1,6 @@
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
+import 'package:all_parking/widgets/active_vehicles_builder.dart';
 import 'package:all_parking/widgets/parked_vehicle_tile.dart';
-import 'package:all_parking/widgets/vehicles_watcher_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kt_dart/collection.dart';
@@ -34,7 +34,7 @@ class ParkingLotDashboard extends StatelessWidget {
   }
 
   Widget _buildCardsDisplay() {
-    return VehiclesWatcherBuilder(
+    return ActiveVehiclesBuilder(
       onSuccess: (activeVehicles) => CardsDisplay(parkingLot, activeVehicles),
     );
   }
@@ -55,7 +55,7 @@ class ParkingLotDashboard extends StatelessWidget {
   }
 
   Widget _buildVehiclesList() {
-    return VehiclesWatcherBuilder(
+    return ActiveVehiclesBuilder(
       onSuccess: (vehicles) => vehicles.isEmpty ? const EmptyWarning() : _buildParkedVehicleList(vehicles.value),
     );
   }

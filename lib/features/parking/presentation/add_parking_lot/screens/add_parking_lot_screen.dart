@@ -1,4 +1,4 @@
-import 'package:all_parking/features/parking/presentation/core/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';

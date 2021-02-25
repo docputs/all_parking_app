@@ -8,12 +8,12 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class WatchActiveVehicles implements IWatchVehicles {
+class WatchInactiveVehicles implements IWatchVehicles {
   final IParkingLotRepository _parkingLotRepository;
 
-  const WatchActiveVehicles(this._parkingLotRepository);
+  const WatchInactiveVehicles(this._parkingLotRepository);
 
-  Stream<Either<ParkingFailure, ActiveParkedVehicles>> call(ParkingLot parkingLot, [OrderBy orderBy]) {
-    return _parkingLotRepository.watchActiveVehicles(parkingLot, orderBy);
+  Stream<Either<ParkingFailure, ParkedVehiclesList>> call(ParkingLot parkingLot, [OrderBy orderBy]) {
+    return _parkingLotRepository.watchInactiveVehicles(parkingLot, orderBy);
   }
 }

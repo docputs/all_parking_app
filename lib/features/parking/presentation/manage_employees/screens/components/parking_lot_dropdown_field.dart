@@ -1,6 +1,6 @@
 import 'package:all_parking/features/parking/domain/entities/associated_parking_lot.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/core/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
 import 'package:all_parking/widgets/default_dropdown_field.dart';
 import 'package:flutter/material.dart';

@@ -1,10 +1,10 @@
+import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
+import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/watcher_failure_widget.dart';
-import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../features/parking/core/errors/parking_failure.dart';
-import '../features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
 
 class VehiclesWatcherBuilder extends StatefulWidget {
   final Widget Function(ParkedVehiclesList vehicles) onSuccess;

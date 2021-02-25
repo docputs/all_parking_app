@@ -26,48 +26,6 @@ class ReportsDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildVehicleList() {
-    return BlocBuilder<ReportsBloc, ReportsState>(
-      builder: (context, state) {
-        return state.maybeWhen(
-          (selectedDate, viewModel) {
-            final vehicles = viewModel.parkedVehicles.fromDateTime(selectedDate);
-            return vehicles.isEmpty() ? _buildNoDataToShow() : _buildList(vehicles);
-          },
-          orElse: () => const SizedBox(),
-        );
-      },
-    );
-  }
-
-  Widget _buildList(KtList<ParkedVehicle> vehicles) {
-    return ListView.separated(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemBuilder: (context, index) => VehicleReportTile(vehicles[index]),
-      itemCount: vehicles.size,
-      separatorBuilder: (context, index) => const Divider(),
-    );
-  }
-
-  Widget _buildNoDataToShow() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 60),
-      child: Text(Messages.noDataToShow, style: const TextStyle(color: AppColors.textColor)),
-    );
-  }
-
-  Widget _buildEarningsCard() {
-    return BlocBuilder<ReportsBloc, ReportsState>(
-      builder: (context, state) {
-        return state.maybeMap(
-          (state) => EarningsCard(state.viewModel, state.selectedDate),
-          orElse: () => const SizedBox(),
-        );
-      },
-    );
-  }
-
   Widget _buildDateHeader() {
     return BlocBuilder<ReportsBloc, ReportsState>(
       buildWhen: (p, c) => p.selectedDate != c.selectedDate,
@@ -91,6 +49,48 @@ class ReportsDashboard extends StatelessWidget {
           orElse: () => const SizedBox(),
         );
       },
+    );
+  }
+
+  Widget _buildEarningsCard() {
+    return BlocBuilder<ReportsBloc, ReportsState>(
+      builder: (context, state) {
+        return state.maybeMap(
+          (state) => EarningsCard(state.viewModel, state.selectedDate),
+          orElse: () => const SizedBox(),
+        );
+      },
+    );
+  }
+
+  Widget _buildVehicleList() {
+    return BlocBuilder<ReportsBloc, ReportsState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          (selectedDate, viewModel) {
+            final vehicles = viewModel.vehicles.fromDateTime(selectedDate);
+            return vehicles.isEmpty() ? _buildNoDataToShow() : _buildList(vehicles);
+          },
+          orElse: () => const SizedBox(),
+        );
+      },
+    );
+  }
+
+  Widget _buildList(KtList<ParkedVehicle> vehicles) {
+    return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (context, index) => VehicleReportTile(vehicles[index]),
+      itemCount: vehicles.size,
+      separatorBuilder: (context, index) => const Divider(),
+    );
+  }
+
+  Widget _buildNoDataToShow() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 60),
+      child: Text(Messages.noDataToShow, style: const TextStyle(color: AppColors.textColor)),
     );
   }
 

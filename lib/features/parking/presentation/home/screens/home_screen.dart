@@ -1,13 +1,13 @@
 import 'package:all_parking/app_config.dart';
 import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
-import 'package:all_parking/features/parking/presentation/core/parking_lots/parking_lots_bloc.dart';
-import 'package:all_parking/features/parking/presentation/home/bloc/vehicles_watcher_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
 import 'package:all_parking/features/parking/presentation/home/screens/components/custom_fab.dart';
 import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
-import '../../core/context_extension.dart';
+import '../../context_extension.dart';
 
 import '../../../../../res/constants.dart';
 import '../../../../../widgets/app_scaffold.dart';
@@ -35,10 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final child = BlocListener<ParkingLotsBloc, ParkingLotsState>(
       listener: (context, state) => state.maybeWhen(
         orElse: () => null,
-        success: (parkingLots) => context.parkedVehicles.add(VehiclesWatcherEvent.watchStarted(
-          parkingLot: parkingLots.first(),
-          listType: VehicleListType.active,
-        )),
+        success: (parkingLots) => context.activeVehicles.add(VehiclesWatcherEvent.watchStarted(parkingLots.first())),
       ),
       child: AppScaffold(
         customAppBar: CustomAppBar(),

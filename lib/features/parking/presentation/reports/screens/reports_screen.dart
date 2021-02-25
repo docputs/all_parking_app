@@ -1,9 +1,11 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
+import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
+import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
 import 'package:all_parking/widgets/current_parking_lot_builder.dart';
+import 'package:all_parking/widgets/inactive_vehicles_builder.dart';
 import 'package:all_parking/widgets/vehicles_watcher_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kt_dart/kt.dart';
+import '../../context_extension.dart';
 
 import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
@@ -14,8 +16,19 @@ import '../../../domain/entities/parking_lot.dart';
 import '../bloc/reports_bloc.dart';
 import 'components/reports_dashboard.dart';
 
-class ReportsScreen extends StatelessWidget {
+class ReportsScreen extends StatefulWidget {
   const ReportsScreen({Key key}) : super(key: key);
+
+  @override
+  _ReportsScreenState createState() => _ReportsScreenState();
+}
+
+class _ReportsScreenState extends State<ReportsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.inactiveVehicles.add(VehiclesWatcherEvent.watchStarted(null));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +41,13 @@ class ReportsScreen extends StatelessWidget {
 
   Widget _buildBody() {
     return CurrentParkingLotBuilder(
-      builder: (parkingLot) => VehiclesWatcherBuilder(
-        onSuccess: (vehicles) => vehicles.isEmpty ? const NoDataToShow() : _buildReportsDashboard(vehicles.value, parkingLot),
+      builder: (parkingLot) => InactiveVehiclesBuilder(
+        onSuccess: (vehicles) => vehicles.isEmpty ? const NoDataToShow() : _buildReportsDashboard(vehicles, parkingLot),
       ),
     );
   }
 
-  Widget _buildReportsDashboard(KtList<ParkedVehicle> vehicles, ParkingLot parkingLot) {
+  Widget _buildReportsDashboard(InactiveParkedVehicles vehicles, ParkingLot parkingLot) {
     return BlocProvider(
       create: (context) => getIt<ReportsBloc>()..add(ReportsEvent.initialized(parkingLot: parkingLot, vehicles: vehicles)),
       child: const ReportsDashboard(),

@@ -14,11 +14,9 @@ class _$VehiclesWatcherEventTearOff {
   const _$VehiclesWatcherEventTearOff();
 
 // ignore: unused_element
-  _WatchStarted watchStarted(
-      {@required ParkingLot parkingLot, @required VehicleListType listType}) {
+  _WatchStarted watchStarted(@nullable ParkingLot parkingLot) {
     return _WatchStarted(
-      parkingLot: parkingLot,
-      listType: listType,
+      parkingLot,
     );
   }
 
@@ -39,15 +37,14 @@ const $VehiclesWatcherEvent = _$VehiclesWatcherEventTearOff();
 mixin _$VehiclesWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required
-        TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    @required TResult watchStarted(@nullable ParkingLot parkingLot),
     @required
         TResult updateReceived(
             Either<ParkingFailure, ParkedVehiclesList> either),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    TResult watchStarted(@nullable ParkingLot parkingLot),
     TResult updateReceived(Either<ParkingFailure, ParkedVehiclesList> either),
     @required TResult orElse(),
   });
@@ -86,7 +83,7 @@ abstract class _$WatchStartedCopyWith<$Res> {
   factory _$WatchStartedCopyWith(
           _WatchStarted value, $Res Function(_WatchStarted) then) =
       __$WatchStartedCopyWithImpl<$Res>;
-  $Res call({ParkingLot parkingLot, VehicleListType listType});
+  $Res call({@nullable ParkingLot parkingLot});
 
   $ParkingLotCopyWith<$Res> get parkingLot;
 }
@@ -105,13 +102,9 @@ class __$WatchStartedCopyWithImpl<$Res>
   @override
   $Res call({
     Object parkingLot = freezed,
-    Object listType = freezed,
   }) {
     return _then(_WatchStarted(
-      parkingLot:
-          parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
-      listType:
-          listType == freezed ? _value.listType : listType as VehicleListType,
+      parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
     ));
   }
 
@@ -128,18 +121,15 @@ class __$WatchStartedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_WatchStarted implements _WatchStarted {
-  const _$_WatchStarted({@required this.parkingLot, @required this.listType})
-      : assert(parkingLot != null),
-        assert(listType != null);
+  const _$_WatchStarted(@nullable this.parkingLot);
 
   @override
+  @nullable
   final ParkingLot parkingLot;
-  @override
-  final VehicleListType listType;
 
   @override
   String toString() {
-    return 'VehiclesWatcherEvent.watchStarted(parkingLot: $parkingLot, listType: $listType)';
+    return 'VehiclesWatcherEvent.watchStarted(parkingLot: $parkingLot)';
   }
 
   @override
@@ -148,17 +138,12 @@ class _$_WatchStarted implements _WatchStarted {
         (other is _WatchStarted &&
             (identical(other.parkingLot, parkingLot) ||
                 const DeepCollectionEquality()
-                    .equals(other.parkingLot, parkingLot)) &&
-            (identical(other.listType, listType) ||
-                const DeepCollectionEquality()
-                    .equals(other.listType, listType)));
+                    .equals(other.parkingLot, parkingLot)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(parkingLot) ^
-      const DeepCollectionEquality().hash(listType);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(parkingLot);
 
   @JsonKey(ignore: true)
   @override
@@ -168,27 +153,26 @@ class _$_WatchStarted implements _WatchStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required
-        TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    @required TResult watchStarted(@nullable ParkingLot parkingLot),
     @required
         TResult updateReceived(
             Either<ParkingFailure, ParkedVehiclesList> either),
   }) {
     assert(watchStarted != null);
     assert(updateReceived != null);
-    return watchStarted(parkingLot, listType);
+    return watchStarted(parkingLot);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    TResult watchStarted(@nullable ParkingLot parkingLot),
     TResult updateReceived(Either<ParkingFailure, ParkedVehiclesList> either),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (watchStarted != null) {
-      return watchStarted(parkingLot, listType);
+      return watchStarted(parkingLot);
     }
     return orElse();
   }
@@ -220,12 +204,11 @@ class _$_WatchStarted implements _WatchStarted {
 }
 
 abstract class _WatchStarted implements VehiclesWatcherEvent {
-  const factory _WatchStarted(
-      {@required ParkingLot parkingLot,
-      @required VehicleListType listType}) = _$_WatchStarted;
+  const factory _WatchStarted(@nullable ParkingLot parkingLot) =
+      _$_WatchStarted;
 
+  @nullable
   ParkingLot get parkingLot;
-  VehicleListType get listType;
   @JsonKey(ignore: true)
   _$WatchStartedCopyWith<_WatchStarted> get copyWith;
 }
@@ -293,8 +276,7 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required
-        TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    @required TResult watchStarted(@nullable ParkingLot parkingLot),
     @required
         TResult updateReceived(
             Either<ParkingFailure, ParkedVehiclesList> either),
@@ -307,7 +289,7 @@ class _$_UpdateReceived implements _UpdateReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult watchStarted(ParkingLot parkingLot, VehicleListType listType),
+    TResult watchStarted(@nullable ParkingLot parkingLot),
     TResult updateReceived(Either<ParkingFailure, ParkedVehiclesList> either),
     @required TResult orElse(),
   }) {

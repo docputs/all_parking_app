@@ -2,10 +2,10 @@ import 'package:all_parking/app_config.dart';
 import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:all_parking/features/parking/domain/entities/address.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
+import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:kt_dart/collection.dart';
 
 import '../features/parking/core/util/vehicle_color_converter.dart';
 import '../features/parking/core/util/vehicle_type_converter.dart';
@@ -198,8 +198,8 @@ class Messages {
   }
 
   static Map<String, Map<String, dynamic>> generateReportsInfo(ReportsViewModel viewModel) {
-    final todaysParkedVehicles = viewModel.parkedVehicles.fromToday();
-    final lastWeekParkedVehicles = viewModel.parkedVehicles.fromLastWeek();
+    final todaysParkedVehicles = viewModel.vehicles.fromToday();
+    final lastWeekParkedVehicles = viewModel.vehicles.fromLastWeek();
     return {
       selectedDateLabel(DateTime.now()): {
         'Veículos estacionados': todaysParkedVehicles.size,

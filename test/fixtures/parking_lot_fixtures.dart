@@ -38,7 +38,7 @@ class Fixtures {
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: KtList.of(parkedVehicle, parkedVehicle2),
+    vehicles: KtList.of(parkedVehicle, parkedVehicle2),
     pricePerHour: 12.0,
   );
 
@@ -47,7 +47,7 @@ class Fixtures {
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: KtList.of(parkedVehicle, parkedVehicle2, parkedVehicle),
+    vehicles: KtList.of(parkedVehicle, parkedVehicle2, parkedVehicle),
     pricePerHour: 12.0,
   );
 
@@ -56,7 +56,7 @@ class Fixtures {
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: KtList.of(inactiveParkedVehicle, parkedVehicle2),
+    vehicles: KtList.of(inactiveParkedVehicle, parkedVehicle2),
     pricePerHour: 12.0,
   );
 

@@ -1,4 +1,4 @@
-import 'package:all_parking/features/parking/presentation/reports/view_models/reports_view_model.dart';
+import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../res/messages.dart';
