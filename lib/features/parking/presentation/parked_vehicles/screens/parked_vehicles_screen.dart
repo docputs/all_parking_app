@@ -1,4 +1,4 @@
-import 'package:all_parking/widgets/vehicles_watcher_builder.dart';
+import 'package:all_parking/widgets/active_vehicles_builder.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../res/messages.dart';
@@ -21,7 +21,7 @@ class ParkedVehiclesScreen extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    return VehiclesWatcherBuilder(
+    return ActiveVehiclesBuilder(
       onSuccess: (vehicles) => vehicles.isEmpty ? const NoParkedVehicles() : ParkedVehiclesDashboard(vehicles.value.asList()),
     );
   }
