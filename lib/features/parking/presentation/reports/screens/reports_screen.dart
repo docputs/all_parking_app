@@ -2,7 +2,6 @@ import 'package:all_parking/features/parking/domain/entities/parked_vehicles_lis
 import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
 import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:all_parking/widgets/inactive_vehicles_builder.dart';
-import 'package:all_parking/widgets/vehicles_watcher_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../context_extension.dart';
