@@ -67,8 +67,8 @@ class ParkingLotRepository implements IParkingLotRepository {
   @override
   Future<Either<ParkingFailure, Unit>> checkOutVehicle(ParkedVehicle vehicle, {@required ParkingLot parkingLot}) {
     return _handleExceptions(() async {
-      final assignedCheckOut = {'checkOut': DateTime.now().toString(), 'isActive': false};
-      await _firestore.parkedVehiclesCollection(parkingLot.id).doc(vehicle.id.value).update(assignedCheckOut);
+      final vehicleDTO = ParkedVehicleDTO.fromDomain(vehicle).copyWith(checkOut: DateTime.now(), isActive: false);
+      await _firestore.parkedVehiclesCollection(parkingLot.id).doc(vehicle.id.value).update(vehicleDTO.toJson());
     });
   }
 
