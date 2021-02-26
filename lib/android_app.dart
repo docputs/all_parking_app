@@ -5,9 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import './features/parking/presentation/bloc/parking_lots/employee/employee_parking_lot_bloc.dart';
 import 'app_routes.dart';
 import 'features/auth/presentation/auth_bloc.dart';
-import 'features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
+import 'features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
 import 'features/parking/presentation/bloc/vehicles_watcher/active_vehicles/active_vehicles_watcher_bloc.dart';
 import 'features/parking/presentation/bloc/vehicles_watcher/inactive_vehicles/inactive_vehicles_watcher_bloc.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
@@ -23,7 +24,8 @@ class AndroidApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<EmployeeAuthBloc>()),
         BlocProvider(create: (context) => getIt<ActiveVehiclesWatcherBloc>()),
         BlocProvider(create: (context) => getIt<InactiveVehiclesWatcherBloc>()),
-        BlocProvider(create: (context) => getIt<ParkingLotsBloc>()),
+        BlocProvider(create: (context) => getIt<ManagerParkingLotsBloc>()),
+        BlocProvider(create: (context) => getIt<EmployeeParkingLotBloc>()),
       ],
       child: ChangeNotifierProvider(
         create: (context) => getIt<CurrentParkingLot>(),

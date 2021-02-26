@@ -1,3 +1,6 @@
+import 'package:all_parking/app_config.dart';
+import 'package:all_parking/features/parking/presentation/home/screens/employee_home_screen.dart';
+import 'package:all_parking/features/parking/presentation/home/screens/manager_home_screen.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/screens/add_employee_screen.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/screens/manage_employees_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +14,6 @@ import 'features/parking/domain/entities/parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/screens/add_parking_lot_screen.dart';
 import 'features/parking/presentation/check-in/screens/check_in_screen.dart';
 import 'features/parking/presentation/check_out/screens/check_out_screen.dart';
-import 'features/parking/presentation/home/screens/home_screen.dart';
 import 'features/parking/presentation/manage_parking_lots/screens/manage_parking_lots_screen.dart';
 import 'features/parking/presentation/parked_vehicles/screens/parked_vehicle_details_screen.dart';
 import 'features/parking/presentation/parked_vehicles/screens/parked_vehicles_screen.dart';
@@ -26,15 +28,12 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SplashScreen());
       break;
     case Constants.homeRoute:
-      return MaterialPageRoute(builder: (context) => const HomeScreen());
+      return MaterialPageRoute(builder: (context) => AppConfig.isManager ? const ManagerHomeScreen() : const EmployeeHomeScreen());
       break;
-    case Constants.signInManagerRoute:
-      return MaterialPageRoute(builder: (context) => const SignInScreen());
+    case Constants.signInRoute:
+      return MaterialPageRoute(builder: (context) => AppConfig.isManager ? const SignInScreen() : const SignInEmployeeScreen());
       break;
-    case Constants.signInEmployeeRoute:
-      return MaterialPageRoute(builder: (context) => const SignInEmployeeScreen());
-      break;
-    case Constants.signUpManagerRoute:
+    case Constants.signUpRoute:
       return MaterialPageRoute(builder: (context) => const SignUpScreen());
       break;
     case Constants.addParkingLotRoute:

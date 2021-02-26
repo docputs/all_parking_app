@@ -1,4 +1,5 @@
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_state.dart';
 import 'package:all_parking/features/parking/presentation/manage_parking_lots/screens/components/parking_lot_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +14,7 @@ class ParkingLotListBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ParkingLotsBloc, ParkingLotsState>(
+    return BlocBuilder<ManagerParkingLotsBloc, ParkingLotsState>(
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox(),

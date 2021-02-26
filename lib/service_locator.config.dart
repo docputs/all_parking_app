@@ -30,9 +30,11 @@ import 'features/parking/domain/usecases/edit_parking_lot.dart';
 import 'utils/email_service.dart';
 import 'features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'features/auth/data/repositories/employee_auth_repository.dart';
+import 'features/parking/presentation/bloc/parking_lots/employee/employee_parking_lot_bloc.dart';
 import 'features/parking/data/repositories/employee_repository.dart';
 import 'features/parking/domain/usecases/fetch_current_manager.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
+import 'features/parking/domain/usecases/fetch_single_parking_lot.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
 import 'features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'features/parking/domain/repositories/i_employee_repository.dart';
@@ -45,9 +47,9 @@ import 'features/auth/data/datasources/local_data_source.dart';
 import 'features/parking/presentation/manage_employees/bloc/manage_employees_bloc.dart';
 import 'features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
 import 'features/auth/data/repositories/manager_auth_repository.dart';
+import 'features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
 import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
-import 'features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
 import 'service_locator.dart';
 import 'features/parking/presentation/reports/bloc/reports_bloc.dart';
 import 'features/auth/presentation/manager/sign_in/bloc/sign_in_bloc.dart';
@@ -131,8 +133,8 @@ Future<GetIt> $initGetIt(
       ManageEmployeesBloc(get<DeleteEmployee>(), get<FetchCurrentManager>()));
   gh.factory<ManageParkingLotsBloc>(
       () => ManageParkingLotsBloc(get<DeleteParkingLot>()));
-  gh.factory<ParkingLotsBloc>(
-      () => ParkingLotsBloc(get<FetchParkingLots>(), get<CurrentParkingLot>()));
+  gh.factory<ManagerParkingLotsBloc>(() => ManagerParkingLotsBloc(
+      get<FetchParkingLots>(), get<CurrentParkingLot>()));
   gh.factory<SignInBloc>(() => SignInBloc(get<SignInManager>()));
   gh.factory<SignUpBloc>(() => SignUpBloc(get<SignUpManager>()));
   gh.lazySingleton<SignUpEmployee>(() => SignUpEmployee(
@@ -159,8 +161,12 @@ Future<GetIt> $initGetIt(
       get<IEmployeeAuthRepository>(), get<ILocalDataSource>()));
   gh.factory<EmployeeAuthBloc>(() => EmployeeAuthBloc(
       get<IEmployeeAuthRepository>(), get<AutoSignInEmployee>()));
+  gh.lazySingleton<FetchSingleParkingLot>(() => FetchSingleParkingLot(
+      get<IParkingLotRepository>(), get<IEmployeeAuthRepository>()));
   gh.lazySingleton<GetCurrentUser>(() => GetCurrentUser(
       get<IManagerAuthRepository>(), get<IEmployeeAuthRepository>()));
+  gh.factory<EmployeeParkingLotBloc>(() => EmployeeParkingLotBloc(
+      get<FetchSingleParkingLot>(), get<CurrentParkingLot>()));
   return get;
 }
 

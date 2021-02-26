@@ -6,11 +6,10 @@ import 'package:flutter/widgets.dart';
 import 'package:kt_dart/kt.dart';
 
 import '../../core/errors/parking_failure.dart';
-import '../entities/manager.dart';
 import '../entities/parking_lot.dart';
 
 abstract class IParkingLotRepository {
-  Future<Either<ParkingFailure, KtList<ParkingLot>>> fetchParkingLots(Manager manager);
+  Future<Either<ParkingFailure, KtList<ParkingLot>>> fetchParkingLots(KtList<String> parkingLots);
   Stream<Either<ParkingFailure, ParkingLot>> watchById(ParkingLot parkingLot);
   Stream<Either<ParkingFailure, ActiveParkedVehicles>> watchActiveVehicles(ParkingLot parkingLot, [OrderBy orderBy]);
   Stream<Either<ParkingFailure, InactiveParkedVehicles>> watchInactiveVehicles(ParkingLot parkingLot, [OrderBy orderBy]);

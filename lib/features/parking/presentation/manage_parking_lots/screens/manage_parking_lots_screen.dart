@@ -1,4 +1,5 @@
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_event.dart';
 import 'package:all_parking/widgets/parking_lot_list_builder.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class ManageParkingLotsScreen extends StatelessWidget {
           return state.maybeWhen(
             orElse: () => null,
             success: () {
-              context.read<ParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
+              context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
               return FlushbarHelper.createInformation(message: 'Estacionamento removido com sucesso!').show(context);
             },
             error: (f) => FlushbarHelper.createError(message: f.message).show(context),

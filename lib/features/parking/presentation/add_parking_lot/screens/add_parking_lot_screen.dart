@@ -1,4 +1,5 @@
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_event.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ import 'components/add_parking_lot_form.dart';
 class AddParkingLotScreen extends StatelessWidget {
   final ParkingLot editedParkingLot;
 
-  const AddParkingLotScreen({Key key,this.editedParkingLot}) : super(key: key);
+  const AddParkingLotScreen({Key key, this.editedParkingLot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class AddParkingLotScreen extends StatelessWidget {
             (either) => either.fold(
               (f) => FlushbarHelper.createError(message: f.message).show(context),
               (_) {
-                context.read<ParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
+                context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
                 return Navigator.of(context).pop(state.parkingLot);
               },
             ),

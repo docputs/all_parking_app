@@ -1,34 +1,31 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/domain/usecases/fetch_parking_lots.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_event.dart';
 import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 
-part 'parking_lots_bloc.freezed.dart';
-part 'parking_lots_event.dart';
-part 'parking_lots_state.dart';
+import '../parking_lots_state.dart';
 
 @injectable
-class ParkingLotsBloc extends Bloc<ParkingLotsEvent, ParkingLotsState> {
+class ManagerParkingLotsBloc extends Bloc<ParkingLotsEvent, ParkingLotsState<KtList<ParkingLot>>> {
   final FetchParkingLots _fetchParkingLots;
   final CurrentParkingLot _currentParkingLot;
 
-  ParkingLotsBloc(this._fetchParkingLots, this._currentParkingLot) : super(ParkingLotsState.initial());
+  ManagerParkingLotsBloc(this._fetchParkingLots, this._currentParkingLot) : super(ParkingLotsState.initial());
 
   @override
-  Stream<ParkingLotsState> mapEventToState(ParkingLotsEvent event) async* {
+  Stream<ParkingLotsState<KtList<ParkingLot>>> mapEventToState(ParkingLotsEvent event) async* {
     yield* event.when(fetchRequested: _mapFetchRequested);
   }
 
-  Stream<ParkingLotsState> _mapFetchRequested() async* {
+  Stream<ParkingLotsState<KtList<ParkingLot>>> _mapFetchRequested() async* {
     yield ParkingLotsState.loading();
-    final parkingLotsEither = await _fetchParkingLots();
-    yield parkingLotsEither.fold(
+    final parkingLotEither = await _fetchParkingLots();
+    yield parkingLotEither.fold(
       (f) => ParkingLotsState.error(f),
       (parkingLots) {
         _updateCurrentParkingLot(parkingLots);

@@ -1,4 +1,6 @@
-part of 'parking_lots_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'parking_lots_event.freezed.dart';
 
 @freezed
 abstract class ParkingLotsEvent with _$ParkingLotsEvent {

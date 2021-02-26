@@ -24,7 +24,7 @@ class _SplashManagerScreenState extends State<SplashManagerScreen> {
         state.when(
           initializing: () => null,
           authenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
-          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInManagerRoute),
+          unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
         );
       },
       child: const Scaffold(body: Center(child: CircularProgressIndicator())),

@@ -18,8 +18,11 @@ class FetchParkingLots {
   Future<Either<ParkingFailure, KtList<ParkingLot>>> call() async {
     final managerEither = await _managerRepository.read();
     return managerEither.fold(
-      (f) => left(ParkingFailure.serverFailure()),
-      (manager) => _parkingLotRepository.fetchParkingLots(manager),
+      (f) => left(f),
+      (manager) {
+        if (manager.parkingLots.isEmpty()) return right(KtList.empty());
+        return _parkingLotRepository.fetchParkingLots(manager.parkingLots);
+      },
     );
   }
 }

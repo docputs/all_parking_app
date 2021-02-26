@@ -17,7 +17,7 @@ class _CreateAccountTextState extends State<CreateAccountText> {
   @override
   void initState() {
     super.initState();
-    _tapGestureRecognizer = TapGestureRecognizer()..onTap = () => Navigator.of(context).pushNamed(Constants.signUpManagerRoute);
+    _tapGestureRecognizer = TapGestureRecognizer()..onTap = () => Navigator.of(context).pushNamed(Constants.signUpRoute);
   }
 
   @override

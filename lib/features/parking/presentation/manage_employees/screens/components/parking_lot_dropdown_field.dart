@@ -1,6 +1,7 @@
 import 'package:all_parking/features/parking/domain/entities/associated_parking_lot.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_state.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/theme.dart';
@@ -16,7 +17,7 @@ class ParkingLotDropdownField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ParkingLotsBloc, ParkingLotsState>(
+    return BlocBuilder<ManagerParkingLotsBloc, ParkingLotsState>(
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox(),

@@ -73,12 +73,11 @@ class ParkingLotRepository implements IParkingLotRepository {
   }
 
   @override
-  Future<Either<ParkingFailure, KtList<ParkingLot>>> fetchParkingLots(Manager manager) async {
+  Future<Either<ParkingFailure, KtList<ParkingLot>>> fetchParkingLots(KtList<String> parkingLots) async {
     try {
-      if (manager.parkingLots.isEmpty()) return right(KtList.empty());
-      final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: manager.parkingLots.asList()).get();
-      final parkingLots = snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList();
-      return right(parkingLots);
+      final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: parkingLots.asList()).get();
+      final entityList = snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList();
+      return right(entityList);
     } on FirebaseException catch (e) {
       print(e);
       return left(ParkingFailure.serverFailure());

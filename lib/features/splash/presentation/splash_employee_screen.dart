@@ -23,7 +23,7 @@ class _SplashEmployeeScreenState extends State<SplashEmployeeScreen> {
       listener: (context, state) => state.when(
         initial: () => null,
         authenticated: (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
-        unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInEmployeeRoute),
+        unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
       ),
       child: const Scaffold(body: Center(child: CircularProgressIndicator())),
     );
