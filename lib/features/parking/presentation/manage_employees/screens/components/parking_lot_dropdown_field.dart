@@ -2,6 +2,8 @@ import 'package:all_parking/features/parking/domain/entities/associated_parking_
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_bloc.dart';
 import 'package:all_parking/features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
+import 'package:all_parking/res/constants.dart';
+import 'package:all_parking/res/theme.dart';
 import 'package:all_parking/widgets/default_dropdown_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,12 +19,23 @@ class ParkingLotDropdownField extends StatelessWidget {
     return BlocBuilder<ParkingLotsBloc, ParkingLotsState>(
       builder: (context, state) {
         return state.when(
-          initial: null,
-          loading: null,
+          initial: () => const SizedBox(),
+          loading: () => _buildLoadingPlaceholder(),
           success: (parkingLots) => _buildDropdownField(parkingLots, context),
-          error: null,
+          error: (f) => Text(f.message),
         );
       },
+    );
+  }
+
+  Widget _buildLoadingPlaceholder() {
+    return Container(
+      width: double.infinity,
+      height: 56,
+      decoration: BoxDecoration(
+        borderRadius: Constants.defaultBorderRadius,
+        color: AppColors.textColor.withOpacity(.2),
+      ),
     );
   }
 
