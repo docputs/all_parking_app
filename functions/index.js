@@ -1,14 +1,15 @@
 const functions = require('firebase-functions');
 const cors = require('cors')({origin: true});
 const nodemailer = require('nodemailer');
+const admin = require('firebase-admin');
+admin.initializeApp();
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
-  secure: true,
   auth: {
     user: 'docputs@gmail.com',
-    pass: 'fmtqmegazord*2019',
+    pass: 'fcghesecexpuyjdd',
   },
 });
 
@@ -18,15 +19,18 @@ exports.sendMail = functions.https.onRequest((req, res) => {
     const managerEmail = req.query.email;
     const parkingLotTitle = req.query.title;
     const parkingLotAddress = req.query.address;
+    const parkingLotCep = req.query.cep;
 
     const mailOptions = {
-      from: 'DocPuts <docputs@gmail.com>',
-      to: 'docputs@gmail.com',
+      from: 'Firebase <docputs@gmail.com>',
+      to: ['docputs@gmail.com', 'jvsoares@usp.br'],
       subject: managerName + ' cadastrou um estacionamento',
       text: `O usuário ${managerEmail} cadastrou o seguinte estacionamento:
 
-  Título: ${parkingLotTitle}
-  Endereço: ${parkingLotAddress}`,
+Título: ${parkingLotTitle}
+Endereço: ${parkingLotAddress}, ${parkingLotCep}
+  
+All Parking`,
     };
 
     return transporter.sendMail(mailOptions, (err, info) => {

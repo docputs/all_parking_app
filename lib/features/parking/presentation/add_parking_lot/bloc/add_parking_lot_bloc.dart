@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../service_locator.dart';
 import '../../../../../utils/cep_service.dart';
 import '../../../../../utils/input_converter.dart';
 import '../../../../../utils/validators.dart';
@@ -26,10 +25,10 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
   final AddParkingLot _addParkingLot;
   final EditParkingLot _editParkingLot;
   final CepService _cepService;
+  final CurrentParkingLot _currentParkingLot;
 
-  AddParkingLotBloc(this._addParkingLot, this._editParkingLot, this._cepService) : super(AddParkingLotState.initial());
-
-  final _currentParkingLot = getIt<CurrentParkingLot>();
+  AddParkingLotBloc(this._addParkingLot, this._editParkingLot, this._cepService, this._currentParkingLot)
+      : super(AddParkingLotState.initial());
 
   @override
   Stream<AddParkingLotState> mapEventToState(AddParkingLotEvent event) async* {

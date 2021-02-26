@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:http/http.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
@@ -26,6 +27,7 @@ import 'features/parking/presentation/current_parking_lot.dart';
 import 'features/parking/domain/usecases/delete_employee.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
 import 'features/parking/domain/usecases/edit_parking_lot.dart';
+import 'utils/email_service.dart';
 import 'features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'features/auth/data/repositories/employee_auth_repository.dart';
 import 'features/parking/data/repositories/employee_repository.dart';
@@ -71,7 +73,9 @@ Future<GetIt> $initGetIt(
   final registerModule = _$RegisterModule();
   gh.lazySingleton<AppNavigator>(() => AppNavigator());
   gh.lazySingleton<CepService>(() => CepService());
+  gh.lazySingleton<Client>(() => registerModule.httpClient);
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
+  gh.lazySingleton<EmailService>(() => EmailService(get<Client>()));
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
   gh.lazySingleton<IEmployeeRepository>(
@@ -96,8 +100,11 @@ Future<GetIt> $initGetIt(
       () => WatchInactiveVehicles(get<IParkingLotRepository>()));
   gh.factory<ActiveVehiclesWatcherBloc>(() => ActiveVehiclesWatcherBloc(
       get<WatchActiveVehicles>(), get<CurrentParkingLot>()));
-  gh.lazySingleton<AddParkingLot>(() =>
-      AddParkingLot(get<IParkingLotRepository>(), get<IManagerRepository>()));
+  gh.lazySingleton<AddParkingLot>(() => AddParkingLot(
+        get<IParkingLotRepository>(),
+        get<IManagerRepository>(),
+        get<EmailService>(),
+      ));
   gh.factory<AuthBloc>(() => AuthBloc(get<IManagerAuthRepository>()));
   gh.lazySingleton<CheckInVehicle>(() =>
       CheckInVehicle(get<IParkingLotRepository>(), get<CurrentParkingLot>()));
@@ -138,6 +145,7 @@ Future<GetIt> $initGetIt(
         get<AddParkingLot>(),
         get<EditParkingLot>(),
         get<CepService>(),
+        get<CurrentParkingLot>(),
       ));
   gh.factory<CheckInBloc>(() => CheckInBloc(get<CheckInVehicle>()));
   gh.factory<CheckOutBloc>(() => CheckOutBloc(get<CheckOutVehicle>()));

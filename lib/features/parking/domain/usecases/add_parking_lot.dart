@@ -1,3 +1,5 @@
+import 'package:all_parking/features/parking/domain/entities/manager.dart';
+import 'package:all_parking/utils/email_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -11,15 +13,28 @@ import '../repositories/i_parking_lot_repository.dart';
 class AddParkingLot {
   final IParkingLotRepository _parkingLotRepository;
   final IManagerRepository _managerRepository;
+  final EmailService _emailService;
 
-  const AddParkingLot(this._parkingLotRepository, this._managerRepository)
-      : assert(_parkingLotRepository != null, _managerRepository != null);
+  AddParkingLot(this._parkingLotRepository, this._managerRepository, this._emailService);
+
+  Manager _manager;
+  ParkingLot _parkingLot;
 
   Future<Either<ParkingFailure, Unit>> call(ParkingLot parkingLot) async {
     final parkingLotEither = await _parkingLotRepository.create(parkingLot);
     return parkingLotEither.fold(
       (f) => left(f),
-      (_) => caseParkingLotEitherSuccess(parkingLot),
+      (_) async {
+        _parkingLot = parkingLot;
+        final either = await caseParkingLotEitherSuccess(parkingLot);
+        return either.fold(
+          (f) => left(f),
+          (_) async {
+            await _sendWarningEmail();
+            return right(_);
+          },
+        );
+      },
     );
   }
 
@@ -30,8 +45,13 @@ class AddParkingLot {
       (manager) async {
         final newList = manager.parkingLots.plusElement(parkingLot.id);
         final newManager = manager.copyWith(parkingLots: newList);
+        _manager = newManager;
         return _managerRepository.update(newManager);
       },
     );
+  }
+
+  Future<void> _sendWarningEmail() async {
+    if (_parkingLot != null && _manager != null) return _emailService.sendEmail(EmailModel(parkingLot: _parkingLot, manager: _manager));
   }
 }

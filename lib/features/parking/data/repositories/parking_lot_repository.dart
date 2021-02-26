@@ -20,7 +20,7 @@ import '../../domain/repositories/i_parking_lot_repository.dart';
 class ParkingLotRepository implements IParkingLotRepository {
   final FirebaseFirestore _firestore;
 
-  const ParkingLotRepository(this._firestore) : assert(_firestore != null);
+  const ParkingLotRepository(this._firestore);
 
   Future<Either<ParkingFailure, Unit>> _handleExceptions(Future<void> Function() function) async {
     try {

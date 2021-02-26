@@ -23,5 +23,16 @@ class AppConfig {
     }
   }
 
+  static List<String> get reportsEmails {
+    switch (_instance.flavor) {
+      case Flavor.MANAGER:
+        return ['docputs@gmail.com'];
+        break;
+      case Flavor.EMPLOYEE:
+      default:
+        return ['docputs@gmail.com'];
+    }
+  }
+
   static bool get isManager => _instance.flavor == Flavor.MANAGER;
 }
