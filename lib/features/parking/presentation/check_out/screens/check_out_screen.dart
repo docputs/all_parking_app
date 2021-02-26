@@ -26,7 +26,7 @@ class CheckOutScreen extends StatelessWidget {
             () => null,
             (failureOrSuccess) => failureOrSuccess.fold(
               (f) => FlushbarHelper.createError(message: f.message).show(context),
-              (_) => Navigator.of(context).pushReplacementNamed(Constants.homeRoute),
+              (_) => Navigator.of(context).popUntil((route) => route.isFirst),
             ),
           );
         },
