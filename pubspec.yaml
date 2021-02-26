@@ -49,6 +49,7 @@ dependencies:
   rxdart: ^0.25.0
   shared_preferences: ^0.5.12+4
   uuid: ^2.2.2
+  mailer: ^3.3.0
 
 dev_dependencies:
   flutter_test:
