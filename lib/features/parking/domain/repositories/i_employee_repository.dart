@@ -1,6 +1,7 @@
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../core/errors/parking_failure.dart';
+import '../entities/employee.dart';
 
 abstract class IEmployeeRepository {
   Future<Either<ParkingFailure, Unit>> create(Employee employee);

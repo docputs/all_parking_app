@@ -1,12 +1,13 @@
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
-import 'package:all_parking/features/parking/domain/entities/manager.dart';
-import 'package:all_parking/features/parking/domain/repositories/i_employee_repository.dart';
-import 'package:all_parking/features/parking/domain/repositories/i_manager_repository.dart';
-import 'package:all_parking/features/parking/domain/usecases/fetch_current_manager.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
+
+import '../../../parking/core/errors/parking_failure.dart';
+import '../../../parking/domain/entities/employee.dart';
+import '../../../parking/domain/entities/manager.dart';
+import '../../../parking/domain/repositories/i_employee_repository.dart';
+import '../../../parking/domain/repositories/i_manager_repository.dart';
+import '../../../parking/domain/usecases/fetch_current_manager.dart';
 
 @lazySingleton
 class SignUpEmployee {

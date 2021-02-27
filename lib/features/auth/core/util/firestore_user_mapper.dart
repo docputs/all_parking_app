@@ -1,7 +1,8 @@
-import 'package:all_parking/features/auth/data/dtos/user_dto.dart';
-import 'package:all_parking/features/auth/domain/entities/user.dart';
-import 'package:all_parking/features/parking/data/dtos/manager_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../../parking/data/dtos/manager_dto.dart';
+import '../../data/dtos/user_dto.dart';
+import '../../domain/entities/user.dart';
 
 class FirestoreUserConverter {
   static User convert(DocumentSnapshot doc) {

@@ -1,5 +1,3 @@
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_event.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +8,8 @@ import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../domain/entities/parking_lot.dart';
+import '../../bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import '../../bloc/parking_lots/parking_lots_event.dart';
 import '../bloc/add_parking_lot_bloc.dart';
 import 'components/add_parking_lot_form.dart';
 

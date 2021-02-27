@@ -1,11 +1,12 @@
-import 'package:all_parking/features/auth/presentation/employee/sign_in/bloc/sign_in_employee_bloc.dart';
-import 'package:all_parking/features/auth/presentation/employee/sign_in/screens/components/token_form_field.dart';
-import 'package:all_parking/res/assets.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../../res/assets.dart';
+import '../../../../../../../res/messages.dart';
+import '../../../../../../../res/theme.dart';
+import '../../../../../../../widgets/default_button.dart';
+import '../../bloc/sign_in_employee_bloc.dart';
+import 'token_form_field.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key key}) : super(key: key);

@@ -1,9 +1,9 @@
-import 'package:all_parking/features/parking/domain/entities/associated_parking_lot.dart';
-import 'package:all_parking/utils/validators.dart';
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../../utils/validators.dart';
 import '../../../auth/domain/entities/user.dart';
+import 'associated_parking_lot.dart';
 
 class Employee extends User {
   final AssociatedParkingLot parkingLot;

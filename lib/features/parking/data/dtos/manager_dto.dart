@@ -1,10 +1,10 @@
-import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/kt.dart';
-import 'package:firebase_auth/firebase_auth.dart' as firebase;
 
+import '../../../auth/domain/entities/user.dart';
 import '../../domain/entities/manager.dart';
 import 'employee_dto.dart';
 

@@ -1,5 +1,6 @@
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../core/errors/parking_failure.dart';
 
 part 'parking_lots_state.freezed.dart';
 

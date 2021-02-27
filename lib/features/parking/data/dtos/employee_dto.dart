@@ -1,7 +1,7 @@
-import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../auth/domain/entities/user.dart';
 import '../../domain/entities/employee.dart';
 import 'associated_parking_lot_dto.dart';
 

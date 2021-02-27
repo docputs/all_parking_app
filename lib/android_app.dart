@@ -1,13 +1,13 @@
-import 'package:all_parking/app_config.dart';
-import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
-import './features/parking/presentation/bloc/parking_lots/employee/employee_parking_lot_bloc.dart';
+import 'app_config.dart';
 import 'app_routes.dart';
 import 'features/auth/presentation/auth_bloc.dart';
+import 'features/auth/presentation/employee/employee_auth_bloc.dart';
+import 'features/parking/presentation/bloc/parking_lots/employee/employee_parking_lot_bloc.dart';
 import 'features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
 import 'features/parking/presentation/bloc/vehicles_watcher/active_vehicles/active_vehicles_watcher_bloc.dart';
 import 'features/parking/presentation/bloc/vehicles_watcher/inactive_vehicles/inactive_vehicles_watcher_bloc.dart';

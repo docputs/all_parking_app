@@ -1,8 +1,9 @@
-import 'package:all_parking/features/parking/domain/entities/manager.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
+
+import '../features/parking/domain/entities/manager.dart';
+import '../features/parking/domain/entities/parking_lot.dart';
 
 class EmailModel {
   final ParkingLot parkingLot;

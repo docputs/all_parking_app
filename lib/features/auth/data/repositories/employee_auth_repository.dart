@@ -1,12 +1,13 @@
-import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/auth/data/datasources/i_local_data_source.dart';
-import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
-import 'package:all_parking/utils/firebase_helpers.dart';
-import 'package:all_parking/features/parking/data/dtos/employee_dto.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../utils/firebase_helpers.dart';
+import '../../../parking/data/dtos/employee_dto.dart';
+import '../../../parking/domain/entities/employee.dart';
+import '../../core/errors/auth_failure.dart';
+import '../../domain/repositories/i_employee_auth_repository.dart';
+import '../datasources/i_local_data_source.dart';
 
 @LazySingleton(as: IEmployeeAuthRepository)
 class EmployeeAuthRepository implements IEmployeeAuthRepository {

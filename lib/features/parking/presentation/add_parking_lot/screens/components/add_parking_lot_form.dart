@@ -1,14 +1,14 @@
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/widgets/validation_form_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
 import '../../../../../../utils/validators.dart';
 import '../../../../../../widgets/default_button.dart';
 import '../../../../../../widgets/default_section_title.dart';
 import '../../../../../../widgets/parking_lot_text_form_field.dart';
 import '../../../../../../widgets/static_text_form_field.dart';
+import '../../../../../../widgets/validation_form_state.dart';
 import '../../bloc/add_parking_lot_bloc.dart';
 
 class AddParkingLotForm extends StatefulWidget {

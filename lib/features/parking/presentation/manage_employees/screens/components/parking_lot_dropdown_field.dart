@@ -1,14 +1,15 @@
-import 'package:all_parking/features/parking/domain/entities/associated_parking_lot.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_state.dart';
-import 'package:all_parking/features/parking/presentation/manage_employees/bloc/add_employee/add_employee_bloc.dart';
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_dropdown_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
+
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_dropdown_field.dart';
+import '../../../../domain/entities/associated_parking_lot.dart';
+import '../../../../domain/entities/parking_lot.dart';
+import '../../../bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import '../../../bloc/parking_lots/parking_lots_state.dart';
+import '../../bloc/add_employee/add_employee_bloc.dart';
 
 class ParkingLotDropdownField extends StatelessWidget {
   final AssociatedParkingLot associatedParkingLot;

@@ -1,10 +1,10 @@
-import 'package:all_parking/app_config.dart';
-import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../app_config.dart';
 import '../../core/errors/auth_failure.dart';
 import '../entities/user.dart';
+import '../repositories/i_employee_auth_repository.dart';
 import '../repositories/i_manager_auth_repository.dart';
 
 @lazySingleton

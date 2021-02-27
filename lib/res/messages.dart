@@ -1,15 +1,15 @@
-import 'package:all_parking/app_config.dart';
-import 'package:all_parking/features/auth/domain/entities/user.dart';
-import 'package:all_parking/features/parking/domain/entities/address.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../app_config.dart';
+import '../features/auth/domain/entities/user.dart';
 import '../features/parking/core/util/vehicle_color_converter.dart';
 import '../features/parking/core/util/vehicle_type_converter.dart';
+import '../features/parking/domain/entities/address.dart';
+import '../features/parking/domain/entities/employee.dart';
 import '../features/parking/domain/entities/parked_vehicle.dart';
+import '../features/parking/domain/entities/parked_vehicles_list.dart';
 import '../features/parking/domain/entities/parking_lot.dart';
 import '../features/parking/presentation/reports/view_models/reports_view_model.dart';
 import '../utils/format_utils.dart';

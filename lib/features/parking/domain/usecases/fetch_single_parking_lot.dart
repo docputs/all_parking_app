@@ -1,8 +1,8 @@
-import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 
+import '../../../auth/domain/repositories/i_employee_auth_repository.dart';
 import '../../core/errors/parking_failure.dart';
 import '../entities/parking_lot.dart';
 import '../repositories/i_parking_lot_repository.dart';

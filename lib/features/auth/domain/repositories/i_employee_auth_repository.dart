@@ -1,6 +1,7 @@
-import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../../parking/domain/entities/employee.dart';
+import '../../core/errors/auth_failure.dart';
 
 abstract class IEmployeeAuthRepository {
   Future<Either<AuthFailure, Unit>> signInWithToken(String token);

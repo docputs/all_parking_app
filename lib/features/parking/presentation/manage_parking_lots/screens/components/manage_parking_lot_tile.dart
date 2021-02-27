@@ -1,4 +1,3 @@
-import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/manage_parking_lots_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +6,7 @@ import '../../../../../../res/messages.dart';
 import '../../../../../../widgets/default_alert_dialog.dart';
 import '../../../../../../widgets/default_list_tile.dart';
 import '../../../../domain/entities/parking_lot.dart';
+import '../../bloc/manage_parking_lots_bloc.dart';
 
 class ManageParkingLotTile extends StatelessWidget {
   final ParkingLot parkingLot;

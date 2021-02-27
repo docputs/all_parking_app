@@ -1,12 +1,12 @@
-import 'package:all_parking/app_config.dart';
-import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../app_config.dart';
+import '../features/auth/presentation/auth_bloc.dart';
+import '../features/auth/presentation/employee/employee_auth_bloc.dart';
 import '../res/drawer_messages.dart';
 import '../res/messages.dart';
 import '../res/theme.dart';
-import '../features/auth/presentation/auth_bloc.dart';
 import 'drawer_list_tile.dart';
 
 class DefaultDrawer extends StatelessWidget {

@@ -1,7 +1,7 @@
-import '../../../../../../../res/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../../res/constants.dart';
 import '../../../../../../../res/theme.dart';
 
 class CreateAccountText extends StatefulWidget {

@@ -1,6 +1,7 @@
-import 'package:all_parking/widgets/default_text_field.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../../widgets/default_text_field.dart';
 
 class TokenFormField extends StatefulWidget {
   final String labelText;

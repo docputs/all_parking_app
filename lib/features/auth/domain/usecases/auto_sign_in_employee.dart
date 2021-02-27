@@ -1,8 +1,9 @@
-import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/auth/data/datasources/i_local_data_source.dart';
-import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../core/errors/auth_failure.dart';
+import '../../data/datasources/i_local_data_source.dart';
+import '../repositories/i_employee_auth_repository.dart';
 
 @lazySingleton
 class AutoSignInEmployee {

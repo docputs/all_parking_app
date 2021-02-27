@@ -1,8 +1,9 @@
-import 'package:all_parking/features/auth/data/datasources/i_local_data_source.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../res/constants.dart';
+import 'i_local_data_source.dart';
 
 @LazySingleton(as: ILocalDataSource)
 class LocalDataSource implements ILocalDataSource {

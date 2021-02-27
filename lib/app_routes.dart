@@ -1,11 +1,7 @@
-import 'package:all_parking/app_config.dart';
-import 'package:all_parking/features/parking/presentation/home/screens/employee_home_screen.dart';
-import 'package:all_parking/features/parking/presentation/home/screens/manager_home_screen.dart';
-import 'package:all_parking/features/parking/presentation/manage_employees/screens/add_employee_screen.dart';
-import 'package:all_parking/features/parking/presentation/manage_employees/screens/manage_employees_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'app_config.dart';
 import 'features/auth/presentation/employee/sign_in/screens/sign_in_employee_screen.dart';
 import 'features/auth/presentation/manager/sign_in/screens/sign_in_screen.dart';
 import 'features/auth/presentation/manager/sign_up/screens/sign_up_screen.dart';
@@ -14,6 +10,10 @@ import 'features/parking/domain/entities/parking_lot.dart';
 import 'features/parking/presentation/add_parking_lot/screens/add_parking_lot_screen.dart';
 import 'features/parking/presentation/check-in/screens/check_in_screen.dart';
 import 'features/parking/presentation/check_out/screens/check_out_screen.dart';
+import 'features/parking/presentation/home/screens/employee_home_screen.dart';
+import 'features/parking/presentation/home/screens/manager_home_screen.dart';
+import 'features/parking/presentation/manage_employees/screens/add_employee_screen.dart';
+import 'features/parking/presentation/manage_employees/screens/manage_employees_screen.dart';
 import 'features/parking/presentation/manage_parking_lots/screens/manage_parking_lots_screen.dart';
 import 'features/parking/presentation/parked_vehicles/screens/parked_vehicle_details_screen.dart';
 import 'features/parking/presentation/parked_vehicles/screens/parked_vehicles_screen.dart';

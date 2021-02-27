@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/domain/usecases/fetch_single_parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
+import '../../../../domain/entities/parking_lot.dart';
+import '../../../../domain/usecases/fetch_single_parking_lot.dart';
+import '../../../current_parking_lot.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 

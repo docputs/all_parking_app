@@ -1,7 +1,7 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:kt_dart/kt.dart';
 
 import '../../../domain/entities/parked_vehicle.dart';
+import '../../../domain/entities/parked_vehicles_list.dart';
 import '../../../domain/entities/parking_lot.dart';
 
 class ReportsViewModel {

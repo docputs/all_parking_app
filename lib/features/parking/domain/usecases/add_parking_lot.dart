@@ -1,10 +1,10 @@
-import 'package:all_parking/features/parking/domain/entities/manager.dart';
-import 'package:all_parking/utils/email_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 
+import '../../../../utils/email_service.dart';
 import '../../core/errors/parking_failure.dart';
+import '../entities/manager.dart';
 import '../entities/parking_lot.dart';
 import '../repositories/i_manager_repository.dart';
 import '../repositories/i_parking_lot_repository.dart';

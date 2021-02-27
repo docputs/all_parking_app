@@ -1,11 +1,12 @@
 import 'dart:async';
 
-import 'package:all_parking/features/auth/domain/repositories/i_employee_auth_repository.dart';
-import 'package:all_parking/features/auth/domain/usecases/auto_sign_in_employee.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../parking/domain/entities/employee.dart';
+import '../../domain/repositories/i_employee_auth_repository.dart';
+import '../../domain/usecases/auto_sign_in_employee.dart';
 
 part 'employee_auth_bloc.freezed.dart';
 part 'employee_auth_event.dart';

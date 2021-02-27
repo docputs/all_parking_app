@@ -1,6 +1,7 @@
-import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../domain/entities/user.dart';
 
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';

@@ -1,7 +1,8 @@
-import 'package:all_parking/features/auth/presentation/employee/employee_auth_bloc.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../res/constants.dart';
+import '../../auth/presentation/employee/employee_auth_bloc.dart';
 
 class SplashEmployeeScreen extends StatefulWidget {
   const SplashEmployeeScreen({Key key}) : super(key: key);

@@ -1,9 +1,9 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../res/messages.dart';
 import '../../../../../../res/theme.dart';
 import '../../../../../../widgets/default_card.dart';
+import '../../../../domain/entities/parked_vehicles_list.dart';
 import '../../../../domain/entities/parking_lot.dart';
 import 'gauge_painter.dart';
 

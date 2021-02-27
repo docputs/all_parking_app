@@ -1,9 +1,9 @@
-import 'package:all_parking/features/parking/presentation/manage_parking_lots/screens/components/manage_parking_lot_tile.dart';
-import 'package:all_parking/features/parking/presentation/select_parking_lot/screens/components/parking_lot_info_tile.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../widgets/default_section_title.dart';
 import '../../../../domain/entities/parking_lot.dart';
+import '../../../select_parking_lot/screens/components/parking_lot_info_tile.dart';
+import 'manage_parking_lot_tile.dart';
 
 class ParkingLotList extends StatelessWidget {
   final String headerText;

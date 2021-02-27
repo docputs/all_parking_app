@@ -1,15 +1,16 @@
 import 'dart:async';
 
-import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
-import 'package:all_parking/features/auth/domain/usecases/sign_in_employee.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/errors/auth_failure.dart';
+import '../../../../domain/usecases/sign_in_employee.dart';
+
+part 'sign_in_employee_bloc.freezed.dart';
 part 'sign_in_employee_event.dart';
 part 'sign_in_employee_state.dart';
-part 'sign_in_employee_bloc.freezed.dart';
 
 @injectable
 class SignInEmployeeBloc extends Bloc<SignInEmployeeEvent, SignInEmployeeState> {

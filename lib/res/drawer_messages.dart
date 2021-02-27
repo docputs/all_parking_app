@@ -1,6 +1,6 @@
-import 'package:all_parking/app_config.dart';
 import 'package:flutter/material.dart';
 
+import '../app_config.dart';
 import '../widgets/drawer_list_tile.dart';
 import 'constants.dart';
 

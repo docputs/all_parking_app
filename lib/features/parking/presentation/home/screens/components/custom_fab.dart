@@ -1,8 +1,9 @@
-import 'package:all_parking/res/constants.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
 
 class CustomFAB extends StatelessWidget {
   const CustomFAB({Key key}) : super(key: key);

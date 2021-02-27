@@ -1,11 +1,12 @@
-import 'package:all_parking/features/parking/data/dtos/employee_dto.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/repositories/i_employee_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../utils/firebase_helpers.dart';
+import '../../core/errors/parking_failure.dart';
+import '../../domain/entities/employee.dart';
+import '../../domain/repositories/i_employee_repository.dart';
+import '../dtos/employee_dto.dart';
 
 @LazySingleton(as: IEmployeeRepository)
 class EmployeeRepository implements IEmployeeRepository {

@@ -1,10 +1,9 @@
-import 'package:all_parking/widgets/validation_form_state.dart';
-
-import '../features/auth/core/errors/auth_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
+import '../features/auth/core/errors/auth_failure.dart';
 import 'default_text_field.dart';
+import 'validation_form_state.dart';
 
 class AuthTextFormField extends StatelessWidget {
   final String labelText;

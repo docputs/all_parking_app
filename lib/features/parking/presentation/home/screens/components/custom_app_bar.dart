@@ -1,9 +1,8 @@
-import 'package:all_parking/app_config.dart';
-import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../app_config.dart';
 import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
 import '../../../../domain/entities/parking_lot.dart';

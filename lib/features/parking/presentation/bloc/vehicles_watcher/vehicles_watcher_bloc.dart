@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/domain/usecases/i_watch_vehicles.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/errors/parking_failure.dart';
+import '../../../domain/entities/parked_vehicles_list.dart';
+import '../../../domain/entities/parking_lot.dart';
+import '../../../domain/usecases/i_watch_vehicles.dart';
 import '../../current_parking_lot.dart';
 
 part 'vehicles_watcher_bloc.freezed.dart';

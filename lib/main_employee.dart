@@ -1,7 +1,8 @@
-import 'package:all_parking/android_app.dart';
-import 'package:all_parking/app_config.dart';
-import 'package:all_parking/initialize_dependencies.dart';
 import 'package:flutter/material.dart';
+
+import 'android_app.dart';
+import 'app_config.dart';
+import 'initialize_dependencies.dart';
 
 Future<void> main() async {
   await initializeDependencies();

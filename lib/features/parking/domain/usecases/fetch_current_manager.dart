@@ -1,8 +1,9 @@
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/manager.dart';
-import 'package:all_parking/features/parking/domain/repositories/i_manager_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../core/errors/parking_failure.dart';
+import '../entities/manager.dart';
+import '../repositories/i_manager_repository.dart';
 
 @lazySingleton
 class FetchCurrentManager {

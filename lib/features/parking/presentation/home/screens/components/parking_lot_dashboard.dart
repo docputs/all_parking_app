@@ -1,14 +1,14 @@
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/widgets/active_vehicles_builder.dart';
-import 'package:all_parking/widgets/parked_vehicle_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kt_dart/collection.dart';
 
 import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
+import '../../../../../../widgets/active_vehicles_builder.dart';
 import '../../../../../../widgets/default_section_title.dart';
 import '../../../../../../widgets/default_text_button.dart';
+import '../../../../../../widgets/parked_vehicle_tile.dart';
+import '../../../../domain/entities/parked_vehicle.dart';
 import '../../../../domain/entities/parking_lot.dart';
 import 'cards_display.dart';
 import 'empty_warning.dart';

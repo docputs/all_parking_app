@@ -1,11 +1,11 @@
-import 'package:all_parking/features/parking/data/models/order_by.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kt_dart/kt.dart';
 
 import '../../core/errors/parking_failure.dart';
+import '../../data/models/order_by.dart';
+import '../entities/parked_vehicle.dart';
+import '../entities/parked_vehicles_list.dart';
 import '../entities/parking_lot.dart';
 
 abstract class IParkingLotRepository {

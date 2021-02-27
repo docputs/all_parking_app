@@ -1,10 +1,11 @@
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
-import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/active_vehicles/active_vehicles_watcher_bloc.dart';
-import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
-import 'package:all_parking/features/parking/presentation/home/screens/components/watcher_failure_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../features/parking/core/errors/parking_failure.dart';
+import '../features/parking/domain/entities/parked_vehicles_list.dart';
+import '../features/parking/presentation/bloc/vehicles_watcher/active_vehicles/active_vehicles_watcher_bloc.dart';
+import '../features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
+import '../features/parking/presentation/home/screens/components/watcher_failure_widget.dart';
 
 class ActiveVehiclesBuilder extends StatelessWidget {
   final Widget Function(ParkedVehiclesList vehicles) onSuccess;

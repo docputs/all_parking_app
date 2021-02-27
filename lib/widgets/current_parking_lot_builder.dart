@@ -1,7 +1,8 @@
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/current_parking_lot.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../features/parking/domain/entities/parking_lot.dart';
+import '../features/parking/presentation/current_parking_lot.dart';
 
 class CurrentParkingLotBuilder extends StatelessWidget {
   final Widget Function(ParkingLot parkingLot) builder;

@@ -1,8 +1,9 @@
-import 'package:all_parking/res/assets.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../res/assets.dart';
+import '../../../../../../res/messages.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_card.dart';
 
 class EmptyWarning extends StatelessWidget {
   const EmptyWarning({Key key}) : super(key: key);

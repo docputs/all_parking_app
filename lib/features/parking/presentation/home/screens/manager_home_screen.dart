@@ -1,15 +1,16 @@
-import 'package:all_parking/features/auth/presentation/auth_bloc.dart';
-import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_event.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_state.dart';
-import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
-import 'package:all_parking/features/parking/presentation/home/screens/home_screen.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:kt_dart/kt.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kt_dart/kt.dart';
+
+import '../../../../../res/constants.dart';
+import '../../../../auth/presentation/auth_bloc.dart';
+import '../../../domain/entities/parking_lot.dart';
+import '../../bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import '../../bloc/parking_lots/parking_lots_event.dart';
+import '../../bloc/parking_lots/parking_lots_state.dart';
+import '../../bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
 import '../../context_extension.dart';
+import 'home_screen.dart';
 
 class ManagerHomeScreen extends StatefulWidget {
   const ManagerHomeScreen({Key key}) : super(key: key);

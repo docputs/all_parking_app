@@ -1,12 +1,13 @@
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
-import 'package:all_parking/features/parking/presentation/manage_employees/bloc/manage_employees_bloc.dart';
-import 'package:all_parking/res/messages.dart';
-import 'package:all_parking/widgets/default_alert_dialog.dart';
-import 'package:all_parking/widgets/default_list_tile.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../res/messages.dart';
+import '../../../../../../widgets/default_alert_dialog.dart';
+import '../../../../../../widgets/default_list_tile.dart';
+import '../../../../domain/entities/employee.dart';
+import '../../bloc/manage_employees_bloc.dart';
 
 class EmployeeListTile extends StatelessWidget {
   final Employee employee;

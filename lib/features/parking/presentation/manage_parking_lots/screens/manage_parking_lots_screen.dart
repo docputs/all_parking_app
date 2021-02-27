@@ -1,6 +1,3 @@
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
-import 'package:all_parking/features/parking/presentation/bloc/parking_lots/parking_lots_event.dart';
-import 'package:all_parking/widgets/parking_lot_list_builder.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +7,9 @@ import '../../../../../res/messages.dart';
 import '../../../../../service_locator.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../../../widgets/default_drawer.dart';
+import '../../../../../widgets/parking_lot_list_builder.dart';
+import '../../bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
+import '../../bloc/parking_lots/parking_lots_event.dart';
 import '../bloc/manage_parking_lots_bloc.dart';
 
 class ManageParkingLotsScreen extends StatelessWidget {

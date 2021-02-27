@@ -1,10 +1,10 @@
-import 'package:all_parking/features/splash/presentation/splash_bloc/splash_bloc.dart';
-import 'package:all_parking/features/splash/presentation/splash_employee_screen.dart';
-import 'package:all_parking/features/splash/presentation/splash_manager_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../service_locator.dart';
+import 'splash_bloc/splash_bloc.dart';
+import 'splash_employee_screen.dart';
+import 'splash_manager_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key key}) : super(key: key);

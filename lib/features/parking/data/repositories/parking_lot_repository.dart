@@ -1,8 +1,3 @@
-import 'package:all_parking/features/parking/data/dtos/parked_vehicle_dto.dart';
-import 'package:all_parking/features/parking/data/dtos/parking_lot_dto.dart';
-import 'package:all_parking/features/parking/data/models/order_by.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
-import 'package:all_parking/features/parking/domain/entities/parked_vehicles_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
@@ -12,9 +7,13 @@ import 'package:rxdart/rxdart.dart';
 
 import '../../../../utils/firebase_helpers.dart';
 import '../../core/errors/parking_failure.dart';
-import '../../domain/entities/manager.dart';
+import '../../domain/entities/parked_vehicle.dart';
+import '../../domain/entities/parked_vehicles_list.dart';
 import '../../domain/entities/parking_lot.dart';
 import '../../domain/repositories/i_parking_lot_repository.dart';
+import '../dtos/parked_vehicle_dto.dart';
+import '../dtos/parking_lot_dto.dart';
+import '../models/order_by.dart';
 
 @LazySingleton(as: IParkingLotRepository)
 class ParkingLotRepository implements IParkingLotRepository {

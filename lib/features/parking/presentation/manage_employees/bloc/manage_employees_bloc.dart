@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
-import 'package:all_parking/features/parking/domain/entities/employee.dart';
-import 'package:all_parking/features/parking/domain/entities/manager.dart';
-import 'package:all_parking/features/parking/domain/usecases/delete_employee.dart';
-import 'package:all_parking/features/parking/domain/usecases/fetch_current_manager.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../core/errors/parking_failure.dart';
+import '../../../domain/entities/employee.dart';
+import '../../../domain/entities/manager.dart';
+import '../../../domain/usecases/delete_employee.dart';
+import '../../../domain/usecases/fetch_current_manager.dart';
 
 part 'manage_employees_bloc.freezed.dart';
 part 'manage_employees_event.dart';

@@ -1,17 +1,17 @@
-import 'package:all_parking/features/parking/data/dtos/manager_dto.dart';
-import 'package:all_parking/features/parking/domain/entities/manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
 
+import '../../../../utils/firebase_helpers.dart';
+import '../../../parking/data/dtos/manager_dto.dart';
+import '../../../parking/domain/entities/manager.dart';
 import '../../core/errors/auth_failure.dart';
 import '../../core/util/firebase_user_mapper.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/i_manager_auth_repository.dart';
 import '../models/register_model.dart';
 import '../models/sign_in_model.dart';
-import '../../../../utils/firebase_helpers.dart';
 
 @LazySingleton(as: IManagerAuthRepository)
 class ManagerAuthRepository implements IManagerAuthRepository {

@@ -1,7 +1,8 @@
-import 'package:all_parking/features/parking/domain/entities/address.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
+
+import 'address.dart';
 
 part 'parking_lot.freezed.dart';
 

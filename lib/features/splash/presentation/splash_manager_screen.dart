@@ -1,7 +1,8 @@
-import 'package:all_parking/features/auth/presentation/auth_bloc.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../res/constants.dart';
+import '../../auth/presentation/auth_bloc.dart';
 
 class SplashManagerScreen extends StatefulWidget {
   const SplashManagerScreen({Key key}) : super(key: key);
