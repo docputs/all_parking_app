@@ -14,13 +14,10 @@ class _$ManagerFailureTearOff {
   const _$ManagerFailureTearOff();
 
 // ignore: unused_element
-  _ServerFailure serverFailure() {
-    return const _ServerFailure();
-  }
-
-// ignore: unused_element
-  _UnknownFailure unknownFailure() {
-    return const _UnknownFailure();
+  _ManagerFailure call(String message) {
+    return _ManagerFailure(
+      message,
+    );
   }
 }
 
@@ -30,28 +27,10 @@ const $ManagerFailure = _$ManagerFailureTearOff();
 
 /// @nodoc
 mixin _$ManagerFailure {
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-  });
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    @required TResult orElse(),
-  });
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverFailure(_ServerFailure value),
-    @required TResult unknownFailure(_UnknownFailure value),
-  });
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverFailure(_ServerFailure value),
-    TResult unknownFailure(_UnknownFailure value),
-    @required TResult orElse(),
-  });
+  String get message;
+
+  @JsonKey(ignore: true)
+  $ManagerFailureCopyWith<ManagerFailure> get copyWith;
 }
 
 /// @nodoc
@@ -59,6 +38,7 @@ abstract class $ManagerFailureCopyWith<$Res> {
   factory $ManagerFailureCopyWith(
           ManagerFailure value, $Res Function(ManagerFailure) then) =
       _$ManagerFailureCopyWithImpl<$Res>;
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -69,186 +49,84 @@ class _$ManagerFailureCopyWithImpl<$Res>
   final ManagerFailure _value;
   // ignore: unused_field
   final $Res Function(ManagerFailure) _then;
-}
-
-/// @nodoc
-abstract class _$ServerFailureCopyWith<$Res> {
-  factory _$ServerFailureCopyWith(
-          _ServerFailure value, $Res Function(_ServerFailure) then) =
-      __$ServerFailureCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$ServerFailureCopyWithImpl<$Res>
-    extends _$ManagerFailureCopyWithImpl<$Res>
-    implements _$ServerFailureCopyWith<$Res> {
-  __$ServerFailureCopyWithImpl(
-      _ServerFailure _value, $Res Function(_ServerFailure) _then)
-      : super(_value, (v) => _then(v as _ServerFailure));
 
   @override
-  _ServerFailure get _value => super._value as _ServerFailure;
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      message: message == freezed ? _value.message : message as String,
+    ));
+  }
 }
 
 /// @nodoc
-class _$_ServerFailure implements _ServerFailure {
-  const _$_ServerFailure();
+abstract class _$ManagerFailureCopyWith<$Res>
+    implements $ManagerFailureCopyWith<$Res> {
+  factory _$ManagerFailureCopyWith(
+          _ManagerFailure value, $Res Function(_ManagerFailure) then) =
+      __$ManagerFailureCopyWithImpl<$Res>;
+  @override
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$ManagerFailureCopyWithImpl<$Res>
+    extends _$ManagerFailureCopyWithImpl<$Res>
+    implements _$ManagerFailureCopyWith<$Res> {
+  __$ManagerFailureCopyWithImpl(
+      _ManagerFailure _value, $Res Function(_ManagerFailure) _then)
+      : super(_value, (v) => _then(v as _ManagerFailure));
+
+  @override
+  _ManagerFailure get _value => super._value as _ManagerFailure;
+
+  @override
+  $Res call({
+    Object message = freezed,
+  }) {
+    return _then(_ManagerFailure(
+      message == freezed ? _value.message : message as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ManagerFailure implements _ManagerFailure {
+  const _$_ManagerFailure(this.message) : assert(message != null);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'ManagerFailure.serverFailure()';
+    return 'ManagerFailure(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ServerFailure);
+    return identical(this, other) ||
+        (other is _ManagerFailure &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-  }) {
-    assert(serverFailure != null);
-    assert(unknownFailure != null);
-    return serverFailure();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (serverFailure != null) {
-      return serverFailure();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverFailure(_ServerFailure value),
-    @required TResult unknownFailure(_UnknownFailure value),
-  }) {
-    assert(serverFailure != null);
-    assert(unknownFailure != null);
-    return serverFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverFailure(_ServerFailure value),
-    TResult unknownFailure(_UnknownFailure value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (serverFailure != null) {
-      return serverFailure(this);
-    }
-    return orElse();
-  }
+  _$ManagerFailureCopyWith<_ManagerFailure> get copyWith =>
+      __$ManagerFailureCopyWithImpl<_ManagerFailure>(this, _$identity);
 }
 
-abstract class _ServerFailure implements ManagerFailure {
-  const factory _ServerFailure() = _$_ServerFailure;
-}
-
-/// @nodoc
-abstract class _$UnknownFailureCopyWith<$Res> {
-  factory _$UnknownFailureCopyWith(
-          _UnknownFailure value, $Res Function(_UnknownFailure) then) =
-      __$UnknownFailureCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$UnknownFailureCopyWithImpl<$Res>
-    extends _$ManagerFailureCopyWithImpl<$Res>
-    implements _$UnknownFailureCopyWith<$Res> {
-  __$UnknownFailureCopyWithImpl(
-      _UnknownFailure _value, $Res Function(_UnknownFailure) _then)
-      : super(_value, (v) => _then(v as _UnknownFailure));
+abstract class _ManagerFailure implements ManagerFailure {
+  const factory _ManagerFailure(String message) = _$_ManagerFailure;
 
   @override
-  _UnknownFailure get _value => super._value as _UnknownFailure;
-}
-
-/// @nodoc
-class _$_UnknownFailure implements _UnknownFailure {
-  const _$_UnknownFailure();
-
+  String get message;
   @override
-  String toString() {
-    return 'ManagerFailure.unknownFailure()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _UnknownFailure);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult serverFailure(),
-    @required TResult unknownFailure(),
-  }) {
-    assert(serverFailure != null);
-    assert(unknownFailure != null);
-    return unknownFailure();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult serverFailure(),
-    TResult unknownFailure(),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (unknownFailure != null) {
-      return unknownFailure();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult serverFailure(_ServerFailure value),
-    @required TResult unknownFailure(_UnknownFailure value),
-  }) {
-    assert(serverFailure != null);
-    assert(unknownFailure != null);
-    return unknownFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult serverFailure(_ServerFailure value),
-    TResult unknownFailure(_UnknownFailure value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (unknownFailure != null) {
-      return unknownFailure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UnknownFailure implements ManagerFailure {
-  const factory _UnknownFailure() = _$_UnknownFailure;
+  @JsonKey(ignore: true)
+  _$ManagerFailureCopyWith<_ManagerFailure> get copyWith;
 }

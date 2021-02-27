@@ -1,16 +1,21 @@
-import 'default_card.dart';
 import 'package:flutter/material.dart';
+
+import 'default_card.dart';
 
 class DefaultDropdownField<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final void Function(T) onChanged;
   final T value;
+  final String placeholderText;
+  final bool isExpanded;
 
   const DefaultDropdownField(
     this.items, {
     Key key,
     @required this.onChanged,
     @required this.value,
+    this.placeholderText = '',
+    this.isExpanded = false,
   }) : super(key: key);
 
   @override
@@ -26,6 +31,8 @@ class DefaultDropdownField<T> extends StatelessWidget {
         value: value,
         onChanged: onChanged,
         dropdownColor: Colors.white,
+        hint: Text(placeholderText),
+        isExpanded: isExpanded,
       ),
     );
   }

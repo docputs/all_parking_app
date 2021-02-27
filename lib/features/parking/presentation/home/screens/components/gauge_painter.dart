@@ -1,7 +1,8 @@
 import 'dart:math';
 
-import '../../../../../../res/theme.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../res/theme.dart';
 
 class GaugePainter extends CustomPainter {
   final int ocuppied;

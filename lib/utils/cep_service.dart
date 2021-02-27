@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
-import '../features/parking/domain/entities/parking_lot.dart';
+import '../features/parking/domain/entities/address.dart';
 
 part 'cep_service.freezed.dart';
 part 'cep_service.g.dart';
@@ -23,10 +24,12 @@ abstract class CepResponse with _$CepResponse {
   factory CepResponse.fromJson(Map<String, dynamic> json) => _$CepResponseFromJson(json);
 }
 
+@lazySingleton
 class CepService {
-  static Future<CepResponse> getCep(String input) async {
+  Future<CepResponse> getCep(String input) async {
     try {
-      final url = 'https://viacep.com.br/ws/$input/json/';
+      final formattedInput = _formatCepToMakeRequest(input);
+      final url = 'https://viacep.com.br/ws/$formattedInput/json/';
       final response = await http.get(url);
       return CepResponse.fromJson(json.decode(response.body));
     } catch (e) {
@@ -35,7 +38,7 @@ class CepService {
     }
   }
 
-  static Address convertFromCepResponse(CepResponse response) {
+  Address convertFromCepResponse(CepResponse response) {
     return Address(
       street: response.logradouro,
       number: response.complemento,
@@ -43,5 +46,10 @@ class CepService {
       city: response.localidade,
       uf: response.uf,
     );
+  }
+
+  String _formatCepToMakeRequest(String rawInput) {
+    if (rawInput.contains('-')) return rawInput.split('-').join();
+    return rawInput;
   }
 }

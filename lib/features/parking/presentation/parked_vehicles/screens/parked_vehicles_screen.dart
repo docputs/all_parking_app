@@ -1,8 +1,7 @@
-import 'package:all_parking/widgets/current_parking_lot_builder.dart';
-import 'package:all_parking/widgets/no_current_parking_lot_info.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../res/messages.dart';
+import '../../../../../widgets/active_vehicles_builder.dart';
 import '../../../../../widgets/app_scaffold.dart';
 import '../../../../../widgets/default_drawer.dart';
 import 'components/no_parked_vehicles.dart';
@@ -22,11 +21,8 @@ class ParkedVehiclesScreen extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    return CurrentParkingLotBuilder(
-      builder: (parkingLot) {
-        return parkingLot.isEmpty() ? const NoParkedVehicles() : ParkedVehiclesDashboard(parkingLot.activeParkedVehicles().asList());
-      },
-      noParkingLotWidget: const NoCurrentParkingLotInfo(),
+    return ActiveVehiclesBuilder(
+      onSuccess: (vehicles) => vehicles.isEmpty ? const NoParkedVehicles() : ParkedVehiclesDashboard(vehicles.value.asList()),
     );
   }
 }

@@ -3,7 +3,10 @@ class PureDate {
   final int month;
   final int year;
 
-  const PureDate(this.day, this.month, this.year);
+  const PureDate(this.day, this.month, this.year)
+      : assert(day != null),
+        assert(month != null),
+        assert(year != null);
 
   PureDate.fromDateTime(DateTime dateTime) : this(dateTime.day, dateTime.month, dateTime.year);
 

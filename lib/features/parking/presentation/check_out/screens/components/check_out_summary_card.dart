@@ -1,6 +1,3 @@
-import 'package:all_parking/features/parking/presentation/check_out/bloc/check_out_bloc.dart';
-import 'package:all_parking/features/parking/presentation/check_out/screens/components/text_field_alert_dialog.dart';
-import 'package:all_parking/widgets/current_parking_lot_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -8,10 +5,13 @@ import 'package:provider/provider.dart';
 import '../../../../../../res/messages.dart';
 import '../../../../../../res/theme.dart';
 import '../../../../../../utils/format_utils.dart';
+import '../../../../../../widgets/current_parking_lot_builder.dart';
 import '../../../../../../widgets/default_card.dart';
 import '../../../../../../widgets/default_text_button.dart';
 import '../../../../../../widgets/vehicle_color_display.dart';
 import '../../../../domain/entities/parked_vehicle.dart';
+import '../../bloc/check_out_bloc.dart';
+import 'text_field_alert_dialog.dart';
 
 class CheckOutSummaryCard extends StatelessWidget {
   final ParkedVehicle vehicle;

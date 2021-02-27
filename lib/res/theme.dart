@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   static const primaryColor = Color(0xff233e94);
@@ -15,7 +14,13 @@ class AppColors {
 
 ThemeData buildThemeData() {
   return ThemeData(
-    textSelectionTheme: TextSelectionThemeData(cursorColor: AppColors.accentLighterColor),
+    cursorColor: AppColors.accentLighterColor,
+    textSelectionColor: AppColors.accentLighterColor,
+    textSelectionHandleColor: AppColors.accentLighterColor,
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.accentLighterColor,
+      selectionColor: AppColors.accentLighterColor,
+    ),
     appBarTheme: AppBarTheme(color: AppColors.primaryColor),
     primaryColor: AppColors.primaryColor,
     accentColor: AppColors.accentColor,

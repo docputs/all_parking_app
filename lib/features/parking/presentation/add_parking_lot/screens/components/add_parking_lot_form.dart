@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
 import '../../../../../../utils/validators.dart';
 import '../../../../../../widgets/default_button.dart';
 import '../../../../../../widgets/default_section_title.dart';
 import '../../../../../../widgets/parking_lot_text_form_field.dart';
 import '../../../../../../widgets/static_text_form_field.dart';
-import '../../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../../../../../../widgets/validation_form_state.dart';
 import '../../bloc/add_parking_lot_bloc.dart';
 
 class AddParkingLotForm extends StatefulWidget {
@@ -80,6 +81,7 @@ class _AddParkingLotFormState extends State<AddParkingLotForm> {
           validationEither: Validators.validateCep,
           keyboardType: TextInputType.number,
           controller: _cepController,
+          mask: Constants.cepMask,
         );
       },
     );

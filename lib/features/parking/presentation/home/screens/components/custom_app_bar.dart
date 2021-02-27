@@ -2,6 +2,7 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../../app_config.dart';
 import '../../../../../../res/constants.dart';
 import '../../../../../../res/messages.dart';
 import '../../../../domain/entities/parking_lot.dart';
@@ -13,7 +14,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CurrentParkingLot>(
-      builder: (context, currentParkingLot, child) {
+      builder: (context, currentParkingLot, _) {
         return AppBar(
           title: Text(
             currentParkingLot.value.fold(
@@ -21,12 +22,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               (parkingLot) => parkingLot.title,
             ),
           ),
-          actions: [
-            IconButton(
-              icon: Icon(currentParkingLot.isEmpty ? Icons.add : Icons.place),
-              onPressed: () => _calculateAppBarNavigation(context, currentParkingLot),
-            ),
-          ],
+          actions: _calculateActionsFromUserType(currentParkingLot, context),
         );
       },
     );
@@ -44,5 +40,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             }
           })
         : Navigator.of(context).pushNamed(Constants.selectParkingLotRoute);
+  }
+
+  List<Widget> _calculateActionsFromUserType(CurrentParkingLot currentParkingLot, BuildContext context) {
+    return AppConfig.isManager
+        ? [
+            IconButton(
+              icon: Icon(currentParkingLot.isEmpty ? Icons.add : Icons.place),
+              onPressed: () => _calculateAppBarNavigation(context, currentParkingLot),
+            ),
+          ]
+        : null;
   }
 }

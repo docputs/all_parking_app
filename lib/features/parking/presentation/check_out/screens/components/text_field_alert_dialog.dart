@@ -1,8 +1,8 @@
-import 'package:all_parking/res/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'package:all_parking/res/theme.dart';
-import 'package:all_parking/widgets/default_text_field.dart';
+import '../../../../../../res/constants.dart';
+import '../../../../../../res/theme.dart';
+import '../../../../../../widgets/default_text_field.dart';
 
 class TextFieldAlertDialog extends StatelessWidget {
   final String title;

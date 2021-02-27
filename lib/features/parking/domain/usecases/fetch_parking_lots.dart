@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kt_dart/kt.dart';
 
 import '../../core/errors/parking_failure.dart';
 import '../entities/parking_lot.dart';
@@ -14,11 +15,14 @@ class FetchParkingLots {
   const FetchParkingLots(this._parkingLotRepository, this._managerRepository)
       : assert(_parkingLotRepository != null, _managerRepository != null);
 
-  Future<Either<ParkingFailure, List<ParkingLot>>> call() async {
+  Future<Either<ParkingFailure, KtList<ParkingLot>>> call() async {
     final managerEither = await _managerRepository.read();
     return managerEither.fold(
-      (f) => left(ParkingFailure.serverFailure()),
-      (manager) => _parkingLotRepository.fetchAll(manager),
+      (f) => left(f),
+      (manager) {
+        if (manager.parkingLots.isEmpty()) return right(KtList.empty());
+        return _parkingLotRepository.fetchParkingLots(manager.parkingLots);
+      },
     );
   }
 }

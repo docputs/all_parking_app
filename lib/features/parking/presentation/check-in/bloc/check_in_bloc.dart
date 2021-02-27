@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../utils/validators.dart';
-import '../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../../../../../widgets/validation_form_state.dart';
 import '../../../core/errors/parking_failure.dart';
 import '../../../core/util/qr_code_scanner.dart';
 import '../../../domain/entities/parked_vehicle.dart';

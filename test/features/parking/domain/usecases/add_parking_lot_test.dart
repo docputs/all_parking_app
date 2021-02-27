@@ -68,7 +68,7 @@ void main() {
     test('should return ParkingFailure when ManagerRepository fails', () async {
       when(mockParkingLotRepository.create(any)).thenAnswer((_) async => Right(unit));
       when(mockManagerRepository.read()).thenAnswer((_) async => Right(Fixtures.manager));
-      when(mockManagerRepository.update(any)).thenAnswer((_) async => Left(ManagerFailure.serverFailure()));
+      when(mockManagerRepository.update(any)).thenAnswer((_) async => Left(ParkingFailure.serverFailure()));
 
       final result = await usecase(Fixtures.parkingLot);
 

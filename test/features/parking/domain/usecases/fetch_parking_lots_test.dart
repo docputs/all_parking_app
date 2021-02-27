@@ -39,7 +39,7 @@ void main() {
 
   test('should return parking lots when manager is signed in', () async {
     when(mockManagerRepository.read()).thenAnswer((_) async => right(Fixtures.manager));
-    when(mockParkingLotRepository.fetchAll(Fixtures.manager)).thenAnswer((_) async => Right([Fixtures.parkingLot]));
+    when(mockParkingLotRepository.fetchParkingLots(Fixtures.manager)).thenAnswer((_) async => Right([Fixtures.parkingLot]));
 
     final result = await usecase();
 

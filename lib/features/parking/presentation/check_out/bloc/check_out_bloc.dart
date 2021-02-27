@@ -1,18 +1,18 @@
 import 'dart:async';
 
-import 'package:all_parking/utils/input_converter.dart';
-import 'package:dartz/dartz.dart';
-
-import '../../../core/errors/parking_failure.dart';
-import '../../../domain/entities/parked_vehicle.dart';
-import '../../../domain/usecases/check_out_vehicle.dart';
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../../utils/input_converter.dart';
+import '../../../core/errors/parking_failure.dart';
+import '../../../domain/entities/parked_vehicle.dart';
+import '../../../domain/usecases/check_out_vehicle.dart';
+
+part 'check_out_bloc.freezed.dart';
 part 'check_out_event.dart';
 part 'check_out_state.dart';
-part 'check_out_bloc.freezed.dart';
 
 @injectable
 class CheckOutBloc extends Bloc<CheckOutEvent, CheckOutState> {

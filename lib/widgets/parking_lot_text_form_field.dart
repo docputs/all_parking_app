@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-import '../features/auth/presentation/sign_up/bloc/sign_up_bloc.dart';
 import '../features/parking/core/errors/parking_failure.dart';
 import 'default_text_field.dart';
+import 'validation_form_state.dart';
 
 class ParkingLotTextFormField extends StatelessWidget {
   final String labelText;

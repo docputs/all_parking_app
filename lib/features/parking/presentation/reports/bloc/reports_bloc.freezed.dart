@@ -14,9 +14,12 @@ class _$ReportsEventTearOff {
   const _$ReportsEventTearOff();
 
 // ignore: unused_element
-  _Initialized initialized(ParkingLot parkingLot) {
+  _Initialized initialized(
+      {@required ParkingLot parkingLot,
+      @required InactiveParkedVehicles vehicles}) {
     return _Initialized(
-      parkingLot,
+      parkingLot: parkingLot,
+      vehicles: vehicles,
     );
   }
 
@@ -36,12 +39,14 @@ const $ReportsEvent = _$ReportsEventTearOff();
 mixin _$ReportsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initialized(ParkingLot parkingLot),
+    @required
+        TResult initialized(
+            ParkingLot parkingLot, InactiveParkedVehicles vehicles),
     @required TResult dateSelected(DateTime dateTime),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialized(ParkingLot parkingLot),
+    TResult initialized(ParkingLot parkingLot, InactiveParkedVehicles vehicles),
     TResult dateSelected(DateTime dateTime),
     @required TResult orElse(),
   });
@@ -79,7 +84,7 @@ abstract class _$InitializedCopyWith<$Res> {
   factory _$InitializedCopyWith(
           _Initialized value, $Res Function(_Initialized) then) =
       __$InitializedCopyWithImpl<$Res>;
-  $Res call({ParkingLot parkingLot});
+  $Res call({ParkingLot parkingLot, InactiveParkedVehicles vehicles});
 
   $ParkingLotCopyWith<$Res> get parkingLot;
 }
@@ -97,9 +102,14 @@ class __$InitializedCopyWithImpl<$Res> extends _$ReportsEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object parkingLot = freezed,
+    Object vehicles = freezed,
   }) {
     return _then(_Initialized(
-      parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
+      parkingLot:
+          parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
+      vehicles: vehicles == freezed
+          ? _value.vehicles
+          : vehicles as InactiveParkedVehicles,
     ));
   }
 
@@ -116,14 +126,18 @@ class __$InitializedCopyWithImpl<$Res> extends _$ReportsEventCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Initialized implements _Initialized {
-  const _$_Initialized(this.parkingLot) : assert(parkingLot != null);
+  const _$_Initialized({@required this.parkingLot, @required this.vehicles})
+      : assert(parkingLot != null),
+        assert(vehicles != null);
 
   @override
   final ParkingLot parkingLot;
+  @override
+  final InactiveParkedVehicles vehicles;
 
   @override
   String toString() {
-    return 'ReportsEvent.initialized(parkingLot: $parkingLot)';
+    return 'ReportsEvent.initialized(parkingLot: $parkingLot, vehicles: $vehicles)';
   }
 
   @override
@@ -132,12 +146,17 @@ class _$_Initialized implements _Initialized {
         (other is _Initialized &&
             (identical(other.parkingLot, parkingLot) ||
                 const DeepCollectionEquality()
-                    .equals(other.parkingLot, parkingLot)));
+                    .equals(other.parkingLot, parkingLot)) &&
+            (identical(other.vehicles, vehicles) ||
+                const DeepCollectionEquality()
+                    .equals(other.vehicles, vehicles)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(parkingLot);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(parkingLot) ^
+      const DeepCollectionEquality().hash(vehicles);
 
   @JsonKey(ignore: true)
   @override
@@ -147,24 +166,26 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initialized(ParkingLot parkingLot),
+    @required
+        TResult initialized(
+            ParkingLot parkingLot, InactiveParkedVehicles vehicles),
     @required TResult dateSelected(DateTime dateTime),
   }) {
     assert(initialized != null);
     assert(dateSelected != null);
-    return initialized(parkingLot);
+    return initialized(parkingLot, vehicles);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialized(ParkingLot parkingLot),
+    TResult initialized(ParkingLot parkingLot, InactiveParkedVehicles vehicles),
     TResult dateSelected(DateTime dateTime),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initialized != null) {
-      return initialized(parkingLot);
+      return initialized(parkingLot, vehicles);
     }
     return orElse();
   }
@@ -196,9 +217,12 @@ class _$_Initialized implements _Initialized {
 }
 
 abstract class _Initialized implements ReportsEvent {
-  const factory _Initialized(ParkingLot parkingLot) = _$_Initialized;
+  const factory _Initialized(
+      {@required ParkingLot parkingLot,
+      @required InactiveParkedVehicles vehicles}) = _$_Initialized;
 
   ParkingLot get parkingLot;
+  InactiveParkedVehicles get vehicles;
   @JsonKey(ignore: true)
   _$InitializedCopyWith<_Initialized> get copyWith;
 }
@@ -264,7 +288,9 @@ class _$_DateSelected implements _DateSelected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initialized(ParkingLot parkingLot),
+    @required
+        TResult initialized(
+            ParkingLot parkingLot, InactiveParkedVehicles vehicles),
     @required TResult dateSelected(DateTime dateTime),
   }) {
     assert(initialized != null);
@@ -275,7 +301,7 @@ class _$_DateSelected implements _DateSelected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initialized(ParkingLot parkingLot),
+    TResult initialized(ParkingLot parkingLot, InactiveParkedVehicles vehicles),
     TResult dateSelected(DateTime dateTime),
     @required TResult orElse(),
   }) {
