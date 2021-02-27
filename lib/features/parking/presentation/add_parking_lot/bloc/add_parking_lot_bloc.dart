@@ -6,11 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../service_locator.dart';
 import '../../../../../utils/cep_service.dart';
 import '../../../../../utils/input_converter.dart';
 import '../../../../../utils/validators.dart';
-import '../../../../auth/presentation/sign_up/bloc/sign_up_bloc.dart';
+import '../../../../../widgets/validation_form_state.dart';
 import '../../../core/errors/parking_failure.dart';
 import '../../../domain/entities/parking_lot.dart';
 import '../../../domain/usecases/add_parking_lot.dart';
@@ -25,10 +24,11 @@ part 'add_parking_lot_state.dart';
 class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
   final AddParkingLot _addParkingLot;
   final EditParkingLot _editParkingLot;
+  final CepService _cepService;
+  final CurrentParkingLot _currentParkingLot;
 
-  AddParkingLotBloc(this._addParkingLot, this._editParkingLot) : super(AddParkingLotState.initial());
-
-  final _currentParkingLot = getIt<CurrentParkingLot>();
+  AddParkingLotBloc(this._addParkingLot, this._editParkingLot, this._cepService, this._currentParkingLot)
+      : super(AddParkingLotState.initial());
 
   @override
   Stream<AddParkingLotState> mapEventToState(AddParkingLotEvent event) async* {
@@ -52,10 +52,10 @@ class AddParkingLotBloc extends Bloc<AddParkingLotEvent, AddParkingLotState> {
         );
       },
       changedCep: (e) async* {
-        if (e.input.length == 8) {
-          final cepResponse = await CepService.getCep(e.input);
+        if (e.input.length == 9) {
+          final cepResponse = await _cepService.getCep(e.input);
           if (cepResponse == null) return;
-          final newAddress = CepService.convertFromCepResponse(cepResponse);
+          final newAddress = _cepService.convertFromCepResponse(cepResponse);
           yield state.copyWith(
             parkingLot: state.parkingLot.copyWith(address: newAddress),
             saveFailureOrSuccessOption: none(),

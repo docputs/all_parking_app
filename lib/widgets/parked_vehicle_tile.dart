@@ -1,9 +1,9 @@
-import '../features/parking/domain/entities/parked_vehicle.dart';
-import '../res/constants.dart';
-import 'vehicle_color_display.dart';
 import 'package:flutter/material.dart';
 
+import '../features/parking/domain/entities/parked_vehicle.dart';
+import '../res/constants.dart';
 import 'default_list_tile.dart';
+import 'vehicle_color_display.dart';
 
 class ParkedVehicleTile extends StatelessWidget {
   final ParkedVehicle vehicle;

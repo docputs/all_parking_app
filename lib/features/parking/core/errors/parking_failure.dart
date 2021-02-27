@@ -9,6 +9,7 @@ abstract class ParkingFailure with _$ParkingFailure {
   const factory ParkingFailure(String message) = _ParkingFailure;
 
   factory ParkingFailure.emptyField() => const ParkingFailure(Messages.emptyField);
+  factory ParkingFailure.parkingLotNotFound() => const ParkingFailure(Messages.parkingLotNotFound);
   factory ParkingFailure.invalidAvailableSpots() => const ParkingFailure(Messages.invalidAvailableSpots);
   factory ParkingFailure.invalidPricePerHour() => const ParkingFailure(Messages.invalidPricePerHour);
   factory ParkingFailure.invalidParkingLotTitle() => const ParkingFailure(Messages.invalidParkingLotTitle);

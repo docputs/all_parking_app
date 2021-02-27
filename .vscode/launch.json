@@ -5,9 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "all_parking",
+            "name": "All Parking (Admin)",
             "request": "launch",
-            "type": "dart"
-        }
+            "type": "dart",
+            "program": "lib/main_manager.dart",
+            "args": [
+                "-t",
+                "lib/main_manager.dart",
+                "--flavor",
+                "manager",
+            ],
+        },
+        {
+            "name": "All Parking (Employee)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_employee.dart",
+            "args": [
+                "-t",
+                "lib/main_employee.dart",
+                "--flavor",
+                "employee",
+            ],
+        },
     ]
 }

@@ -19,6 +19,7 @@ class DefaultTextField extends StatefulWidget {
   final int maxLines;
   final String mask;
   final TextCapitalization textCapitalization;
+  final Widget suffix;
 
   const DefaultTextField({
     Key key,
@@ -36,6 +37,7 @@ class DefaultTextField extends StatefulWidget {
     this.maxLines = 1,
     this.mask,
     this.textCapitalization = TextCapitalization.none,
+    this.suffix,
   }) : super(key: key);
 
   @override
@@ -57,6 +59,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: TextFormField(
         decoration: InputDecoration(
+          suffix: widget.suffix,
           labelText: widget.labelText,
           counterText: '',
           fillColor: Colors.white,

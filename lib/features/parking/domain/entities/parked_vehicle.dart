@@ -1,6 +1,7 @@
-import 'owner_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'owner_data.dart';
 
 part 'parked_vehicle.freezed.dart';
 part 'parked_vehicle.g.dart';

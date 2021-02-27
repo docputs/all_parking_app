@@ -1,3 +1,5 @@
+import 'package:all_parking/features/parking/domain/entities/address.dart';
+import 'package:all_parking/features/parking/domain/entities/associated_parking_lot.dart';
 import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:all_parking/features/parking/domain/entities/manager.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
@@ -38,7 +40,6 @@ class Fixtures {
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: KtList.of(parkedVehicle, parkedVehicle2),
     pricePerHour: 12.0,
   );
 
@@ -47,7 +48,6 @@ class Fixtures {
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: KtList.of(parkedVehicle, parkedVehicle2, parkedVehicle),
     pricePerHour: 12.0,
   );
 
@@ -56,7 +56,6 @@ class Fixtures {
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
     availableSpots: 56,
-    parkedVehicles: KtList.of(inactiveParkedVehicle, parkedVehicle2),
     pricePerHour: 12.0,
   );
 
@@ -71,6 +70,9 @@ class Fixtures {
   static final employee = Employee(
     id: '456',
     displayName: 'Bruno',
+    cpf: '123.456.789-09',
+    parkingLot: AssociatedParkingLot(id: '1', title: 'Estacionamento X'),
+    phoneNumber: '(99) 99999-9999',
   );
 
   static final newManager = manager.copyWith(parkingLots: manager.parkingLots.plusElement(parkingLot.id));

@@ -53,6 +53,18 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "flavors"
+
+    productFlavors {
+        manager {
+            dimension "flavors"
+            applicationIdSuffix ".manager"
+        }
+        employee {
+            dimension "flavors"
+        }
+    }
 }
 
 flutter {

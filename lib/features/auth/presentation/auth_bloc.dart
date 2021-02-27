@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../domain/entities/user.dart';
-import '../domain/repositories/i_user_repository.dart';
+import '../../parking/domain/entities/manager.dart';
+import '../domain/repositories/i_manager_auth_repository.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -13,22 +13,22 @@ part 'auth_state.dart';
 
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final IUserRepository _userRepository;
+  final IManagerAuthRepository _authRepository;
 
-  AuthBloc(this._userRepository) : super(AuthState.initializing());
+  AuthBloc(this._authRepository) : super(AuthState.initializing());
 
   @override
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
     yield* event.map(
       authCheckRequested: (e) async* {
-        final userOption = await _userRepository.getCurrentUser();
-        yield userOption.fold(
+        final managerOption = await _authRepository.getCurrentManager();
+        yield managerOption.fold(
           () => const AuthState.unauthenticated(),
-          (user) => AuthState.authenticated(user),
+          (manager) => AuthState.authenticated(manager),
         );
       },
       signedOut: (e) async* {
-        await _userRepository.signOut();
+        await _authRepository.signOut();
         yield const AuthState.unauthenticated();
       },
     );

@@ -1,11 +1,15 @@
-import 'package:all_parking/features/auth/domain/entities/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../app_config.dart';
+import '../features/auth/domain/entities/user.dart';
 import '../features/parking/core/util/vehicle_color_converter.dart';
 import '../features/parking/core/util/vehicle_type_converter.dart';
+import '../features/parking/domain/entities/address.dart';
+import '../features/parking/domain/entities/employee.dart';
 import '../features/parking/domain/entities/parked_vehicle.dart';
+import '../features/parking/domain/entities/parked_vehicles_list.dart';
 import '../features/parking/domain/entities/parking_lot.dart';
 import '../features/parking/presentation/reports/view_models/reports_view_model.dart';
 import '../utils/format_utils.dart';
@@ -15,9 +19,13 @@ class Messages {
   const Messages._();
 
   //General
+  static String signedInUserType() => AppConfig.isManager ? 'Administrador' : 'Funcionário';
   static String userType(UserType type) => type == UserType.manager ? 'Administrador' : 'Funcionário';
+  static const noDataToShow = 'Sem dados para exibir';
 
   //AuthFailure
+  static const employeeNotFound = 'Funcionário não encontrado';
+  static const parkingLotNotFound = 'Estacionamento não encontrado';
   static const emailBadlyFormatted = 'E-mail inválido';
   static const emptyField = 'Campo obrigatório';
   static const invalidField = 'Campo inválido';
@@ -32,6 +40,7 @@ class Messages {
   static const displayNameTooLong = 'Excedeu o limite de caracteres';
   static const passwordsDontMatch = 'Senhas não conferem';
   static const noCurrentParkingLot = 'Nenhum estacionamento selecionado';
+  static const autoSignInFailed = 'Falhou ao autenticar';
 
   //ParkingFailure
   static const invalidParkingLotTitle = 'Nome inválido';
@@ -41,8 +50,8 @@ class Messages {
   static const invalidCep = 'CEP inválido';
   static const exceededParkingLots = 'Limite de estacionamentos atingido';
 
-  //SignIn
-  static const signInScreenTitle = 'Acesse sua conta';
+  //SignInManagerScreen
+  static const signInManagerScreenTitle = 'Acesse sua conta';
   static const emailFieldLabel = 'E-mail';
   static const signInButton = 'ENTRAR';
   static const passwordFieldLabel = 'Senha';
@@ -56,13 +65,20 @@ class Messages {
   static const signUpConfirmPasswordLabel = 'Confirme sua senha';
   static const signUpCreateAccountButton = 'CRIAR CONTA';
 
+  //SignInEmployeeScreen
+  static const signInEmployeeScreenTitle = 'Acesse sua conta';
+  static const signInEmployeeTokenLabel = 'Código';
+  static const signInEmployeeInsertTokenInstruction = 'Insira o seu código de funcionário abaixo';
+  static const signInEmployeeSubmitButton = 'ENTRAR';
+
   //HomeScreen
   static const defaultAppBarTitle = 'All Parking';
   static const cardsLabel = 'Cartões';
   static const parkedVehiclesLabel = 'Veículos estacionados';
-  static String remainingCards(ParkingLot parkingLot) => '${parkingLot.availableSpots - parkingLot.activeParkedVehicles().size} restantes';
-  static String usedCards(ParkingLot parkingLot) =>
-      '${parkingLot.activeParkedVehicles().size} de ${parkingLot.availableSpots} cartões usados';
+  static String remainingCards(ParkingLot parkingLot, ActiveParkedVehicles vehicles) =>
+      '${parkingLot.availableSpots - vehicles.value.size} restantes';
+  static String usedCards(ParkingLot parkingLot, ActiveParkedVehicles vehicles) =>
+      '${vehicles.value.size} de ${parkingLot.availableSpots} cartões usados';
   static const checkInVehicleLabel = 'CHECK-IN';
   static const checkOutVehicleLabel = 'CHECK-OUT';
   static const pressMoreToAddParkingLot = 'Toque em + para adicionar';
@@ -175,7 +191,6 @@ class Messages {
   //ReportsScreen
   static const reportsScreenTitle = 'Relatórios';
   static const reportsParkedVehiclesHeader = 'Veículos estacionados';
-  static const reportsNoAvailableData = 'Sem dados para exibir';
   static String reportsInfoTileTrailingText(dynamic value) => '$value';
   static String selectedDateLabel(DateTime dateTime) {
     final formattedDate = DateFormat.MMMMd().format(dateTime);
@@ -183,8 +198,8 @@ class Messages {
   }
 
   static Map<String, Map<String, dynamic>> generateReportsInfo(ReportsViewModel viewModel) {
-    final todaysParkedVehicles = viewModel.parkedVehicles.fromToday();
-    final lastWeekParkedVehicles = viewModel.parkedVehicles.fromLastWeek();
+    final todaysParkedVehicles = viewModel.vehicles.fromToday();
+    final lastWeekParkedVehicles = viewModel.vehicles.fromLastWeek();
     return {
       selectedDateLabel(DateTime.now()): {
         'Veículos estacionados': todaysParkedVehicles.size,
@@ -209,4 +224,23 @@ class Messages {
   static const selectParkingLotScreenTitle = 'Selecionar estacionamento';
   static const selectParkingLotYourParkingLotsHeader = 'Seus estacionamentos';
   static String selectParkingLotInfoTileSubtitle(Address address) => '${address.street} | ${address.cep}';
+
+  //ManageEmployeesScreen
+  static const manageEmployeesScreenTitle = 'Gerenciar funcionários';
+  static const manageEmployeesHeader = 'Seus funcionários';
+  static const manageEmployeesConfirmDialogTitle = 'Remover funcionário';
+  static String manageEmployeesConfirmDialogMessage(Employee employee) =>
+      'Deseja remover ${employee.displayName} da sua lista de funcionários?';
+  static const manageEmployeesConfirmDialogRightButton = 'REMOVER';
+  static const manageEmployeesConfirmDialogLeftButton = 'VOLTAR';
+  static const manageEmployeesTokenCopied = 'Token de funcionário copiado!';
+
+  //AddEmployeeScreen
+  static const addEmployeeScreenTitle = 'Cadastrar funcionário';
+  static const addEmployeeGeneralInfoHeader = 'Dados gerais';
+  static const addEmployeeAssociatedParkingLotHeader = 'Estacionamento associado';
+  static const addEmployeeSubmitButton = 'SALVAR';
+  static const addEmployeeNameFieldLabel = 'Nome';
+  static const addEmployeeCpfLabel = 'CPF';
+  static const addEmployeePhoneNumberLabel = 'Celular';
 }

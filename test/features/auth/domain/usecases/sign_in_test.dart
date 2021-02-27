@@ -1,20 +1,20 @@
 import 'package:all_parking/features/auth/core/errors/auth_failure.dart';
 import 'package:all_parking/features/auth/data/models/sign_in_model.dart';
-import 'package:all_parking/features/auth/domain/repositories/i_user_repository.dart';
-import 'package:all_parking/features/auth/domain/usecases/sign_in.dart';
+import 'package:all_parking/features/auth/domain/repositories/i_manager_auth_repository.dart';
+import 'package:all_parking/features/auth/domain/usecases/sign_in_manager.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class MockUserRepository extends Mock implements IUserRepository {}
+class MockUserRepository extends Mock implements IManagerAuthRepository {}
 
 void main() {
   MockUserRepository mockUserRepository;
-  SignIn usecase;
+  SignInManager usecase;
 
   setUp(() {
     mockUserRepository = MockUserRepository();
-    usecase = SignIn(mockUserRepository);
+    usecase = SignInManager(mockUserRepository);
   });
 
   final email = 'teste@teste.com';

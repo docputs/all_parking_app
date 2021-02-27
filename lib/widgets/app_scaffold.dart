@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppScaffold extends StatelessWidget {
   final String title;
@@ -8,7 +7,6 @@ class AppScaffold extends StatelessWidget {
   final bool scrollable;
   final Widget drawer;
   final Widget customAppBar;
-  final List<Bloc> blocs;
   final List<IconButton> actions;
 
   const AppScaffold({
@@ -19,7 +17,6 @@ class AppScaffold extends StatelessWidget {
     this.scrollable = true,
     this.drawer,
     this.customAppBar,
-    this.blocs,
     this.actions,
   }) : super(key: key);
 
