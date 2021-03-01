@@ -23,6 +23,7 @@ import 'features/parking/presentation/check-in/bloc/check_in_bloc.dart';
 import 'features/parking/domain/usecases/check_in_vehicle.dart';
 import 'features/parking/presentation/check_out/bloc/check_out_bloc.dart';
 import 'features/parking/domain/usecases/check_out_vehicle.dart';
+import 'features/qr_code/data/repositories/code_repository.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
 import 'features/parking/domain/usecases/delete_employee.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
@@ -35,7 +36,9 @@ import 'features/parking/data/repositories/employee_repository.dart';
 import 'features/parking/domain/usecases/fetch_current_manager.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/parking/domain/usecases/fetch_single_parking_lot.dart';
+import 'features/qr_code/domain/usecases/generate_qr_codes.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
+import 'features/qr_code/domain/repositories/i_code_repository.dart';
 import 'features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'features/parking/domain/repositories/i_employee_repository.dart';
 import 'features/auth/data/datasources/i_local_data_source.dart';
@@ -80,6 +83,7 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<EmailService>(() => EmailService(get<Client>()));
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
+  gh.lazySingleton<ICodeRepository>(() => CodeRepository());
   gh.lazySingleton<IEmployeeRepository>(
       () => EmployeeRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IManagerAuthRepository>(() =>
@@ -125,6 +129,8 @@ Future<GetIt> $initGetIt(
       () => FetchCurrentManager(get<IManagerRepository>()));
   gh.lazySingleton<FetchParkingLots>(() => FetchParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
+  gh.lazySingleton<GenerateQRCodes>(
+      () => GenerateQRCodes(get<ICodeRepository>()));
   gh.lazySingleton<ILocalDataSource>(
       () => LocalDataSource(get<SharedPreferences>()));
   gh.factory<InactiveVehiclesWatcherBloc>(() => InactiveVehiclesWatcherBloc(
