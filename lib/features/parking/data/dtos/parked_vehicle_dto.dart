@@ -1,3 +1,4 @@
+import 'package:all_parking/features/qr_code/data/dtos/qr_code_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/parked_vehicle.dart';
@@ -12,7 +13,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
 
   @JsonSerializable(explicitToJson: true)
   const factory ParkedVehicleDTO({
-    @required QRCode id,
+    @required QRCodeDTO id,
     @required String title,
     @required String licensePlate,
     @required VehicleColor color,
@@ -26,7 +27,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
   }) = _ParkedVehicleDTO;
 
   factory ParkedVehicleDTO.fromDomain(ParkedVehicle model) => ParkedVehicleDTO(
-        id: model.id,
+        id: QRCodeDTO.fromDomain(model.id),
         title: model.title,
         licensePlate: model.licensePlate,
         color: model.color,
@@ -40,7 +41,7 @@ abstract class ParkedVehicleDTO implements _$ParkedVehicleDTO {
       );
 
   ParkedVehicle toDomain() => ParkedVehicle(
-        id: id,
+        id: id.toDomain(),
         checkIn: checkIn,
         checkOut: checkOut,
         title: title,

@@ -1,7 +1,6 @@
+import 'package:all_parking/features/qr_code/domain/entities/qr_code.dart';
 import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
-
-import '../../domain/entities/parked_vehicle.dart';
 
 class QRCodeScanner {
   static Future<Option<QRCode>> scan() async {

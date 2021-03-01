@@ -18,7 +18,7 @@ class _$ParkedVehicleDTOTearOff {
 
 // ignore: unused_element
   _ParkedVehicleDTO call(
-      {@required QRCode id,
+      {@required QRCodeDTO id,
       @required String title,
       @required String licensePlate,
       @required VehicleColor color,
@@ -56,7 +56,7 @@ const $ParkedVehicleDTO = _$ParkedVehicleDTOTearOff();
 
 /// @nodoc
 mixin _$ParkedVehicleDTO {
-  QRCode get id;
+  QRCodeDTO get id;
   String get title;
   String get licensePlate;
   VehicleColor get color;
@@ -81,7 +81,7 @@ abstract class $ParkedVehicleDTOCopyWith<$Res> {
           ParkedVehicleDTO value, $Res Function(ParkedVehicleDTO) then) =
       _$ParkedVehicleDTOCopyWithImpl<$Res>;
   $Res call(
-      {QRCode id,
+      {QRCodeDTO id,
       String title,
       String licensePlate,
       VehicleColor color,
@@ -93,7 +93,7 @@ abstract class $ParkedVehicleDTOCopyWith<$Res> {
       @JsonKey(includeIfNull: false) OwnerDataDTO ownerData,
       double overridenPricePerHour});
 
-  $QRCodeCopyWith<$Res> get id;
+  $QRCodeDTOCopyWith<$Res> get id;
   $OwnerDataDTOCopyWith<$Res> get ownerData;
 }
 
@@ -121,7 +121,7 @@ class _$ParkedVehicleDTOCopyWithImpl<$Res>
     Object overridenPricePerHour = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as QRCode,
+      id: id == freezed ? _value.id : id as QRCodeDTO,
       title: title == freezed ? _value.title : title as String,
       licensePlate: licensePlate == freezed
           ? _value.licensePlate
@@ -143,11 +143,11 @@ class _$ParkedVehicleDTOCopyWithImpl<$Res>
   }
 
   @override
-  $QRCodeCopyWith<$Res> get id {
+  $QRCodeDTOCopyWith<$Res> get id {
     if (_value.id == null) {
       return null;
     }
-    return $QRCodeCopyWith<$Res>(_value.id, (value) {
+    return $QRCodeDTOCopyWith<$Res>(_value.id, (value) {
       return _then(_value.copyWith(id: value));
     });
   }
@@ -171,7 +171,7 @@ abstract class _$ParkedVehicleDTOCopyWith<$Res>
       __$ParkedVehicleDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {QRCode id,
+      {QRCodeDTO id,
       String title,
       String licensePlate,
       VehicleColor color,
@@ -184,7 +184,7 @@ abstract class _$ParkedVehicleDTOCopyWith<$Res>
       double overridenPricePerHour});
 
   @override
-  $QRCodeCopyWith<$Res> get id;
+  $QRCodeDTOCopyWith<$Res> get id;
   @override
   $OwnerDataDTOCopyWith<$Res> get ownerData;
 }
@@ -215,7 +215,7 @@ class __$ParkedVehicleDTOCopyWithImpl<$Res>
     Object overridenPricePerHour = freezed,
   }) {
     return _then(_ParkedVehicleDTO(
-      id: id == freezed ? _value.id : id as QRCode,
+      id: id == freezed ? _value.id : id as QRCodeDTO,
       title: title == freezed ? _value.title : title as String,
       licensePlate: licensePlate == freezed
           ? _value.licensePlate
@@ -267,7 +267,7 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
       _$_$_ParkedVehicleDTOFromJson(json);
 
   @override
-  final QRCode id;
+  final QRCodeDTO id;
   @override
   final String title;
   @override
@@ -360,7 +360,7 @@ class _$_ParkedVehicleDTO extends _ParkedVehicleDTO {
 abstract class _ParkedVehicleDTO extends ParkedVehicleDTO {
   const _ParkedVehicleDTO._() : super._();
   const factory _ParkedVehicleDTO(
-      {@required QRCode id,
+      {@required QRCodeDTO id,
       @required String title,
       @required String licensePlate,
       @required VehicleColor color,
@@ -376,7 +376,7 @@ abstract class _ParkedVehicleDTO extends ParkedVehicleDTO {
       _$_ParkedVehicleDTO.fromJson;
 
   @override
-  QRCode get id;
+  QRCodeDTO get id;
   @override
   String get title;
   @override
