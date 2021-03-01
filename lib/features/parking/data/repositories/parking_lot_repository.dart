@@ -1,3 +1,4 @@
+import 'package:all_parking/features/qr_code/data/repositories/code_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';

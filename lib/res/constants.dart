@@ -13,6 +13,7 @@ class Constants {
   static const signUpRoute = '/sign-up';
 
   static const addParkingLotRoute = '/home/add-parking-lot';
+  static const generateCodesRoute = '/home/add-parking-lot/generate-codes';
   static const selectParkingLotRoute = '/home/select-parking-lot';
   static const manageEmployeesRoute = '/home/manage-employees';
   static const addEmployeeRoute = '/home/manage-employees/add-employee';

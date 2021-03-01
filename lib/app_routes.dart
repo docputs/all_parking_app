@@ -1,3 +1,4 @@
+import 'package:all_parking/features/qr_code/presentation/generate_codes_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -71,6 +72,10 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       break;
     case Constants.addEmployeeRoute:
       return MaterialPageRoute<bool>(builder: (context) => const AddEmployeeScreen());
+      break;
+    case Constants.generateCodesRoute:
+      final parkingLot = settings.arguments as ParkingLot;
+      return MaterialPageRoute(builder: (context) => GenerateCodesScreen(parkingLot: parkingLot));
       break;
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold(body: Center(child: Text('rota nao encontrada'))));

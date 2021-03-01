@@ -36,6 +36,7 @@ import 'features/parking/data/repositories/employee_repository.dart';
 import 'features/parking/domain/usecases/fetch_current_manager.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/parking/domain/usecases/fetch_single_parking_lot.dart';
+import 'features/qr_code/presentation/bloc/generate_codes_bloc.dart';
 import 'features/qr_code/domain/usecases/generate_qr_codes.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
 import 'features/qr_code/domain/repositories/i_code_repository.dart';
@@ -83,7 +84,8 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<EmailService>(() => EmailService(get<Client>()));
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
-  gh.lazySingleton<ICodeRepository>(() => CodeRepository());
+  gh.lazySingleton<ICodeRepository>(
+      () => CodeRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IEmployeeRepository>(
       () => EmployeeRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IManagerAuthRepository>(() =>
@@ -157,6 +159,8 @@ Future<GetIt> $initGetIt(
       ));
   gh.factory<CheckInBloc>(() => CheckInBloc(get<CheckInVehicle>()));
   gh.factory<CheckOutBloc>(() => CheckOutBloc(get<CheckOutVehicle>()));
+  gh.factory<GenerateCodesBloc>(
+      () => GenerateCodesBloc(get<GenerateQRCodes>()));
   gh.lazySingleton<IEmployeeAuthRepository>(() => EmployeeAuthRepository(
       get<ILocalDataSource>(), get<FirebaseFirestore>()));
   gh.lazySingleton<SignInEmployee>(
