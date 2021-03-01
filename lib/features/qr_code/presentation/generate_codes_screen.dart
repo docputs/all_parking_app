@@ -1,4 +1,5 @@
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/features/qr_code/presentation/components/qr_code_list.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,7 @@ class GenerateCodesScreen extends StatelessWidget {
       create: (context) => getIt<GenerateCodesBloc>()..add(GenerateCodesEvent.generate(parkingLot)),
       child: AppScaffold(
         title: 'QR Codes',
+        scrollable: false,
         body: _buildBody(),
       ),
     );
@@ -28,7 +30,7 @@ class GenerateCodesScreen extends StatelessWidget {
         return state.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),
-          success: (codes) => Text(codes.toString()),
+          success: (codes) => QRCodeList(codes),
           error: (f) => Center(child: Text(f.message)),
         );
       },
