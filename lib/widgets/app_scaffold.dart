@@ -7,7 +7,7 @@ class AppScaffold extends StatelessWidget {
   final bool scrollable;
   final Widget drawer;
   final Widget customAppBar;
-  final List<IconButton> actions;
+  final List<Widget> actions;
 
   const AppScaffold({
     Key key,

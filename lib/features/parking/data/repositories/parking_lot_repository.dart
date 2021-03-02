@@ -45,7 +45,13 @@ class ParkingLotRepository implements IParkingLotRepository {
 
   @override
   Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot) {
-    return _handleExceptions(() async => await _firestore.parkingLotCollection.doc(parkingLot.id).delete());
+    return _handleExceptions(() async {
+      final snapshot = await _firestore.codesCollection(parkingLot.id).get();
+      for (QueryDocumentSnapshot doc in snapshot.docs) {
+        await _firestore.codesCollection(parkingLot.id).doc(doc.id).delete();
+      }
+      await _firestore.parkingLotCollection.doc(parkingLot.id).delete();
+    });
   }
 
   @override

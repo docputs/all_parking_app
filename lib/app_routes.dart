@@ -1,4 +1,3 @@
-import 'package:all_parking/features/qr_code/presentation/generate_codes_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -20,6 +19,7 @@ import 'features/parking/presentation/parked_vehicles/screens/parked_vehicle_det
 import 'features/parking/presentation/parked_vehicles/screens/parked_vehicles_screen.dart';
 import 'features/parking/presentation/reports/screens/reports_screen.dart';
 import 'features/parking/presentation/select_parking_lot/screens/select_parking_lot_screen.dart';
+import 'features/qr_code/presentation/screens/generate_codes_screen.dart';
 import 'features/splash/presentation/splash_screen.dart';
 import 'res/constants.dart';
 

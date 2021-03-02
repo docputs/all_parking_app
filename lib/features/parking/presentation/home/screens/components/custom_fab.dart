@@ -1,3 +1,5 @@
+import 'package:all_parking/features/parking/domain/entities/address.dart';
+import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
@@ -38,3 +40,11 @@ class CustomFAB extends StatelessWidget {
     );
   }
 }
+
+final parkingLot = ParkingLot(
+  id: '1',
+  title: 'Estacionamento X',
+  address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
+  availableSpots: 56,
+  pricePerHour: 12.0,
+);

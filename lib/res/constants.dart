@@ -6,12 +6,13 @@ class Constants {
   const Constants._();
 
   static const employeeKey = 'employee-token';
+  static const qrCodePdfPath = 'qr_code.pdf';
+  static const qrCodePngPath = 'qr_code.png';
 
   static const splashRoute = '/';
   static const homeRoute = '/home';
   static const signInRoute = '/sign-in';
   static const signUpRoute = '/sign-up';
-
   static const addParkingLotRoute = '/home/add-parking-lot';
   static const generateCodesRoute = '/home/add-parking-lot/generate-codes';
   static const selectParkingLotRoute = '/home/select-parking-lot';

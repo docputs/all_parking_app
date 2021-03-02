@@ -77,7 +77,7 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
       submitted: (confirmSubmit, context) async* {
         Either<ParkingFailure, Unit> failureOrSuccess;
 
-        if (isFormValid()) {
+        if (_isFormValid()) {
           _dismissKeyboard(context);
           final confirmDialogResult = await confirmSubmit(context);
           if (confirmDialogResult) {
@@ -104,7 +104,7 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
     if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
   }
 
-  bool isFormValid() {
+  bool _isFormValid() {
     if (Validators.isValidVehicleLabel(state.vehicle.title) &&
         Validators.isValidLicensePlate(state.vehicle.licensePlate) &&
         Validators.isValidObservations(state.vehicle.observations) &&

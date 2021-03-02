@@ -41,6 +41,7 @@ class Messages {
   static const passwordsDontMatch = 'Senhas não conferem';
   static const noCurrentParkingLot = 'Nenhum estacionamento selecionado';
   static const autoSignInFailed = 'Falhou ao autenticar';
+  static const widgetToImageFailed = 'Falhou ao converter para imagem';
 
   //ParkingFailure
   static const invalidParkingLotTitle = 'Nome inválido';
