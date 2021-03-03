@@ -37,6 +37,7 @@ import 'features/parking/data/repositories/employee_repository.dart';
 import 'features/parking/domain/usecases/fetch_current_manager.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/parking/domain/usecases/fetch_single_parking_lot.dart';
+import 'features/parking/presentation/home/bloc/find_check_out_bloc.dart';
 import 'features/qr_code/presentation/bloc/generate_codes/generate_codes_bloc.dart';
 import 'features/qr_code/domain/usecases/generate_qr_codes.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
@@ -87,6 +88,7 @@ Future<GetIt> $initGetIt(
   gh.factory<CodeScannerBloc>(() => CodeScannerBloc());
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
   gh.lazySingleton<EmailService>(() => EmailService(get<Client>()));
+  gh.factory<FindCheckOutBloc>(() => FindCheckOutBloc());
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
   gh.lazySingleton<ICodeRepository>(
