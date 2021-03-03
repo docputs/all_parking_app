@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:all_parking/features/qr_code/domain/entities/qr_code.dart';
+import 'package:all_parking/res/constants.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
@@ -9,7 +11,6 @@ import 'package:injectable/injectable.dart';
 import '../../../../../utils/validators.dart';
 import '../../../../../widgets/validation_form_state.dart';
 import '../../../core/errors/parking_failure.dart';
-import '../../../core/util/qr_code_scanner.dart';
 import '../../../domain/entities/parked_vehicle.dart';
 import '../../../domain/usecases/check_in_vehicle.dart';
 
@@ -77,16 +78,13 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
       submitted: (confirmSubmit, context) async* {
         Either<ParkingFailure, Unit> failureOrSuccess;
 
-        if (isFormValid()) {
+        if (_isFormValid()) {
           _dismissKeyboard(context);
           final confirmDialogResult = await confirmSubmit(context);
           if (confirmDialogResult) {
             yield state.copyWith(isSubmitting: true, saveFailureOrSuccessOption: none());
-            final qrCodeOption = await QRCodeScanner.scan();
-            await qrCodeOption.fold(
-              () => null,
-              (qrCode) async => failureOrSuccess = await _checkInVehicle(state.vehicle.copyWith(id: qrCode)),
-            );
+            final qrCode = await Navigator.of(context).pushNamed<QRCode>(Constants.codeScannerRoute);
+            if (qrCode != null) failureOrSuccess = await _checkInVehicle(state.vehicle.copyWith(id: qrCode));
           }
         }
 
@@ -104,7 +102,7 @@ class CheckInBloc extends Bloc<CheckInEvent, CheckInState> {
     if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
   }
 
-  bool isFormValid() {
+  bool _isFormValid() {
     if (Validators.isValidVehicleLabel(state.vehicle.title) &&
         Validators.isValidLicensePlate(state.vehicle.licensePlate) &&
         Validators.isValidObservations(state.vehicle.observations) &&

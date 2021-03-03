@@ -1,3 +1,4 @@
+import 'package:all_parking/res/constants.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +30,9 @@ class AddParkingLotScreen extends StatelessWidget {
             () => null,
             (either) => either.fold(
               (f) => FlushbarHelper.createError(message: f.message).show(context),
-              (_) {
+              (_) async {
                 context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
+                await Navigator.of(context).pushNamed(Constants.generateCodesRoute, arguments: state.parkingLot);
                 return Navigator.of(context).pop(state.parkingLot);
               },
             ),

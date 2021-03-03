@@ -23,6 +23,8 @@ import 'features/parking/presentation/check-in/bloc/check_in_bloc.dart';
 import 'features/parking/domain/usecases/check_in_vehicle.dart';
 import 'features/parking/presentation/check_out/bloc/check_out_bloc.dart';
 import 'features/parking/domain/usecases/check_out_vehicle.dart';
+import 'features/qr_code/data/repositories/code_repository.dart';
+import 'features/parking/presentation/scan_code/bloc/code_scanner_bloc.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
 import 'features/parking/domain/usecases/delete_employee.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
@@ -35,7 +37,11 @@ import 'features/parking/data/repositories/employee_repository.dart';
 import 'features/parking/domain/usecases/fetch_current_manager.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/parking/domain/usecases/fetch_single_parking_lot.dart';
+import 'features/parking/presentation/home/bloc/find_check_out_bloc.dart';
+import 'features/qr_code/presentation/bloc/generate_codes/generate_codes_bloc.dart';
+import 'features/qr_code/domain/usecases/generate_qr_codes.dart';
 import 'features/auth/domain/usecases/get_current_user.dart';
+import 'features/qr_code/domain/repositories/i_code_repository.dart';
 import 'features/auth/domain/repositories/i_employee_auth_repository.dart';
 import 'features/parking/domain/repositories/i_employee_repository.dart';
 import 'features/auth/data/datasources/i_local_data_source.dart';
@@ -50,8 +56,10 @@ import 'features/auth/data/repositories/manager_auth_repository.dart';
 import 'features/parking/presentation/bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
 import 'features/parking/data/repositories/manager_repository.dart';
 import 'features/parking/data/repositories/parking_lot_repository.dart';
+import 'features/qr_code/core/utils/qr_local_storage.dart';
 import 'service_locator.dart';
 import 'features/parking/presentation/reports/bloc/reports_bloc.dart';
+import 'features/qr_code/presentation/bloc/save_codes/save_codes_bloc.dart';
 import 'features/auth/presentation/manager/sign_in/bloc/sign_in_bloc.dart';
 import 'features/auth/domain/usecases/sign_in_employee.dart';
 import 'features/auth/presentation/employee/sign_in/bloc/sign_in_employee_bloc.dart';
@@ -62,6 +70,7 @@ import 'features/auth/domain/usecases/sign_up_manager.dart';
 import 'features/splash/presentation/splash_bloc/splash_bloc.dart';
 import 'features/parking/domain/usecases/watch_active_vehicles.dart';
 import 'features/parking/domain/usecases/watch_inactive_vehicles.dart';
+import 'features/qr_code/core/utils/widget_to_image.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -76,10 +85,14 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<AppNavigator>(() => AppNavigator());
   gh.lazySingleton<CepService>(() => CepService());
   gh.lazySingleton<Client>(() => registerModule.httpClient);
+  gh.factory<CodeScannerBloc>(() => CodeScannerBloc());
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
   gh.lazySingleton<EmailService>(() => EmailService(get<Client>()));
+  gh.factory<FindCheckOutBloc>(() => FindCheckOutBloc());
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
+  gh.lazySingleton<ICodeRepository>(
+      () => CodeRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IEmployeeRepository>(
       () => EmployeeRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IManagerAuthRepository>(() =>
@@ -88,6 +101,7 @@ Future<GetIt> $initGetIt(
       () => ManagerRepository(get<FirebaseFirestore>(), get<FirebaseAuth>()));
   gh.lazySingleton<IParkingLotRepository>(
       () => ParkingLotRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<QRLocalStorage>(() => QRLocalStorage());
   gh.factory<ReportsBloc>(() => ReportsBloc());
   final resolvedSharedPreferences = await registerModule.prefs;
   gh.factory<SharedPreferences>(() => resolvedSharedPreferences);
@@ -100,6 +114,7 @@ Future<GetIt> $initGetIt(
       () => WatchActiveVehicles(get<IParkingLotRepository>()));
   gh.lazySingleton<WatchInactiveVehicles>(
       () => WatchInactiveVehicles(get<IParkingLotRepository>()));
+  gh.lazySingleton<WidgetToImage>(() => WidgetToImage());
   gh.factory<ActiveVehiclesWatcherBloc>(() => ActiveVehiclesWatcherBloc(
       get<WatchActiveVehicles>(), get<CurrentParkingLot>()));
   gh.lazySingleton<AddParkingLot>(() => AddParkingLot(
@@ -125,6 +140,8 @@ Future<GetIt> $initGetIt(
       () => FetchCurrentManager(get<IManagerRepository>()));
   gh.lazySingleton<FetchParkingLots>(() => FetchParkingLots(
       get<IParkingLotRepository>(), get<IManagerRepository>()));
+  gh.lazySingleton<GenerateQRCodes>(
+      () => GenerateQRCodes(get<ICodeRepository>()));
   gh.lazySingleton<ILocalDataSource>(
       () => LocalDataSource(get<SharedPreferences>()));
   gh.factory<InactiveVehiclesWatcherBloc>(() => InactiveVehiclesWatcherBloc(
@@ -135,6 +152,8 @@ Future<GetIt> $initGetIt(
       () => ManageParkingLotsBloc(get<DeleteParkingLot>()));
   gh.factory<ManagerParkingLotsBloc>(() => ManagerParkingLotsBloc(
       get<FetchParkingLots>(), get<CurrentParkingLot>()));
+  gh.factory<SaveCodesBloc>(
+      () => SaveCodesBloc(get<WidgetToImage>(), get<QRLocalStorage>()));
   gh.factory<SignInBloc>(() => SignInBloc(get<SignInManager>()));
   gh.factory<SignUpBloc>(() => SignUpBloc(get<SignUpManager>()));
   gh.lazySingleton<SignUpEmployee>(() => SignUpEmployee(
@@ -151,6 +170,8 @@ Future<GetIt> $initGetIt(
       ));
   gh.factory<CheckInBloc>(() => CheckInBloc(get<CheckInVehicle>()));
   gh.factory<CheckOutBloc>(() => CheckOutBloc(get<CheckOutVehicle>()));
+  gh.factory<GenerateCodesBloc>(
+      () => GenerateCodesBloc(get<GenerateQRCodes>()));
   gh.lazySingleton<IEmployeeAuthRepository>(() => EmployeeAuthRepository(
       get<ILocalDataSource>(), get<FirebaseFirestore>()));
   gh.lazySingleton<SignInEmployee>(

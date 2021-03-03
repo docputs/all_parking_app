@@ -5,6 +5,7 @@ import 'package:all_parking/features/parking/domain/repositories/i_parking_lot_r
 import 'package:all_parking/features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/parking_lot_fixtures.dart';
@@ -24,8 +25,8 @@ void main() {
     usecase = FetchParkingLots(mockParkingLotRepository, mockManagerRepository);
   });
 
-  ParkingLot unpackEitherList(Either<ParkingFailure, List<ParkingLot>> either) {
-    return either.getOrElse(() => null).first;
+  ParkingLot unpackEitherList(Either<ParkingFailure, KtList<ParkingLot>> either) {
+    return either.getOrElse(() => null).first();
   }
 
   test('should get manager data from ManagerRepository', () async {
@@ -39,10 +40,10 @@ void main() {
 
   test('should return parking lots when manager is signed in', () async {
     when(mockManagerRepository.read()).thenAnswer((_) async => right(Fixtures.manager));
-    when(mockParkingLotRepository.fetchParkingLots(Fixtures.manager)).thenAnswer((_) async => Right([Fixtures.parkingLot]));
+    when(mockParkingLotRepository.fetchParkingLots(Fixtures.manager.parkingLots)).thenAnswer((_) async => Right(KtList.of(Fixtures.parkingLot)));
 
     final result = await usecase();
 
-    expect(unpackEitherList(result), unpackEitherList(Right([Fixtures.parkingLot])));
+    expect(unpackEitherList(result), unpackEitherList(Right(KtList.of(Fixtures.parkingLot))));
   });
 }

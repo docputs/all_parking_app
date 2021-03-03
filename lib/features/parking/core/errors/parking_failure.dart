@@ -8,6 +8,7 @@ part 'parking_failure.freezed.dart';
 abstract class ParkingFailure with _$ParkingFailure {
   const factory ParkingFailure(String message) = _ParkingFailure;
 
+  factory ParkingFailure.vehicleNotFound() => const ParkingFailure(Messages.vehicleNotFound);
   factory ParkingFailure.emptyField() => const ParkingFailure(Messages.emptyField);
   factory ParkingFailure.parkingLotNotFound() => const ParkingFailure(Messages.parkingLotNotFound);
   factory ParkingFailure.invalidAvailableSpots() => const ParkingFailure(Messages.invalidAvailableSpots);

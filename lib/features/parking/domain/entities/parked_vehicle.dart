@@ -1,21 +1,14 @@
+import 'package:all_parking/features/qr_code/domain/entities/qr_code.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'owner_data.dart';
 
 part 'parked_vehicle.freezed.dart';
-part 'parked_vehicle.g.dart';
 
 enum VehicleColor { black, silver, white, gray, green, blue, red, brown, yellow }
 
 enum VehicleType { car, motorcycle }
-
-@freezed
-abstract class QRCode with _$QRCode {
-  const factory QRCode(String value) = _QRCode;
-
-  factory QRCode.fromJson(Map<String, dynamic> json) => _$QRCodeFromJson(json);
-}
 
 @freezed
 abstract class ParkedVehicle implements _$ParkedVehicle {

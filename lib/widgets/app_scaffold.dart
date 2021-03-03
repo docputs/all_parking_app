@@ -7,7 +7,8 @@ class AppScaffold extends StatelessWidget {
   final bool scrollable;
   final Widget drawer;
   final Widget customAppBar;
-  final List<IconButton> actions;
+  final List<Widget> actions;
+  final EdgeInsets padding;
 
   const AppScaffold({
     Key key,
@@ -18,6 +19,7 @@ class AppScaffold extends StatelessWidget {
     this.drawer,
     this.customAppBar,
     this.actions,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class AppScaffold extends StatelessWidget {
       drawer: drawer,
       appBar: customAppBar ?? AppBar(title: Text(title), actions: actions),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        padding: padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: _buildDefaultScreenBody(),
       ),
       floatingActionButton: floatingActionButton,

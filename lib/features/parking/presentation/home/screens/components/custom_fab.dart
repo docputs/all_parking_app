@@ -1,4 +1,7 @@
+import 'package:all_parking/features/parking/presentation/home/bloc/find_check_out_bloc.dart';
+import 'package:all_parking/features/qr_code/domain/entities/qr_code.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../../../../../../res/constants.dart';
@@ -17,6 +20,11 @@ class CustomFAB extends StatelessWidget {
           labelText: Messages.checkOutVehicleLabel,
           icon: Icons.north_east,
           color: AppColors.errorColor,
+          onTap: () {
+            Navigator.of(context).pushNamed<QRCode>(Constants.codeScannerRoute).then((code) {
+              if (code != null) context.read<FindCheckOutBloc>().add(FindCheckOutEvent.started(context: context, code: code));
+            });
+          },
         ),
         _buildFABMenuItem(
           labelText: Messages.checkInVehicleLabel,

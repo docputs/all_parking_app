@@ -6,13 +6,16 @@ class Constants {
   const Constants._();
 
   static const employeeKey = 'employee-token';
+  static const qrCodePdfPath = 'qr_code.pdf';
+  static const qrCodePngPath = 'qr_code.png';
 
   static const splashRoute = '/';
   static const homeRoute = '/home';
   static const signInRoute = '/sign-in';
   static const signUpRoute = '/sign-up';
-
+  static const codeScannerRoute = '/home/scan-code';
   static const addParkingLotRoute = '/home/add-parking-lot';
+  static const generateCodesRoute = '/home/add-parking-lot/generate-codes';
   static const selectParkingLotRoute = '/home/select-parking-lot';
   static const manageEmployeesRoute = '/home/manage-employees';
   static const addEmployeeRoute = '/home/manage-employees/add-employee';
@@ -29,6 +32,7 @@ class Constants {
   static final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   static final licensePlateRegex = RegExp(r"^[A-Z]{3}[0-9][0-9A-Z][0-9]{2}$");
   static final phoneNumberRegex = RegExp(r"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}-[0-9]{4}$");
+  static final qrCodeRegex = RegExp(r"^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$");
 
   static const cpfMask = '###.###.###-##';
   static const cepMask = '#####-###';
