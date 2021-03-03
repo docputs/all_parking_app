@@ -1,6 +1,7 @@
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:all_parking/features/qr_code/presentation/bloc/generate_codes/generate_codes_bloc.dart';
 import 'package:all_parking/features/qr_code/presentation/bloc/save_codes/save_codes_bloc.dart';
+import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,7 @@ class GenerateCodesScreen extends StatelessWidget {
         BlocProvider(create: (context) => getIt<SaveCodesBloc>()),
       ],
       child: AppScaffold(
-        title: 'QR Codes',
+        title: Messages.generateCodesScreenTitle,
         scrollable: false,
         actions: [_buildShareAction()],
         body: _buildBody(),

@@ -19,6 +19,7 @@ class CustomFAB extends StatelessWidget {
           labelText: Messages.checkOutVehicleLabel,
           icon: Icons.north_east,
           color: AppColors.errorColor,
+          onTap: () => Navigator.of(context).pushNamed(Constants.codeScannerRoute),
         ),
         _buildFABMenuItem(
           labelText: Messages.checkInVehicleLabel,

@@ -24,6 +24,7 @@ import 'features/parking/domain/usecases/check_in_vehicle.dart';
 import 'features/parking/presentation/check_out/bloc/check_out_bloc.dart';
 import 'features/parking/domain/usecases/check_out_vehicle.dart';
 import 'features/qr_code/data/repositories/code_repository.dart';
+import 'features/parking/presentation/scan_code/bloc/code_scanner_bloc.dart';
 import 'features/parking/presentation/current_parking_lot.dart';
 import 'features/parking/domain/usecases/delete_employee.dart';
 import 'features/parking/domain/usecases/delete_parking_lot.dart';
@@ -83,6 +84,7 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<AppNavigator>(() => AppNavigator());
   gh.lazySingleton<CepService>(() => CepService());
   gh.lazySingleton<Client>(() => registerModule.httpClient);
+  gh.factory<CodeScannerBloc>(() => CodeScannerBloc());
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
   gh.lazySingleton<EmailService>(() => EmailService(get<Client>()));
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
