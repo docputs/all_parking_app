@@ -1,6 +1,5 @@
 import 'package:all_parking/features/parking/presentation/scan_code/bloc/code_scanner_bloc.dart';
 import 'package:all_parking/features/parking/presentation/scan_code/screens/components/qr_camera.dart';
-import 'package:all_parking/res/constants.dart';
 import 'package:all_parking/res/messages.dart';
 import 'package:all_parking/widgets/app_scaffold.dart';
 import 'package:flushbar/flushbar_helper.dart';
@@ -20,7 +19,7 @@ class CodeScannerScreen extends StatelessWidget {
         listener: (context, state) => state.when(
           initial: () => null,
           error: (f) => FlushbarHelper.createError(message: f.message).show(context),
-          scanned: (vehicle) => Navigator.of(context).pushNamed(Constants.checkOutVehicleRoute, arguments: vehicle),
+          scanned: (code) => Navigator.of(context).pop(code),
         ),
         child: AppScaffold(
           title: Messages.codeScannerScreenTitle,

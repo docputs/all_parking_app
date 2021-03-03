@@ -7,6 +7,7 @@ part 'qr_failure.freezed.dart';
 abstract class QRFailure with _$QRFailure {
   factory QRFailure(String message) = _QRFailure;
 
+  factory QRFailure.invalidQRCode() => QRFailure(Messages.invalidQRCode);
   factory QRFailure.widgetToImageFailed() => QRFailure(Messages.widgetToImageFailed);
   factory QRFailure.vehicleNotFound() => QRFailure(Messages.vehicleNotFound);
   factory QRFailure.serverFailure() => QRFailure(Messages.serverFailure);

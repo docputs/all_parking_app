@@ -43,6 +43,7 @@ class Messages {
   static const autoSignInFailed = 'Falhou ao autenticar';
   static const widgetToImageFailed = 'Falhou ao converter para imagem';
   static const vehicleNotFound = 'Nenhum veículo encontrado';
+  static const invalidQRCode = 'QR Code inválido';
 
   //ParkingFailure
   static const invalidParkingLotTitle = 'Nome inválido';

@@ -14,11 +14,8 @@ class _$CodeScannerEventTearOff {
   const _$CodeScannerEventTearOff();
 
 // ignore: unused_element
-  _Started started(
-      {@required KtList<ParkedVehicle> vehicles,
-      @required QRViewController controller}) {
+  _Started started({@required QRViewController controller}) {
     return _Started(
-      vehicles: vehicles,
       controller: controller,
     );
   }
@@ -39,15 +36,12 @@ const $CodeScannerEvent = _$CodeScannerEventTearOff();
 mixin _$CodeScannerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required
-        TResult started(
-            KtList<ParkedVehicle> vehicles, QRViewController controller),
+    @required TResult started(QRViewController controller),
     @required TResult codeReceived(String code),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(
-        KtList<ParkedVehicle> vehicles, QRViewController controller),
+    TResult started(QRViewController controller),
     TResult codeReceived(String code),
     @required TResult orElse(),
   });
@@ -85,7 +79,7 @@ class _$CodeScannerEventCopyWithImpl<$Res>
 abstract class _$StartedCopyWith<$Res> {
   factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
       __$StartedCopyWithImpl<$Res>;
-  $Res call({KtList<ParkedVehicle> vehicles, QRViewController controller});
+  $Res call({QRViewController controller});
 }
 
 /// @nodoc
@@ -99,13 +93,9 @@ class __$StartedCopyWithImpl<$Res> extends _$CodeScannerEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object vehicles = freezed,
     Object controller = freezed,
   }) {
     return _then(_Started(
-      vehicles: vehicles == freezed
-          ? _value.vehicles
-          : vehicles as KtList<ParkedVehicle>,
       controller: controller == freezed
           ? _value.controller
           : controller as QRViewController,
@@ -115,27 +105,20 @@ class __$StartedCopyWithImpl<$Res> extends _$CodeScannerEventCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Started implements _Started {
-  const _$_Started({@required this.vehicles, @required this.controller})
-      : assert(vehicles != null),
-        assert(controller != null);
+  const _$_Started({@required this.controller}) : assert(controller != null);
 
-  @override
-  final KtList<ParkedVehicle> vehicles;
   @override
   final QRViewController controller;
 
   @override
   String toString() {
-    return 'CodeScannerEvent.started(vehicles: $vehicles, controller: $controller)';
+    return 'CodeScannerEvent.started(controller: $controller)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Started &&
-            (identical(other.vehicles, vehicles) ||
-                const DeepCollectionEquality()
-                    .equals(other.vehicles, vehicles)) &&
             (identical(other.controller, controller) ||
                 const DeepCollectionEquality()
                     .equals(other.controller, controller)));
@@ -143,9 +126,7 @@ class _$_Started implements _Started {
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(vehicles) ^
-      const DeepCollectionEquality().hash(controller);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(controller);
 
   @JsonKey(ignore: true)
   @override
@@ -155,27 +136,24 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required
-        TResult started(
-            KtList<ParkedVehicle> vehicles, QRViewController controller),
+    @required TResult started(QRViewController controller),
     @required TResult codeReceived(String code),
   }) {
     assert(started != null);
     assert(codeReceived != null);
-    return started(vehicles, controller);
+    return started(controller);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(
-        KtList<ParkedVehicle> vehicles, QRViewController controller),
+    TResult started(QRViewController controller),
     TResult codeReceived(String code),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (started != null) {
-      return started(vehicles, controller);
+      return started(controller);
     }
     return orElse();
   }
@@ -207,11 +185,8 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements CodeScannerEvent {
-  const factory _Started(
-      {@required KtList<ParkedVehicle> vehicles,
-      @required QRViewController controller}) = _$_Started;
+  const factory _Started({@required QRViewController controller}) = _$_Started;
 
-  KtList<ParkedVehicle> get vehicles;
   QRViewController get controller;
   @JsonKey(ignore: true)
   _$StartedCopyWith<_Started> get copyWith;
@@ -278,9 +253,7 @@ class _$_CodeReceived implements _CodeReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required
-        TResult started(
-            KtList<ParkedVehicle> vehicles, QRViewController controller),
+    @required TResult started(QRViewController controller),
     @required TResult codeReceived(String code),
   }) {
     assert(started != null);
@@ -291,8 +264,7 @@ class _$_CodeReceived implements _CodeReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult started(
-        KtList<ParkedVehicle> vehicles, QRViewController controller),
+    TResult started(QRViewController controller),
     TResult codeReceived(String code),
     @required TResult orElse(),
   }) {
@@ -347,9 +319,9 @@ class _$CodeScannerStateTearOff {
   }
 
 // ignore: unused_element
-  _Scanned scanned(ParkedVehicle vehicle) {
+  _Scanned scanned(QRCode code) {
     return _Scanned(
-      vehicle,
+      code,
     );
   }
 
@@ -370,13 +342,13 @@ mixin _$CodeScannerState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult scanned(ParkedVehicle vehicle),
+    @required TResult scanned(QRCode code),
     @required TResult error(QRFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult scanned(ParkedVehicle vehicle),
+    TResult scanned(QRCode code),
     TResult error(QRFailure failure),
     @required TResult orElse(),
   });
@@ -449,7 +421,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult scanned(ParkedVehicle vehicle),
+    @required TResult scanned(QRCode code),
     @required TResult error(QRFailure failure),
   }) {
     assert(initial != null);
@@ -462,7 +434,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult scanned(ParkedVehicle vehicle),
+    TResult scanned(QRCode code),
     TResult error(QRFailure failure),
     @required TResult orElse(),
   }) {
@@ -510,9 +482,9 @@ abstract class _Initial implements CodeScannerState {
 abstract class _$ScannedCopyWith<$Res> {
   factory _$ScannedCopyWith(_Scanned value, $Res Function(_Scanned) then) =
       __$ScannedCopyWithImpl<$Res>;
-  $Res call({ParkedVehicle vehicle});
+  $Res call({QRCode code});
 
-  $ParkedVehicleCopyWith<$Res> get vehicle;
+  $QRCodeCopyWith<$Res> get code;
 }
 
 /// @nodoc
@@ -526,47 +498,47 @@ class __$ScannedCopyWithImpl<$Res> extends _$CodeScannerStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object vehicle = freezed,
+    Object code = freezed,
   }) {
     return _then(_Scanned(
-      vehicle == freezed ? _value.vehicle : vehicle as ParkedVehicle,
+      code == freezed ? _value.code : code as QRCode,
     ));
   }
 
   @override
-  $ParkedVehicleCopyWith<$Res> get vehicle {
-    if (_value.vehicle == null) {
+  $QRCodeCopyWith<$Res> get code {
+    if (_value.code == null) {
       return null;
     }
-    return $ParkedVehicleCopyWith<$Res>(_value.vehicle, (value) {
-      return _then(_value.copyWith(vehicle: value));
+    return $QRCodeCopyWith<$Res>(_value.code, (value) {
+      return _then(_value.copyWith(code: value));
     });
   }
 }
 
 /// @nodoc
 class _$_Scanned implements _Scanned {
-  const _$_Scanned(this.vehicle) : assert(vehicle != null);
+  const _$_Scanned(this.code) : assert(code != null);
 
   @override
-  final ParkedVehicle vehicle;
+  final QRCode code;
 
   @override
   String toString() {
-    return 'CodeScannerState.scanned(vehicle: $vehicle)';
+    return 'CodeScannerState.scanned(code: $code)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Scanned &&
-            (identical(other.vehicle, vehicle) ||
-                const DeepCollectionEquality().equals(other.vehicle, vehicle)));
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(vehicle);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(code);
 
   @JsonKey(ignore: true)
   @override
@@ -577,26 +549,26 @@ class _$_Scanned implements _Scanned {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult scanned(ParkedVehicle vehicle),
+    @required TResult scanned(QRCode code),
     @required TResult error(QRFailure failure),
   }) {
     assert(initial != null);
     assert(scanned != null);
     assert(error != null);
-    return scanned(vehicle);
+    return scanned(code);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult scanned(ParkedVehicle vehicle),
+    TResult scanned(QRCode code),
     TResult error(QRFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (scanned != null) {
-      return scanned(vehicle);
+      return scanned(code);
     }
     return orElse();
   }
@@ -631,9 +603,9 @@ class _$_Scanned implements _Scanned {
 }
 
 abstract class _Scanned implements CodeScannerState {
-  const factory _Scanned(ParkedVehicle vehicle) = _$_Scanned;
+  const factory _Scanned(QRCode code) = _$_Scanned;
 
-  ParkedVehicle get vehicle;
+  QRCode get code;
   @JsonKey(ignore: true)
   _$ScannedCopyWith<_Scanned> get copyWith;
 }
@@ -709,7 +681,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult scanned(ParkedVehicle vehicle),
+    @required TResult scanned(QRCode code),
     @required TResult error(QRFailure failure),
   }) {
     assert(initial != null);
@@ -722,7 +694,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult scanned(ParkedVehicle vehicle),
+    TResult scanned(QRCode code),
     TResult error(QRFailure failure),
     @required TResult orElse(),
   }) {
