@@ -4,6 +4,7 @@ import 'package:all_parking/features/parking/domain/entities/employee.dart';
 import 'package:all_parking/features/parking/domain/entities/manager.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
+import 'package:all_parking/features/qr_code/domain/entities/qr_code.dart';
 import 'package:kt_dart/kt.dart';
 
 class Fixtures {

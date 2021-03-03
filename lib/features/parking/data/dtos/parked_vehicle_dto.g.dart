@@ -10,7 +10,7 @@ _$_ParkedVehicleDTO _$_$_ParkedVehicleDTOFromJson(Map<String, dynamic> json) {
   return _$_ParkedVehicleDTO(
     id: json['id'] == null
         ? null
-        : QRCode.fromJson(json['id'] as Map<String, dynamic>),
+        : QRCodeDTO.fromJson(json['id'] as Map<String, dynamic>),
     title: json['title'] as String,
     licensePlate: json['licensePlate'] as String,
     color: _$enumDecodeNullable(_$VehicleColorEnumMap, json['color']),

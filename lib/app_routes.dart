@@ -1,3 +1,5 @@
+import 'package:all_parking/features/parking/presentation/scan_code/screens/code_scanner_screen.dart';
+import 'package:all_parking/features/qr_code/domain/entities/qr_code.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -19,6 +21,7 @@ import 'features/parking/presentation/parked_vehicles/screens/parked_vehicle_det
 import 'features/parking/presentation/parked_vehicles/screens/parked_vehicles_screen.dart';
 import 'features/parking/presentation/reports/screens/reports_screen.dart';
 import 'features/parking/presentation/select_parking_lot/screens/select_parking_lot_screen.dart';
+import 'features/qr_code/presentation/screens/generate_codes_screen.dart';
 import 'features/splash/presentation/splash_screen.dart';
 import 'res/constants.dart';
 
@@ -71,6 +74,13 @@ Route<dynamic> generateRoutes(RouteSettings settings) {
       break;
     case Constants.addEmployeeRoute:
       return MaterialPageRoute<bool>(builder: (context) => const AddEmployeeScreen());
+      break;
+    case Constants.generateCodesRoute:
+      final parkingLot = settings.arguments as ParkingLot;
+      return MaterialPageRoute(builder: (context) => GenerateCodesScreen(parkingLot: parkingLot));
+      break;
+    case Constants.codeScannerRoute:
+      return MaterialPageRoute<QRCode>(builder: (context) => const CodeScannerScreen());
       break;
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold(body: Center(child: Text('rota nao encontrada'))));

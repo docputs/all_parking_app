@@ -41,6 +41,9 @@ class Messages {
   static const passwordsDontMatch = 'Senhas não conferem';
   static const noCurrentParkingLot = 'Nenhum estacionamento selecionado';
   static const autoSignInFailed = 'Falhou ao autenticar';
+  static const widgetToImageFailed = 'Falhou ao converter para imagem';
+  static const vehicleNotFound = 'Nenhum veículo encontrado';
+  static const invalidQRCode = 'QR Code inválido';
 
   //ParkingFailure
   static const invalidParkingLotTitle = 'Nome inválido';
@@ -243,4 +246,10 @@ class Messages {
   static const addEmployeeNameFieldLabel = 'Nome';
   static const addEmployeeCpfLabel = 'CPF';
   static const addEmployeePhoneNumberLabel = 'Celular';
+
+  //GenerateCodesScreen
+  static const generateCodesScreenTitle = 'QR Code';
+
+  //CodeScannerScreen
+  static const codeScannerScreenTitle = 'Escanear QR Code';
 }
