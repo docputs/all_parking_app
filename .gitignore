@@ -9,6 +9,7 @@
 .history
 .svn/
 google-services.json
+key.jks
 
 # IntelliJ related
 *.iml
