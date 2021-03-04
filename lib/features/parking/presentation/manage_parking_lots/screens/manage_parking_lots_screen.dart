@@ -24,7 +24,7 @@ class ManageParkingLotsScreen extends StatelessWidget {
           orElse: () => null,
           success: () {
             context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
-            return FlushbarHelper.createInformation(message: 'Estacionamento removido com sucesso!').show(context);
+            return FlushbarHelper.createInformation(message: Messages.parkingLotDeleted).show(context);
           },
           error: (f) => FlushbarHelper.createError(message: f.message).show(context),
         ),

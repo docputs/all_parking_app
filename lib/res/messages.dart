@@ -217,6 +217,7 @@ class Messages {
 
   //ManageParkingLots
   static const manageParkingLotsScreenTitle = 'Gerenciar estacionamentos';
+  static const parkingLotDeleted = 'Estacionamento removido com sucesso!';
   static const manageParkingLotsDeleteDialogTitle = 'Tem certeza?';
   static const manageParkingLotsDeleteDialogRightButton = 'REMOVER';
   static const manageParkingLotsDeleteDialogLeftButton = 'VOLTAR';
