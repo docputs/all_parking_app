@@ -8,7 +8,7 @@ class DrawerListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(item.title),
+      title: Text(item.title, style: const TextStyle(fontWeight: FontWeight.w600)),
       leading: Icon(item.icon),
       onTap: item.customOnTap ??
           () {

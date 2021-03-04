@@ -31,7 +31,7 @@ class _CreateAccountTextState extends State<CreateAccountText> {
           ),
           TextSpan(
             text: 'Crie uma.',
-            style: const TextStyle(color: AppColors.accentColor, fontWeight: FontWeight.w500),
+            style: const TextStyle(color: AppColors.accentColor, fontWeight: FontWeight.w600),
             recognizer: _tapGestureRecognizer,
           ),
         ],
