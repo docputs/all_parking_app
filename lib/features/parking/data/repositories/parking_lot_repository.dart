@@ -120,7 +120,7 @@ class ParkingLotRepository implements IParkingLotRepository {
 
   @override
   Stream<Either<ParkingFailure, InactiveParkedVehicles>> watchInactiveVehicles(ParkingLot parkingLot, [OrderBy orderBy]) {
-    return _getVehiclesSnapshot(isActiveVehicles: false, orderBy: orderBy, parkingLot: parkingLot).map((snapshot) {
+    return _getVehiclesSnapshot(isActiveVehicles: false, orderBy: orderBy, parkingLot: parkingLot, limit: 300).map((snapshot) {
       final vehicleList = snapshot.docs.map((doc) => ParkedVehicleDTO.fromJson(doc.data()).toDomain()).toImmutableList();
       return right(InactiveParkedVehicles(vehicleList));
     })
@@ -134,6 +134,7 @@ class ParkingLotRepository implements IParkingLotRepository {
   Stream<QuerySnapshot> _getVehiclesSnapshot({
     @required ParkingLot parkingLot,
     @required bool isActiveVehicles,
+    int limit = 100,
     OrderBy orderBy,
   }) async* {
     final order = orderBy ?? const OrderBy('checkIn', descending: true);
@@ -141,6 +142,7 @@ class ParkingLotRepository implements IParkingLotRepository {
         .parkedVehiclesCollection(parkingLot.id)
         .where('isActive', isEqualTo: isActiveVehicles)
         .orderBy(order.field, descending: order.descending)
+        .limit(limit)
         .snapshots();
   }
 }
