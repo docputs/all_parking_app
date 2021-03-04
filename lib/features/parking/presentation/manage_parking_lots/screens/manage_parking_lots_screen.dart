@@ -20,21 +20,19 @@ class ManageParkingLotsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<ManageParkingLotsBloc>(),
       child: BlocListener<ManageParkingLotsBloc, ManageParkingLotsState>(
-        listener: (context, state) {
-          return state.maybeWhen(
-            orElse: () => null,
-            success: () {
-              context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
-              return FlushbarHelper.createInformation(message: 'Estacionamento removido com sucesso!').show(context);
-            },
-            error: (f) => FlushbarHelper.createError(message: f.message).show(context),
-          );
-        },
+        listener: (context, state) => state.maybeWhen(
+          orElse: () => null,
+          success: () {
+            context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
+            return FlushbarHelper.createInformation(message: 'Estacionamento removido com sucesso!').show(context);
+          },
+          error: (f) => FlushbarHelper.createError(message: f.message).show(context),
+        ),
         child: AppScaffold(
           scrollable: false,
           drawer: const DefaultDrawer(),
           customAppBar: _buildCustomAppBar(context),
-          body: const ParkingLotListBuilder(headerText: Messages.manageParkingLotsYourParkingLotsLabel, allowActions: true),
+          body: _buildBody(),
         ),
       ),
     );
@@ -49,6 +47,18 @@ class ManageParkingLotsScreen extends StatelessWidget {
           onPressed: () => Navigator.of(context).pushNamed(Constants.addParkingLotRoute),
         )
       ],
+    );
+  }
+
+  Widget _buildBody() {
+    return BlocBuilder<ManageParkingLotsBloc, ManageParkingLotsState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          orElse: () => const ParkingLotListBuilder(headerText: Messages.manageParkingLotsYourParkingLotsLabel, allowActions: true),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (f) => Center(child: Text(f.message)),
+        );
+      },
     );
   }
 }
