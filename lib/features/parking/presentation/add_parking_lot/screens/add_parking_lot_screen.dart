@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
 import 'package:all_parking/res/constants.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
@@ -13,6 +14,7 @@ import '../../bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
 import '../../bloc/parking_lots/parking_lots_event.dart';
 import '../bloc/add_parking_lot_bloc.dart';
 import 'components/add_parking_lot_form.dart';
+import '../../context_extension.dart';
 
 class AddParkingLotScreen extends StatelessWidget {
   final ParkingLot editedParkingLot;
@@ -32,6 +34,7 @@ class AddParkingLotScreen extends StatelessWidget {
               (f) => FlushbarHelper.createError(message: f.message).show(context),
               (_) async {
                 context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
+                context.activeVehicles.add(VehiclesWatcherEvent.watchStarted(state.parkingLot));
                 await Navigator.of(context).pushNamed(Constants.generateCodesRoute, arguments: state.parkingLot);
                 return Navigator.of(context).pop(state.parkingLot);
               },
