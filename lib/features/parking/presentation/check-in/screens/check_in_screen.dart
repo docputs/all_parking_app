@@ -17,15 +17,13 @@ class CheckInScreen extends StatelessWidget {
       create: (context) => getIt<CheckInBloc>(),
       child: BlocListener<CheckInBloc, CheckInState>(
         listenWhen: (p, c) => p.saveFailureOrSuccessOption != c.saveFailureOrSuccessOption,
-        listener: (context, state) {
-          state.saveFailureOrSuccessOption.fold(
-            () => null,
-            (failureOrSuccess) => failureOrSuccess.fold(
-              (f) => FlushbarHelper.createError(message: f.message).show(context),
-              (_) => Navigator.of(context).pop(),
-            ),
-          );
-        },
+        listener: (context, state) => state.saveFailureOrSuccessOption.fold(
+          () => null,
+          (failureOrSuccess) => failureOrSuccess.fold(
+            (f) => FlushbarHelper.createError(message: f.message).show(context),
+            (_) => Navigator.of(context).pop(),
+          ),
+        ),
         child: AppScaffold(
           title: Messages.checkInScreenTiele,
           body: const CheckInForm(),
