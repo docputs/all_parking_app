@@ -42,7 +42,7 @@ class AppScaffold extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
           return scrollable
               ? SingleChildScrollView(
-                  physics: const ClampingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(minHeight: viewportConstraints.maxHeight),
                     child: body,

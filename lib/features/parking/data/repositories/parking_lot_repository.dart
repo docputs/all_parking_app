@@ -84,7 +84,6 @@ class ParkingLotRepository implements IParkingLotRepository {
     try {
       final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: parkingLots.asList()).get();
       final entityList = snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList();
-      throw Exception('coisou o coisinho');
       return right(entityList);
     } on FirebaseException catch (e) {
       await _reportService.log(e.message);
