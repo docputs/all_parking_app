@@ -1,3 +1,4 @@
+import 'package:all_parking/widgets/no_current_parking_lot_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,10 @@ class CurrentParkingLotBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CurrentParkingLot>(
       builder: (context, currentParkingLot, child) {
-        return currentParkingLot.buildWidget(onSuccess: builder, onFailure: noParkingLotWidget);
+        return currentParkingLot.buildWidget(
+          onSuccess: builder,
+          onFailure: noParkingLotWidget ?? const NoCurrentParkingLotInfo(),
+        );
       },
       child: child,
     );
