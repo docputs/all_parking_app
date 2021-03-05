@@ -1,4 +1,4 @@
-import 'package:all_parking/features/qr_code/data/repositories/code_repository.dart';
+import 'package:all_parking/utils/error_report_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
@@ -19,18 +19,19 @@ import '../models/order_by.dart';
 @LazySingleton(as: IParkingLotRepository)
 class ParkingLotRepository implements IParkingLotRepository {
   final FirebaseFirestore _firestore;
+  final ErrorReportService _reportService;
 
-  const ParkingLotRepository(this._firestore);
+  const ParkingLotRepository(this._firestore, this._reportService);
 
   Future<Either<ParkingFailure, Unit>> _handleExceptions(Future<void> Function() function) async {
     try {
       await function();
       return right(unit);
     } on FirebaseException catch (e) {
-      print(e);
+      await _reportService.log(e.message);
       return left(ParkingFailure.serverFailure());
     } catch (e) {
-      print(e);
+      await _reportService.log(e.message);
       return left(ParkingFailure.unknownFailure());
     }
   }
@@ -83,12 +84,13 @@ class ParkingLotRepository implements IParkingLotRepository {
     try {
       final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: parkingLots.asList()).get();
       final entityList = snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList();
+      throw Exception('coisou o coisinho');
       return right(entityList);
     } on FirebaseException catch (e) {
-      print(e);
+      await _reportService.log(e.message);
       return left(ParkingFailure.serverFailure());
     } catch (e) {
-      print(e);
+      await _reportService.log(e.message);
       return left(ParkingFailure.unknownFailure());
     }
   }
@@ -99,8 +101,8 @@ class ParkingLotRepository implements IParkingLotRepository {
       if (doc.exists) return right(ParkingLotDTO.fromFirestore(doc).toDomain());
       return left(ParkingFailure.parkingLotNotFound());
     })
-      ..onErrorReturnWith((error) {
-        print(error);
+      ..onErrorReturnWith((e) {
+        _reportService.log(e.message);
         return left(ParkingFailure.serverFailure());
       });
   }
@@ -111,8 +113,8 @@ class ParkingLotRepository implements IParkingLotRepository {
       final vehicleList = snapshot.docs.map((doc) => ParkedVehicleDTO.fromJson(doc.data()).toDomain()).toImmutableList();
       return right(ActiveParkedVehicles(vehicleList));
     })
-      ..onErrorReturnWith((error) {
-        print(error);
+      ..onErrorReturnWith((e) {
+        _reportService.log(e.message);
         return left(ParkingFailure.serverFailure());
       });
     ;
@@ -124,8 +126,8 @@ class ParkingLotRepository implements IParkingLotRepository {
       final vehicleList = snapshot.docs.map((doc) => ParkedVehicleDTO.fromJson(doc.data()).toDomain()).toImmutableList();
       return right(InactiveParkedVehicles(vehicleList));
     })
-      ..onErrorReturnWith((error) {
-        print(error);
+      ..onErrorReturnWith((e) {
+        _reportService.log(e.message);
         return left(ParkingFailure.serverFailure());
       });
     ;

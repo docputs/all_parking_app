@@ -1,6 +1,8 @@
+import 'package:all_parking/utils/error_report_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../utils/firebase_helpers.dart';
@@ -17,8 +19,9 @@ import '../models/sign_in_model.dart';
 class ManagerAuthRepository implements IManagerAuthRepository {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
+  final ErrorReportService _reportService;
 
-  const ManagerAuthRepository(this._firebaseAuth, this._firestore) : assert(_firebaseAuth != null, _firestore != null);
+  const ManagerAuthRepository(this._firebaseAuth, this._firestore, this._reportService);
 
   @override
   Future<Either<AuthFailure, Unit>> createAccount(RegisterModel registerModel) async {
@@ -30,6 +33,7 @@ class ManagerAuthRepository implements IManagerAuthRepository {
       await _firestore.managerCollection.doc(credential.user.uid).set(managerDTO.toJson());
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      await _reportService.log(e.message);
       if (e.code == 'invalid-email') {
         return left(AuthFailure.invalidEmailAddress());
       } else if (e.code == 'email-already-in-use') {
@@ -40,6 +44,7 @@ class ManagerAuthRepository implements IManagerAuthRepository {
         return left(AuthFailure.serverFailure());
       }
     } catch (e) {
+      await _reportService.log(e.message);
       return left(AuthFailure.unknownFailure());
     }
   }
@@ -54,12 +59,14 @@ class ManagerAuthRepository implements IManagerAuthRepository {
     try {
       final user = _firebaseAuth.currentUser;
       final doc = await _firestore.managerCollection.doc(user.uid).get();
+      await _reportService.setUserIdentifier(user.uid);
       final manager = ManagerDTO.fromFirestore(doc).toDomain();
       return optionOf(manager);
     } on FirebaseException catch (e) {
-      print(e);
+      await _reportService.log(e.message);
       return none();
     } catch (e) {
+      await _reportService.log(e.message);
       return none();
     }
   }
@@ -70,6 +77,7 @@ class ManagerAuthRepository implements IManagerAuthRepository {
       await _firebaseAuth.signInWithEmailAndPassword(email: signInModel.email, password: signInModel.password);
       return right(unit);
     } on FirebaseAuthException catch (e) {
+      await _reportService.log(e.message);
       if (e.code == 'invalid-email') {
         return left(AuthFailure.invalidEmailAddress());
       } else if (e.code == 'user-not-found' || e.code == 'wrong-password') {
@@ -78,6 +86,7 @@ class ManagerAuthRepository implements IManagerAuthRepository {
         return left(AuthFailure.serverFailure());
       }
     } catch (e) {
+      await _reportService.log(e.message);
       return left(AuthFailure.unknownFailure());
     }
   }

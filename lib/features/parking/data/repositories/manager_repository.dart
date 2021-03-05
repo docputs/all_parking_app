@@ -1,3 +1,4 @@
+import 'package:all_parking/utils/error_report_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,23 +14,31 @@ import '../dtos/manager_dto.dart';
 class ManagerRepository implements IManagerRepository {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
+  final ErrorReportService _reportService;
 
-  const ManagerRepository(this._firestore, this._firebaseAuth) : assert(_firestore != null, _firebaseAuth != null);
+  const ManagerRepository(this._firestore, this._firebaseAuth, this._reportService);
+
+  Future<Either<ParkingFailure, Unit>> _handleExceptions(Future<void> Function() function) async {
+    try {
+      await function();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      await _reportService.log(e.message);
+      return left(ParkingFailure.serverFailure());
+    } catch (e) {
+      await _reportService.log(e.message);
+      return left(ParkingFailure.unknownFailure());
+    }
+  }
 
   @override
   Future<Either<ParkingFailure, Unit>> update(Manager manager) async {
-    try {
+    return _handleExceptions(() async {
       final managerDTO = ManagerDTO.fromDomain(manager);
       final managerDoc = await _firestore.managerCollection.doc(manager.id);
       await managerDoc.set(managerDTO.toJson(), SetOptions(merge: true));
       return right(unit);
-    } on FirebaseException catch (e) {
-      print(e);
-      return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      print(e);
-      return left(ParkingFailure.unknownFailure());
-    }
+    });
   }
 
   Future<Either<ParkingFailure, Manager>> read() async {
@@ -38,10 +47,10 @@ class ManagerRepository implements IManagerRepository {
       final managerDoc = await _firestore.managerCollection.doc(user.uid).get();
       return right(ManagerDTO.fromFirestore(managerDoc).toDomain());
     } on FirebaseException catch (e) {
-      print(e);
+      await _reportService.log(e.message);
       return left(ParkingFailure.serverFailure());
     } catch (e) {
-      print(e);
+      await _reportService.log(e.message);
       return left(ParkingFailure.unknownFailure());
     }
   }

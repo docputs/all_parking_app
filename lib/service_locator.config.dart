@@ -34,6 +34,7 @@ import 'features/auth/presentation/employee/employee_auth_bloc.dart';
 import 'features/auth/data/repositories/employee_auth_repository.dart';
 import 'features/parking/presentation/bloc/parking_lots/employee/employee_parking_lot_bloc.dart';
 import 'features/parking/data/repositories/employee_repository.dart';
+import 'utils/error_report_service.dart';
 import 'features/parking/domain/usecases/fetch_current_manager.dart';
 import 'features/parking/domain/usecases/fetch_parking_lots.dart';
 import 'features/parking/domain/usecases/fetch_single_parking_lot.dart';
@@ -88,19 +89,26 @@ Future<GetIt> $initGetIt(
   gh.factory<CodeScannerBloc>(() => CodeScannerBloc());
   gh.lazySingleton<CurrentParkingLot>(() => CurrentParkingLot());
   gh.lazySingleton<EmailService>(() => EmailService(get<Client>()));
+  gh.lazySingleton<ErrorReportService>(() => ErrorReportService());
   gh.factory<FindCheckOutBloc>(() => FindCheckOutBloc());
   gh.lazySingleton<FirebaseAuth>(() => registerModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => registerModule.firebaseFirestore);
   gh.lazySingleton<ICodeRepository>(
       () => CodeRepository(get<FirebaseFirestore>()));
-  gh.lazySingleton<IEmployeeRepository>(
-      () => EmployeeRepository(get<FirebaseFirestore>()));
-  gh.lazySingleton<IManagerAuthRepository>(() =>
-      ManagerAuthRepository(get<FirebaseAuth>(), get<FirebaseFirestore>()));
-  gh.lazySingleton<IManagerRepository>(
-      () => ManagerRepository(get<FirebaseFirestore>(), get<FirebaseAuth>()));
-  gh.lazySingleton<IParkingLotRepository>(
-      () => ParkingLotRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<IEmployeeRepository>(() =>
+      EmployeeRepository(get<FirebaseFirestore>(), get<ErrorReportService>()));
+  gh.lazySingleton<IManagerAuthRepository>(() => ManagerAuthRepository(
+        get<FirebaseAuth>(),
+        get<FirebaseFirestore>(),
+        get<ErrorReportService>(),
+      ));
+  gh.lazySingleton<IManagerRepository>(() => ManagerRepository(
+        get<FirebaseFirestore>(),
+        get<FirebaseAuth>(),
+        get<ErrorReportService>(),
+      ));
+  gh.lazySingleton<IParkingLotRepository>(() => ParkingLotRepository(
+      get<FirebaseFirestore>(), get<ErrorReportService>()));
   gh.lazySingleton<QRLocalStorage>(() => QRLocalStorage());
   gh.factory<ReportsBloc>(() => ReportsBloc());
   final resolvedSharedPreferences = await registerModule.prefs;
@@ -173,7 +181,10 @@ Future<GetIt> $initGetIt(
   gh.factory<GenerateCodesBloc>(
       () => GenerateCodesBloc(get<GenerateQRCodes>()));
   gh.lazySingleton<IEmployeeAuthRepository>(() => EmployeeAuthRepository(
-      get<ILocalDataSource>(), get<FirebaseFirestore>()));
+        get<ILocalDataSource>(),
+        get<FirebaseFirestore>(),
+        get<ErrorReportService>(),
+      ));
   gh.lazySingleton<SignInEmployee>(
       () => SignInEmployee(get<IEmployeeAuthRepository>()));
   gh.factory<SignInEmployeeBloc>(
