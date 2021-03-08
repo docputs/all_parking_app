@@ -20,11 +20,11 @@ class EmployeeRepository implements IEmployeeRepository {
     try {
       await function();
       return right(unit);
-    } on FirebaseException catch (e) {
-      await _reportService.log(e.message);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      await _reportService.log(e.message);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.unknownFailure());
     }
   }

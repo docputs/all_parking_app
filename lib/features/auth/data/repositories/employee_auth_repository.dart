@@ -26,11 +26,11 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
         await _reportService.setUserIdentifier(token);
         return _fetchEmployeeFromDatabase(token);
       });
-    } on FirebaseException catch (e) {
-      await _reportService.log(e.message);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return none();
-    } catch (e) {
-      await _reportService.log(e.message);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return none();
     }
   }
@@ -50,11 +50,11 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
         return right(unit);
       }
       return left(AuthFailure.employeeNotFound());
-    } on FirebaseException catch (e) {
-      await _reportService.log(e.message);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return left(AuthFailure.serverFailure());
-    } catch (e) {
-      await _reportService.log(e.message);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return left(AuthFailure.unknownFailure());
     }
   }
@@ -64,7 +64,7 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
     try {
       await _localDataSource.deleteToken();
       return right(unit);
-    } catch (e) {
+    } catch (e, s) {
       print(e);
       return left(AuthFailure.unknownFailure());
     }

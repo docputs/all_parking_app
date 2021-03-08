@@ -1,6 +1,7 @@
 import 'package:all_parking/utils/error_report_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -27,11 +28,11 @@ class ParkingLotRepository implements IParkingLotRepository {
     try {
       await function();
       return right(unit);
-    } on FirebaseException catch (e) {
-      await _reportService.log(e.message);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      await _reportService.log(e.message);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.unknownFailure());
     }
   }
@@ -85,11 +86,11 @@ class ParkingLotRepository implements IParkingLotRepository {
       final snapshot = await _firestore.parkingLotCollection.where(FieldPath.documentId, whereIn: parkingLots.asList()).get();
       final entityList = snapshot.docs.map((doc) => ParkingLotDTO.fromFirestore(doc).toDomain()).toImmutableList();
       return right(entityList);
-    } on FirebaseException catch (e) {
-      await _reportService.log(e.message);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      await _reportService.log(e.message);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.unknownFailure());
     }
   }
@@ -101,7 +102,7 @@ class ParkingLotRepository implements IParkingLotRepository {
       return left(ParkingFailure.parkingLotNotFound());
     })
       ..onErrorReturnWith((e) {
-        _reportService.log(e.message);
+        _reportService.log(e, StackTrace.current);
         return left(ParkingFailure.serverFailure());
       });
   }
@@ -113,7 +114,7 @@ class ParkingLotRepository implements IParkingLotRepository {
       return right(ActiveParkedVehicles(vehicleList));
     })
       ..onErrorReturnWith((e) {
-        _reportService.log(e.message);
+        _reportService.log(e, StackTrace.current);
         return left(ParkingFailure.serverFailure());
       });
     ;
@@ -126,7 +127,7 @@ class ParkingLotRepository implements IParkingLotRepository {
       return right(InactiveParkedVehicles(vehicleList));
     })
       ..onErrorReturnWith((e) {
-        _reportService.log(e.message);
+        _reportService.log(e, StackTrace.current);
         return left(ParkingFailure.serverFailure());
       });
     ;

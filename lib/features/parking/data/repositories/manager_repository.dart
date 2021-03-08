@@ -22,11 +22,11 @@ class ManagerRepository implements IManagerRepository {
     try {
       await function();
       return right(unit);
-    } on FirebaseException catch (e) {
-      await _reportService.log(e.message);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      await _reportService.log(e.message);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.unknownFailure());
     }
   }
@@ -46,11 +46,11 @@ class ManagerRepository implements IManagerRepository {
       final user = _firebaseAuth.currentUser;
       final managerDoc = await _firestore.managerCollection.doc(user.uid).get();
       return right(ManagerDTO.fromFirestore(managerDoc).toDomain());
-    } on FirebaseException catch (e) {
-      await _reportService.log(e.message);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.serverFailure());
-    } catch (e) {
-      await _reportService.log(e.message);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return left(ParkingFailure.unknownFailure());
     }
   }
