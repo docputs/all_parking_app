@@ -61,6 +61,7 @@ import 'features/qr_code/core/utils/qr_local_storage.dart';
 import 'service_locator.dart';
 import 'features/parking/presentation/reports/bloc/reports_bloc.dart';
 import 'features/qr_code/presentation/bloc/save_codes/save_codes_bloc.dart';
+import 'features/parking/presentation/manage_parking_lots/bloc/share_qr_codes/share_qr_codes_bloc.dart';
 import 'features/auth/presentation/manager/sign_in/bloc/sign_in_bloc.dart';
 import 'features/auth/domain/usecases/sign_in_employee.dart';
 import 'features/auth/presentation/employee/sign_in/bloc/sign_in_employee_bloc.dart';
@@ -111,6 +112,7 @@ Future<GetIt> $initGetIt(
       get<FirebaseFirestore>(), get<ErrorReportService>()));
   gh.lazySingleton<QRLocalStorage>(() => QRLocalStorage());
   gh.factory<ReportsBloc>(() => ReportsBloc());
+  gh.factory<ShareQrCodesBloc>(() => ShareQrCodesBloc(get<QRLocalStorage>()));
   final resolvedSharedPreferences = await registerModule.prefs;
   gh.factory<SharedPreferences>(() => resolvedSharedPreferences);
   gh.lazySingleton<SignInManager>(

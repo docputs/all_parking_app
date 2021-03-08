@@ -1,6 +1,8 @@
+import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/share_qr_codes/share_qr_codes_bloc.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:share/share.dart';
 
 import '../../../../../res/constants.dart';
 import '../../../../../res/messages.dart';
@@ -17,17 +19,31 @@ class ManageParkingLotsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<ManageParkingLotsBloc>(),
-      child: BlocListener<ManageParkingLotsBloc, ManageParkingLotsState>(
-        listener: (context, state) => state.maybeWhen(
-          orElse: () => null,
-          success: () {
-            context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
-            return FlushbarHelper.createInformation(message: Messages.parkingLotDeleted).show(context);
-          },
-          error: (f) => FlushbarHelper.createError(message: f.message).show(context),
-        ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<ManageParkingLotsBloc>()),
+        BlocProvider(create: (context) => getIt<ShareQrCodesBloc>()),
+      ],
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<ManageParkingLotsBloc, ManageParkingLotsState>(
+            listener: (context, state) => state.maybeWhen(
+              orElse: () => null,
+              success: () {
+                context.read<ManagerParkingLotsBloc>().add(const ParkingLotsEvent.fetchRequested());
+                return FlushbarHelper.createInformation(message: Messages.parkingLotDeleted).show(context);
+              },
+              error: (f) => FlushbarHelper.createError(message: f.message).show(context),
+            ),
+          ),
+          BlocListener<ShareQrCodesBloc, ShareQrCodesState>(
+            listener: (context, state) => state.maybeWhen(
+              orElse: () => null,
+              success: (file) => Share.shareFiles([file.path]),
+              error: (f) => FlushbarHelper.createError(message: f.message).show(context),
+            ),
+          ),
+        ],
         child: AppScaffold(
           scrollable: false,
           drawer: const DefaultDrawer(),

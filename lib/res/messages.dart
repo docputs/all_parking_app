@@ -46,6 +46,7 @@ class Messages {
   static const invalidQRCode = 'QR Code inválido';
 
   //ParkingFailure
+  static const qrFileNotFound = 'Arquivo não encontrado';
   static const invalidParkingLotTitle = 'Nome inválido';
   static const invalidAvailableSpots = 'Número de vagas inválido';
   static const invalidPricePerHour = 'Valor por hora inválido';
@@ -219,6 +220,9 @@ class Messages {
   static const manageParkingLotsScreenTitle = 'Gerenciar estacionamentos';
   static const parkingLotDeleted = 'Estacionamento removido com sucesso!';
   static const manageParkingLotsDeleteDialogTitle = 'Tem certeza?';
+  static const manageParkingLotsEditPopupItem = 'Editar';
+  static const manageParkingLotsCodesPopupItem = 'QR Codes';
+  static const manageParkingLotsDeletePopupItem = 'Excluir';
   static const manageParkingLotsDeleteDialogRightButton = 'REMOVER';
   static const manageParkingLotsDeleteDialogLeftButton = 'VOLTAR';
   static const manageParkingLotsYourParkingLotsLabel = 'Seus estacionamentos';

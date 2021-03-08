@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'save_codes_bloc.dart';
+part of 'share_qr_codes_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,154 +10,170 @@ part of 'save_codes_bloc.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$SaveCodesEventTearOff {
-  const _$SaveCodesEventTearOff();
+class _$ShareQrCodesEventTearOff {
+  const _$ShareQrCodesEventTearOff();
 
 // ignore: unused_element
-  _SaveRequested saveRequested(String fileName) {
-    return _SaveRequested(
-      fileName,
+  _ShareRequested shareRequested(ParkingLot parkingLot) {
+    return _ShareRequested(
+      parkingLot,
     );
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $SaveCodesEvent = _$SaveCodesEventTearOff();
+const $ShareQrCodesEvent = _$ShareQrCodesEventTearOff();
 
 /// @nodoc
-mixin _$SaveCodesEvent {
-  String get fileName;
+mixin _$ShareQrCodesEvent {
+  ParkingLot get parkingLot;
 
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult saveRequested(String fileName),
+    @required TResult shareRequested(ParkingLot parkingLot),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult saveRequested(String fileName),
+    TResult shareRequested(ParkingLot parkingLot),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult saveRequested(_SaveRequested value),
+    @required TResult shareRequested(_ShareRequested value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult saveRequested(_SaveRequested value),
+    TResult shareRequested(_ShareRequested value),
     @required TResult orElse(),
   });
 
   @JsonKey(ignore: true)
-  $SaveCodesEventCopyWith<SaveCodesEvent> get copyWith;
+  $ShareQrCodesEventCopyWith<ShareQrCodesEvent> get copyWith;
 }
 
 /// @nodoc
-abstract class $SaveCodesEventCopyWith<$Res> {
-  factory $SaveCodesEventCopyWith(
-          SaveCodesEvent value, $Res Function(SaveCodesEvent) then) =
-      _$SaveCodesEventCopyWithImpl<$Res>;
-  $Res call({String fileName});
+abstract class $ShareQrCodesEventCopyWith<$Res> {
+  factory $ShareQrCodesEventCopyWith(
+          ShareQrCodesEvent value, $Res Function(ShareQrCodesEvent) then) =
+      _$ShareQrCodesEventCopyWithImpl<$Res>;
+  $Res call({ParkingLot parkingLot});
+
+  $ParkingLotCopyWith<$Res> get parkingLot;
 }
 
 /// @nodoc
-class _$SaveCodesEventCopyWithImpl<$Res>
-    implements $SaveCodesEventCopyWith<$Res> {
-  _$SaveCodesEventCopyWithImpl(this._value, this._then);
+class _$ShareQrCodesEventCopyWithImpl<$Res>
+    implements $ShareQrCodesEventCopyWith<$Res> {
+  _$ShareQrCodesEventCopyWithImpl(this._value, this._then);
 
-  final SaveCodesEvent _value;
+  final ShareQrCodesEvent _value;
   // ignore: unused_field
-  final $Res Function(SaveCodesEvent) _then;
+  final $Res Function(ShareQrCodesEvent) _then;
 
   @override
   $Res call({
-    Object fileName = freezed,
+    Object parkingLot = freezed,
   }) {
     return _then(_value.copyWith(
-      fileName: fileName == freezed ? _value.fileName : fileName as String,
+      parkingLot:
+          parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
     ));
+  }
+
+  @override
+  $ParkingLotCopyWith<$Res> get parkingLot {
+    if (_value.parkingLot == null) {
+      return null;
+    }
+    return $ParkingLotCopyWith<$Res>(_value.parkingLot, (value) {
+      return _then(_value.copyWith(parkingLot: value));
+    });
   }
 }
 
 /// @nodoc
-abstract class _$SaveRequestedCopyWith<$Res>
-    implements $SaveCodesEventCopyWith<$Res> {
-  factory _$SaveRequestedCopyWith(
-          _SaveRequested value, $Res Function(_SaveRequested) then) =
-      __$SaveRequestedCopyWithImpl<$Res>;
+abstract class _$ShareRequestedCopyWith<$Res>
+    implements $ShareQrCodesEventCopyWith<$Res> {
+  factory _$ShareRequestedCopyWith(
+          _ShareRequested value, $Res Function(_ShareRequested) then) =
+      __$ShareRequestedCopyWithImpl<$Res>;
   @override
-  $Res call({String fileName});
+  $Res call({ParkingLot parkingLot});
+
+  @override
+  $ParkingLotCopyWith<$Res> get parkingLot;
 }
 
 /// @nodoc
-class __$SaveRequestedCopyWithImpl<$Res>
-    extends _$SaveCodesEventCopyWithImpl<$Res>
-    implements _$SaveRequestedCopyWith<$Res> {
-  __$SaveRequestedCopyWithImpl(
-      _SaveRequested _value, $Res Function(_SaveRequested) _then)
-      : super(_value, (v) => _then(v as _SaveRequested));
+class __$ShareRequestedCopyWithImpl<$Res>
+    extends _$ShareQrCodesEventCopyWithImpl<$Res>
+    implements _$ShareRequestedCopyWith<$Res> {
+  __$ShareRequestedCopyWithImpl(
+      _ShareRequested _value, $Res Function(_ShareRequested) _then)
+      : super(_value, (v) => _then(v as _ShareRequested));
 
   @override
-  _SaveRequested get _value => super._value as _SaveRequested;
+  _ShareRequested get _value => super._value as _ShareRequested;
 
   @override
   $Res call({
-    Object fileName = freezed,
+    Object parkingLot = freezed,
   }) {
-    return _then(_SaveRequested(
-      fileName == freezed ? _value.fileName : fileName as String,
+    return _then(_ShareRequested(
+      parkingLot == freezed ? _value.parkingLot : parkingLot as ParkingLot,
     ));
   }
 }
 
 /// @nodoc
-class _$_SaveRequested implements _SaveRequested {
-  const _$_SaveRequested(this.fileName) : assert(fileName != null);
+class _$_ShareRequested implements _ShareRequested {
+  const _$_ShareRequested(this.parkingLot) : assert(parkingLot != null);
 
   @override
-  final String fileName;
+  final ParkingLot parkingLot;
 
   @override
   String toString() {
-    return 'SaveCodesEvent.saveRequested(fileName: $fileName)';
+    return 'ShareQrCodesEvent.shareRequested(parkingLot: $parkingLot)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SaveRequested &&
-            (identical(other.fileName, fileName) ||
+        (other is _ShareRequested &&
+            (identical(other.parkingLot, parkingLot) ||
                 const DeepCollectionEquality()
-                    .equals(other.fileName, fileName)));
+                    .equals(other.parkingLot, parkingLot)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(fileName);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(parkingLot);
 
   @JsonKey(ignore: true)
   @override
-  _$SaveRequestedCopyWith<_SaveRequested> get copyWith =>
-      __$SaveRequestedCopyWithImpl<_SaveRequested>(this, _$identity);
+  _$ShareRequestedCopyWith<_ShareRequested> get copyWith =>
+      __$ShareRequestedCopyWithImpl<_ShareRequested>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult saveRequested(String fileName),
+    @required TResult shareRequested(ParkingLot parkingLot),
   }) {
-    assert(saveRequested != null);
-    return saveRequested(fileName);
+    assert(shareRequested != null);
+    return shareRequested(parkingLot);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult saveRequested(String fileName),
+    TResult shareRequested(ParkingLot parkingLot),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (saveRequested != null) {
-      return saveRequested(fileName);
+    if (shareRequested != null) {
+      return shareRequested(parkingLot);
     }
     return orElse();
   }
@@ -165,39 +181,39 @@ class _$_SaveRequested implements _SaveRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult saveRequested(_SaveRequested value),
+    @required TResult shareRequested(_ShareRequested value),
   }) {
-    assert(saveRequested != null);
-    return saveRequested(this);
+    assert(shareRequested != null);
+    return shareRequested(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult saveRequested(_SaveRequested value),
+    TResult shareRequested(_ShareRequested value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (saveRequested != null) {
-      return saveRequested(this);
+    if (shareRequested != null) {
+      return shareRequested(this);
     }
     return orElse();
   }
 }
 
-abstract class _SaveRequested implements SaveCodesEvent {
-  const factory _SaveRequested(String fileName) = _$_SaveRequested;
+abstract class _ShareRequested implements ShareQrCodesEvent {
+  const factory _ShareRequested(ParkingLot parkingLot) = _$_ShareRequested;
 
   @override
-  String get fileName;
+  ParkingLot get parkingLot;
   @override
   @JsonKey(ignore: true)
-  _$SaveRequestedCopyWith<_SaveRequested> get copyWith;
+  _$ShareRequestedCopyWith<_ShareRequested> get copyWith;
 }
 
 /// @nodoc
-class _$SaveCodesStateTearOff {
-  const _$SaveCodesStateTearOff();
+class _$ShareQrCodesStateTearOff {
+  const _$ShareQrCodesStateTearOff();
 
 // ignore: unused_element
   _Initial initial() {
@@ -217,7 +233,7 @@ class _$SaveCodesStateTearOff {
   }
 
 // ignore: unused_element
-  _Error error(QRFailure failure) {
+  _Error error(ParkingFailure failure) {
     return _Error(
       failure,
     );
@@ -226,23 +242,23 @@ class _$SaveCodesStateTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $SaveCodesState = _$SaveCodesStateTearOff();
+const $ShareQrCodesState = _$ShareQrCodesStateTearOff();
 
 /// @nodoc
-mixin _$SaveCodesState {
+mixin _$ShareQrCodesState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(File file),
-    @required TResult error(QRFailure failure),
+    @required TResult error(ParkingFailure failure),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
     TResult success(File file),
-    TResult error(QRFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -263,20 +279,20 @@ mixin _$SaveCodesState {
 }
 
 /// @nodoc
-abstract class $SaveCodesStateCopyWith<$Res> {
-  factory $SaveCodesStateCopyWith(
-          SaveCodesState value, $Res Function(SaveCodesState) then) =
-      _$SaveCodesStateCopyWithImpl<$Res>;
+abstract class $ShareQrCodesStateCopyWith<$Res> {
+  factory $ShareQrCodesStateCopyWith(
+          ShareQrCodesState value, $Res Function(ShareQrCodesState) then) =
+      _$ShareQrCodesStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SaveCodesStateCopyWithImpl<$Res>
-    implements $SaveCodesStateCopyWith<$Res> {
-  _$SaveCodesStateCopyWithImpl(this._value, this._then);
+class _$ShareQrCodesStateCopyWithImpl<$Res>
+    implements $ShareQrCodesStateCopyWith<$Res> {
+  _$ShareQrCodesStateCopyWithImpl(this._value, this._then);
 
-  final SaveCodesState _value;
+  final ShareQrCodesState _value;
   // ignore: unused_field
-  final $Res Function(SaveCodesState) _then;
+  final $Res Function(ShareQrCodesState) _then;
 }
 
 /// @nodoc
@@ -286,7 +302,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$SaveCodesStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$ShareQrCodesStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -301,7 +317,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'SaveCodesState.initial()';
+    return 'ShareQrCodesState.initial()';
   }
 
   @override
@@ -318,7 +334,7 @@ class _$_Initial implements _Initial {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(File file),
-    @required TResult error(QRFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -333,7 +349,7 @@ class _$_Initial implements _Initial {
     TResult initial(),
     TResult loading(),
     TResult success(File file),
-    TResult error(QRFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -375,7 +391,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements SaveCodesState {
+abstract class _Initial implements ShareQrCodesState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -386,7 +402,7 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$SaveCodesStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res> extends _$ShareQrCodesStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -401,7 +417,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'SaveCodesState.loading()';
+    return 'ShareQrCodesState.loading()';
   }
 
   @override
@@ -418,7 +434,7 @@ class _$_Loading implements _Loading {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(File file),
-    @required TResult error(QRFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -433,7 +449,7 @@ class _$_Loading implements _Loading {
     TResult initial(),
     TResult loading(),
     TResult success(File file),
-    TResult error(QRFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -475,7 +491,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements SaveCodesState {
+abstract class _Loading implements ShareQrCodesState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -487,7 +503,7 @@ abstract class _$SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$SaveCodesStateCopyWithImpl<$Res>
+class __$SuccessCopyWithImpl<$Res> extends _$ShareQrCodesStateCopyWithImpl<$Res>
     implements _$SuccessCopyWith<$Res> {
   __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
       : super(_value, (v) => _then(v as _Success));
@@ -514,7 +530,7 @@ class _$_Success implements _Success {
 
   @override
   String toString() {
-    return 'SaveCodesState.success(file: $file)';
+    return 'ShareQrCodesState.success(file: $file)';
   }
 
   @override
@@ -540,7 +556,7 @@ class _$_Success implements _Success {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(File file),
-    @required TResult error(QRFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -555,7 +571,7 @@ class _$_Success implements _Success {
     TResult initial(),
     TResult loading(),
     TResult success(File file),
-    TResult error(QRFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -597,7 +613,7 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements SaveCodesState {
+abstract class _Success implements ShareQrCodesState {
   const factory _Success(File file) = _$_Success;
 
   File get file;
@@ -609,13 +625,13 @@ abstract class _Success implements SaveCodesState {
 abstract class _$ErrorCopyWith<$Res> {
   factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
       __$ErrorCopyWithImpl<$Res>;
-  $Res call({QRFailure failure});
+  $Res call({ParkingFailure failure});
 
-  $QRFailureCopyWith<$Res> get failure;
+  $ParkingFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$SaveCodesStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$ShareQrCodesStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -628,16 +644,16 @@ class __$ErrorCopyWithImpl<$Res> extends _$SaveCodesStateCopyWithImpl<$Res>
     Object failure = freezed,
   }) {
     return _then(_Error(
-      failure == freezed ? _value.failure : failure as QRFailure,
+      failure == freezed ? _value.failure : failure as ParkingFailure,
     ));
   }
 
   @override
-  $QRFailureCopyWith<$Res> get failure {
+  $ParkingFailureCopyWith<$Res> get failure {
     if (_value.failure == null) {
       return null;
     }
-    return $QRFailureCopyWith<$Res>(_value.failure, (value) {
+    return $ParkingFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -648,11 +664,11 @@ class _$_Error implements _Error {
   const _$_Error(this.failure) : assert(failure != null);
 
   @override
-  final QRFailure failure;
+  final ParkingFailure failure;
 
   @override
   String toString() {
-    return 'SaveCodesState.error(failure: $failure)';
+    return 'ShareQrCodesState.error(failure: $failure)';
   }
 
   @override
@@ -678,7 +694,7 @@ class _$_Error implements _Error {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(File file),
-    @required TResult error(QRFailure failure),
+    @required TResult error(ParkingFailure failure),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -693,7 +709,7 @@ class _$_Error implements _Error {
     TResult initial(),
     TResult loading(),
     TResult success(File file),
-    TResult error(QRFailure failure),
+    TResult error(ParkingFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -735,10 +751,10 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements SaveCodesState {
-  const factory _Error(QRFailure failure) = _$_Error;
+abstract class _Error implements ShareQrCodesState {
+  const factory _Error(ParkingFailure failure) = _$_Error;
 
-  QRFailure get failure;
+  ParkingFailure get failure;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith;
 }
