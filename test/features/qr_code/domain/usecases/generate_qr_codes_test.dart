@@ -7,6 +7,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:mockito/mockito.dart';
 
+import '../../../../fixtures/parking_lot_fixtures.dart';
+
 class MockCodeRepository extends Mock implements ICodeRepository {}
 
 void main() {
@@ -19,30 +21,30 @@ void main() {
   });
 
   test('should return qr code list with different ids', () async {
-    when(mockCodeRepository.create(any)).thenAnswer((_) async => Right(unit));
+    when(mockCodeRepository.create(any, parkingLot: anyNamed('parkingLot'))).thenAnswer((_) async => Right(unit));
 
-    final result = await usecase(10);
+    final result = await usecase(Fixtures.parkingLot);
     final list = result.getOrElse(() => null);
 
     expect(result, isA<Right<QRFailure, KtList<QRCode>>>());
-    expect(list.size, 10);
+    expect(list.size, 20);
     expect(list.all((code) => code.value is String), true);
     expect(list.distinct(), list);
   });
 
   test('should call create on repository', () async {
-    when(mockCodeRepository.create(any)).thenAnswer((_) async => Right(unit));
+    when(mockCodeRepository.create(any, parkingLot: anyNamed('parkingLot'))).thenAnswer((_) async => Right(unit));
 
-    await usecase(5);
+    await usecase(Fixtures.parkingLot);
 
-    verify(mockCodeRepository.create(any)).called(1);
+    verify(mockCodeRepository.create(any, parkingLot: anyNamed('parkingLot'))).called(1);
     verifyNoMoreInteractions(mockCodeRepository);
   });
   
   test('should return failure when repository fails', () async {
-    when(mockCodeRepository.create(any)).thenAnswer((_) async => Left(QRFailure.serverFailure()));
+    when(mockCodeRepository.create(any, parkingLot: anyNamed('parkingLot'))).thenAnswer((_) async => Left(QRFailure.serverFailure()));
 
-    final result = await usecase(1);
+    final result = await usecase(Fixtures.parkingLot);
 
     expect(result.swap().getOrElse(() => null), isA<QRFailure>());
   });
