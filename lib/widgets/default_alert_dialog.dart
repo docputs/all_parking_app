@@ -26,17 +26,17 @@ class DefaultAlertDialog extends StatelessWidget {
       content: Text(message),
       actions: [
         FlatButton(
-          child: Text(leftButtonText, style: const TextStyle(color: AppColors.primaryColor)),
+          child: Text(leftButtonText, style: const TextStyle(color: AppColors.primaryColor, fontWeight: FontWeight.w600)),
           onPressed: () => Navigator.of(context).pop(false),
         ),
         useWarningButton
             ? FlatButton(
-                child: Text(rightButtonText, style: const TextStyle(color: AppColors.errorColor)),
+                child: Text(rightButtonText, style: const TextStyle(color: AppColors.errorColor, fontWeight: FontWeight.w600)),
                 onPressed: () => Navigator.of(context).pop(true),
               )
             : RaisedButton(
                 color: AppColors.primaryColor,
-                child: Text(rightButtonText, style: const TextStyle(color: Colors.white)),
+                child: Text(rightButtonText, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
                 onPressed: () => Navigator.of(context).pop(true),
               ),
       ],
