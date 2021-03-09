@@ -1,7 +1,6 @@
 import 'package:all_parking/utils/error_report_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -48,10 +47,6 @@ class ParkingLotRepository implements IParkingLotRepository {
   @override
   Future<Either<ParkingFailure, Unit>> delete(ParkingLot parkingLot) {
     return _handleExceptions(() async {
-      final snapshot = await _firestore.codesCollection(parkingLot.id).get();
-      for (QueryDocumentSnapshot doc in snapshot.docs) {
-        await _firestore.codesCollection(parkingLot.id).doc(doc.id).delete();
-      }
       await _firestore.parkingLotCollection.doc(parkingLot.id).delete();
     });
   }
