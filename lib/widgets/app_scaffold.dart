@@ -1,3 +1,4 @@
+import 'package:all_parking/widgets/auth_status_listener.dart';
 import 'package:flutter/material.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -24,14 +25,16 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: drawer,
-      appBar: customAppBar ?? AppBar(title: Text(title), actions: actions),
-      body: Padding(
-        padding: padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: _buildDefaultScreenBody(),
+    return AuthStatusListener(
+      child: Scaffold(
+        drawer: drawer,
+        appBar: customAppBar ?? AppBar(title: Text(title), actions: actions),
+        body: Padding(
+          padding: padding ?? const EdgeInsets.only(top: 16, left: 16, right: 16),
+          child: _buildDefaultScreenBody(),
+        ),
+        floatingActionButton: floatingActionButton,
       ),
-      floatingActionButton: floatingActionButton,
     );
   }
 

@@ -14,8 +14,10 @@ class _$SaveCodesEventTearOff {
   const _$SaveCodesEventTearOff();
 
 // ignore: unused_element
-  _SaveRequested saveRequested() {
-    return const _SaveRequested();
+  _SaveRequested saveRequested(String fileName) {
+    return _SaveRequested(
+      fileName,
+    );
   }
 }
 
@@ -25,13 +27,15 @@ const $SaveCodesEvent = _$SaveCodesEventTearOff();
 
 /// @nodoc
 mixin _$SaveCodesEvent {
+  String get fileName;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult saveRequested(),
+    @required TResult saveRequested(String fileName),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult saveRequested(),
+    TResult saveRequested(String fileName),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -43,6 +47,9 @@ mixin _$SaveCodesEvent {
     TResult saveRequested(_SaveRequested value),
     @required TResult orElse(),
   });
+
+  @JsonKey(ignore: true)
+  $SaveCodesEventCopyWith<SaveCodesEvent> get copyWith;
 }
 
 /// @nodoc
@@ -50,6 +57,7 @@ abstract class $SaveCodesEventCopyWith<$Res> {
   factory $SaveCodesEventCopyWith(
           SaveCodesEvent value, $Res Function(SaveCodesEvent) then) =
       _$SaveCodesEventCopyWithImpl<$Res>;
+  $Res call({String fileName});
 }
 
 /// @nodoc
@@ -60,13 +68,25 @@ class _$SaveCodesEventCopyWithImpl<$Res>
   final SaveCodesEvent _value;
   // ignore: unused_field
   final $Res Function(SaveCodesEvent) _then;
+
+  @override
+  $Res call({
+    Object fileName = freezed,
+  }) {
+    return _then(_value.copyWith(
+      fileName: fileName == freezed ? _value.fileName : fileName as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$SaveRequestedCopyWith<$Res> {
+abstract class _$SaveRequestedCopyWith<$Res>
+    implements $SaveCodesEventCopyWith<$Res> {
   factory _$SaveRequestedCopyWith(
           _SaveRequested value, $Res Function(_SaveRequested) then) =
       __$SaveRequestedCopyWithImpl<$Res>;
+  @override
+  $Res call({String fileName});
 }
 
 /// @nodoc
@@ -79,43 +99,65 @@ class __$SaveRequestedCopyWithImpl<$Res>
 
   @override
   _SaveRequested get _value => super._value as _SaveRequested;
+
+  @override
+  $Res call({
+    Object fileName = freezed,
+  }) {
+    return _then(_SaveRequested(
+      fileName == freezed ? _value.fileName : fileName as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_SaveRequested implements _SaveRequested {
-  const _$_SaveRequested();
+  const _$_SaveRequested(this.fileName) : assert(fileName != null);
+
+  @override
+  final String fileName;
 
   @override
   String toString() {
-    return 'SaveCodesEvent.saveRequested()';
+    return 'SaveCodesEvent.saveRequested(fileName: $fileName)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _SaveRequested);
+    return identical(this, other) ||
+        (other is _SaveRequested &&
+            (identical(other.fileName, fileName) ||
+                const DeepCollectionEquality()
+                    .equals(other.fileName, fileName)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(fileName);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SaveRequestedCopyWith<_SaveRequested> get copyWith =>
+      __$SaveRequestedCopyWithImpl<_SaveRequested>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult saveRequested(),
+    @required TResult saveRequested(String fileName),
   }) {
     assert(saveRequested != null);
-    return saveRequested();
+    return saveRequested(fileName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult saveRequested(),
+    TResult saveRequested(String fileName),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (saveRequested != null) {
-      return saveRequested();
+      return saveRequested(fileName);
     }
     return orElse();
   }
@@ -144,7 +186,13 @@ class _$_SaveRequested implements _SaveRequested {
 }
 
 abstract class _SaveRequested implements SaveCodesEvent {
-  const factory _SaveRequested() = _$_SaveRequested;
+  const factory _SaveRequested(String fileName) = _$_SaveRequested;
+
+  @override
+  String get fileName;
+  @override
+  @JsonKey(ignore: true)
+  _$SaveRequestedCopyWith<_SaveRequested> get copyWith;
 }
 
 /// @nodoc

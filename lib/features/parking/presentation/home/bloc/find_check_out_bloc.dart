@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:all_parking/features/parking/core/errors/parking_failure.dart';
 import 'package:all_parking/features/parking/domain/entities/parked_vehicle.dart';
 import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/active_vehicles/active_vehicles_watcher_bloc.dart';
-import 'package:all_parking/features/parking/presentation/bloc/vehicles_watcher/vehicles_watcher_bloc.dart';
 import 'package:all_parking/features/qr_code/domain/entities/qr_code.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';

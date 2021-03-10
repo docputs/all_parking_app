@@ -37,7 +37,7 @@ class DefaultListTile extends StatelessWidget {
 
   ListTile _renderListTile() {
     return ListTile(
-      title: Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       subtitle: subtitle == null ? null : Text(subtitle),
       leading: leading,
@@ -50,7 +50,7 @@ class DefaultListTile extends StatelessWidget {
 
   Widget _renderContainer() {
     return ListTile(
-      title: Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       subtitle: subtitle == null ? null : Text(subtitle),
       leading: leading,

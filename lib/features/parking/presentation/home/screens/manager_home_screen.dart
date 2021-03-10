@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
 
-import '../../../../../res/constants.dart';
-import '../../../../auth/presentation/auth_bloc.dart';
 import '../../../domain/entities/parking_lot.dart';
 import '../../bloc/parking_lots/manager/manager_parking_lots_bloc.dart';
 import '../../bloc/parking_lots/parking_lots_event.dart';
@@ -28,21 +26,15 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
+    return BlocListener<ManagerParkingLotsBloc, ParkingLotsState<KtList<ParkingLot>>>(
       listener: (context, state) => state.maybeWhen(
         orElse: () => null,
-        unauthenticated: () => Navigator.of(context).pushReplacementNamed(Constants.signInRoute),
+        success: (parkingLots) {
+          final list = parkingLots as KtList<ParkingLot>;
+          return context.activeVehicles.add(VehiclesWatcherEvent.watchStarted(list.first()));
+        },
       ),
-      child: BlocListener<ManagerParkingLotsBloc, ParkingLotsState<KtList<ParkingLot>>>(
-        listener: (context, state) => state.maybeWhen(
-          orElse: () => null,
-          success: (parkingLots) {
-            final list = parkingLots as KtList<ParkingLot>;
-            return context.activeVehicles.add(VehiclesWatcherEvent.watchStarted(list.first()));
-          },
-        ),
-        child: const HomeScreen(),
-      ),
+      child: const HomeScreen(),
     );
   }
 }

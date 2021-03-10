@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/presentation/manage_parking_lots/bloc/share_qr_codes/share_qr_codes_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,23 +19,28 @@ class ManageParkingLotTile extends StatelessWidget {
     return DefaultListTile(
       title: parkingLot.title,
       subtitle: parkingLot.address.street,
-      actions: _buildActions(context),
+      trailing: PopupMenuButton(
+        itemBuilder: (context) {
+          return [
+            PopupMenuItem(
+              child: Text(Messages.manageParkingLotsEditPopupItem),
+              value: () => Navigator.of(context).pushNamed(Constants.editParkingLotRoute, arguments: parkingLot),
+            ),
+            PopupMenuItem(
+              child: Text(Messages.manageParkingLotsCodesPopupItem),
+              value: () => context.read<ShareQrCodesBloc>().add(ShareQrCodesEvent.shareRequested(parkingLot)),
+            ),
+            PopupMenuItem(
+              child: Text(Messages.manageParkingLotsDeletePopupItem),
+              value: () => _showConfirmDialog(context).then((value) {
+                if (value != null && value) context.read<ManageParkingLotsBloc>().add(ManageParkingLotsEvent.deleted(parkingLot));
+              }),
+            ),
+          ];
+        },
+        onSelected: (value) => value(),
+      ),
     );
-  }
-
-  List<IconButton> _buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.edit),
-        onPressed: () => Navigator.of(context).pushNamed(Constants.editParkingLotRoute, arguments: parkingLot),
-      ),
-      IconButton(
-        icon: Icon(Icons.delete),
-        onPressed: () => _showConfirmDialog(context).then((value) {
-          if (value != null && value) context.read<ManageParkingLotsBloc>().add(ManageParkingLotsEvent.deleted(parkingLot));
-        }),
-      ),
-    ];
   }
 
   Future<bool> _showConfirmDialog(BuildContext context) {
