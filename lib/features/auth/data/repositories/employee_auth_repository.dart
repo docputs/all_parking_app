@@ -1,3 +1,4 @@
+import 'package:all_parking/utils/error_report_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -13,19 +14,23 @@ import '../datasources/i_local_data_source.dart';
 class EmployeeAuthRepository implements IEmployeeAuthRepository {
   final ILocalDataSource _localDataSource;
   final FirebaseFirestore _firestore;
+  final ErrorReportService _reportService;
 
-  const EmployeeAuthRepository(this._localDataSource, this._firestore);
+  const EmployeeAuthRepository(this._localDataSource, this._firestore, this._reportService);
 
   @override
   Future<Option<Employee>> getCurrentEmployee() async {
     try {
       final tokenOption = await _localDataSource.getToken();
-      return tokenOption.fold(() => none(), _fetchEmployeeFromDatabase);
-    } on FirebaseException catch (e) {
-      print(e);
+      return tokenOption.fold(() => none(), (token) async {
+        await _reportService.setUserIdentifier(token);
+        return _fetchEmployeeFromDatabase(token);
+      });
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return none();
-    } catch (e) {
-      print(e);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return none();
     }
   }
@@ -45,11 +50,11 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
         return right(unit);
       }
       return left(AuthFailure.employeeNotFound());
-    } on FirebaseException catch (e) {
-      print(e);
+    } on FirebaseException catch (e, s) {
+      await _reportService.log(e, s);
       return left(AuthFailure.serverFailure());
-    } catch (e) {
-      print(e);
+    } catch (e, s) {
+      await _reportService.log(e, s);
       return left(AuthFailure.unknownFailure());
     }
   }
@@ -59,7 +64,7 @@ class EmployeeAuthRepository implements IEmployeeAuthRepository {
     try {
       await _localDataSource.deleteToken();
       return right(unit);
-    } catch (e) {
+    } catch (e, s) {
       print(e);
       return left(AuthFailure.unknownFailure());
     }

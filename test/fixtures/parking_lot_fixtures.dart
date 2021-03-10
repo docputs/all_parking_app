@@ -40,7 +40,7 @@ class Fixtures {
     id: '1',
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
-    availableSpots: 56,
+    availableSpots: 20,
     pricePerHour: 12.0,
   );
 
@@ -48,7 +48,7 @@ class Fixtures {
     id: '1',
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
-    availableSpots: 56,
+    availableSpots: 20,
     pricePerHour: 12.0,
   );
 
@@ -56,7 +56,7 @@ class Fixtures {
     id: '1',
     title: 'Estacionamento X',
     address: Address(street: 'Rua Nossa Senhora da Saúde', number: '12', cep: '04159001', city: 'São Paulo', uf: 'SP'),
-    availableSpots: 56,
+    availableSpots: 20,
     pricePerHour: 12.0,
   );
 

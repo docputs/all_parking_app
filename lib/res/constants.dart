@@ -1,3 +1,4 @@
+import 'package:all_parking/features/parking/domain/entities/parking_lot.dart';
 import 'package:flutter/widgets.dart';
 
 import 'theme.dart';
@@ -42,4 +43,6 @@ class Constants {
   static final defaultFormFieldShadow =
       const BoxShadow(offset: Offset(1, 3), blurRadius: 5, color: AppColors.shadowColor, spreadRadius: -3);
   static final defaultBorderRadius = BorderRadius.circular(10);
+
+  static String qrCodesFileName(ParkingLot parkingLot) => '${parkingLot.id.split('-')[0]}.pdf';
 }

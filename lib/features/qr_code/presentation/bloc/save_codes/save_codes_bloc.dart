@@ -29,10 +29,10 @@ class SaveCodesBloc extends Bloc<SaveCodesEvent, SaveCodesState> {
     yield* event.when(saveRequested: _mapSaveRequested);
   }
 
-  Stream<SaveCodesState> _mapSaveRequested() async* {
+  Stream<SaveCodesState> _mapSaveRequested(String fileName) async* {
     try {
       final bytes = await _controller.capture();
-      final file = await _localStorage.saveAsPdf(bytes);
+      final file = await _localStorage.saveAsPdf(bytes, fileName: fileName);
       yield SaveCodesState.success(file);
     } catch (e) {
       print(e);

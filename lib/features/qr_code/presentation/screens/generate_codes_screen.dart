@@ -51,7 +51,7 @@ class GenerateCodesScreen extends StatelessWidget {
         return state.when(
           initial: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),
-          success: (codes) => QRCodeList(codes),
+          success: (codes) => QRCodeList(codes: codes, parkingLot: parkingLot),
           error: (f) => Center(child: Text(f.message)),
         );
       },

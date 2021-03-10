@@ -1,18 +1,24 @@
 import 'package:all_parking/features/parking/data/repositories/parking_lot_repository.dart';
+import 'package:all_parking/utils/error_report_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore_mocks/cloud_firestore_mocks.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 
 import '../../../../fixtures/parking_lot_fixtures.dart';
+
+class MockErrorReportService extends Mock implements ErrorReportService {}
 
 void main() {
   ParkingLotRepository repository;
   MockFirestoreInstance mockFirestoreInstance;
+  MockErrorReportService mockErrorReportService;
 
   setUp(() {
     mockFirestoreInstance = MockFirestoreInstance();
-    repository = ParkingLotRepository(mockFirestoreInstance);
+    mockErrorReportService = MockErrorReportService();
+    repository = ParkingLotRepository(mockFirestoreInstance, mockErrorReportService);
   });
 
   test('should call Firebase Firestore with parsed ParkingLot and return unit', () async {

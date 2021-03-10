@@ -33,6 +33,6 @@ ThemeData buildThemeData() {
       secondary: AppColors.accentColor,
       onSecondary: Colors.white,
     ),
-    // textTheme: GoogleFonts.latoTextTheme(),
+    fontFamily: 'Nunito Sans',
   );
 }

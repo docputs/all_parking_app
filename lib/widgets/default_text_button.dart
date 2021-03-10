@@ -17,7 +17,7 @@ class DefaultTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Text(text, style: TextStyle(color: textColor)),
+      child: Text(text, style: TextStyle(color: textColor, fontWeight: FontWeight.w600)),
       onPressed: onPressed,
       style: TextButton.styleFrom(
         padding: const EdgeInsets.all(0),

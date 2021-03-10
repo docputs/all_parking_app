@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:all_parking/res/constants.dart';
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart' as syspath;
 import 'package:pdf/pdf.dart';
@@ -34,5 +35,13 @@ class QRLocalStorage {
 
     final path = await _getAppPath() + '/' + (fileName ?? Constants.qrCodePdfPath);
     return File(path).writeAsBytes(await pdf.save());
+  }
+
+  Future<Option<File>> getPdfFile(String fileName) async {
+    final file = File(await _getAppPath() + '/' + fileName);
+    if (await file.exists())
+      return some(file);
+    else
+      return none();
   }
 }
