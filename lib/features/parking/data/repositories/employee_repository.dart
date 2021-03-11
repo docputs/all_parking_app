@@ -34,7 +34,6 @@ class EmployeeRepository implements IEmployeeRepository {
     return _handleExceptions(() async {
       final employeeDTO = EmployeeDTO.fromDomain(employee);
       await _firestore.employeeCollection.doc(employee.id).set(employeeDTO.toJson());
-      return right(unit);
     });
   }
 
@@ -54,7 +53,6 @@ class EmployeeRepository implements IEmployeeRepository {
   Future<Either<ParkingFailure, Unit>> delete(Employee employee) async {
     return _handleExceptions(() async {
       await _firestore.employeeCollection.doc(employee.id).delete();
-      return right(unit);
     });
   }
 }
