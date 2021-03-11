@@ -32,20 +32,20 @@ class DeleteParkingLot {
       (f) => left(f),
       (manager) async {
         final newParkingLots = _removeParkingLotFromManager(manager, parkingLot.id);
-        final newEmployees = _removeEmployeesRelatedToParkingLot(manager, parkingLot.id);
+        final newEmployees = await _removeEmployeesRelatedToParkingLot(manager, parkingLot.id);
         final newManager = manager.copyWith(parkingLots: newParkingLots, employees: newEmployees);
-        final either = await _managerRepository.update(newManager);
-        return either.fold(
-          (f) => left(f),
-          (_) => _deleteAssociatedEmployeesAccounts(newEmployees),
-        );
+        return _managerRepository.update(newManager);
       },
     );
   }
 
-  KtList<Employee> _removeEmployeesRelatedToParkingLot(Manager manager, String parkingLotId) {
+  Future<KtList<Employee>> _removeEmployeesRelatedToParkingLot(Manager manager, String parkingLotId) async {
     final employees = manager.employees.filter((employee) => employee.parkingLot.id == parkingLotId);
-    return manager.employees.minus(employees);
+    final result = await _deleteAssociatedEmployeesAccounts(employees);
+    return result.fold(
+      (f) => manager.employees,
+      (_) => manager.employees.minus(employees),
+    );
   }
 
   KtList<String> _removeParkingLotFromManager(Manager manager, String parkingLotId) {
