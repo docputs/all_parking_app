@@ -106,7 +106,7 @@ class CheckOutSummaryCard extends StatelessWidget {
   Future<bool> _showNewPriceDialog(BuildContext context) {
     return showDialog<bool>(
       context: context,
-      child: TextFieldAlertDialog(
+      builder: (context) => TextFieldAlertDialog(
         title: Messages.checkOutNewPriceDialogTitle,
         fieldDescription: Messages.checkOutNewPriceDialogDescription,
         rightButtonLabel: Messages.checkOutNewPriceDialogRightButton,
