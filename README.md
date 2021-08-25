@@ -33,7 +33,7 @@ An Android app to help managing parking lots. Created with Flutter & Dart.
 - `get_it` for a dependency injection system
 - `kt_dart` for immutable Kotlin collections
 - `rxdart` for a boost on Dart's native Streams API
-- `shared_preferences` for data persistance
+- `shared_preferences` for data persistence
 
 ## Clean Architecture
 
