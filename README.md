@@ -1,16 +1,40 @@
-# all_parking
+# All Parking
 
-A new Flutter project.
+<p align="center">
+    <img src="assets/images/logos/extended_logo.png" width="400"></img>
+</p>
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+An Android app to help managing parking lots. Created with Flutter & Dart.
 
-A few resources to get you started if this is your first Flutter project:
+### Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Vehicle check-in and check-out registration
+- QR code generation for each spot in the parking lot
+- Vehicle check-out and total price calculation with QR reader
+- Manage employees and control their access
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Screenshots
+
+<p align="center">
+    <img src="assets/screenshots/3_screen_mockup.png" height="500"></img>
+</p>
+
+## Dependencies
+
+- Firebase as a back-end service
+  - Authentication
+  - Firestore
+  - Crashlytics
+- `flutter_bloc` as a state management solution
+- `dartz` for functional programming features, used mainly for clean error handling
+- `freezed` for immutable classes, union and easy `json_serializable` classes generation
+- `get_it` for a dependency injection system
+- `kt_dart` for immutable Kotlin collections
+- `rxdart` for a boost on Dart's native Streams API
+- `shared_preferences` for data persistance
+
+## Clean Architecture
+
+Several Clean Architecture principles were followed in order to structure a maintainable and also testable application. A layered application and a proper file hierarchy allowed a separation of concerns and easy long-term maintenance.
